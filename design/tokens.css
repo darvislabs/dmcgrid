@@ -1,0 +1,64 @@
+/* ═══════════════════════════════════════════════════════════
+   DMCGrid Design Tokens v1.0 — single source of truth
+   Source: Dhrumil's brand style guide (Oct 5, 2026)
+   Fonts: Lufga PRIMARY (Adam Ladd — paid; stand-in: Outfit via
+   fonts.css fallback chain) · Plus Jakarta Sans SECONDARY ·
+   JetBrains Mono numerals.
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* ── PRIMARY PALETTE ── */
+  --g-midnight:   #0B0F14;  /* brand background, emphasis */
+  --g-slate:      #1F2937;  /* surfaces, sidebars */
+  --g-sand-gold:  #D4B483;  /* brand accent, buttons, highlights */
+  --g-ivory:      #F7F3E9;  /* background, clean surfaces */
+  --g-stone:      #9CA3AF;  /* secondary text, borders, dividers */
+  --g-earth:      #3A3F36;  /* supporting icons, muted UI */
+
+  /* ── SEMANTIC ── */
+  --g-success:    #10B981;  /* positive states */
+  --g-warning:    #F59E0B;  /* caution states */
+  --g-error:      #EF4444;  /* error states */
+  --g-info:       #3B82F6;  /* informational */
+  --g-teal:       #0EA5A3;  /* travel highlights */
+  --g-sunset:     #F97316;  /* illustrations, gradients */
+
+  /* ── TYPOGRAPHY ── */
+  --font-primary:   'Lufga', 'Outfit', Inter, system-ui, 'Segoe UI', Arial, sans-serif;
+  --font-secondary: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  --font-mono:      'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* type scale (guide §06: size / line-height) */
+  --ts-h1: 56px;      /* 56/64 Bold */
+  --ts-h2: 40px;      /* 40/48 Semibold */
+  --ts-h3: 28px;      /* 28/36 Semibold */
+  --ts-h4: 20px;      /* 20/28 Medium */
+  --ts-bodyL: 18px;   /* 18/28 Light */
+  --ts-body: 16px;    /* 16/24 Regular */
+  --ts-cap: 14px;     /* 14/20 Regular */
+  --ts-over: 12px;    /* 12/16 Semibold · tracking .18em */
+
+  /* ── SURFACE / LINES ── */
+  --line:      #2A3441;       /* borders on dark */
+  --line-soft: #232D39;       /* subtle dividers */
+  --line-light:#D6E0E3;       /* borders on light surfaces */
+
+  /* ── RADII ── */
+  --r-card: 14px;
+  --r-btn: 9px;
+  --r-input: 9px;
+  --r-pill: 999px;
+
+  /* ── SPACING (4pt grid) ── */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px;
+  --sp-4: 16px; --sp-5: 24px; --sp-6: 32px;
+
+  /* ── GRADIENTS (guide §09) ── */
+  --grad-sunrise:   linear-gradient(135deg, #F7F3E9, #D4B483);
+  --grad-midnight:  linear-gradient(135deg, #0B0F14, #1F2937);
+  --grad-atmos:     linear-gradient(135deg, #1F2937, #3A3F36);
+
+  /* ── ICONOGRAPHY (guide §07) ──
+     Style: 2px stroke, rounded corners, consistent geometry.
+     Outline icons with brand gold accent for active state. */
+  --icon-stroke: 2px;
+}
