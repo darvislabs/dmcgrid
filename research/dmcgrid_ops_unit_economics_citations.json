@@ -1,0 +1,292 @@
+{
+  "project": "DMCGrid",
+  "document": "dmcgrid-ops-unit-economics-blueprint.md",
+  "compiled": "2026-10-05",
+  "sources": [
+    {
+      "id": "tourify-lead-sellers",
+      "url": "https://tourify.in/blog/travel-lead-sellers-audit",
+      "claims": [
+        "JustDial shared-lead subscription ~₹15,000/mo for ~150 leads (≈₹100/lead)",
+        "TravelTriangle model: commission on conversion, ~8% reported platform share (agent-reported, VERIFY)",
+        "TT claims ~25% lead→booking close rate; reviewers describe ~5%",
+        "Cost-per-booking math: lead spend ÷ bookings closed"
+      ],
+      "year": 2026,
+      "scope": "India B2B travel lead platforms"
+    },
+    {
+      "id": "tt-linkedin-rep",
+      "url": "https://linkedin.com/in/manish-dutta-746a15a9",
+      "claims": [
+        "TravelTriangle account manager: 'Leads are free — no cost for registration or for leads. We charge 5% commission only on converted leads'"
+      ],
+      "year": 2026,
+      "scope": "TravelTriangle agent-facing terms (self-reported by TT rep)"
+    },
+    {
+      "id": "tt-b2b-page",
+      "url": "http://traveltriangle.com/TravelLeads/B2B-Travel-Leads.html",
+      "claims": [
+        "TravelTriangle claims max 25% conversion; billed only after trip confirmation"
+      ],
+      "year": 2026,
+      "scope": "TravelTriangle marketing page"
+    },
+    {
+      "id": "tourgrids-leads",
+      "url": "https://tourgrids.com/blog/how-travel-agents-in-delhi-are-scaling-using-paid-travel-leads",
+      "claims": [
+        "International holiday package revenue ₹50,000–₹5,00,000+",
+        "Platforms report ~20% conversion on verified leads",
+        "Verified travel lead contents: destination, origin city, pax, dates, hotel category, services"
+      ],
+      "year": 2026,
+      "scope": "India travel lead market overview"
+    },
+    {
+      "id": "tourify-ota-math",
+      "url": "https://tourify.in/blog/ota-commission-math-going-direct",
+      "claims": [
+        "Hotel OTA commissions India 15–40% + 3–5% visibility",
+        "TravelTriangle registration charge + ~8% platform share [UNVERIFIED]",
+        "Direct-channel CAC vs marketplace CAC comparison math"
+      ],
+      "year": 2026,
+      "scope": "India OTA/marketplace commission landscape"
+    },
+    {
+      "id": "razorpay-pricing",
+      "url": "https://razorpay.com/pricing/",
+      "claims": [
+        "Razorpay platform fee 2% per successful domestic transaction + 18% GST on the fee",
+        "Zero setup fee, zero AMC, zero refund fee; T+1 or instant settlement",
+        "UPI: zero statutory MDR but Razorpay 2% platform fee applies",
+        "Corporate/business cards 2.15–3%"
+      ],
+      "year": 2026,
+      "scope": "Razorpay published rate card, India domestic"
+    },
+    {
+      "id": "cyberdefence-pg",
+      "url": "https://cyberdefence.org.in/blog/payment-gateway-integration-india",
+      "claims": [
+        "Cashfree 1.95%, PayU ~2%, Razorpay 2% + 18% GST on fee",
+        "₹1,000 order at 2% → ₹23.60 total fee with GST"
+      ],
+      "year": 2026,
+      "scope": "India payment gateway comparison"
+    },
+    {
+      "id": "setsmart-wa",
+      "url": "https://setsmart.io/blog/whatsapp-business-api-pricing",
+      "claims": [
+        "Meta per-message billing from 1 July 2025 (per-message replaces per-conversation)",
+        "India rates: marketing $0.0118, utility $0.0014, authentication $0.0014 (wholesale USD)",
+        "BSP markups: Gupshup +$0.004/msg; 360dialog $49/mo pass-through"
+      ],
+      "year": 2026,
+      "scope": "WhatsApp Business API global rate card"
+    },
+    {
+      "id": "indiatoday-wa-2026",
+      "url": "https://indiatoday.in/technology/news/story/business-whatsapp-messages-to-cost-more-from-october-1-in-india-pricing-revised-3005605-2026-09-29",
+      "claims": [
+        "From 1 Oct 2026 India: utility ₹0.115/msg before GST (₹0.136 with 18% GST) even inside 24-hr window",
+        "Marketing ₹0.8631/msg; authentication ₹0.115/msg",
+        "First 1,000 service replies/month/number free; beyond that service = utility rate"
+      ],
+      "year": 2026,
+      "scope": "Meta WhatsApp Business Platform India rate card effective 1 Oct 2026"
+    },
+    {
+      "id": "freepress-wa",
+      "url": "https://freepressjournal.in/tech/how-much-does-india-have-to-pay-for-whatsapp-messages-from-october-1",
+      "claims": [
+        "1,000 free service messages/month/number; ₹0.115 beyond; no volume discount on service"
+      ],
+      "year": 2026,
+      "scope": "Meta WhatsApp Business Platform India, from 1 Oct 2026"
+    },
+    {
+      "id": "scalify-wa",
+      "url": "https://scalifylabs.com/blog/whatsapp-business-api-cost-india-2025-pricing-breakdown",
+      "claims": [
+        "India BSP platform fees: AiSensy ₹999/mo, Interakt ₹2,499/mo, Wati ₹2,999/mo, Gupshup ₹5,000+",
+        "India conversation-era rates: marketing ₹0.55–0.65, utility ₹0.14–0.22, auth ₹0.10–0.14"
+      ],
+      "year": 2025,
+      "scope": "India WhatsApp BSP pricing"
+    },
+    {
+      "id": "otm-exmanual",
+      "url": "https://otm.co.in/media_files/OTM_2025-Ex-Manual.pdf",
+      "claims": [
+        "OTM 2025 at Jio World Convention Centre Mumbai; additional exhibitor badges ₹5,000 + GST; 1 badge/2 sqm"
+      ],
+      "year": 2025,
+      "scope": "OTM 2025 exhibitor manual"
+    },
+    {
+      "id": "tourify-stall-roi",
+      "url": "https://tourify.in/blog/satte-otm-travel-trade-show-stall-roi",
+      "claims": [
+        "OTM published bare-space rate ₹44,000/sqm (early bird) to ₹56,000/sqm island; ₹48,000–60,000 standard window",
+        "9 sqm OTM stall all-in ₹6,50,000–7,50,000 before leads convert",
+        "SATTE quotes space on enquiry only, no public rate card"
+      ],
+      "year": 2026,
+      "scope": "India travel trade show costs"
+    },
+    {
+      "id": "itb-india",
+      "url": "https://itb-india.com/resources/ck/files/Exhibit/2025_Event_at_a_Glance.pdf",
+      "claims": [
+        "ITB India 2025: 3-day B2B exhibition, Jio World Convention Centre Mumbai, 9 sqm shell scheme (price on application)"
+      ],
+      "year": 2025,
+      "scope": "ITB India 2025 exhibitor brochure"
+    },
+    {
+      "id": "otm-press",
+      "url": "https://otm.co.in/media_files/OTM_2025_Press_Release.pdf",
+      "claims": [
+        "OTM 2025: 50,000+ trade visitors, 2,100+ exhibitors, 80+ countries over 3 days"
+      ],
+      "year": 2025,
+      "scope": "OTM 2025 outcome"
+    },
+    {
+      "id": "apisathi",
+      "url": "https://apisathi.in",
+      "claims": [
+        "GSTIN lookup ₹0.55–2.20/call; PAN ₹1.32/call; bank penny-drop ₹0.33/call; Udyam ₹1.20; UPI VPA ₹0.22"
+      ],
+      "year": 2026,
+      "scope": "India KYC verification API per-call prices"
+    },
+    {
+      "id": "abbacus-kyb",
+      "url": "https://abbacustechnologies.com/how-much-does-it-cost-to-create-an-app-like-razorpay-in-2026",
+      "claims": [
+        "Recommendation: launch with manual merchant approval via admin dashboard before automated KYB",
+        "Business KYB fields: GST, PAN, bank proof, address, website domain match"
+      ],
+      "year": 2026,
+      "scope": "Merchant onboarding/KYB cost structure"
+    },
+    {
+      "id": "calcaas-bedrock",
+      "url": "https://calcaas.com/llm-pricing/aws-bedrock",
+      "claims": [
+        "GLM 4.7 Flash on AWS Bedrock: $0.07/1M input, $0.40/1M output",
+        "Nova Micro cheapest: $0.035/1M input, $0.14/1M output",
+        "Claude Haiku 4.5: $1/1M in, $5/1M out (batch $2.50)"
+      ],
+      "year": 2026,
+      "scope": "LLM API token pricing per 1M tokens"
+    },
+    {
+      "id": "layer3-pricing",
+      "url": "https://layer3labs.io/ai-model-pricing",
+      "claims": [
+        "GLM 4.7 Flash free tier on Z.ai API; XFast tier $0.07/$0.40",
+        "Claude Haiku 4.5 $1/$5"
+      ],
+      "year": 2026,
+      "scope": "LLM API pricing comparison"
+    },
+    {
+      "id": "tbo-ttnews",
+      "url": "https://ttnworldwide.com/Article/342392/Small-is-big-for-TBO",
+      "claims": [
+        "TBO: India's leading B2B travel portal (World Travel Awards since 2019); aggregating offline demand to global supply; SME focus"
+      ],
+      "year": 2025,
+      "scope": "TBO strategy interview"
+    },
+    {
+      "id": "tbo-site",
+      "url": "https://www.tbo.com/",
+      "claims": [
+        "TBO connects 159,000+ buyers with 1M+ suppliers across 100+ countries; local-currency settlement; flexible mark-up for buyers"
+      ],
+      "year": 2026,
+      "scope": "TBO platform overview"
+    },
+    {
+      "id": "tourgrids-operator-guide",
+      "url": "https://codingclave.com/guides/how-to-start-tour-operator-business-india-2026",
+      "claims": [
+        "TAAI/IATO/ADTOI membership ₹15K–₹50K/yr",
+        "IATA accreditation deposit + setup ₹25K–₹60K",
+        "WhatsApp + personal network = first 20–40 customers, highest conversion",
+        "B2B sub-agent network: 8–15% commission, can 3x bookings by month 6",
+        "Google Search Ads cost per booking ₹400–₹2,500",
+        "Supplier float: 30–50% customer advance vs 50–100% supplier advance locks ₹5L–₹15L per 3 concurrent bookings"
+      ],
+      "year": 2026,
+      "scope": "India tour operator cost/acquisition guide [UNVERIFIED: vendor blog]"
+    },
+    {
+      "id": "flyo-agency",
+      "url": "https://flyo.ai/en/blog/how-to-start-travel-agency-india",
+      "claims": [
+        "TAAI annual fees ₹10,000–₹50,000 by tier",
+        "Sub-agent under IATA-accredited agency: earn 60–80% of commission, no setup cost"
+      ],
+      "year": 2026,
+      "scope": "India travel agency setup guide [UNVERIFIED: vendor blog]"
+    },
+    {
+      "id": "tourify-memberships",
+      "url": "https://tourify.in/blog/taai-tafi-iato-otoai-membership",
+      "claims": [
+        "TAAI ~2,300 member organisations; TAFI ~1,400; TAFI members handle 70%+ of India ticketing",
+        "IRCTC special norms for IATA/TAAI/TAFI/IATO/ADTOI-affiliated agents"
+      ],
+      "year": 2026,
+      "scope": "India travel trade bodies"
+    },
+    {
+      "id": "flyo-software",
+      "url": "https://flyo.ai/en/blog/travel-agency-software-india-2026",
+      "claims": [
+        "TBO Holidays = default consolidator for small Indian agencies, no IATA needed, no setup fee",
+        "Small-agency software stack ≈ ₹1,500/mo (Tally Prime; TBO/Zoho/WhatsApp free tiers)",
+        "TCS 2% tracking on overseas tour packages in Tally"
+      ],
+      "year": 2026,
+      "scope": "India travel agency software [UNVERIFIED: vendor blog]"
+    },
+    {
+      "id": "yourgrowth-cac",
+      "url": "https://yourgrowthpartner.io/blog/customer-acquisition-cost-benchmarks/",
+      "claims": [
+        "B2B SaaS average CAC $702 (range $200–$3,000+); LTV:CAC ≥3:1 healthy",
+        "7-touch WhatsApp+email nurture converts 20–35% vs 5–8% single-touch",
+        "WhatsApp 70–90% open rates vs 20% email"
+      ],
+      "year": 2025,
+      "scope": "CAC benchmarks by industry"
+    },
+    {
+      "id": "hellotravel-pricing",
+      "url": "https://agents.hellotravel.com",
+      "claims": [
+        "HelloTravel agent plans: ₹14,999/30 days, ₹19,999/30 days, ₹29,999/60 days (leads on WhatsApp, RM assistance, verified leads)"
+      ],
+      "year": 2026,
+      "scope": "HelloTravel agent rate card"
+    },
+    {
+      "id": "tripclap-pricing",
+      "url": "https://agents.tripclap.com",
+      "claims": [
+        "TripClap cost per lead starts at ₹50, varies by plan; pay-per-lead with free registration"
+      ],
+      "year": 2026,
+      "scope": "TripClap agent rate card"
+    }
+  ]
+}

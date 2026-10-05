@@ -1,0 +1,555 @@
+{
+ "version": 1,
+ "rebuilt": true,
+ "note": "S->source index for dmcgrid-competitive-intel.md, rebuilt by matching verbatim quotes (multi-window) against research/raw/ extracts plus web verification (rebuilt-web pass, 2026-10-05). url:null entries: quote exists in the report but no source could be verified - re-fetch before publishing those claims.",
+ "sources": {
+  "S1": {
+   "url": "https://startuptalky.com/traveltriangle-success-story/",
+   "title": "TravelTriangle - No Matter What, No Matter Where, All Places Are Worth Visiting",
+   "topics": [
+    "traveltriangle"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S2": {
+   "url": "https://tourify.in/blog/travel-lead-sellers-audit",
+   "title": "Bought travel leads, got nothing: auditing the lead sellers",
+   "topics": [
+    "traveltriangle"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S7": {
+   "url": "https://entrackr.com/2024/05/travel-boutique-onlines-pat-crosses-rs-200-cr-in-fy24",
+   "title": "Travel Boutique Online’s PAT crosses Rs 200 Cr in FY24",
+   "topics": [
+    "tbo-travclan"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S8": {
+   "url": "https://ipocentral.in/tbo-tek-ipo-gmp-price-date-allotment/?rand=12352",
+   "title": "TBO Tek IPO GMP, Price, Date, Allotment",
+   "topics": [
+    "tbo-travclan"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S9": {
+   "url": "https://www.quora.com/What-does-Tripfactory-com-do",
+   "title": "www-quora-com-what-does-tripfactory-com-do.md",
+   "topics": [
+    "pathfndr-tripfactory"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S10": {
+   "url": "https://www.tryfundable.ai/company/tripfactory.com",
+   "title": "TripFactory",
+   "topics": [
+    "pathfndr-tripfactory"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S11": {
+   "url": "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-5dac1bf0-6f28-4a74-99d1-117086a0315d/product-documents/pro-692067a3-9ee0-450c-8693-f035c4dbb3ad/cccd508e-a0ca-4ba3-a7a1-9870fd74c29e.pdf",
+   "title": "pub-mediabox-storage-rxweb-prd-com-exhibitor-products-exh-5dac1bf0-6f28-4a74-99d.md",
+   "topics": [
+    "dmcbazaar-travclan"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S12": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S13": {
+   "url": "https://toogle.world/",
+   "title": "Toogle — AI Powered B2B Travel Ecosystem for Indian and Global Travel Businesses",
+   "topics": [
+    "direct-discovery"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S14": {
+   "url": "https://idmcworld.com/",
+   "title": "Sell Destinations Like a Local",
+   "topics": [
+    "direct-discovery"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S15": {
+   "url": "https://swtclub.in/",
+   "title": "Stop managing multiple global travel vendors",
+   "topics": [
+    "direct-discovery"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S16": {
+   "url": "https://etrav.in/",
+   "title": "**eTrav: India's B2B Travel Technology Platform for 35,000+ Agents**",
+   "topics": [
+    "direct-more"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S17": {
+   "url": "https://travel-dmc.com/b2b-travel-portal/",
+   "title": "travel-dmc-com-b2b-travel-portal.md",
+   "topics": [
+    "direct-more"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S21": {
+   "url": "https://tourgrids.com/blog/how-much-do-travel-leads-cost-in-india-complete-pricing-guide-2026",
+   "title": "How Much Do Travel Leads Cost in India? Complete Pricing Guide 2026 (TourGrids)",
+   "topics": [
+    "lead-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S22": {
+   "url": "https://tourify.in/blog/travel-lead-cost-benchmarks-india",
+   "title": "What a travel lead should cost in 2026: India benchmarks",
+   "topics": [
+    "lead-pricing"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S23": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S24": {
+   "url": "https://tern.travel/pricing",
+   "title": "Simple pricing that scales with your business",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S25": {
+   "url": "https://travefy.com/plans/pricing",
+   "title": "Travefy Plans & Pricing (official)",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S26": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S27": {
+   "url": "https://ezus.io/post/best-travel-agency-software-2026-comparison",
+   "title": "ezus-io-post-best-travel-agency-software-2026-comparison.md",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S28": {
+   "url": "https://traveljoy.com/",
+   "title": "TravelJoy — The all-in-one platform for travel advisors (official)",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S29": {
+   "url": "https://tripkit.com/traveljoy-reviews",
+   "title": "TravelJoy, reviewed by people who live in it (Tripkit, July 2026)",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S30": {
+   "url": "https://pixiedustcrm.dev/compare/traveljoy",
+   "title": "pixiedustcrm-dev-compare-traveljoy.md",
+   "topics": [
+    "dmcbazaar-travclan"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S31": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S35": {
+   "url": "https://payana.today/",
+   "title": "The operating system for your *travel agency*.",
+   "topics": [
+    "adjacent-india"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S36": {
+   "url": "https://chinarcrm.com/",
+   "title": "Travel Agency CRM &",
+   "topics": [
+    "adjacent-india"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S37": {
+   "url": "https://itiner.in/pricing",
+   "title": "itiner.in Pricing (official)",
+   "topics": [
+    "adjacent-india"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S39": {
+   "url": "https://codingclave.com/guides/best-tour-operator-software-india-2026",
+   "title": "Best Tour Operator Software in India 2026: Honest Comparison (Codingclave)",
+   "topics": [
+    "adjacent-india"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S40": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S41": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S42": {
+   "url": "https://matrixbcg.com/products/webjetlimited-bcg-matrix",
+   "title": "Webjet BCG Matrix Analysis (matrixbcg.com)",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S43": {
+   "url": "https://matrixbcg.com/products/webjetlimited-swot-analysis",
+   "title": "Webjet SWOT Analysis (matrixbcg.com)",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S44": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S45": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S46": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S47": {
+   "url": "https://tourplan.com/products/",
+   "title": "What is Tourplan? Tour Operator Software (official)",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S48": {
+   "url": "https://www.tourwriter.com/tourplan-reviews-alternatives/",
+   "title": "www-tourwriter-com-tourplan-reviews-alternatives.md",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S49": {
+   "url": "https://us.fitgap.com/products/057964/tourplan",
+   "title": "Tourplan reviews 2026 | FitGap",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S50": {
+   "url": "https://odys.travel/en/post/top-5-software-solutions-for-dmcs",
+   "title": "Top 5 Software Solutions for DMCs (Odys)",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S51": {
+   "url": "https://tourwriter.com/software-pricing-plans/",
+   "title": "Tourwriter Software Pricing Plans (official)",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S52": {
+   "url": "https://thetourhub.com/",
+   "title": "The End ofManual Quoting.",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S53": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S59": {
+   "url": "https://startuptalky.com/traveltriangle-success-story/",
+   "title": "TravelTriangle - No Matter What, No Matter Where, All Places Are Worth Visiting (Startuptalky)",
+   "topics": [
+    "traveltriangle"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S60": {
+   "url": "https://entrackr.com/2024/05/travel-boutique-onlines-pat-crosses-rs-200-cr-in-fy24",
+   "title": "Travel Boutique Online’s PAT crosses Rs 200 Cr in FY24 (Entrackr)",
+   "topics": [
+    "tbo-travclan"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S61": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S62": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S63": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S64": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S65": {
+   "url": "https://www.techimply.com/profile/pathfndr",
+   "title": "Pathfndr Pricing, Reviews, Features and Comparison | Techimply India",
+   "topics": [
+    "pathfndr-tripfactory"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S66": {
+   "url": "https://tracxn.com/d/companies/pathfndr/__j-aZgcqMyU_aVhiULyPpjBuQSQUoKXSlvI5zMNXiN5A",
+   "title": "tracxn-com-d-companies-pathfndr-j-azgcqmyu-avhiulyppjbuqsquokxslvi5zmnxin5a.md",
+   "topics": [
+    "pathfndr-tripfactory"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S67": {
+   "url": "https://app.dealroom.co/companies/metripping",
+   "title": "app-dealroom-co-companies-metripping.md",
+   "topics": [
+    "pathfndr-tripfactory"
+   ],
+   "matched_via": "verbatim window"
+  },
+  "S68": {
+   "url": "https://slashdot.org/software/comparison/MakeMyTrip-vs-Pathfndr",
+   "title": "MakeMyTrip vs. Pathfndr Comparison (Slashdot)",
+   "topics": [
+    "pathfndr-tripfactory"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S69": {
+   "url": "https://travtalkindia.com/intelligent-packaging-to-redefine-customised-travel/",
+   "title": "Intelligent packaging to redefine customised travel - Trav Talk (Varun Gupta, Pathfndr)",
+   "topics": [
+    "pathfndr-tripfactory"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S70": {
+   "url": "https://sourceforge.net/software/product/Pathfndr/",
+   "title": "Pathfndr (SourceForge)",
+   "topics": [
+    "pathfndr-tripfactory"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S71": {
+   "url": "https://jalsaa.com/foragents",
+   "title": "Jalsaa For Agents — Flexible Pricing Plans (official)",
+   "topics": [
+    "lead-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S72": {
+   "url": "https://agents.holidify.com/post/lead-and-pricing-faqs",
+   "title": "Lead and Pricing FAQs (Holidify Agents / TripCrafters)",
+   "topics": [
+    "lead-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S73": {
+   "url": "https://dmcquote.com/services/b2b-portal-for-indian-travel-agents",
+   "title": "B2B Portal for Indian Travel Agents | Wholesale Rates for Outbound Travel - DMC Quote",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S74": {
+   "url": "https://us.fitgap.com/products/024610/travefy",
+   "title": "Travefy reviews 2026 | FitGap",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S75": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S76": {
+   "url": "https://traveljoy.com/pricing.html",
+   "title": "TravelJoy Pricing (official)",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S77": {
+   "url": "https://pixiedustcrm.dev/compare/tern",
+   "title": "Pixie Dust CRM vs Tern comparison",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S78": {
+   "url": "https://www.travelmarketreport.com/retail-strategies/articles/tern-launches-embedded-agentic-ai-to-take-over-back-office-admin-work",
+   "title": "Tern launches embedded agentic AI to take over back-office admin work (Travel Market Report)",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S79": {
+   "url": "https://tripkit.com/tern-reviews",
+   "title": "Tern, reviewed by people who live in it (Tripkit, July 2026)",
+   "topics": [
+    "adjacent-pricing"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S80": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S81": {
+   "url": "https://travelomatix.com/software/what-is-the-cost-of-white-label-travel-portal-in-india",
+   "title": "What is the cost of white label travel portal in India? (Travelomatix)",
+   "topics": [
+    "adjacent-india"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S82": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S83": {
+   "url": "https://globalbankingandfinance.com/HBXGROUP-IPO-d3b376d3-1dbf-4e9d-a79e-2d2dcc0183c9",
+   "title": "Hotelbeds owner HBX valued at $2.9 billion in one of the first IPOs of 2025 (Reuters)",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S84": {
+   "url": null,
+   "title": null,
+   "topics": [],
+   "matched_via": null
+  },
+  "S85": {
+   "url": "https://tourplan.com/",
+   "title": "Tourplan — Trusted travel technology partner, 40 years with leading DMCs (official)",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S86": {
+   "url": "https://travelboost.app/industries/destination-management",
+   "title": "DMC operations without the spreadsheet crisis — TravelBoost",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S87": {
+   "url": "https://apps.apple.com/us/app/dong-dmc-partner/id6738423730",
+   "title": "Dong DMC Partner (Apple App Store)",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S88": {
+   "url": "https://dongdmc.com/en/page/agent-app",
+   "title": "Dong DMC Agent App | End-to-End Vietnam Partner Workflow",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  },
+  "S89": {
+   "url": "https://hyperporter.com/",
+   "title": "Run your trips on Autopilot — Hyperporter",
+   "topics": [
+    "global-analogs"
+   ],
+   "matched_via": "rebuilt-web"
+  }
+ }
+}

@@ -1,0 +1,464 @@
+{
+  "project": "DMCGrid",
+  "report": "dmcgrid_compliance_report.md",
+  "compiled": "2026-10-05",
+  "note": "Sources actually consulted during the 2026-10-05 research pass. Primary instruments are cited by number/date in the report; URLs below are the pages used for cross-verification. '[UNVERIFIED]' claims in the report rest on fewer than two independent sources or could not be opened directly.",
+  "sources": [
+    {
+      "id": 1,
+      "url": "http://cbic.gov.in/htdocs-cbec/gst/central-tax-rate-notfns-2017",
+      "title": "CBIC — Central Tax (Rate) Notifications 2017 index (incl. 11/2017-CT(R))",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 2,
+      "url": "https://gstzen.in/a/central-tax-notification-rate-202019-seeks-to-amend-notification-no-112017-central-tax-rate-so-as-to-notify-cgst-rates-of-various-services-as-recommended-by-gst-council-in-its-37th-meeting-held-on-20.html",
+      "title": "GSTZen — Notification 20/2019-Central Tax (Rate) amending 11/2017-CT(R) w.e.f. 01.10.2019",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 3,
+      "url": "https://taxreply.com/gstnotifications/Notification-No-20-2019-1185.html",
+      "title": "TaxReply — Notification 20/2019-Integrated Tax (Rate) dated 30-09-2019",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 4,
+      "url": "https://lawspedia.in/docs/notification-no-16-2025-central-tax-rate.pdf",
+      "title": "Lawspedia — Notification 16/2025-Central Tax (Rate), 17 September 2025 (56th Council implementation)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 5,
+      "url": "https://taxo.online/latest-news/18-09-2025-cbic-issued-notifications-to-give-effect-to-the-recommendations-of-the-56th-council-meeting-in-respect-to-rate-and-exemption-on-services",
+      "title": "TaxO — CBIC notifications 15/2025 & 16/2025-CT(R) dt 18.09.2025 implementing 56th Council",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 6,
+      "url": "https://iato.in/circular-get?id=eyJpdii...IiJ9",
+      "title": "IATO circular — 56th GST Council meeting (3 Sept 2025) rate changes summary",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 17,
+      "url": "https://tourify.in/blog/mot-recognition-travel-agents",
+      "title": "Tourify — MoT Lok Sabha reply Dec 2024: no mandatory registration; recognition voluntary",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 18,
+      "url": "https://tourify.in/blog/travel-agency-licence-india",
+      "title": "Tourify — no central travel-agency licence; state-level outliers",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 19,
+      "url": "https://flightgpt.in/blog/travel-agent-license-india-mot-recognition-how-to-get",
+      "title": "FlightGPT — no mandatory government licence for travel agents (2026)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 21,
+      "url": "https://tourify.in/blog/gst-5-or-18-tour-package-invoice",
+      "title": "Tourify — 5% vs 18% tour package invoicing; 56th Council kept tour operators at 5% no-ITC; principal-vs-agent decision tree",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 22,
+      "url": "https://tourify.in/blog/gst-rate-card-tour-operators-2026",
+      "title": "Tourify — GST rate card for tour operators 2026 (two-rate structure)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 23,
+      "url": "https://taxguru.in/goods-and-service-tax/gst-intermediary-services-section-13-8-b-removed-means-indian-exporters.html",
+      "title": "TaxGuru — IGST §13(8)(b) omitted by Finance Act 2026 §157 w.e.f. 30.03.2026; intermediary services now export-eligible",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 24,
+      "url": "https://www.grantthornton.in/insights/articles/gst-on-intermediary-services/",
+      "title": "Grant Thornton — GST on intermediary services; IGST §13(8)(b) and §2(13) definition",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 25,
+      "url": "https://gstcouncil.gov.in/sites/default/files/2025-09/faq_0.pdf",
+      "title": "GST Council — 56th meeting FAQ (Sept 2025): tour operators remain 5% without ITC",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 26,
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2163555",
+      "title": "PIB — GST 2.0 release: tour operators stay at 5% no-ITC after rationalisation",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 27,
+      "url": "https://gstclub.in/news/2662/Impact-of-GST-Rationalisation-On-Tourism-And-Hospitality-Sector",
+      "title": "GST Club — impact of GST rationalisation on tourism/hospitality (hotel ₹7,500 slab)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 28,
+      "url": "https://startupadvisory.in/blog-gst-rcm-import-of-services.htm",
+      "title": "Startup Advisory — GST on import of services under RCM (Notfn 10/2017-IT(R))",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 36,
+      "url": "https://taxguru.in/goods-and-service-tax/gst-e-commerce-operators-detailed-analysis.html",
+      "title": "TaxGuru — GST on e-commerce operators: §24(x) compulsory registration, §52 TCS",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 37,
+      "url": "https://taxclue.in/gst-registration-ecommerce",
+      "title": "TaxClue — ECO GST registration: §24, Form REG-07, GSTR-8",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 38,
+      "url": "https://seasaw.ai/resources/ecommerce-tcs-gstr8-reconciliation",
+      "title": "Seasaw — §52(1) TCS mechanics, GSTR-8 reconciliation, ECO obligation",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 39,
+      "url": "https://taxguru.in/goods-and-service-tax/applicability-gst-online-business-services.html",
+      "title": "TaxGuru — §9(5) notifications 17/2017 & 23/2017-CT(R): ECO-liable services list",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 40,
+      "url": "https://taxrealtime.in/gstlaws/provision/circulars/28",
+      "title": "TaxRealtime — 45th Council (17.09.2021): restaurant service notified under §9(5)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 42,
+      "url": "https://taxguru.in/income-tax/tcs-sale-overseas-tour-pacakage.html",
+      "title": "TaxGuru — TCS on sale of overseas tour programme package, §206C(1G) mechanics",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 43,
+      "url": "https://oquilia.com/news/section-206c-1g-lrs-tcs-threshold-10-lakh",
+      "title": "Oquilia — Finance Act 2025: §206C(1G) threshold raised ₹7L→₹10L w.e.f. 01.04.2025",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 44,
+      "url": "https://cajournal.icai.org/article-details/amendments-in-chapter-xvii-b-and-xvii-bb-by-the-finance-no2-act-2024",
+      "title": "ICAI Chartered Accountant Journal — Finance (No. 2) Act 2024 TDS/TCS amendments effective 01.10.2024 (LRS slab cut; TDS rate reductions)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 46,
+      "url": "https://mostlynri.com/tcs-on-international-tour-packages/",
+      "title": "MostlyNRI — Budget 2026: flat 2% TCS on overseas tour packages, threshold removed, w.e.f. FY 2026-27",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 47,
+      "url": "https://tourify.in/blog/tcs-overseas-tour-packages-2-percent",
+      "title": "Tourify — TCS on overseas tour packages flat 2% from 01.04.2026 playbook",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 48,
+      "url": "https://taxupdate.in/income-tax/681/tcs-on-foreign-remittances-slashed-to-2-from-april-1-2026-what-the-new-lrs-rates-mean-for-you",
+      "title": "TaxUpdate — Finance Bill 2026: TCS rationalised to 2% from 01.04.2026",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 56,
+      "url": "https://ksmg.co/insights/fema/tcs-on-foreign-remittance",
+      "title": "KSMG — §394(1) Income-tax Act 2025 (old §206C(1G)): LRS/tour-package TCS rates and thresholds",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 57,
+      "url": "https://cleartax.in/s/section-394-income-tax-act-2025",
+      "title": "ClearTax — §394 ITA 2025: TCS categories incl. sellers of overseas tour packages",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 58,
+      "url": "https://deccanherald.com/business/higher-20-tcs-on-overseas-remittances-foreign-tour-packages-kicks-in-from-october-1-2704619",
+      "title": "Deccan Herald — 20% TCS on foreign tour packages/LRS from 01.10.2023 (historical)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 59,
+      "url": "https://getprepaidcard.hdfc.bank.in/pdf/TCS-forex-cards-2025.pdf",
+      "title": "HDFC Bank — TCS on forex cards 2025: threshold ₹7L→₹10L from FY 2025-26 (AD-dealer collection)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 60,
+      "url": "https://altftool.com/tools/all/tcs-tour-package-calculator",
+      "title": "AltF Tool — §206C(1G) tour-package TCS: 5% first ₹10L / 20% above (FY 2025-26 position)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 64,
+      "url": "https://cleartax.in/s/section-194o",
+      "title": "ClearTax — §194O: e-commerce operator TDS on payments to e-commerce participants",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 65,
+      "url": "https://compliedai.com/blog/tds-on-e-commerce-194o",
+      "title": "CompliedAI — §194O: 0.1% on gross facilitated sales/services before commission netting",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 66,
+      "url": "https://regikart.com/blog/section-194o-tds-ecommerce-0-1-percent",
+      "title": "Regikart — §194-O rate reduced 1%→0.1% w.e.f. 01.10.2024 (Finance (No. 2) Act 2024)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 67,
+      "url": "https://taxgarden.in/blog/tds-on-ecommerce-payments-section-194o-393-guide-india-fy-2026-27",
+      "title": "TaxGarden — §194O/§393 TDS guide FY 2026-27 (ITA 2025 renumbering)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 69,
+      "url": "https://taxclue.in/section-194c",
+      "title": "TaxClue — §194C: resident contractors only; 1%/2% rates; ₹30k/₹1L thresholds",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 70,
+      "url": "https://startupadvisory.in/blog-section-194c-tds-on-contractor.htm",
+      "title": "Startup Advisory — §194C 2026 guide (now ~§393, ITA 2025)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 71,
+      "url": "https://bookmyca.in/services/income-tax/form-15ca-15cb-foreign-remittance",
+      "title": "BookMyCA — Form 15CA/15CB: parts A-D, ₹5 lakh aggregate 15CB rule",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 72,
+      "url": "https://taxclue.in/guide/section-195-tds",
+      "title": "TaxClue — §195 TDS on non-resident payments: no minimum threshold, default rates",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 75,
+      "url": "https://gstbillmaker.in/gst-on-saas-software-guide",
+      "title": "GSTBillmaker — GST on SaaS/software: 18%, place of supply = customer location, LUT exports",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 76,
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2083795&reg=48&lang=2",
+      "title": "PIB — 'Registered and Unregistered Travel Agents in the Country', MoT Lok Sabha reply, 12 Dec 2024 (voluntary scheme)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 77,
+      "url": "https://tourism.gov.in/sites/default/files/2019-11/taguideline.pdf",
+      "title": "Ministry of Tourism — Guidelines for Recognition/Renewal as an Approved Travel Agent (revised w.e.f. 04.12.2009)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 78,
+      "url": "https://calcguru.in/how-to-start-a-travel-agency-in-india",
+      "title": "CalcGuru — no licence required; MoT recognition voluntary; IATA a commercial choice",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 79,
+      "url": "https://www.incorpx.io/blog/tourism-travel-agency-company-registration-2026",
+      "title": "IncorpX — MCA SPICe+ incorporation, NIC 79110",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 83,
+      "url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12896",
+      "title": "RBI — Master Direction RBI/DPSS/2025-26/141 (Regulation of Payment Aggregators) Directions, 2025, dt 15.09.2025",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 84,
+      "url": "https://paymentbrief.com/articles/india-rbi-payment-aggregator-licensing",
+      "title": "PaymentBrief — RBI PA Directions 2025: three categories, net worth ₹15cr/₹25cr, PA-CB ₹25L cap, FIU-IND, CERT-In audits",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 85,
+      "url": "https://www.mondaq.com/india/financial-services/1727528/rbi-master-direction-on-digital-payment-aggregators-understanding-compliance-requirements-and-industry-implications",
+      "title": "Mondaq — RBI Master Direction on Digital Payment Aggregators (15.09.2025): compliance requirements",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 86,
+      "url": "https://www.akandpartners.in/post/rbi-master-direction-on-digital-payment-aggregators-understanding-compliance-requirements-and-indus",
+      "title": "Akand Partners — RBI PA MD 2025: online/physical/cross-border consolidation",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 88,
+      "url": "https://sansalegal.com/post/how-to-apply-for-a-payment-aggregator-licence-from-the-rbi-under-the-pss-act-1",
+      "title": "Sansa Legal — PSS Act 2007 §4: no payment system without RBI authorisation",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 89,
+      "url": "https://wiki.private.law/en/india-brazil-payments",
+      "title": "wiki.private.law — RBI/BCB comparison: 15.09.2025 Master Direction consolidated PA circulars",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 91,
+      "url": "https://pwc.in/assets/pdfs/cross-border-payment-aggregatorsregulations-and-business-use-cases.pdf",
+      "title": "PwC — PA-CB: RBI/2023-24/80 (31.10.2023) circular, regulations and business use cases",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 92,
+      "url": "https://inc42.com/buzz/rbi-issues-norms-to-regulate-cross-border-payments-platforms",
+      "title": "Inc42 — PA-CB class: all cross-border processing entities under RBI ambit",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 95,
+      "url": "https://skydo.com/blog/pacb-circular-and-opgsp-update",
+      "title": "Skydo — PA-CB circular & OPGSP replacement",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 96,
+      "url": "https://trilegal.com/knowledge_repository/new-master-directions-on-prepaid-payment-instruments",
+      "title": "Trilegal — PPI Master Directions (27.08.2021): PPI categories and limits",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 97,
+      "url": "https://livelaw.in/law-firms/law-firm-articles-/prepaid-payment-instruments-online-payments-amicus-advocates-and-solicitors-183507",
+      "title": "LiveLaw — PPI MDs removed closed PPIs from the PPI Guidelines ambit",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 98,
+      "url": "https://anantamias.com/prepaid-payment-instruments",
+      "title": "Anantamias — PPI types/limits: full-KYC PPI ₹2 lakh cap; wallet ≠ bank deposit",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 100,
+      "url": "https://mondaq.com/india/dodd-frank-consumer-protection-act/1841326/b2b-marketplaces-are-not-exempted-under-consumer-protection-act-2019",
+      "title": "Mondaq — B2B marketplaces not exempt under CPA 2019; CCPA ₹10 lakh penalty on Dial4Trade Technologies",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 101,
+      "url": "https://samistilegal.in/consumer-protection-e-commerce-rules-2020",
+      "title": "Samisti Legal — Consumer Protection (E-commerce) Rules 2020 overview",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 104,
+      "url": "https://legal500.com/intelligence/india/consumer-protection/ccpas-guidelines-on-dark-patterns-an-overview",
+      "title": "Legal 500 — CCPA Guidelines for Prevention and Regulation of Dark Patterns 2023 (30.11.2023, CPA §18)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 105,
+      "url": "https://www.nls.ac.in/wp-content/uploads/2021/04/Dark-Patterns.pdf",
+      "title": "NLSIU — Dark Patterns Guidelines 2023 text (specified patterns list)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 106,
+      "url": "https://righttoinformation.wiki/dark-patterns-ccpa-2023-india",
+      "title": "RTI Wiki — dark patterns since 30.11.2023; travel booking sites in scope",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 108,
+      "url": "https://dpdpact.net/dpdp-rules-2025",
+      "title": "DPDPAct.net — DPDP Rules 2025: notified 13.11.2025, phased to May 2027",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 109,
+      "url": "https://righttoinformation.wiki/dpdp-act-2023-complete-guide",
+      "title": "RTI Wiki — DPDP Act 2023 complete guide; in force 14.11.2025 with Rules",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 110,
+      "url": "https://dpdpa.dcomply.in/rules",
+      "title": "DPDPA knowledge hub — all 22 DPDP Rules, G.S.R. 846(E), phased commencement (13.11.2025 / 14.11.2026 / 14.05.2027)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 111,
+      "url": "https://dcomply.in/dpdp-penalty",
+      "title": "DComply — DPDP penalties: up to ₹250 crore per violation, Schedule read with §33",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 112,
+      "url": "https://cybersigmacs.com/compliance-registry",
+      "title": "CyberSigma — India compliance registry: DPDP Act 22 of 2023, assent 11.08.2023",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 120,
+      "url": "https://calcguru.in/fdi-in-ecommerce-india-marketplace-inventory",
+      "title": "CalcGuru — FDI in e-commerce: 100% marketplace, zero inventory (Press Note binary)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 121,
+      "url": "https://mondaq.com/fdi-in-e-commerce-indias-export-focused-carve-out-under-press-note-3-(2026-series)/1842524",
+      "title": "Mondaq — Press Note 3 (2026 Series), DPIIT 23.07.2026: export-focused inventory carve-out",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 122,
+      "url": "https://india.acclime.com/news/fdi-export-only-inventory-e-commerce-allowed",
+      "title": "Acclime — 100% FDI in export-only inventory e-commerce (Press Note 3, 2026 Series)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 125,
+      "url": "https://www.taxtmi.com/tmi_blog_details?id=412121",
+      "title": "TaxTMI — RBI Master Direction — Export of Goods and Services (updated 17.07.2026)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 126,
+      "url": "https://seasaw.ai/resources/eefc-account-exporters-complete-guide",
+      "title": "Seasaw — EEFC account: forex current account with AD bank for exporters",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 127,
+      "url": "https://flightgpt.in/blog/nri-diaspora-india-travel-agent-uk-usa-canada-booking-route-2026",
+      "title": "FlightGPT — no FEMA/IATA barrier to Indian agents booking for overseas clients",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 130,
+      "url": "https://tmrsearch.ipindia.gov.in/tmrpublicsearch/",
+      "title": "IP India — Trade Mark Public Search portal (OTP-gated)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 131,
+      "url": "https://www.indiafilings.com/learn/trademark-class-39-transport-and-travel-arrangement",
+      "title": "IndiaFilings — Trademark Class 39: transport & travel arrangement",
+      "accessed": "2026-10-05"
+    }
+  ]
+}

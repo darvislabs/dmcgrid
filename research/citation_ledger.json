@@ -1,0 +1,401 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2153606",
+      "title": "PIB Press Release - FTAs and Indian Nationals Departures 2019-2024 (Bureau of Immigration)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 2,
+      "url": "https://tourism.gov.in/sites/default/files/2025-09/India%20Tourism%20Data%20Compendium%202025_1.pdf",
+      "title": "India Tourism Data Compendium 2025 (Ministry of Tourism)",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 3,
+      "url": "https://travelobiz.com/india-foreign-tourist-arrivals-2024-travel-trends",
+      "title": "Travelobiz - India FTAs 2024 and destination-wise departures",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 4,
+      "url": "https://economictimes.indiatimes.com/nri/visit/from-dubai-to-bangkok-where-indians-traveled-most-last-year/printarticle/124208096.cms",
+      "title": "Economic Times - Where Indians traveled most 2024",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 5,
+      "url": "https://visaverge.com/news/uae-remains-indias-top-destination-for-2024-outbound-travel",
+      "title": "VisaVerge - UAE top destination 2024",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 6,
+      "url": "https://newindianexpress.com/india/2025/Sep/30/indias-outbound-travel-hits-record-389-crore-in-2024-uae-top-destination",
+      "title": "New Indian Express - Outbound record 3.89 crore 2024",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 7,
+      "url": "https://kalqlater.com/trends/travel/india-outbound/is-vietnam-really-becoming-more-popular-with-indian-travellers",
+      "title": "KalQLater - Vietnam Indian departures analysis",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 8,
+      "url": "https://financialexpress.com/life/lifestyle/indias-tourism-boom-has-a-foreign-visitor-gap/4348133",
+      "title": "Financial Express - India tourism BRICS gap, 2025 snapshot",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 9,
+      "url": "https://knowmoreindia.com/tourism",
+      "title": "Know More India - Tourism statistics aggregator",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 10,
+      "url": "https://indianweekender.co.nz/pages/articledetails/india-sees-strong-rebound-in-foreign-tourist-arrivals-and-outbound-travel-post-covid",
+      "title": "Indian Weekender - post-COVID rebound data",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 11,
+      "url": "https://tourify.in/blog/taai-tafi-iato-otoai-membership",
+      "title": "Tourify - TAAI/TAFI/IATO/OTOAI membership counts",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 12,
+      "url": "https://traveltradeinsider.com/2023/08/17/tourism-india-alliance-launched-in-new-delhi",
+      "title": "Travel Trade Insider - Tourism India Alliance launch, 300k-500k agent estimate, 14,221 affiliated",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 13,
+      "url": "https://bc-tourism.blogspot.com/2021/06/the-death-of-small-travel-agent-mint_29.html",
+      "title": "Mint (via blog) - MoT recognized operators 2021 counts",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 14,
+      "url": "https://economictimes.indiatimes.com/industry/transportation/airlines-/-aviation/fly-away-with-them/printarticle/1661311.cms",
+      "title": "Economic Times - IATA agents India ~2500, TAAI structure",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 15,
+      "url": "https://economictimes.indiatimes.com/industry/services/travel/taai-urges-centre-to-relax-norms-for-iata-accredited-travel-agents-make-registration-automated/printarticle/88450947.cms",
+      "title": "ET - TAAI 1400+ IATA accredited agents",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 16,
+      "url": "https://guavatrips.com/travel-industry-explained/iata-taai-iato-or-tafi-which-credentials-really-matter",
+      "title": "Guavatrips - IATA accreditation explainer, 60k worldwide",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 17,
+      "url": "https://tourify.in/blog/india-travel-trade-stats-2026",
+      "title": "Tourify - India travel trade stats 2026, agent tiers",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 18,
+      "url": "http://iato.in",
+      "title": "IATO - membership categories and requirements",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 19,
+      "url": "https://flyo.ai/en/blog/will-ai-replace-travel-agents-india-2026",
+      "title": "Flyo - 96,000 registered agencies claim",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 20,
+      "url": "https://tourify.in/blog/travel-lead-sellers-audit",
+      "title": "Tourify - Travel lead sellers audit, JustDial/TravelTriangle economics",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 21,
+      "url": "https://tourify.in/blog/ota-commission-math-going-direct",
+      "title": "Tourify - OTA commission math, TravelTriangle ~8% share",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 22,
+      "url": "https://traveltriangle.com/faqs",
+      "title": "TravelTriangle FAQs - marketplace model, cancellation fee",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 23,
+      "url": "https://www.scribd.com/document/880042710/Business-Affiliation-Proposal-TravelTriangle-2023-1",
+      "title": "TravelTriangle Agent Partnership Proposal - Rs 20,000 subscription",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 24,
+      "url": "https://webengage.com/resource/case-study/traveltriangle-increases-its-returning-users-by-20-using-webengage",
+      "title": "WebEngage case study - TravelTriangle CAC INR 400 vs 500-700",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 25,
+      "url": "https://tourgrids.com/blog/how-travel-agents-in-delhi-are-scaling-using-paid-travel-leads",
+      "title": "Tourgrids - paid travel leads Delhi, lead costs",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 26,
+      "url": "https://au.trustpilot.com/review/traveltriangle.com",
+      "title": "Trustpilot - TravelTriangle reviews",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 27,
+      "url": "https://dmcconnect.com/thailand-dmc",
+      "title": "DMC Connect Thailand - TAT licence example",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 28,
+      "url": "https://flightgpt.in/blog/b2b-hotel-booking-and-net-rates-for-travel-agents-india-2026",
+      "title": "FlightGPT - B2B hotel net rates India, TBO bedbank model",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 29,
+      "url": "https://dmcquote.com/blog/post/travel-agent-booking-platforms-compared-2025-edition",
+      "title": "DMCQuote - platform rate comparison Jan 2025",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 30,
+      "url": "https://dmcquote.com/compare/best-b2b-travel-portal-2026",
+      "title": "DMCQuote - best B2B travel portal 2026, margins 15-22%",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 31,
+      "url": "https://www.tbo.com",
+      "title": "TBO.com - global distribution platform, TBO+ rewards",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 32,
+      "url": "https://www.tboholidays.com",
+      "title": "TBOHolidays - 1M+ hotels, free Academy",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 33,
+      "url": "https://zentrumhub.com/blog/tbo-vs-hotelbeds-which-hotel-supplier-api-is-right-for-your-ota",
+      "title": "ZentrumHub - TBO vs Hotelbeds net rate models",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 34,
+      "url": "https://www.infobelpro.com/companies/thailand/travel-agencies",
+      "title": "InfobelPro - Thailand travel agencies 13,549 records",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 35,
+      "url": "https://www.wegoroundtravel.com/tat-licensed-operators-explained",
+      "title": "We Go Round - TAT licensed operators explained",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 36,
+      "url": "https://tripagent.ai/blog/travefy-pricing",
+      "title": "TripAgent - Travefy pricing $39/$59, TravelJoy $19/$39",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 37,
+      "url": "https://vettedthis.com/software/crm/traveljoy-vs-travefy-which-crm-wins",
+      "title": "VettedThis - TravelJoy vs Travefy pricing comparison",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 38,
+      "url": "https://tripagent.ai/travel-agent-software",
+      "title": "TripAgent - travel agent software prices table",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 39,
+      "url": "https://indiaoutbound.info/trade-news/indians-spent-record-usd-17-billion-on-international-travel-in-fy2024-rbi",
+      "title": "IndiaOutbound - RBI LRS $17B travel FY2024",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 40,
+      "url": "https://indianexpress.com/article/business/indians-spend-3-5-times-more-on-foreign-travel-than-they-did-5-yrs-ago-9425064",
+      "title": "Indian Express - RBI LRS travel data FY24",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 41,
+      "url": "https://hindustantimes.com/business/indians-spend-rs-12-500-crore-a-month-on-foreign-travel-in-2023-24-rbi-data-101719798558228.html",
+      "title": "Hindustan Times - RBI Rs 12,500 crore/month travel FY24",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 42,
+      "url": "https://api.finexus.net/api/news/events/7d53bc25-a417-4abb-aef7-d4ab773337c8/html",
+      "title": "Finexus - RBI LRS FY25 $16.96B travel",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 43,
+      "url": "https://dxbtourisma.com/top-travel-tourism-companies-in-dubai",
+      "title": "DxbTourisma - Dubai 180+ DTCM licensed tour operators",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 44,
+      "url": "https://diac.ae/blog/tourism-business-license-in-dubai",
+      "title": "DIAC - Dubai tourism license guide, DTCM/DET structure",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 45,
+      "url": "https://uaefreezonefinder.com/uae-tourism-travel-agency-license-2026",
+      "title": "UAE Free Zone Finder - DTCM license costs, bank guarantees",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 46,
+      "url": "https://tourify.in/blog/travel-agency-software-stack-india",
+      "title": "Tourify - Indian travel agency software stack, WhatsApp/Excel",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 47,
+      "url": "https://triplide.com/why-generic-crm-software-fails-travel-agencies-and-what-actually-works",
+      "title": "Triplide - WhatsApp leads, quotation workflow pain",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 48,
+      "url": "https://flightgpt.in/blog/holiday-package-reseller-india-dmc-vs-own-bundle",
+      "title": "FlightGPT - DMC vs own bundle, markup 10-15%",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 49,
+      "url": "https://tourify.in/blog/b2c-b2b-dmc-money-flows",
+      "title": "Tourify - Bali package money flows, margin bands",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 50,
+      "url": "https://tourify.in/blog/bali-b2b-playbook-agents",
+      "title": "Tourify - Bali B2B playbook, 438k Indian arrivals 2025",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 51,
+      "url": "https://flightgpt.in/blog/holiday-packages-for-travel-agents-to-resell-in-india-2026",
+      "title": "FlightGPT - holiday packages resell, supplier types",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 52,
+      "url": "https://dmc.inside.travel/directory/destinations/united-arab-emirates-uae",
+      "title": "Global DMC Directory - UAE DMCs",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 53,
+      "url": "https://pub-mediabox-storage.rxweb-prd.com/exhibitor/products/exh-5dac1bf0-6f28-4a74-99d1-117086a0315d/product-documents/pro-692067a3-9ee0-450c-8693-f035c4dbb3ad/cccd508e-a0ca-4ba3-a7a1-9870fd74c29e.pdf",
+      "title": "",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 55,
+      "url": "https://visitindochina.travel/post/visit-indochina-joins-outbound-tour-operators-association-of-india-otoai",
+      "title": "Visit Indochina - OTOAI 800+ members",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 56,
+      "url": "https://traveltrendstoday.in/otoais-next-chapter-building-a-stronger-outbound-travel-ecosystem",
+      "title": "Travel Trends Today - OTOAI 600+ members 2024-2026",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 57,
+      "url": "https://miceshowcase.com/otoai-hosts-a-dinner-event-in-collaboration-with-one-above-sarova-hotels-and-ifuru-island",
+      "title": "MICE Showcase - OTOAI target 2000 members",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 58,
+      "url": "https://metastatinsight.com/report/india-outbound-tourism-market",
+      "title": "Metastat Insight - India outbound market $24.4B 2025",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 59,
+      "url": "https://www.futuremarketinsights.com/reports/india-outbound-tourism-market",
+      "title": "FMI - India outbound tourism $23.4B 2026, 42.3% online",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 60,
+      "url": "https://paxiq.coach/the-indian-traveller-rising-spend-shifting-preferences-new-priorities",
+      "title": "Paxiq - outbound $18.9B 2023, $40-55B by 2030",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 61,
+      "url": "https://kordinate.world/india-mice-market-growth-bltm-2026-tourism-trends",
+      "title": "Kordinate - India MICE $49.4B 2024, outbound MICE $13.4B 2031",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 62,
+      "url": "http://travel.economictimes.indiatimes.com/tag/foreign+tourist+arrivals",
+      "title": "ET Travel - MoT approved operators ~1,400, Delhi 529",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 63,
+      "url": "https://tourify.in/blog/mot-recognition-travel-agents",
+      "title": "Tourify - MoT recognition voluntary, no central registration",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 64,
+      "url": "https://tourgrids.com/blog/how-much-do-travel-leads-cost-in-india-complete-pricing-guide-2026",
+      "title": "Tourgrids - travel lead cost pricing guide 2026",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 65,
+      "url": "https://agents.hellotravel.com",
+      "title": "HelloTravel agent plans - Rs 14,999/30 days, 1.5 lakh monthly enquiries",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 66,
+      "url": "https://flyo.ai/en/blog/ai-tools-independent-travel-agents",
+      "title": "Flyo - DMC 2-day WhatsApp reply, SATTE contact collection",
+      "accessed": "2026-10-05"
+    },
+    {
+      "id": 67,
+      "url": "https://wise.com/us/currency-converter/usd-to-inr-rate",
+      "title": "",
+      "accessed": "2026-10-05"
+    }
+  ]
+}
