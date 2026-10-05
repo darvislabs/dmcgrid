@@ -6,7 +6,7 @@
 
 **Architecture:** React SPA (role-gated) + FastAPI + PostgreSQL. Append-only credit ledger. Server-side contact redaction. Server-side HTML→PDF (WeasyPrint) for the structured customer proposal. Manual (concierge) matching in MVP, matching engine behind a feature flag.
 
-**Source prototype:** `reference/prototype-v18.html` (v18 structured-PDF-Itinerary demo, 19 screens).
+**Source prototype:** `reference/prototype-v18.html` (v18 structured-PDF-Itinerary demo, 19 screens) · `reference/prototype-v62.html` (V62 clean demo — supersedes v18; live-evaluated end-to-end).
 
 ---
 
@@ -15,7 +15,7 @@
 | # | Decision | Locked value | Rationale |
 |---|----------|--------------|-----------|
 | D1 | Stack | React 18 + Vite + TypeScript + Tailwind · FastAPI + SQLAlchemy 2 + Alembic · PostgreSQL 15 | House pattern (GMC, ClaimReclaim). One SPA, role-gated routes. |
-| D2 | Design system | **New DMCGrid identity** extending the prototype's gold-on-dark proposal sheet: Night `#0B1626` dark surfaces, Brass `#C8A45C` primary, Gold `#D9AE52` accent, Parchment `#F4EFE6` app bg / `#EBE3CE` alt, success `#1D7149`, warn `#8A5B00`, danger `#B3261E`. Fonts: **Fraunces** (display), **Inter** (UI), **IBM Plex Mono** (prices/IDs/numbers). | The proposal sheet is the piece that demos the product ("2026 not 2010"). Merges the Notion reference palette (Fraunces/IBM Plex/brass/night/parchment) with the prototype. |
+| D2 | Design system | **New DMCGrid identity.** V62 (Dhrumil's latest iteration) converged on: light workspace chrome — Ink `#10243e` / Teal `#087b72` primary / Coral `#ff7849` accent / `#f5f7f8` bg — plus the **gold-on-dark proposal sheet** (`#e7bb62` gold on dark-teal `#0d1716`). Fonts: Inter (UI); display/mono TBD at design-system phase. | V62 is the de facto answer to this decision (62 iterations); confirm at Phase 0 whether to enrich with Fraunces/IBM Plex Mono. |
 | D3 | First shippable milestone | **Agent portal MVP + ops console (concierge MVP)** — DMC matching/distribution run manually from the ops console; DMC portal ships in the following phase. | Dhrumil says the demand market exists; test conversion fastest by seeding supply manually. |
 
 ---
@@ -39,6 +39,13 @@
 - **Customer pricing formula:** `net + margin(percent|fixed, per-deal) → +GST 5% → +TCS 5%` (both configurable rates; validated tax-rule table in production — varies by transaction structure).
 - **Trust rules (non-negotiable):** paid visibility never changes quote ranking; quote comparison is neutral; sponsored placements labelled; DMC identity/net rates/margin never printed on customer PDF; contact redaction happens **server-side**.
 
+### 1.2a Agent-arranged services, manager approval & TDS (NEW in V62 — canonical)
+- **Agent internal deal sheet** (proposal step 5): agent adds services it arranges directly (Flight, Local Cab, Visa, Travel Insurance, Attraction/Ticket, Guide, Other), each with **agent cost** + **charge to customer** → per-line margin. Internal only — **never printed on the customer PDF**.
+- **Customer price formula (updated):** `net + margin(percent|fixed) + Σ ancillary charges → +GST% → +TCS%` (V62 calc: GST/TCS apply on net+margin+extras).
+- **Deal profitability box:** package margin + ancillary margin = gross deal profit; **TDS paid + TDS payable tracked separately** → cash profit after tracked TDS. Management view, explicitly not the statutory tax computation — production uses a configurable validated tax-rule table.
+- **Manager approval gate:** customer proposal cannot be generated until the deal sheet is sent to and approved by a manager (agent org's manager role — new approval state machine: `draft → pending → approved|rejected`). New role: **manager (agent org)** with read access to deal sheets + approve action.
+- **TDS fields** added to `proposals` (or new `deal_sheets` table): `ancillary jsonb (type, desc, cost, charge)`, `tds_paid numeric`, `tds_payable numeric`, `approval_status`, `approved_by`, `approved_at`.
+
 ### 1.3 RFQ structure (the 6 wizard tabs = the schema)
 `travel` (destination, adults, children, date range → nights) · `flights` (timing, cabin) · `hotel` (category, room type) · `vehicle` (type) · `food` (preferences, allergies) · `budget` (band ₹1–2L…₹10L+, priorities, dont_wants). Stored as structured columns + JSONB preference blocks.
 
@@ -49,11 +56,17 @@ draft → active → connected_1 → connected_2 (locked: no new DMC quotes)
                   closed ←───────────┘  → reactivate → active (only if connected < 2)
 ```
 - Quotes allowed while `active` or `connected_1` (from unmatched DMCs) and always from already-connected DMCs until `connected_2`.
+- **Quote versioning (NEW in V62):** after connection, a connected DMC may submit a **revision** (previous version retained) or add a **new option** — no extra credit. Agent's connected workspace shows all versions with tags (`v1 · Original`, `v2 · Updated`, `New option`) and the agent **chooses which itinerary** feeds the final proposal. Data model: `quote_versions(id, quote_id FK, version_no, kind ∈ {original,revision,new_option}, snapshot jsonb, status, created_at)`.
+- **Quote import (NEW in V62, DMC side):** DMC uploads its existing quotation PDF/DOC/DOCX → AI extracts package, price, hotels, transfers, inclusions, itinerary (confidence shown) → maps into the existing DMCGrid quote builder; **nothing submitted automatically** — DMC reviews the mapped draft first. MVP: client-side extraction stub; production: parser service (pymupdf/marker) + LLM mapping, same `quote_versions` pipeline.
 - `connected_2`/`closed` disable new quote submissions; option selection stays available to the agent from connected DMCs.
 - Every transition audited (`audit_logs`).
 
 ### 1.5 Quote → proposal flow
-DMC submits quote (≤3 options) → agent sees **anonymous** comparison (match %, requested-vs-proposed, day-wise side-by-side) → connects → identity revealed to agent only → agent picks an option → Proposal Studio: per-deal margin/GST/TCS calc, editable day-wise itinerary, brand profile (reusable), AI day-rewrite (later phase), real images w/ license metadata → **WeasyPrint A4 PDF** (structured layout from prototype v18: hero + trip strip + day-wise + package details + inclusions + agent footer + disclaimer).
+DMC submits quote (≤3 options) → agent sees **anonymous** comparison (match %, requested-vs-proposed matrix, day-wise side-by-side, **time-wise comparison normalized into 4 standard windows** — new in V62) → connects (max 2) → identity revealed to agent only → connected workspace (revisions + new options, agent picks the version) → Proposal Studio: agent **deal sheet** (ancillary costs, TDS tracker, profitability, manager approval gate), per-deal margin/GST/TCS calc, editable **time-wise itinerary** (per-day editor with add Flight/Cab/Transfer/Hotel/Meal lines, auto-sort by time, drag/↑↓ reorder, delete — all new in V61/V62), brand profile, AI day-rewrite (later phase), real images → **A4 PDF** (structured layout: hero + trip meta + day-wise with per-line photos + package details + inclusions + agent footer + disclaimer).
+
+### V62 evaluation (live-tested 2026-10-05)
+**Verified working end-to-end:** login → agent workspace → RFQ wizard (AI mode + tabs mode, year/month tabs, counters, calendar range) → compare (7 day tabs — v18 bug #1 fixed; time-wise comparison with chronological normalization; selection with max-2-DMC constraint) → connect (connected workspace: v1/v2/new-option versions, DMC filtering, quote history timeline) → choose itinerary → deal sheet (ancillary add/remove, TDS tracker, profitability math correct: 21,375 + 7,200 = 28,575) → manager approval chain (Send → Pending → Approve → Generate enabled) → customer PDF preview (7 days × time-wise lines with photos, price matches calculator: ₹2,38,002).
+**Remaining gaps for the production build:** pricing inconsistency — pre-proposal shows 5-option/3-DMC data while the connected workspace implies 2-DMC scope (plan §1.2 remains canonical); matrix "Budget" row is all "—"; pending/connected lifecycle badges in the agent queue are static; connectivity check pending message shows only when 1 DMC connected (server enforces the rest); approval state is demo-only (client flag).
 
 ---
 
@@ -92,6 +105,13 @@ rfq_matches(id PK, rfq_id FK, dmc_company_id FK, score numeric,
 quotes(id PK, ref_no UQ, rfq_id FK, dmc_company_id FK,
        status ∈ {draft,submitted,withdrawn}, submitted_at, credit_txn_id FK NULL,
        UQ(rfq_id, dmc_company_id))                    -- one quote per DMC per RFQ
+
+quote_versions(id PK, quote_id FK, version_no int, kind ∈ {original,revision,new_option},
+               snapshot jsonb (option set + itinerary at that version), status, created_at)
+
+deal_sheets(id PK, proposal_id FK UQ, ancillary jsonb (type,desc,cost,charge)[],
+            tds_paid numeric, tds_payable numeric, gross_profit numeric, cash_profit numeric,
+            approval_status ∈ {draft,pending,approved,rejected}, approved_by FK NULL, approved_at)
 
 quote_options(id PK, quote_id FK, position int 1..3, name, net_price numeric,
               vehicle jsonb, inclusions text, exclusions text)
@@ -149,6 +169,10 @@ RFQS        POST /rfqs · GET /rfqs?status=&page= · GET /rfqs/{ref} · PATCH /r
 QUOTES      POST /rfqs/{ref}/quotes (DMC — burns quote credit; 402 if exhausted)
             GET  /rfqs/{ref}/quotes (agent — anonymized until connected)
             PATCH /quotes/{id} · POST /quotes/{id}/withdraw · GET /dmc/quotes?status=
+            POST /quotes/{id}/versions (connected DMC — revision or new option, no extra credit)
+            POST /quotes/import/extract (DMC — upload PDF/DOC, AI maps to builder draft, never auto-submits)
+DEALSHEETS  PUT  /proposals/{id}/deal-sheet (ancillary costs, TDS) · POST /deal-sheets/{id}/submit
+            POST /deal-sheets/{id}/approve | /reject (manager role) — blocks proposal generation until approved
 CONNECT     POST /rfqs/{ref}/connections (agent — max 2, burns deal credit once per RFQ)
             GET  /rfqs/{ref}/connections
 PROPOSALS   POST /rfqs/{ref}/proposals · GET /proposals/{id} · PATCH /proposals/{id}
@@ -240,9 +264,11 @@ dmcgrid/
 - Verify: agent creates RFQ-1001, sees it queued, closes + reactivates it.
 
 ### Phase 3 — DMC portal + quote builder (3–4 days agy)
-- DMC company model + verification docs upload (presigned S3); opportunities dashboard (matched RFQs via `rfq_matches` seeded by ops); quote builder: ≤3 options (name, net price, hotel table, vehicle, day-wise itinerary editor with per-day tabs — port prototype's editor UX), draft/submit; submit burns quote credit (free_grant path first); anonymized agent view.
-- Tests: one-quote-per-(rfq,dmc); ≤3 options; credit debit once; anonymity until connect.
-- Verify: DMC submits 3-option quote for RFQ-1001; agent sees it anonymized.
+- DMC company model + verification docs upload (presigned S3); opportunities dashboard (matched RFQs via `rfq_matches` seeded by ops); quote builder: ≤3 options (name, net price, hotel table, vehicle, day-wise itinerary editor with per-day tabs — port V62's editor UX incl. per-line add/delete), draft/submit; submit burns quote credit (free_grant path first); anonymized agent view.
+- **Quote versioning (V62):** `quote_versions` model + `POST /quotes/{id}/versions` (revision | new_option, no extra credit after connection); agent's connected workspace lists versions with tags + "choose this itinerary".
+- **Quote import (V62, stub):** upload PDF/DOC → extraction stub → mapped draft in builder (never auto-submits); production parser service deferred to backlog.
+- Tests: one-quote-per-(rfq,dmc); ≤3 options; credit debit once; version retention after revision; anonymity until connect.
+- Verify: DMC submits 3-option quote for RFQ-1001; agent sees it anonymized; DMC submits a revision → both versions visible to connected agent.
 
 ### Phase 4 — Compare + connect + credits + billing (3–4 days agy)
 - Requested-vs-proposed comparison + match % + day-wise side-by-side (single data source); connect flow (max 2 DMCs, billing mode wallet|subscription, one debit per RFQ); append-only credit ledger + invariants (§2); Razorpay subscriptions + topup + webhook + invoices (GST 18%); credits page + topup UI.
@@ -250,16 +276,16 @@ dmcgrid/
 - Verify: end-to-end — free-deal agent connects DMC → ledger shows one debit → paid plan switches billing mode.
 
 ### Phase 5 — Proposal Studio + PDF (2–3 days agy)
-- Proposal model + per-deal margin/GST/TCS calc service; studio UI (brand form + reusable brands, controls, live gold-on-dark sheet); contenteditable itinerary → structured content jsonb; **WeasyPrint A4 PDF** with the v18 structured layout (hero + trip strip + day-wise + package details + agent footer + disclaimer; page-break rules); public share link `/p/:token`; image upload w/ license metadata.
-- Tests: pricing formula (percent + fixed, rounding); PDF generates and contains no DMC identity/net rates; share link hides DMC data.
-- Verify: generate PDF for RFQ-1001 — matches the v18 sheet visually, opens from `/p/{token}`.
+- Proposal model + per-deal margin/GST/TCS calc service (**V62 formula: net + margin + Σ ancillary charges → +GST → +TCS**); **deal sheet (V62):** ancillary services CRUD, TDS paid/payable tracker, profitability calc, **manager approval state machine** (`draft → pending → approved|rejected`) blocking proposal generation; studio UI (brand form + reusable brands, controls, live gold-on-dark sheet); time-wise itinerary editor (V62: per-day tabs, add Flight/Cab/Transfer/Hotel/Meal lines, auto-sort by time, drag/↑↓ reorder, delete); content → structured content jsonb; **WeasyPrint A4 PDF** with the structured layout (hero + trip meta + day-wise with per-line photos + package details + agent footer + disclaimer; page-break rules; deal sheet never printed); public share link `/p/:token`; image upload w/ license metadata.
+- Tests: pricing formula (percent + fixed, rounding, ancillary inclusion); approval gate blocks generation (409 until approved); PDF generates and contains no DMC identity/net rates/deal-sheet internals; share link hides DMC data.
+- Verify: generate PDF for RFQ-1001 — matches the V62 sheet visually, opens from `/p/{token}`; proposal rejected as unapproved when gate not passed.
 
 ### Phase 6 — Ops console + notifications + hardening (3 days agy)
 - Admin metrics, RFQ list + manual distribute→notify (email; in-app notifications), DMC verification queue, ledger + audit views; rate limiting, security headers, input validation audit, redaction server-side tests; seed script (demo DMCs, sample RFQ); deployment to Zeabur (darvis-tokyo): frontend static, backend container, Postgres service, backups.
 - Verify: ops distributes RFQ-1002 to 3 DMCs → DMC sees opportunity + notification; `/admin/audit` shows every state change.
 
 ### Later (backlog, not MVP)
-- AI copilot (RFQ structuring from free text, day-rewrite, 3-option drafting) · matching engine + score (behind flag from Phase 3) · WhatsApp Cloud API notifications · protected chat with server redaction UI polish (chat ships in Phase 6 minimal) · supplier marketplace · market intelligence reports · agent microsites.
+- AI copilot (RFQ structuring from free text, day-rewrite, 3-option drafting) · **quotation document parser (pymupdf/marker + LLM mapping — V62 import stub graduates here)** · matching engine + score (behind flag from Phase 3) · WhatsApp Cloud API notifications · protected chat with server redaction UI polish (chat ships in Phase 6 minimal) · supplier marketplace · market intelligence reports · agent microsites.
 
 ---
 

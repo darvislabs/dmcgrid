@@ -1,0 +1,576 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DMCGrid • Clean Demo V62</title>
+<style>
+:root{--ink:#10243e;--teal:#087b72;--coral:#ff7849;--bg:#f5f7f8;--card:#fff;--line:#dce4e7;--muted:#71808b;--soft:#eef8f6}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;color:var(--ink);background:var(--bg)}button,input,select,textarea{font:inherit}button{cursor:pointer}.page{display:none;min-height:100vh}.page.active{display:block}.hidden{display:none!important}
+.top{height:64px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:10}.brand{font-weight:950;font-size:20px}.brand i{font-style:normal;color:var(--coral)}.version{font-size:8px;color:var(--muted);margin-left:5px}.nav{display:flex;gap:8px;align-items:center}.btn{border:1px solid var(--line);background:white;color:var(--ink);border-radius:9px;padding:9px 13px;font-size:10px;font-weight:850}.btn.primary{background:var(--teal);border-color:var(--teal);color:white}.btn.coral{background:var(--coral);border-color:var(--coral);color:white}.btn.dark{background:var(--ink);border-color:var(--ink);color:white}.btn:disabled{opacity:.4;cursor:not-allowed}.shell{max-width:1180px;margin:auto;padding:16px 20px}.eyebrow{font-size:8px;font-weight:950;letter-spacing:.18em;color:var(--teal)}.sub{font-size:9px;color:var(--muted)}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:16px}.toast{position:fixed;top:72px;left:50%;transform:translateX(-50%);z-index:99;background:var(--ink);color:white;padding:9px 13px;border-radius:8px;font-size:10px;font-weight:800;box-shadow:0 8px 25px #0002}
+.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:.85fr 1.15fr;gap:38px;align-items:center}.hero h1{font-size:60px;line-height:.96;letter-spacing:-.05em;margin:8px 0 15px}.hero h1 span{color:var(--coral)}.hero p{color:var(--muted);max-width:510px;line-height:1.6}.heroBtns{display:flex;gap:8px;margin-top:18px}.pulse{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 20px 55px #10243e12}.pulseTitle{padding:12px 15px;border-bottom:1px solid var(--line);font-size:9px;font-weight:950;letter-spacing:.12em}.metrics{display:grid;grid-template-columns:repeat(4,1fr)}.metric{padding:17px;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric b{font-size:23px;display:block}.metric small{font-size:8px;color:var(--muted)}.dest{padding:14px;border-top:1px solid var(--line)}.bar{display:grid;grid-template-columns:70px 1fr 25px;gap:8px;align-items:center;font-size:9px;margin:9px 0}.track{height:6px;background:#edf1f2;border-radius:9px}.fill{display:block;height:100%;background:var(--teal);border-radius:9px}
+.loginWrap{min-height:calc(100vh - 64px);display:grid;place-items:center;padding:20px}.loginGrid{width:min(900px,100%);display:grid;grid-template-columns:1fr 1fr;gap:14px}.loginGrid h2{margin:0}.demo{background:#fff7dd;border:1px solid #ead895;border-radius:8px;padding:9px;margin:10px 0;font-size:10px}.field{margin:9px 0}.field label{display:block;font-size:9px;font-weight:850;margin-bottom:4px}.field input,.field select,.field textarea{width:100%;border:1px solid #d6e0e3;border-radius:8px;padding:9px;background:#fff}.field textarea{min-height:72px}.msg{font-size:9px;color:var(--teal);min-height:14px;margin-top:5px}
+.titleRow{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.titleRow h1{margin:2px 0;font-size:24px}.stats{display:grid;grid-template-columns:repeat(4,1fr);background:white;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:10px}.stat{padding:12px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat small{font-size:8px;color:var(--muted)}.stat b{display:block;font-size:20px}.queue{background:white;border:1px solid var(--line);border-radius:12px;overflow:auto}.qrow{min-width:760px;display:grid;grid-template-columns:1.4fr .8fr .7fr .8fr .65fr;gap:8px;align-items:center;padding:11px 13px;border-top:1px solid var(--line);font-size:10px}.qrow.head{border:0;background:#f9fbfb;color:var(--muted);font-size:8px;font-weight:900}.qrow.click{cursor:pointer}.qrow.click:hover{background:#f3faf8}.pill{display:inline-block;padding:5px 7px;border-radius:999px;background:#e9f7f2;color:var(--teal);font-size:8px;font-weight:900}.pill.warn{background:#fff4de;color:#9a6616}
+.modeSwitch{display:inline-flex;background:#e8edef;padding:3px;border-radius:10px;gap:3px}.modeSwitch button{border:0;background:transparent;padding:8px 11px;border-radius:8px;font-size:9px;font-weight:900;color:var(--muted)}.modeSwitch button.on{background:white;color:var(--ink);box-shadow:0 2px 8px #0001}.rfqHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.aiBox{display:grid;grid-template-columns:1fr 310px;gap:12px}.aiCompose textarea{width:100%;min-height:115px;border:1px solid var(--line);border-radius:10px;padding:11px}.aiSide{background:var(--ink);color:white;border-radius:13px;padding:14px}.aiSide p{font-size:10px;line-height:1.5;color:#d7e1e5}.extracts{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}.extract{background:var(--soft);border:1px solid #c8e7df;border-radius:8px;padding:7px;font-size:9px}.extract b{display:block;color:var(--teal)}.tabs{display:flex;gap:5px;overflow:auto;margin-bottom:10px}.tab{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:7px;padding:7px 10px;font-size:9px;font-weight:850}.tab.on{background:var(--ink);color:white}.choiceGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.choice{border:1px solid var(--line);background:white;border-radius:8px;padding:9px;text-align:left;font-size:9px}.choice.on{border-color:var(--teal);background:var(--soft);color:var(--teal);font-weight:850}.aimark{font-size:7px;font-weight:950;margin-left:4px}.formGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.wide{grid-column:span 2}.wizardFooter{display:flex;justify-content:space-between;margin-top:10px}
+.reqChips{display:flex;gap:5px;flex-wrap:wrap}.req{background:var(--soft);border:1px solid #cce8e2;color:var(--teal);border-radius:999px;padding:5px 8px;font-size:8px;font-weight:850}.builder{display:grid;grid-template-columns:300px minmax(0,1fr);gap:10px}.pkgTabs,.dayTabs{display:flex;gap:5px;overflow:auto;margin:9px 0}.pkgTab,.dayTab{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:7px;padding:7px 9px;font-size:8px;font-weight:850}.pkgTab.on{background:var(--ink);color:white}.dayTab.on{background:var(--teal);color:white}.aiStrip{background:var(--ink);color:white;border-radius:10px;padding:10px;font-size:9px;margin:9px 0}.aiStrip b{color:#72d7ca}.activityWrap{overflow:auto}.activity{width:100%;min-width:780px;border-collapse:collapse;font-size:8px}.activity th{text-align:left;color:var(--muted);padding:6px 3px;border-bottom:1px solid var(--line)}.activity td{padding:3px;border-bottom:1px solid var(--line)}.activity input,.activity select{width:100%;min-width:68px;border:1px solid var(--line);border-radius:5px;padding:6px}.activity .desc{min-width:200px}
+.steps{display:flex;gap:6px;overflow:auto;margin-bottom:10px}.step{white-space:nowrap;border:1px solid var(--line);background:white;border-radius:999px;padding:6px 9px;font-size:8px;font-weight:850;color:var(--muted)}.step.done{background:#eaf7f2;color:var(--teal)}.step.now{background:var(--ink);color:white}.connectbar{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-bottom:10px}.quotes{display:grid;grid-template-columns:repeat(5,minmax(170px,1fr));gap:7px;overflow:auto}.quote{border:1px solid var(--line);border-radius:10px;padding:10px;background:white}.quote.selected{border:2px solid var(--teal);background:#f1faf7}.quote h4{margin:3px 0}.quote .price{font-size:16px;font-weight:950}.match{font-size:8px;color:var(--teal);font-weight:950}.quote dl{font-size:8px}.quote dt{float:left;clear:left;width:48px;color:var(--muted)}.quote dd{margin-left:50px;margin-bottom:3px}.matrixWrap{overflow:auto;margin-top:10px;border:1px solid var(--line);border-radius:10px;background:white}.matrix{min-width:1000px;display:grid;grid-template-columns:100px 1.05fr repeat(5,1fr);font-size:8px}.cell{padding:8px;border-right:1px solid var(--line);border-top:1px solid var(--line)}.headcell{background:#f8fafb;border-top:0;font-weight:900;color:var(--muted)}.requested{background:#eff8f6}.summary{min-height:85px;background:#fffaf1}.itin{margin-top:10px}.itinCards{display:grid;grid-template-columns:repeat(6,minmax(145px,1fr));gap:6px;overflow:auto;margin-top:7px}.mini{border:1px solid var(--line);border-radius:8px;padding:8px;background:white;font-size:8px;min-height:65px}
+.finalGrid{display:grid;grid-template-columns:380px minmax(0,1fr);gap:10px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.calc{background:var(--soft);border:1px solid #cce7e1;border-radius:9px;padding:9px;font-size:9px}.breakdown{display:grid;grid-template-columns:1fr auto;gap:5px;font-size:9px;margin-top:9px}.breakdown .total{font-size:15px;color:var(--teal);font-weight:950}.editTable{width:100%;border-collapse:collapse;font-size:8px}.editTable th{text-align:left;color:var(--muted);padding:6px 3px;border-bottom:1px solid var(--line)}.editTable td{padding:3px;border-bottom:1px solid var(--line)}.editTable input{width:100%;border:1px solid transparent;padding:6px}.editTable input:focus{border-color:var(--line);outline:none}.preview{background:#0d1716;color:white;border-radius:14px;overflow:hidden;max-width:850px;margin:auto}.cover{height:210px;background:linear-gradient(135deg,#10211e,#376359);padding:20px;display:flex;flex-direction:column;justify-content:flex-end}.cover h2{font-size:28px;margin:3px 0}.gold{color:#e7bb62}.previewBody{padding:16px}.previewDay{border-top:1px solid #ffffff22;padding:8px 0;font-size:9px}.pricebox{background:#e7bb62;color:#17201e;border-radius:8px;padding:12px;text-align:center}
+@media(max-width:900px){.hero{grid-template-columns:.8fr 1.2fr;gap:20px}.hero h1{font-size:44px}.builder{grid-template-columns:270px minmax(700px,1fr);overflow:auto}.finalGrid{grid-template-columns:330px minmax(600px,1fr);overflow:auto}.quotes{grid-template-columns:repeat(5,180px)}}@media(max-width:650px){.hero,.loginGrid,.aiBox{grid-template-columns:1fr}.hero{padding:25px 0}.stats{display:flex;overflow:auto}.stat{min-width:120px}.choiceGrid,.extracts{grid-template-columns:repeat(2,1fr)}.formGrid{grid-template-columns:1fr}.wide{grid-column:auto}.connectbar{grid-template-columns:1fr}.finalGrid{display:block}.builder{display:block}.package{margin-bottom:10px}}
+@media print{.noPrint{display:none!important}.page{display:none!important}#customer.page.active{display:block!important}#customer .shell{padding:0}.preview{border-radius:0;print-color-adjust:exact;-webkit-print-color-adjust:exact}@page{size:A4;margin:8mm}}
+
+/* V41 focused corrections: date range + proposal/PDF */
+.dateRangeBox{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fbfcfc}
+.dateInputs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dateSummary{margin-top:8px;background:var(--soft);border:1px solid #cce7e1;border-radius:8px;padding:8px;font-size:9px;font-weight:850;color:var(--teal)}
+.proposalHero{display:grid;grid-template-columns:1.05fr .95fr;min-height:235px;background:#081311}
+.heroCopy{padding:24px;display:flex;flex-direction:column;justify-content:flex-end}
+.heroPhoto{background-color:#31564f;background:
+linear-gradient(90deg,#08131110,#08131100),
+url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=85') center/cover no-repeat}
+.proposalMeta{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #b78a3444;border-bottom:1px solid #b78a3444}
+.proposalMeta>div{padding:10px 14px;border-right:1px solid #b78a3444}.proposalMeta>div:last-child{border-right:0}
+.proposalMeta small{display:block;color:#d8b55f;font-size:7px;letter-spacing:.1em}.proposalMeta b{font-size:9px}
+.proposalColumns{display:grid;grid-template-columns:1.65fr .75fr;gap:10px;padding:12px}
+.dayList{display:grid;gap:7px}.pdfDay{display:grid;grid-template-columns:58px 1fr 112px;border:1px solid #b78a3444;border-radius:8px;overflow:hidden;min-height:82px}
+.pdfDayLabel{padding:9px;background:#101c1a;color:#d8b55f;font-size:7px;font-weight:900}.pdfDayText{padding:9px;font-size:8px;line-height:1.45}.pdfDayText b{font-size:9px}.pdfDayImg{background-color:#31564f;background-size:cover;background-position:center}
+.sidePanel{border:1px solid #b78a3444;border-radius:8px;padding:10px;height:max-content}.sidePanel h4{color:#d8b55f;margin:0 0 7px;font-size:9px}.sidePanel p,.sidePanel li{font-size:7.5px;line-height:1.5}.sidePanel ul{padding-left:15px}
+.pricebox{margin-top:9px}
+@media print{
+  html,body{background:#fff!important}
+  .noPrint{display:none!important}
+  .page{display:none!important}
+  #customer.page.active{display:block!important;min-height:auto!important}
+  #customer .shell{padding:0!important;max-width:none!important;margin:0!important}
+  .preview{width:188mm!important;max-width:188mm!important;height:273mm!important;max-height:273mm!important;margin:0 auto!important;border-radius:0!important;overflow:hidden!important;page-break-after:avoid!important;break-after:avoid-page!important}
+  .proposalHero{min-height:48mm!important;height:48mm!important}
+  .proposalColumns{padding:3mm!important;gap:3mm!important}
+  .pdfDay{min-height:18mm!important;max-height:18mm!important;break-inside:avoid!important;page-break-inside:avoid!important}
+  .pricebox{break-inside:avoid!important;page-break-inside:avoid!important}
+  body:after{display:none!important}
+  @page{size:A4 portrait;margin:8mm}
+}
+
+.calendarBox{border:1px solid var(--line);border-radius:12px;padding:10px;background:#fbfcfc;max-width:560px}
+.calendarHead{display:grid;grid-template-columns:42px 1fr 42px;align-items:center;text-align:center;margin-bottom:7px}
+.calendarHead .btn{padding:6px}.week,.calendarGrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.week span{text-align:center;font-size:7px;color:var(--muted);font-weight:900;padding:3px}.calDay{aspect-ratio:1.25;border:1px solid transparent;background:white;border-radius:7px;font-size:9px;font-weight:750}.calDay.muted{opacity:.25}.calDay.range{background:#dff3ee;border-radius:2px}.calDay.start,.calDay.end{background:var(--teal);color:white;border-radius:7px}.calDay.today{border-color:var(--coral)}
+.screenAudit{position:fixed;right:10px;bottom:10px;background:#10243ee8;color:white;border-radius:8px;padding:6px 8px;font-size:7px;z-index:50;pointer-events:none}
+@media(max-width:900px){.formGrid{grid-template-columns:repeat(3,1fr)}.calendarBox{max-width:none}.card{padding:14px}.quote{min-height:205px}.builder{grid-template-columns:280px minmax(720px,1fr)}}
+
+/* V43 restore approved tap-form language */
+.rfqCard{padding:0!important;overflow:hidden}
+.rfqTabs{display:grid!important;grid-template-columns:repeat(6,1fr);gap:0!important;border-bottom:1px solid var(--line);background:white}
+.rfqTabs .dayTab{border:0!important;border-radius:0!important;padding:18px 8px!important;background:white!important;color:#7d807f!important;font-size:11px!important;text-transform:uppercase;font-weight:950}
+.rfqTabs .dayTab.on{color:var(--ink)!important;box-shadow:inset 0 -4px 0 #c7a15a}
+#rfqPanel{padding:28px 38px 16px}
+#rfqPanel .chips{display:grid;grid-template-columns:repeat(3,minmax(150px,1fr));gap:10px}
+#rfqPanel .chip{min-height:58px;border-radius:10px;background:#fffdfa;border:1px solid #d8d4ca;font-size:11px;font-weight:900}
+#rfqPanel .chip.on{border:2px solid #c7a15a;background:#fffaf0;color:var(--ink)}
+.counter{height:52px;border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:52px 1fr 52px;align-items:center;background:white;overflow:hidden}
+.counter button{height:100%;border:0;background:#f4f7f9;font-size:20px;font-weight:900;color:var(--ink)}.counter b{text-align:center;font-size:15px}
+.inlineSelect{display:block;margin:8px auto 0;padding:7px 10px;border-radius:8px;border:1px solid #cfd8dc;background:white;font-weight:900;font-size:8px}
+.inlineSelect.selected{background:var(--teal);color:white;border-color:var(--teal)}
+.matrix th{vertical-align:top;min-width:145px}.matrix th:first-child{min-width:120px}
+.compareIntro{padding:12px 16px;background:#f8fafb;border:1px solid var(--line);border-radius:10px;margin-bottom:10px}
+@media(max-width:760px){#rfqPanel{padding:18px}.rfqTabs .dayTab{padding:13px 4px!important;font-size:8px!important}#rfqPanel .chips{grid-template-columns:repeat(2,1fr)}}
+
+.tableSelect{display:block;width:100%;margin-top:8px;padding:8px 6px;border:1px solid #b8c7cd;border-radius:8px;background:#fff;color:var(--ink);font-size:8px;font-weight:950;cursor:pointer}
+.tableSelect.selected{background:var(--teal);border-color:var(--teal);color:#fff}
+.photoDay{display:grid!important;grid-template-columns:minmax(0,1fr) 118px!important;gap:10px!important;align-items:stretch!important;padding:7px 0!important;min-height:76px}
+.dayCopy{padding:5px 0}.dayPhoto{min-height:68px;border-radius:8px;background-size:cover;background-position:center;background-color:#294e48;position:relative;overflow:hidden}
+.dayPhoto:after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.dayPhoto span{position:absolute;z-index:1;left:7px;bottom:5px;color:#fff;font-size:7px;font-weight:900}
+@media print{.photoDay{grid-template-columns:minmax(0,1fr) 31mm!important;min-height:19mm!important;max-height:19mm!important}.dayPhoto{min-height:17mm!important;height:17mm!important}.dayPhoto span{font-size:5.5pt!important}}
+</style><style>
+.fastSection{display:grid;gap:12px}.fastRow{display:grid;grid-template-columns:135px 1fr;gap:14px;align-items:center}.fastRow>label{font-size:9px;font-weight:950}.fastRow .chips{display:flex!important;flex-wrap:wrap;gap:7px}.fastRow .chip{min-height:38px!important;padding:8px 14px!important;min-width:100px}.rfqProgress{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:8px;color:var(--muted)}.rfqProgress b{color:var(--ink)}#rfqTabs .tab.done{color:var(--teal)}@media(max-width:760px){.fastRow{grid-template-columns:1fr;gap:6px}.fastRow .chips{display:grid!important;grid-template-columns:repeat(2,1fr)}}
+
+.tableSelect{display:block;width:100%;margin-top:8px;padding:8px 6px;border:1px solid #b8c7cd;border-radius:8px;background:#fff;color:var(--ink);font-size:8px;font-weight:950;cursor:pointer}
+.tableSelect.selected{background:var(--teal);border-color:var(--teal);color:#fff}
+.photoDay{display:grid!important;grid-template-columns:minmax(0,1fr) 118px!important;gap:10px!important;align-items:stretch!important;padding:7px 0!important;min-height:76px}
+.dayCopy{padding:5px 0}.dayPhoto{min-height:68px;border-radius:8px;background-size:cover;background-position:center;background-color:#294e48;position:relative;overflow:hidden}
+.dayPhoto:after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.dayPhoto span{position:absolute;z-index:1;left:7px;bottom:5px;color:#fff;font-size:7px;font-weight:900}
+@media print{.photoDay{grid-template-columns:minmax(0,1fr) 31mm!important;min-height:19mm!important;max-height:19mm!important}.dayPhoto{min-height:17mm!important;height:17mm!important}.dayPhoto span{font-size:5.5pt!important}}
+</style><style>
+.docImport{margin:0 0 12px;border:1px solid #cfe0dc;background:#f7fbfa;border-radius:12px;padding:12px}.docImportTop,.docDrop{display:flex;align-items:center;justify-content:space-between;gap:12px}.docImport h4{margin:2px 0;font-size:12px}.docDrop{margin-top:10px;border:1.5px dashed #9db9b2;border-radius:10px;padding:13px;background:#fff}.docStatus{margin-top:9px;display:none;border-radius:9px;padding:9px;background:#eef7f4;font-size:8px}.docStatus.show{display:block}.docExtract{margin-top:9px;display:none;grid-template-columns:repeat(4,1fr);gap:7px}.docExtract.show{display:grid}.docExtract div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px}.docExtract small{display:block;color:var(--muted);font-size:7px}.docExtract b{font-size:8px}@media(max-width:760px){.docImportTop,.docDrop{align-items:flex-start;flex-direction:column}.docExtract.show{grid-template-columns:repeat(2,1fr)}}
+</style><style>
+.connectedWorkspace{margin:12px 0;border:1px solid #cfe0dc;border-radius:12px;background:#f8fbfa;padding:13px}.connectedHead{display:flex;justify-content:space-between;gap:10px;align-items:center}.connectedOptions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}.connectedOption{background:white;border:1px solid var(--line);border-radius:10px;padding:10px}.connectedOption.selectedFinal{border:2px solid var(--teal);background:#f0faf7}.connectedOption .meta{display:flex;justify-content:space-between;gap:8px}.versionTag{font-size:7px;padding:3px 6px;border-radius:99px;background:#edf2f4}.updateBox{margin-top:9px;padding:8px;border-radius:8px;background:#fff8e9;border:1px solid #ead39b;font-size:8px}.timeline{margin-top:10px;border-left:2px solid #dce7e4;padding-left:10px}.timeline div{margin:7px 0;font-size:8px}.connectedDmcTools{margin-bottom:10px;border:1px solid #d7e5e1;background:#f8fbfa;border-radius:10px;padding:10px;display:flex;justify-content:space-between;gap:10px;align-items:center}@media(max-width:760px){.connectedOptions{grid-template-columns:1fr}.connectedHead,.connectedDmcTools{align-items:flex-start;flex-direction:column}}
+</style><style>
+/* V50: RFQ spacing/responsiveness only */
+#rfq .shell{max-width:none!important;width:100%!important;padding-left:clamp(14px,2.5vw,30px)!important;padding-right:clamp(14px,2.5vw,30px)!important}
+#rfq #rfqPanel{width:100%!important;max-width:none!important;padding:clamp(16px,2vw,24px)!important;min-height:0!important}
+#rfq .formGrid{column-gap:12px!important;row-gap:12px!important}
+#rfq .field{margin-bottom:0!important}
+#rfq .chips{gap:6px!important}
+#rfq .chip{min-height:38px!important}
+#rfq .rfqProgress{margin-bottom:9px!important}
+#rfq .calendarWrap{margin-top:0!important}
+#rfq .panelFooter,#rfq .rfqFooter{margin-top:14px!important}
+@media(min-width:700px) and (max-width:1200px){
+ #rfq .shell{padding-left:18px!important;padding-right:18px!important}
+ #rfq #rfqPanel{padding:18px!important}
+ #rfq .formGrid{gap:10px!important}
+}
+@media(max-width:699px){
+ #rfq .shell{padding-left:10px!important;padding-right:10px!important}
+ #rfq #rfqPanel{padding:14px!important}
+ #rfq .formGrid{row-gap:10px!important}
+}
+</style><style>
+/* V51 Travel RFQ only: compact month tabs, no duration field, counters stay in viewport */
+#rfq .monthTabs,#rfq [data-month-wrap],#rfq .months{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:6px!important}
+#rfq .monthTabs button,#rfq [data-month-wrap] button,#rfq .months button{min-width:0!important;width:100%!important;min-height:36px!important;padding:7px 5px!important}
+#rfq .counter{min-width:0!important;max-width:100%!important}
+#rfq .counter button{min-width:34px!important}
+#rfq .counter span{min-width:34px!important}
+#rfq .formGrid{max-width:100%!important}
+#rfq input,#rfq select{max-width:100%!important;box-sizing:border-box!important}
+@media(min-width:700px){
+ #rfq .travelPeopleRow{display:grid!important;grid-template-columns:minmax(0,2fr) minmax(150px,.8fr) minmax(150px,.8fr)!important;gap:10px!important}
+}
+@media(max-width:699px){
+ #rfq .monthTabs,#rfq [data-month-wrap],#rfq .months{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ #rfq .counter{width:100%!important}
+}
+</style><style>
+@media(min-width:700px){
+ #rfq #rfqPanel .formGrid{grid-template-columns:repeat(12,minmax(0,1fr))!important}
+ #rfq #rfqPanel .formGrid>.field{grid-column:span 6}
+ #rfq #rfqPanel .formGrid>.field:has(.counter){grid-column:span 3}
+ #rfq #rfqPanel .formGrid>.wide{grid-column:1/-1}
+}
+</style><style>
+/* V52: exact Year/Month tab layout */
+#rfq .yearTabs{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
+#rfq .yearTabs .chip,#rfq .yearTabs button{width:100%!important;min-width:0!important}
+#rfq .monthTabs{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:7px!important}
+#rfq .monthTabs .chip,#rfq .monthTabs button{width:100%!important;min-width:0!important;min-height:38px!important}
+@media(max-width:699px){
+ #rfq .yearTabs{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ #rfq .monthTabs{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+ #rfq .monthTabs .chip,#rfq .monthTabs button{font-size:7px!important;padding:6px 2px!important}
+}
+</style><style>
+#rfq .yearTabs{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+#rfq .monthTabs{display:grid!important;grid-template-columns:repeat(6,1fr)!important;gap:7px!important}
+#rfq .yearTabs .chip,#rfq .monthTabs .chip{width:100%!important;min-width:0!important;min-height:38px!important}
+@media(max-width:699px){#rfq .monthTabs{grid-template-columns:repeat(6,1fr)!important}#rfq .monthTabs .chip{padding:6px 2px!important;font-size:7px!important}}
+</style><style>
+.timeCompareBlock{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.timeCompareTable{margin-top:8px;display:grid;grid-template-columns:85px 145px repeat(5,minmax(155px,1fr));overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
+.timeCell{padding:8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:7.5px;line-height:1.4;min-height:52px}.timeCell.head{font-weight:950;background:#f3f6f7;min-height:auto}.timeCell.req{background:#eef7f4}.timeCell b{display:block;margin-bottom:3px}
+@media(max-width:760px){.timeCompareTable{grid-template-columns:70px 130px repeat(5,150px)}}
+</style><style>
+/* V56 — professional comparison UI only */
+#compare .card{box-shadow:0 8px 28px rgba(16,36,62,.055)}
+#compare .dayCompare{padding:20px!important}
+#compare .dayCompare h2{font-size:18px;letter-spacing:-.25px;margin-bottom:2px}
+#compareDays{display:flex!important;gap:6px!important;flex-wrap:wrap!important}
+#compareDays .dayTab{border-radius:8px!important;min-width:54px!important;padding:9px 12px!important;font-weight:800!important}
+#itinCards{gap:8px!important;margin-top:14px!important}
+#itinCards .mini{border:1px solid #dfe7e9!important;border-radius:10px!important;background:#fff!important;padding:12px!important;min-height:112px!important;box-shadow:none!important}
+#itinCards .mini:first-child{background:#f2f8f6!important;border-color:#cfe4dd!important}
+#itinCards .mini .sub:first-child{font-size:7px!important;font-weight:900!important;letter-spacing:.55px!important;color:#60717a!important}
+#itinCards .mini b{font-size:8.5px!important;line-height:1.55!important;color:#142b45!important}
+
+.timeCompareBlock{margin-top:18px!important;padding-top:18px!important;border-top:1px solid #dfe7e9!important}
+.timeCompareBlock>b{font-size:17px!important;letter-spacing:-.2px;color:#10243e}
+.timeCompareBlock>.sub{display:block;margin-top:3px!important;font-size:8px!important;color:#6d7c83!important}
+.timeCompareTable{margin-top:12px!important;border:1px solid #dbe4e6!important;border-radius:12px!important;background:#fff!important;box-shadow:0 4px 16px rgba(16,36,62,.035)!important}
+.timeCell{padding:12px 11px!important;border-right:1px solid #e5ebed!important;border-bottom:1px solid #e5ebed!important;font-size:8px!important;line-height:1.5!important;min-height:78px!important;background:#fff!important;color:#263b4d!important}
+.timeCell.head{min-height:auto!important;padding:10px 11px!important;background:#f5f7f8!important;font-size:7px!important;letter-spacing:.35px!important;color:#52656e!important;text-transform:uppercase!important}
+.timeCell.req{background:#f3faf8!important;border-radius:0!important;box-shadow:none!important;color:#173e3a!important}
+.timeCell.req div{background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;color:#176d66!important;font-weight:700!important}
+.timeCell:first-child{font-weight:900!important;color:#10243e!important;background:#fafbfb!important}
+.timeCell b{font-size:8px!important;color:#10243e!important}
+.timeCell div{margin-bottom:7px!important}
+.timeCell div:last-child{margin-bottom:0!important}
+.timeCell div::first-letter{color:#0b8b80}
+@media(min-width:900px){
+ .timeCompareTable{grid-template-columns:100px 180px repeat(5,minmax(180px,1fr))!important}
+}
+@media(max-width:899px){
+ #compare .dayCompare{padding:14px!important}
+ .timeCompareTable{grid-template-columns:88px 165px repeat(5,170px)!important}
+ .timeCell{padding:10px 9px!important;min-height:72px!important}
+}
+</style><style>
+.dealFinance{margin-bottom:12px}.financeHead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.financeHead h2{margin:3px 0}
+.costEntry{display:grid;grid-template-columns:130px 1.7fr 120px 135px auto;gap:7px;margin:13px 0 8px}.costEntry>*{min-width:0}
+.costTable{border:1px solid var(--line);border-radius:10px;overflow-x:auto}.costRow{display:grid;grid-template-columns:105px minmax(180px,1.6fr) 105px 120px 105px 38px;min-width:650px;border-bottom:1px solid var(--line);align-items:center}.costRow:last-child{border-bottom:0}.costRow>div{padding:8px;font-size:8px}.costRow.head{background:#f4f7f8;font-size:7px;font-weight:900}.costRow .gain{color:var(--teal);font-weight:900}
+.financeBottom{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:9px}.taxTrack{border:1px solid var(--line);border-radius:10px;padding:11px;background:#fafcfc}.profitBox{border-radius:10px;padding:12px;background:#10243e;color:white}.profitBox .eyebrow,.profitBox .sub{color:#b9c8d3}.pRow{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px solid #ffffff20;font-size:8px}.pRow.total{font-size:12px;font-weight:950;border:0;padding-top:8px}
+.managerFlow{margin-top:9px;padding:10px;border:1px solid #cfe3dd;background:#f0f8f5;border-radius:10px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+@media(max-width:850px){.costEntry{grid-template-columns:1fr 1fr}.costEntry button{grid-column:1/-1}.financeBottom{grid-template-columns:1fr}.financeHead,.managerFlow{flex-direction:column;align-items:flex-start}}
+@media print{.dealFinance{display:none!important}}
+</style><style>
+.dayEditorHead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:9px 0 2px}.dayEditTabs{display:flex;gap:5px;overflow-x:auto;padding:7px 0 9px}.dayEditTabs button{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 11px;font-size:8px;font-weight:850}.dayEditTabs button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dayTimeline{border:1px solid var(--line);border-radius:10px;overflow-x:auto}.tlRow{display:grid;grid-template-columns:34px 78px 110px minmax(220px,1fr) 120px 142px;min-width:770px;border-bottom:1px solid var(--line);align-items:center}.tlRow:last-child{border-bottom:0}.tlRow.head{background:#f5f7f8;font-size:7px;font-weight:900;color:#65757c}.tlRow>div{padding:8px;font-size:8px}.tlRow input,.tlRow select{width:100%;padding:7px;border:1px solid #dce4e6;border-radius:7px;background:#fff}.tlType{font-weight:900}.tlAdd{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.tlAdd .btn{padding:7px 9px}.dayMode{padding:7px 9px;margin-bottom:7px;border-radius:8px;background:#f1f8f6;border:1px solid #d5e8e2;font-size:8px}
+@media(max-width:850px){.dayEditorHead{align-items:flex-start;flex-direction:column}}
+</style><style>
+.timeDelete{height:30px;padding:0 8px;border:1px solid #e3caca;border-radius:7px;background:#fff7f7;color:#9b3434;font-size:8px;font-weight:900;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+.timeDelete:hover{background:#fbeaea}.tlAdd{padding-top:3px}.tlAdd .primary{background:var(--teal)!important;color:#fff!important;border-color:var(--teal)!important}
+</style><style>
+.dragHandle{display:inline-flex;width:24px;height:28px;align-items:center;justify-content:center;border:1px solid #d8e1e4;border-radius:6px;background:#f7f9fa;cursor:grab;font-size:14px;color:#64747c}.dragRow.dragging{opacity:.4;background:#eef7f4}.dragRow.dragOver{box-shadow:inset 0 3px 0 var(--teal)}
+</style><style>
+.rowActions{display:flex;gap:3px;align-items:center}.moveBtn{width:26px;height:28px;border:1px solid #d8e1e4;border-radius:6px;background:#fff;color:#30434b;font-weight:900;cursor:pointer}
+.moveBtn:active{background:#eaf5f2}.timeDelete{flex:0 0 auto}
+</style></head><body>
+
+<section id="home" class="page active"><header class="top"><div class="brand">DMC<i>Grid</i><span class="version">V42 AUDITED</span></div><div class="nav"><button class="btn" data-go="pricing">Pricing</button><button class="btn coral" data-go="login">Login / Register</button></div></header><div class="shell"><div class="hero"><div><span class="eyebrow">AI-ENABLED B2B TRAVEL MARKETPLACE</span><h1>Source smarter.<br><span>Sell beautifully.</span></h1><p>One structured RFQ reaches relevant DMCs. Compare package options, connect with up to two DMCs and turn the selected quote into a branded customer itinerary.</p><div class="heroBtns"><button class="btn dark" data-role="agent">Travel Agent →</button><button class="btn" data-role="dmc">DMC Workspace</button></div><p class="sub">✓ First 5 deals free · ✓ No card required · ✓ White-label proposals</p></div><div class="pulse"><div class="pulseTitle">MARKETPLACE PULSE · DEMO DATA</div><div class="metrics"><div class="metric"><b>1,842</b><small>RFQs created</small></div><div class="metric"><b>6,736</b><small>Quotes received</small></div><div class="metric"><b>684</b><small>Connected deals</small></div><div class="metric"><b>326</b><small>DMCs · 28 destinations</small></div></div><div class="dest"><b style="font-size:10px">Destination DMC coverage</b><div class="bar"><span>Thailand</span><i class="track"><i class="fill" style="width:92%"></i></i><b>46</b></div><div class="bar"><span>Dubai</span><i class="track"><i class="fill" style="width:82%"></i></i><b>41</b></div><div class="bar"><span>Bali</span><i class="track"><i class="fill" style="width:72%"></i></i><b>36</b></div><div class="bar"><span>Singapore</span><i class="track"><i class="fill" style="width:62%"></i></i><b>31</b></div></div></div></div></div></section>
+
+<section id="login" class="page"><header class="top"><div class="brand">DMC<i>Grid</i></div><button class="btn" data-go="home">← Home</button></header><div class="loginWrap"><div class="loginGrid"><div class="card"><h2>Travel Agent Login</h2><div class="demo"><b>Demo:</b> agent@dmcgrid.demo / Agent@123</div><div class="field"><label>Email</label><input id="ae" value="agent@dmcgrid.demo"></div><div class="field"><label>Password</label><input id="ap" type="password" value="Agent@123"></div><button class="btn primary" id="agentLogin">Login as Agent</button><div id="am" class="msg"></div></div><div class="card"><h2>DMC Login</h2><div class="demo"><b>Demo:</b> dmc1@dmcgrid.demo / Dmc@123</div><div class="field"><label>Email</label><input id="de" value="dmc1@dmcgrid.demo"></div><div class="field"><label>Password</label><input id="dp" type="password" value="Dmc@123"></div><button class="btn dark" id="dmcLogin">Login as DMC</button><div id="dm" class="msg"></div></div></div></div></section>
+
+<section id="pricing" class="page"><header class="top"><div class="brand">DMC<i>Grid</i></div><button class="btn" data-go="home">Home</button></header><div class="shell"><div class="titleRow"><h1>Lead-based pricing</h1></div><div class="loginGrid"><div class="card"><h2>First 5 deals free</h2><p class="sub">No card required.</p><button class="btn primary" data-go="login">Start free</button></div><div class="card"><h2>Agent plans</h2><p><b>₹4,999</b> · 5 leads</p><p><b>₹7,999</b> · 8 leads</p><button class="btn dark" data-go="login">Choose plan</button></div></div></div></section>
+
+<section id="agent" class="page"><header class="top"><div class="brand">DMC<i>Grid</i></div><div class="nav"><button class="btn coral" data-go="rfq">+ New RFQ</button><button class="btn" data-logout>Logout</button></div></header><div class="shell"><div class="titleRow"><div><span class="eyebrow">AGENT WORKSPACE</span><h1>RFQ Operations</h1></div></div><div class="stats"><div class="stat"><small>LEADS REMAINING</small><b>14</b></div><div class="stat"><small>ACTIVE RFQs</small><b>8</b></div><div class="stat"><small>QUOTES RECEIVED</small><b>23</b></div><div class="stat"><small>NEEDS ACTION</small><b>3</b></div></div><div class="queue"><div class="qrow head"><span>RFQ / DESTINATION</span><span>TRAVEL</span><span>QUOTES</span><span>CONNECTION</span><span>STATUS</span></div><div class="qrow click" data-go="compare"><div><b>Thailand · RFQ-1048</b><div class="sub">Bangkok → Pattaya → Phuket</div></div><div>12–18 Oct</div><div><b>5 options</b><div class="sub">3 DMCs</div></div><div>0 of 2</div><span class="pill warn">Review</span></div><div class="qrow click" data-go="compare"><div><b>Malaysia · RFQ-1049</b></div><div>03–10 Nov</div><div>3 options</div><div>0 of 2</div><span class="pill">Quotes</span></div><div class="qrow"><div><b>Bali · RFQ-1051</b></div><div>21–26 Nov</div><div>2 options</div><div>2 of 2</div><span class="pill">Connected</span></div></div></div></section>
+
+<section id="rfq" class="page"><header class="top"><div><button class="btn" data-go="agent">←</button> <b>Create RFQ</b></div><button class="btn" id="saveDraft">Save draft</button></header><div class="shell"><div class="rfqHead"><div class="modeSwitch"><button class="on" data-mode="ai">✨ Describe with AI</button><button data-mode="tabs">☰ Build with Tabs</button></div><span class="sub">Both modes edit the same RFQ.</span></div><div id="aiMode" class="aiBox"><div class="card aiCompose"><span class="eyebrow">AI RFQ COPILOT</span><h2>Describe the trip naturally</h2><textarea id="natural">Thailand in October for 2 adults, 6 nights. Central 4-star hotels, private car, vegetarian Indian food. Keep it relaxed, budget around ₹2 lakh.</textarea><div class="nav" style="margin-top:8px"><button class="btn primary" id="structure">✨ Structure RFQ</button><button class="btn" id="voice">🎙 Voice demo</button></div><div id="extracts" class="extracts"></div></div><aside class="aiSide"><span class="eyebrow" style="color:#75d8cb">HOW AI WORKS</span><p>I extract only what the agent actually says. Missing fields stay unselected. The agent reviews everything in the tap-style RFQ before publishing.</p><p id="aiReply">Ready to structure this request.</p></aside></div><div id="tabMode" class="hidden"><div id="rfqTabs" class="tabs"></div><div class="card"><div id="rfqPanel"></div><div class="wizardFooter"><button class="btn" id="prev">← Previous</button><button class="btn" id="next">Next →</button></div></div></div><div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="btn primary" id="publish">Publish RFQ</button></div></div></section>
+
+<section id="dmc" class="page"><header class="top"><div class="brand">DMC<i>Grid</i></div><button class="btn" data-logout>Logout</button></header><div class="shell"><div class="titleRow"><div><span class="eyebrow">DMC WORKSPACE</span><h1>Matched RFQs</h1></div></div><div class="stats"><div class="stat"><small>NEW MATCHES</small><b>12</b></div><div class="stat"><small>QUOTES SENT</small><b>31</b></div><div class="stat"><small>CONNECTED</small><b>7</b></div><div class="stat"><small>QUOTE CREDITS</small><b>18</b></div></div><div class="queue"><div class="qrow head"><span>RFQ</span><span>TRAVEL</span><span>REQUIREMENT</span><span>MATCH</span><span>ACTION</span></div><div class="qrow click" data-go="builder"><div><b>Thailand · RFQ-1048</b><div class="sub">Anonymous travel agent</div></div><div>12–18 Oct</div><div>4★ · Private · Veg</div><b>96%</b><button class="btn primary">Create Quote</button></div></div></div></section>
+
+<section id="builder" class="page"><header class="top"><div><button class="btn" data-go="dmc">←</button> <b>Quote Builder · RFQ-1048</b></div><button class="btn primary" id="submitQuote">Submit Quote</button></header><div class="shell"><div class="titleRow"><div><span class="eyebrow">AGENT REQUEST</span><div class="reqChips"><span class="req">Thailand · 6N/7D</span><span class="req">4★ Hotel</span><span class="req">Private Vehicle</span><span class="req">Vegetarian + Indian</span><span class="req">₹1–2L</span></div></div><button class="btn" id="aiQuote">✨ AI Quote Copilot</button></div><div class="aiStrip"><b>AI Quote Copilot:</b> maps the RFQ into a draft response. DMC confirms hotels, price, availability and itinerary before submission.</div><div class="connectedDmcTools"><div><span class="eyebrow">AFTER AGENT CONNECTION</span><b style="display:block;margin-top:3px">Revise quote or send another itinerary option</b><div class="sub">Use after discussion with the connected agent. Previous submitted versions remain available.</div></div><div><button class="btn" id="reviseConnected">Create revision</button> <button class="btn" id="newConnectedOption">+ New option</button></div></div><div class="docImport"><div class="docImportTop"><div><span class="eyebrow">AI QUOTE IMPORT</span><h4>Upload DMC's existing quotation</h4><div class="sub">PDF or Word can use the DMC's own structure. AI extracts and maps it into the existing DMCGrid quote and itinerary builder.</div></div><span class="pill">PDF · DOC · DOCX</span></div><div class="docDrop"><div><b id="docName">Choose DMC quotation document</b><div class="sub">Nothing is submitted automatically. DMC reviews the mapped quote first.</div></div><div><input id="docFile" type="file" accept=".pdf,.doc,.docx" hidden><button class="btn" id="chooseDoc">Upload quotation</button> <button class="btn primary" id="readDoc" disabled>✨ Read & Fill Quote</button></div></div><div id="docStatus" class="docStatus"></div><div id="docExtract" class="docExtract"></div></div><div id="pkgTabs" class="pkgTabs"></div><div class="builder"><div id="pkgBasics" class="card package"></div><div class="card"><div class="titleRow"><div><span class="eyebrow">DAY-WISE ITINERARY</span><h3 style="margin:3px 0">Selected package itinerary</h3></div><button class="btn" id="addDay">+ Day</button></div><div id="dayTabs" class="dayTabs"></div><div id="activityArea"></div></div></div><div style="margin-top:9px;display:flex;gap:6px"><button class="btn" id="addPkg">+ Add Package Option</button><button class="btn" id="removePkg">Remove Current Package</button></div></div></section>
+
+<section id="compare" class="page"><header class="top"><div><button class="btn" data-go="agent">← Queue</button> <b>Compare DMC Quotes</b><span class="sub"> · RFQ-1048 · 5 options from 3 DMCs</span></div><button class="btn" id="closeRfq">Close RFQ</button></header><div class="shell"><div class="steps"><span class="step done">✓ RFQ</span><span class="step done">✓ Quotes</span><span class="step now">3 Compare & Select</span><span class="step">4 Connect</span><span class="step">5 Proposal</span><span class="step">6 Customer</span></div><div class="card connectbar"><div><b id="selectionText">Select package options below</b><div class="sub" id="connectionHint">Maximum 2 distinct DMCs. Unlimited options within those DMCs.</div></div><select id="billing"><option>Wallet · ₹1,100</option><option>₹4,999 plan · 5 leads</option><option>₹7,999 plan · 8 leads</option></select><button class="btn primary" id="connect" disabled>Connect selected DMCs</button></div><div id="quotes" style="display:none"></div><div id="connectedWorkspace" class="connectedWorkspace" style="display:none"><div class="connectedHead"><div><span class="eyebrow">CONNECTED DMC OPTIONS</span><h3 style="margin:3px 0">Choose itinerary for final proposal</h3><div class="sub">Connected DMCs can revise an itinerary or add new options after discussion. All earlier versions remain visible.</div></div><span class="pill">No additional lead charge</span></div><div id="connectedOptions" class="connectedOptions"></div><div class="timeline" id="quoteTimeline"></div></div><div class="matrixWrap"><div id="matrix" class="matrix"></div></div><div class="card itin"><div class="titleRow"><div><b>Day-wise itinerary comparison</b><div class="sub">Compare the requested journey against each DMC package, day by day.</div></div><div id="compareDays" class="dayTabs"></div></div><div id="itinCards" class="itinCards"></div><div class="timeCompareBlock"><b>Time-wise itinerary comparison</b><div class="sub">Activities are normalized into four standard time windows. Multiple activities in the same window are shown together in chronological order.</div><div id="timeCompareTable" class="timeCompareTable"></div></div></div></div></section>
+
+<section id="proposal" class="page"><header class="top"><div><button class="btn" data-go="compare">←</button> <b>Finalize Itinerary & Customer Proposal</b></div><button class="btn" data-go="agent">Back to RFQs</button></header><div class="shell"><div class="steps"><span class="step done">✓ RFQ</span><span class="step done">✓ Quotes</span><span class="step done">✓ Compare</span><span class="step done">✓ Connect</span><span class="step now">5 Finalize Proposal</span><span class="step">6 Customer</span></div><div class="dealFinance card">
+<div class="financeHead"><div><span class="eyebrow">AGENT INTERNAL DEAL SHEET</span><h2>Trip costs, customer charges & profitability</h2><div class="sub">Add services arranged directly by the agent. These costs and margins are internal and will not appear in the customer PDF.</div></div><span class="pill" id="approvalStatus">Draft · Not sent to manager</span></div>
+<div class="costEntry">
+<select id="costType"><option>Flight</option><option>Local Cab</option><option>Visa</option><option>Travel Insurance</option><option>Attraction / Ticket</option><option>Guide</option><option>Other</option></select>
+<input id="costDesc" placeholder="Description">
+<input id="costRetail" type="number" inputmode="numeric" placeholder="Agent cost ₹">
+<input id="costCharge" type="number" inputmode="numeric" placeholder="Charge to customer ₹">
+<button class="btn" id="addDealCost">+ Add service</button>
+</div>
+<div class="costTable" id="dealCostTable"></div>
+<div class="financeBottom">
+<div class="taxTrack"><span class="eyebrow">TDS / WITHHOLDING TRACKER</span><div class="two"><div class="field"><label>TDS already paid / deducted ₹</label><input id="tdsPaid" type="number" value="0"></div><div class="field"><label>TDS payable to Government ₹</label><input id="tdsPayable" type="number" value="0"></div></div><div class="sub">Internal cash/tax tracker. Production treatment should use configurable tax rules validated by finance/tax.</div></div>
+<div class="profitBox" id="profitSummary"></div>
+</div>
+<div class="managerFlow"><div><b>Manager approval</b><div class="sub">Manager sees the final itinerary, DMC cost, ancillary costs, customer charges, taxes and deal profitability.</div></div><div class="nav"><button class="btn primary" id="sendManager">Send to Manager →</button><button class="btn" id="managerApprove" style="display:none">Demo: Manager Approve ✓</button></div></div>
+</div><div class="finalGrid"><div class="card"><span class="eyebrow">COMMERCIALS</span><h2>Price & branding</h2><div class="field"><label>Selected DMC net package cost</label><input id="net" type="number" value="142500"></div><div class="three"><div class="field"><label>Margin type</label><select id="marginType"><option>Percentage</option><option>Fixed</option></select></div><div class="field"><label>Margin</label><input id="margin" type="number" value="15"></div><div class="field"><label>GST %</label><input id="gst" type="number" value="5"></div></div><div class="three"><div class="field"><label>TCS %</label><input id="tcs" type="number" value="5"></div><div class="field"><label>Travellers</label><input value="2"></div><div class="field"><label>Validity</label><input value="48 hours"></div></div><div class="calc"><b>Per-deal pricing:</b> margin is deal-specific. Tax treatment is configurable in production.</div><div id="breakdown" class="breakdown"></div><button class="btn primary" id="recalc">Recalculate Proposal</button><hr style="border:0;border-top:1px solid var(--line);margin:14px 0"><span class="eyebrow">AGENT BRANDING</span><div class="field"><label>Brand / Agency Name</label><input id="brand" value="GoLuxigo Luxury Holidays"></div><div class="field"><label>Customer display title</label><input id="title" value="Thailand 6 Nights / 7 Days"></div><div class="field"><label>GST Number</label><input value="27ABCDE1234F1Z5"></div><div class="field"><label>Contact / Email</label><input value="+91 98765 43210 · holidays@goluxigo.com"></div></div><div class="card"><span class="eyebrow">FINAL CUSTOMER ITINERARY</span><h2>Finalize itinerary before customer PDF</h2><div class="aiStrip"><b>✨ AI Proposal Copilot:</b> polishes customer-facing language without changing confirmed services or commercial data.</div><div class="dayEditorHead"><div class="sub">Select a day, then edit its complete time-wise plan.</div><button class="btn" id="editDayBtn">✎ Edit Day 1</button></div>
+<div class="dayEditTabs" id="dayEditTabs"></div>
+<div id="dayEditBody"></div>
+<div class="nav" style="margin-top:8px"><button class="btn" id="polish">✨ Polish with AI</button></div><div class="field"><label>Customer-facing inclusions</label><textarea>6 nights accommodation with breakfast, private transfers, sightseeing and attraction tickets as listed.</textarea></div><div class="field"><label>Customer-facing exclusions</label><textarea>International airfare unless included, personal expenses and services not listed.</textarea></div><button class="btn primary" id="generate" disabled>Generate Customer Proposal</button><div class="sub" id="approvalHint" style="margin-top:6px">Manager approval required before customer proposal can be generated.</div></div></div></div></section>
+
+<section id="customer" class="page"><header class="top noPrint"><div><button class="btn" data-go="proposal">← Edit Proposal</button> <b>Customer Proposal Preview</b></div><button class="btn dark" id="print">Print / Save PDF</button></header><div class="shell"><div class="preview">
+<div class="proposalHero"><div class="heroCopy"><small class="gold" id="pBrand">GOLUXIGO LUXURY HOLIDAYS</small><div class="sub" style="color:#b8c8c4;margin-top:8px">YOUR JOURNEY TO</div><h2 id="pTitle" style="font-size:30px;margin:3px 0">Thailand 6 Nights / 7 Days</h2><p style="font-size:9px;color:#d9e3df">Curated experiences. Seamless journeys. Unforgettable memories.</p></div><div class="heroPhoto"></div></div>
+<div class="proposalMeta"><div><small>TRAVELLERS</small><b>2 Adults</b></div><div><small>TRAVEL DATES</small><b>12 Oct – 18 Oct 2026</b></div><div><small>DURATION</small><b>6 Nights / 7 Days</b></div></div>
+<div class="proposalColumns"><div><div style="background:linear-gradient(90deg,#d4a643,#f0c86e);color:#17201e;padding:7px 10px;border-radius:6px;font-size:8px;font-weight:950;margin-bottom:8px">DAY-WISE ITINERARY</div><div id="pDays" class="dayList"></div></div>
+<aside><div class="sidePanel"><h4>PACKAGE DETAILS</h4><p><b>Package inclusions</b></p><ul><li>Accommodation with breakfast</li><li>Private airport & intercity transfers</li><li>Selected sightseeing & attraction tickets</li><li>Confirmed itinerary services</li></ul><hr style="border:0;border-top:1px solid #b78a3444"><h4>YOUR STAY</h4><p>4★ Central Hotels<br>Bangkok · Pattaya · Phuket</p><h4>AGENT DETAILS</h4><p id="pAgent">GoLuxigo Luxury Holidays<br>GST: 27ABCDE1234F1Z5<br>+91 98765 43210</p></div><div class="pricebox"><small>FINAL CUSTOMER PRICE</small><h2 id="pPrice" style="margin:4px">₹1,80,672</h2><small>Valid for 48 hours · subject to availability</small></div></aside></div>
+</div></div></section>
+
+<script>
+'use strict';
+const $=id=>document.getElementById(id), $$=q=>[...document.querySelectorAll(q)];
+const app={selected:new Set(),connected:false,closed:false,rfqStep:0,pkg:0,day:0};
+function go(id){$$('.page').forEach(p=>p.classList.toggle('active',p.id===id));window.scrollTo(0,0)}
+function toast(t){const n=document.createElement('div');n.className='toast';n.textContent=t;document.body.appendChild(n);setTimeout(()=>n.remove(),1700)}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return}const r=e.target.closest('[data-role]');if(r){go('login');return}if(e.target.closest('[data-logout]'))go('home')});
+
+const rfq={destination:'Thailand',year:'2026',month:'October',dates:'12–18 Oct 2026',adults:'2',children:'0',duration:'5–7 days',flightTime:'',stops:'',cabin:'',hotel:'4★',room:'Deluxe',meal:'Breakfast',cities:'Bangkok / Pattaya / Phuket',vehicle:'Private',food:['Vegetarian','Indian'],budget:'₹1–2L',priorities:'Central hotels · private transfers · relaxed itinerary',ai:new Set(['destination','year','month','adults','duration','hotel','vehicle','food','budget','priorities'])};
+const rfqTabNames=['Travel','Flights','Hotel','Vehicle','Food','Budget'];
+function aiMark(k){return rfq.ai.has(k)?' <span class="aimark">✨ AI</span>':''}
+function isSel(k,v){return Array.isArray(rfq[k])?rfq[k].includes(v):rfq[k]===v}
+function choices(k,arr){return '<div class="choiceGrid">'+arr.map(v=>`<button class="choice ${isSel(k,v)?'on':''}" data-choice="${k}" data-val="${v}">${v}${isSel(k,v)?aiMark(k):''}</button>`).join('')+'</div>'}
+function renderExtracts(){$('extracts').innerHTML=[['Destination',rfq.destination],['Travel',rfq.month+' '+rfq.year+' · '+rfq.adults+' adults'],['Hotel',rfq.hotel+' · central'],['Vehicle',rfq.vehicle],['Food',rfq.food.join(' + ')],['Budget',rfq.budget],['Style','Relaxed'],['Flights','Not specified']].map(x=>`<div class="extract"><b>${x[0]}</b>${x[1]}</div>`).join('')}
+function panel(){
+ const s=app.rfqStep;
+ if(s===0)return `<div class="formGrid"><div class="field wide"><label>Year${aiMark('year')}</label><div class="chips yearTabs">${['2026','2027','2028'].map(x=>`<button type="button" class="chip ${rfq.year===x?'on':''}" data-year="${x}">${x}</button>`).join('')}</div></div><div class="field wide"><label>Month${aiMark('month')}</label><div class="chips monthTabs">${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map((x,i)=>`<button type="button" class="chip ${new Date(2000,i,1).toLocaleString('en',{month:'long'})===rfq.month?'on':''}" data-month="${i}">${x}</button>`).join('')}</div></div><div class="field wide"><label>Destination${aiMark('destination')}</label><input data-rfield="destination" value="${rfq.destination}"></div><div class="field"><label>Adults${aiMark('adults')}</label><div class="counter"><button type="button" data-count="adults" data-delta="-1">−</button><b>${rfq.adults}</b><button type="button" data-count="adults" data-delta="1">+</button></div></div><div class="field"><label>Children &lt;12</label><div class="counter"><button type="button" data-count="children" data-delta="-1">−</button><b>${rfq.children}</b><button type="button" data-count="children" data-delta="1">+</button></div></div><div class="field wide"><label>Preferred travel dates</label><div class="calendarBox"><div class="calendarHead"><button class="btn" type="button" id="calPrev">‹</button><b id="calTitle"></b><button class="btn" type="button" id="calNext">›</button></div><div class="week"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div><div id="calendarGrid" class="calendarGrid"></div><div class="dateSummary" id="dateSummary"></div><div class="sub" style="margin-top:5px">Tap a start date, then tap an end date. Tap a new date to start again.</div></div></div></div>`;
+ if(s===1)return `<div class="field"><label>Flight timing</label>${choices('flightTime',['Morning','Afternoon','Evening','Overnight','No Preference'])}</div><div class="field"><label>Stops</label>${choices('stops',['Direct','1 stop','No Preference'])}</div><div class="field"><label>Cabin</label>${choices('cabin',['Economy','Premium Economy','Business','First Class','No Preference'])}</div><div class="calc">AI did not infer flight preferences, so they remain unselected.</div>`;
+ if(s===2)return `<div class="fastSection"><div class="fastRow"><label>Hotel category${aiMark('hotel')}</label>${choices('hotel',['3★','4★','5★','5★ Premium','Private Villa','Boutique'])}</div><div class="fastRow"><label>Room type${aiMark('room')}</label>${choices('room',['Deluxe','Premium','Suite','Family','Villa','No Preference'])}</div><div class="fastRow"><label>Meal plan${aiMark('meal')}</label>${choices('meal',['Room Only','Breakfast','Half Board','Full Board','All Inclusive'])}</div><div class="fastRow"><label>Multi-city hotels</label><input data-rfield="cities" value="${rfq.cities}" placeholder="Bangkok / Pattaya / Phuket"></div></div>`;
+ if(s===3)return `<div class="field"><label>Vehicle preference${aiMark('vehicle')}</label>${choices('vehicle',['Private','Luxury','Premium SUV','SIC / Shared','Self Drive','No Preference'])}</div>`;
+ if(s===4)return `<div class="field"><label>Food preferences${aiMark('food')}</label>${choices('food',['Vegetarian','Jain','Non-Veg','Vegan','Halal','Indian','Local'])}</div><div class="field"><label>Allergies / restrictions</label><input placeholder="None specified"></div>`;
+ return `<div class="field"><label>Trip budget${aiMark('budget')}</label>${choices('budget',['₹1–2L','₹2–3L','₹3–5L','₹5–10L','₹10L+','Prefer not to say'])}</div><div class="field"><label>Priorities${aiMark('priorities')}</label><textarea data-rfield="priorities">${rfq.priorities}</textarea></div>`;
+}
+function renderRfqTabs(){$('rfqTabs').innerHTML=rfqTabNames.map((x,i)=>`<button class="tab ${i===app.rfqStep?'on':''} ${i<app.rfqStep?'done':''}" data-rfqtab="${i}">${i<app.rfqStep?'✓ ':''}${x}</button>`).join('');$('rfqPanel').innerHTML=`<div class="rfqProgress"><span><b>${app.rfqStep+1}/6</b> · ${rfqTabNames[app.rfqStep]}</span><span>Jump to any section above</span></div>`+panel();$('prev').disabled=app.rfqStep===0;$('next').textContent=app.rfqStep===5?'Review ✓':'Next →';if(app.rfqStep===0)setTimeout(renderCalendar,0)}
+function setMode(m){$('aiMode').classList.toggle('hidden',m!=='ai');$('tabMode').classList.toggle('hidden',m!=='tabs');$$('[data-mode]').forEach(b=>b.classList.toggle('on',b.dataset.mode===m));if(m==='tabs')renderRfqTabs()}
+
+const packages=[
+{name:'Option 1 · Value 3★',price:'118000',hotel:'3★ Deluxe',room:'Deluxe',meal:'Breakfast',vehicle:'Private Car',food:'Vegetarian',days:[[{f:'09:00',t:'11:00',city:'Bangkok',desc:'Airport → hotel transfer',transfer:'Private Car',inc:'Yes',notes:''},{f:'15:00',t:'18:00',city:'Bangkok',desc:'Bangkok city orientation',transfer:'Private Car',inc:'Yes',notes:''}],[{f:'10:00',t:'13:00',city:'Bangkok',desc:'Grand Palace & Wat Arun',transfer:'Private Car',inc:'Yes',notes:'Tickets included'}],[{f:'10:00',t:'13:00',city:'Pattaya',desc:'Transfer Bangkok → Pattaya',transfer:'Private Car',inc:'Yes',notes:''}]]},
+{name:'Option 2 · Comfort 4★',price:'136000',hotel:'4★ Deluxe',room:'Deluxe',meal:'Breakfast',vehicle:'Private Car',food:'Veg + Indian',days:[[{f:'09:00',t:'11:00',city:'Bangkok',desc:'Private airport transfer',transfer:'Private Car',inc:'Yes',notes:''},{f:'16:00',t:'19:00',city:'Bangkok',desc:'Riverfront evening',transfer:'Private Car',inc:'Yes',notes:''}],[{f:'09:30',t:'14:00',city:'Bangkok',desc:'Grand Palace, Wat Pho & old city',transfer:'Private Car',inc:'Yes',notes:''}],[{f:'10:00',t:'13:00',city:'Pattaya',desc:'Private transfer to Pattaya',transfer:'Private Car',inc:'Yes',notes:''}]]},
+{name:'Option 3 · Premium 5★',price:'172000',hotel:'5★ Premium',room:'Premium',meal:'Breakfast',vehicle:'Premium SUV',food:'Customized Indian',days:[[{f:'09:00',t:'11:00',city:'Bangkok',desc:'Premium airport transfer',transfer:'Premium SUV',inc:'Yes',notes:''},{f:'17:00',t:'20:00',city:'Bangkok',desc:'Private dinner cruise',transfer:'Premium SUV',inc:'Yes',notes:''}],[{f:'10:00',t:'15:00',city:'Bangkok',desc:'Private temples & old city tour',transfer:'Premium SUV',inc:'Yes',notes:'Private guide'}],[{f:'10:00',t:'13:00',city:'Pattaya',desc:'Premium transfer to Pattaya',transfer:'Premium SUV',inc:'Yes',notes:''}]]}
+];
+function esc(v){return String(v??'').replace(/"/g,'&quot;')}
+function renderBuilder(){const p=packages[app.pkg];if(app.day>=p.days.length)app.day=0;$('pkgTabs').innerHTML=packages.map((x,i)=>`<button class="pkgTab ${i===app.pkg?'on':''}" data-pkg="${i}">${x.name}</button>`).join('');$('pkgBasics').innerHTML=`<span class="eyebrow">PACKAGE OPTION</span><div class="field"><label>Option name</label><input data-pfield="name" value="${esc(p.name)}"></div><div class="field"><label>Net price</label><input data-pfield="price" value="${esc(p.price)}"></div><div class="field"><label>Hotel</label><input data-pfield="hotel" value="${esc(p.hotel)}"></div><div class="field"><label>Room</label><input data-pfield="room" value="${esc(p.room)}"></div><div class="field"><label>Meal plan</label><input data-pfield="meal" value="${esc(p.meal)}"></div><div class="field"><label>Vehicle</label><input data-pfield="vehicle" value="${esc(p.vehicle)}"></div><div class="field"><label>Food</label><input data-pfield="food" value="${esc(p.food)}"></div>`;$('dayTabs').innerHTML=p.days.map((d,i)=>`<button class="dayTab ${i===app.day?'on':''}" data-day="${i}">Day ${i+1}</button>`).join('');const acts=p.days[app.day];$('activityArea').innerHTML=`<div class="activityWrap"><table class="activity"><thead><tr><th>FROM</th><th>TO</th><th>CITY</th><th>ACTIVITY / DESCRIPTION</th><th>TRANSFER</th><th>INCLUDED</th><th>NOTES</th><th></th></tr></thead><tbody>${acts.map((a,i)=>`<tr><td><input data-af="${i}:f" value="${esc(a.f)}"></td><td><input data-af="${i}:t" value="${esc(a.t)}"></td><td><input data-af="${i}:city" value="${esc(a.city)}"></td><td><input class="desc" data-af="${i}:desc" value="${esc(a.desc)}"></td><td><input data-af="${i}:transfer" value="${esc(a.transfer)}"></td><td><select data-af="${i}:inc"><option ${a.inc==='Yes'?'selected':''}>Yes</option><option ${a.inc==='No'?'selected':''}>No</option></select></td><td><input data-af="${i}:notes" value="${esc(a.notes)}"></td><td><button class="btn" data-delact="${i}">×</button></td></tr>`).join('')}</tbody></table></div><button class="btn" id="addAct" style="margin-top:7px">+ Add Activity</button>`;$('addAct').onclick=()=>{p.days[app.day].push({f:'10:00',t:'12:00',city:'',desc:'',transfer:p.vehicle,inc:'Yes',notes:''});renderBuilder()}}
+
+const quoteMeta=[
+{d:'DMC1',n:'Value 3★',p:'₹1,18,000',m:'78%',h:'3★ Deluxe',v:'Private Car',note:'Hotel below requested 4★'},
+{d:'DMC1',n:'Comfort 4★',p:'₹1,36,000',m:'91%',h:'4★ Deluxe',v:'Private Car',note:'Close match'},
+{d:'DMC2',n:'Comfort Plus 4★',p:'₹1,42,500',m:'96%',h:'4★ Deluxe',v:'Camry / similar',note:'Best requirement match'},
+{d:'DMC3',n:'Premium 4★+',p:'₹1,69,000',m:'92%',h:'4★ Premium',v:'Premium SUV',note:'Above base requirement'},
+{d:'DMC3',n:'Luxury 5★',p:'₹1,92,000',m:'89%',h:'5★ Premium',v:'Luxury SUV',note:'Higher hotel category'}
+];
+function renderQuotes(){$('quotes').innerHTML=quoteMeta.map((q,i)=>`<div class="quote ${app.selected.has(i)?'selected':''}"><span class="match">${q.m} AI MATCH</span><h4>${q.d} · ${q.n}</h4><div class="price">${q.p}</div><dl><dt>Hotel</dt><dd>${q.h}</dd><dt>Vehicle</dt><dd>${q.v}</dd><dt>Note</dt><dd>${q.note}</dd></dl><button class="btn ${app.selected.has(i)?'primary':''}" data-select="${i}">${app.selected.has(i)?'Selected ✓':'Select option'}</button></div>`).join('')}
+const matrixRows=[['RFQ FIELD','AGENT REQUESTED','DMC1 · VALUE 3★','DMC1 · COMFORT 4★','DMC2 · COMFORT PLUS','DMC3 · PREMIUM','DMC3 · LUXURY'],['SUMMARY','Thailand · 6N/7D|2 Adults','₹1,18,000|78% match','₹1,36,000|91% match','₹1,42,500|96% match','₹1,69,000|92% match','₹1,92,000|89% match'],['Hotel','4★ Deluxe','3★ Deluxe','4★ Deluxe','4★ Deluxe','4★ Premium','5★ Premium'],['Vehicle','Private','Private Car','Private Car','Camry / similar','Premium SUV','Luxury SUV'],['Food','Vegetarian + Indian','Vegetarian','Veg + Indian','Veg + Indian','Veg + Indian','Customized Indian'],['Budget','₹1–2L','—','—','—','—','—'],['Priority','Central · private · relaxed','Value','Central 4★','Best match','Premium','Luxury']];
+
+const connectedQuoteVersions=[
+ {d:'DMC1',name:'Comfort 4★',version:'v1 · Original',price:136000,status:'Original quote',note:'Initial submitted itinerary'},
+ {d:'DMC1',name:'Comfort 4★ Revised',version:'v2 · Updated',price:139500,status:'Updated after discussion',note:'Hotel upgraded; Day 2 start moved to 11:00'},
+ {d:'DMC1',name:'Family Flex',version:'New option',price:147000,status:'New option after discussion',note:'Alternative hotel and private Phi Phi transfer'},
+ {d:'DMC2',name:'Comfort Plus 4★',version:'v1 · Original',price:142500,status:'Original quote',note:'Best requirement match'}
+];
+app.finalConnectedOption=null;app.connectedDmcs=new Set();
+function renderConnectedWorkspace(){
+ const box=$('connectedWorkspace');if(!box)return;box.style.display=app.connected?'block':'none';if(!app.connected)return;
+ const opts=connectedQuoteVersions.filter(x=>app.connectedDmcs.has(x.d));
+ $('connectedOptions').innerHTML=opts.map((x,i)=>`<div class="connectedOption ${app.finalConnectedOption===i?'selectedFinal':''}"><div class="meta"><b>${x.d} · ${x.name}</b><span class="versionTag">${x.version}</span></div><h3 style="margin:7px 0">${money(x.price)}</h3><div class="updateBox"><b>${x.status}</b><br>${x.note}</div><button class="btn ${app.finalConnectedOption===i?'primary':''}" style="margin-top:8px" data-finalconnected="${i}">${app.finalConnectedOption===i?'Chosen ✓':'Choose this itinerary'}</button></div>`).join('');
+ $('quoteTimeline').innerHTML='<b>Quote history</b><div>Original quote(s) → Agent connected</div><div>DMC may submit a revision → old version retained</div><div>DMC may add a new option → agent chooses which itinerary to take forward</div>';
+}
+
+function renderMatrix(){$('matrix').innerHTML=matrixRows.flatMap((r,ri)=>r.map((v,ci)=>{let body=v.includes('|')?'<b>'+v.split('|')[0]+'</b><div class="sub">'+v.split('|')[1]+'</div>':v;if(ri===0&&ci>=2){const qi=ci-2;body+=`<button class="tableSelect ${app.selected.has(qi)?'selected':''}" data-mselect="${qi}">${app.selected.has(qi)?'Selected ✓':'Select option'}</button>`}return `<div class="cell ${ri===0?'headcell':''} ${ci===1?'requested':''} ${ri===1&&ci>1?'summary':''}">${body}</div>`})).join('')}
+const itinerary=[
+['Arrival at Bangkok · Private airport transfer · Check-in · Evening leisure','Airport pickup · Private sedan · 3★ Sukhumvit hotel · Free evening','Airport pickup · Private sedan · 4★ central hotel · Chao Phraya dinner cruise','Camry pickup · 4★ Riverside hotel · Asiatique evening','Luxury transfer · 4★ Premium Riverside · Rooftop dinner','BMW transfer · 5★ Riverside suite · Private welcome dinner'],
+['Grand Palace · Wat Arun · relaxed Bangkok sightseeing','Grand Palace · Wat Pho · shared city tour · evening free','Grand Palace · Wat Arun · private city tour · IconSiam evening','Private temples tour · local lunch · IconSiam','Private guide · temples · Michelin lunch · rooftop sunset','Private guide & luxury van · temples · chef-led Thai dinner'],
+['Bangkok → Pattaya · Private transfer · evening leisure','Road transfer · 3★ Pattaya hotel · free evening','Private transfer · 4★ beach hotel · Alcazar Show','Camry transfer · 4★ sea-view hotel · Sanctuary of Truth','Premium SUV · 4★+ beachfront · Sanctuary + dinner','Luxury SUV · 5★ resort · private sunset yacht'],
+['Coral Island · optional water activities · Pattaya return','Shared speedboat · Coral Island · Indian lunch','Speedboat Coral Island · lunch · private hotel transfers','Premium speedboat · island · lunch · Nong Nooch','Private speedboat · water-sports credit · beach lunch','Private yacht · island hopping · onboard lunch'],
+['Pattaya → Phuket · transfer/flight · leisure','Bangkok connection · Phuket · 3★ Patong hotel','Domestic flight · private transfer · 4★ Patong','Flight to Phuket · Camry · 4★ Kata · leisure','Flight · Premium SUV · 5★ resort · sunset dinner','Business-class sector · luxury transfer · 5★ pool villa'],
+['Phi Phi Islands full-day excursion','Shared big boat Phi Phi · lunch · standard transfers','Premium speedboat Phi Phi · lunch · shared transfers','Speedboat Phi Phi + Maya Bay · private hotel transfer','Early-bird premium Phi Phi · Maya Bay · premium lunch','Private speedboat · flexible timing · gourmet picnic · photographer'],
+['Hotel checkout · airport transfer · departure','Shared airport transfer · departure assistance','Private sedan to airport · departure','Private Camry · airport drop · assistance','Premium SUV · airport drop · fast-track','Luxury transfer · airport concierge · fast-track departure']
+];
+
+
+const baseSlots=[
+ {label:'06:00–09:00',from:360,to:540},
+ {label:'09:00–13:00',from:540,to:780},
+ {label:'13:00–17:00',from:780,to:1020},
+ {label:'17:00–21:00',from:1020,to:1260}
+];
+const detailedActivities=[
+ // Day 1: six columns = requested + five DMC options
+ [
+  [{f:'10:30',t:'11:30',a:'Airport arrival & private transfer'},{f:'14:00',t:'15:00',a:'Hotel check-in'},{f:'15:00',t:'17:00',a:'Leisure / settle in'}],
+  [{f:'10:30',t:'12:00',a:'Airport pickup & transfer'},{f:'14:00',t:'15:00',a:'3★ hotel check-in'},{f:'15:00',t:'17:00',a:'Sukhumvit orientation walk'}],
+  [{f:'10:30',t:'12:00',a:'Private airport transfer'},{f:'14:00',t:'15:00',a:'4★ central hotel check-in'},{f:'15:00',t:'17:00',a:'IconSiam visit'},{f:'19:00',t:'21:00',a:'Chao Phraya dinner cruise'}],
+  [{f:'10:15',t:'11:45',a:'Camry airport transfer'},{f:'14:00',t:'15:00',a:'Riverside hotel check-in'},{f:'15:00',t:'17:00',a:'Asiatique visit'},{f:'18:30',t:'20:30',a:'Riverfront dinner'}],
+  [{f:'10:00',t:'11:30',a:'Luxury airport transfer'},{f:'14:00',t:'15:00',a:'Premium hotel check-in'},{f:'15:00',t:'17:00',a:'Spa / leisure'},{f:'19:30',t:'21:00',a:'Rooftop dinner'}],
+  [{f:'09:45',t:'11:15',a:'BMW airport transfer'},{f:'14:00',t:'15:00',a:'5★ suite check-in'},{f:'15:00',t:'17:00',a:'Private concierge orientation'},{f:'19:00',t:'21:00',a:'Private welcome dinner'}]
+ ],
+ [
+  [{f:'09:30',t:'11:30',a:'Grand Palace'},{f:'11:30',t:'13:00',a:'Wat Arun'},{f:'14:00',t:'16:00',a:'Relaxed sightseeing'}],
+  [{f:'09:00',t:'11:00',a:'Grand Palace'},{f:'11:00',t:'12:30',a:'Wat Pho'},{f:'14:00',t:'16:00',a:'City tour'}],
+  [{f:'10:00',t:'12:00',a:'Grand Palace'},{f:'12:00',t:'13:00',a:'Wat Arun'},{f:'14:00',t:'16:00',a:'IconSiam'},{f:'19:00',t:'21:00',a:'Dinner cruise'}],
+  [{f:'09:30',t:'11:30',a:'Grand Palace'},{f:'11:30',t:'13:00',a:'Wat Arun'},{f:'13:30',t:'14:30',a:'Local lunch'},{f:'15:00',t:'17:00',a:'IconSiam'}],
+  [{f:'10:30',t:'12:30',a:'Private temple tour'},{f:'13:00',t:'14:30',a:'Michelin lunch'},{f:'15:00',t:'17:00',a:'Premium shopping'},{f:'18:00',t:'20:00',a:'Rooftop sunset'}],
+  [{f:'10:00',t:'12:30',a:'Private guided temples'},{f:'13:00',t:'14:30',a:'Chef lunch'},{f:'15:00',t:'17:00',a:'Private city experience'},{f:'19:00',t:'21:00',a:'Chef-led dinner'}]
+ ],
+];
+function mins(t){const [h,m]=t.split(':').map(Number);return h*60+m}
+function normalizeActivities(acts,slot){
+ return acts.filter(x=>mins(x.f)<slot.to && mins(x.t)>slot.from)
+   .map(x=>`${x.f}–${x.t} · ${x.a}`);
+}
+function demoActivities(day,col){
+ if(detailedActivities[day]&&detailedActivities[day][col])return detailedActivities[day][col];
+ const txt=(itinerary[day]&&itinerary[day][col])||'';
+ return [{f:'09:30',t:'12:30',a:txt},{f:'14:00',t:'16:30',a:txt.includes('·')?txt.split('·').slice(-1)[0].trim():'Leisure / local experience'}];
+}
+function renderTimeComparison(day=0){
+ const el=$('timeCompareTable');if(!el)return;
+ const labels=['BASE SLOT','AGENT REQUESTED',...quoteMeta.map(q=>`${q.d} · ${q.n}`)];
+ let h=labels.map((x,i)=>`<div class="timeCell head ${i===1?'req':''}">${x}</div>`).join('');
+ baseSlots.forEach(slot=>{
+   h+=`<div class="timeCell"><b>${slot.label}</b></div>`;
+   for(let c=0;c<6;c++){
+     const items=normalizeActivities(demoActivities(day,c),slot);
+     h+=`<div class="timeCell ${c===0?'req':''}">${items.length?items.map(x=>`<div style="margin-bottom:5px">• ${x}</div>`).join(''):'<span class="sub">—</span>'}</div>`;
+   }
+ });
+ el.innerHTML=h;
+}
+function renderCompareDay(n=0){$('compareDays').innerHTML=itinerary.map((x,i)=>`<button class="dayTab ${i===n?'on':''}" data-cday="${i}">Day ${i+1}</button>`).join('');const labels=['AGENT REQUESTED',...quoteMeta.map(q=>`${q.d} · ${q.n}`)];$('itinCards').innerHTML=itinerary[n].map((x,i)=>`<div class="mini"><span class="sub">${labels[i]||'DMC OPTION'}</span><b style="display:block;margin:6px 0;line-height:1.45">${x}</b><span class="sub">${i?'Proposed itinerary':'Requested intent'}</span></div>`).join('');renderTimeComparison(n)}
+function updateSelection(){const dmcs=new Set([...app.selected].map(i=>quoteMeta[i].d));$('selectionText').textContent=app.selected.size?`${app.selected.size} option${app.selected.size>1?'s':''} selected from ${dmcs.size} DMC${dmcs.size>1?'s':''}`:'Select package options below';$('connectionHint').textContent=dmcs.size===1?'1 DMC connection remains available for this RFQ.':'Maximum 2 distinct DMCs. Unlimited options within those DMCs.';$('connect').disabled=!app.selected.size||app.connected}
+
+let finalDays=[
+{city:'Bangkok',items:[['10:30','Flight','Arrive Bangkok · flight arrival','Add flight no./PNR'],['11:30','Local Cab','Private airport cab to hotel','Sedan'],['14:00','Hotel','4★ hotel check-in','Confirmed'],['15:00','Activity','Leisure / local orientation','Included']]},
+{city:'Bangkok',items:[['09:30','Activity','Grand Palace guided visit','Included'],['11:30','Activity','Wat Arun visit','Included'],['14:00','Local Cab','Private city sightseeing cab','4 hours']]},
+{city:'Pattaya',items:[['09:00','Transfer','Bangkok to Pattaya private transfer','Private car'],['14:00','Hotel','Pattaya hotel check-in','4★'],['17:00','Activity','Beach / evening leisure','Flexible']]},
+{city:'Pattaya',items:[['08:00','Local Cab','Hotel pickup for Coral Island','Pickup'],['09:30','Activity','Coral Island experience','Tickets included'],['16:00','Local Cab','Return to hotel','Included']]},
+{city:'Phuket',items:[['09:00','Flight','Domestic flight to Phuket','Add PNR'],['11:15','Local Cab','Phuket airport to hotel','Private cab'],['14:00','Hotel','Phuket hotel check-in','4★'],['15:00','Activity','Leisure','Free time']]},
+{city:'Phuket',items:[['07:00','Local Cab','Hotel pickup for Phi Phi tour','Transfer'],['08:30','Activity','Phi Phi Island tour','Tour + lunch'],['17:00','Local Cab','Return to hotel','Included']]},
+{city:'Phuket',items:[['08:00','Hotel','Breakfast and checkout','Hotel'],['09:30','Local Cab','Private airport transfer','Sedan'],['13:00','Flight','Phuket to Mumbai return flight','Add flight no./PNR']]}
+];
+let finalEditDay=0, finalEditing=false;
+function syncFinalRows(){finalRows=finalDays.flatMap((d,di)=>d.items.map(x=>[`Day ${di+1}`,x[0],d.city,x[2]]))}
+let finalRows=[];syncFinalRows();
+function renderFinal(){
+ syncFinalRows();
+ if(!$('dayEditTabs'))return;
+ $('dayEditTabs').innerHTML=finalDays.map((d,i)=>`<button class="${i===finalEditDay?'active':''}" data-fday="${i}">Day ${i+1}<br><span style="font-weight:500">${d.city}</span></button>`).join('');
+ const d=finalDays[finalEditDay];
+ $('dayEditBody').innerHTML=`<div class="dayMode"><b>Day ${finalEditDay+1} · ${d.city}</b> · ${d.items.length} time-wise items ${finalEditing?'· Editing enabled':'· Review mode'}</div>
+ <div class="dayTimeline"><div class="tlRow head"><div>↕</div><div>TIME</div><div>TYPE</div><div>DETAILS</div><div>REFERENCE</div><div></div></div>
+ ${d.items.map((x,i)=>`<div class="tlRow ${finalEditing?'dragRow':''}" ${finalEditing?`draggable="true" data-dragindex="${i}"`:''}><div>${finalEditing?'<span class="dragHandle">☰</span>':'•'}</div><div>${finalEditing?`<input data-fi="${i}" data-ff="0" value="${x[0]}">`:x[0]}</div><div>${finalEditing?`<select data-fi="${i}" data-ff="1">${['Flight','Local Cab','Transfer','Hotel','Activity','Meal','Other'].map(v=>`<option ${v===x[1]?'selected':''}>${v}</option>`).join('')}</select>`:`<span class="tlType">${x[1]}</span>`}</div><div>${finalEditing?`<input data-fi="${i}" data-ff="2" value="${x[2].replace(/"/g,'&quot;')}">`:x[2]}</div><div>${finalEditing?`<input data-fi="${i}" data-ff="3" value="${x[3].replace(/"/g,'&quot;')}">`:x[3]}</div><div>${finalEditing?`<div class="rowActions"><button class="moveBtn" data-fup="${i}" title="Move up">↑</button><button class="moveBtn" data-fdown="${i}" title="Move down">↓</button><button class="timeDelete" data-fdel="${i}" title="Delete this time-wise line">🗑 Delete</button></div>`:''}</div></div>`).join('')}</div>
+ ${finalEditing?`<div class="tlAdd"><button class="btn primary" data-fadd="Activity">+ Add Time-wise Detail</button><button class="btn" id="sortDayTime">↕ Sort by Time</button><button class="btn" data-fadd="Flight">+ Flight</button><button class="btn" data-fadd="Local Cab">+ Local Cab</button><button class="btn" data-fadd="Transfer">+ Transfer</button><button class="btn" data-fadd="Hotel">+ Hotel</button><button class="btn" data-fadd="Meal">+ Meal</button></div><div class="sub" style="margin-top:6px">On mobile use ↑ / ↓ to move a row. On desktop you can also drag ☰. Changing TIME automatically re-sorts the day; Sort by Time is also available.</div>`:''}`;
+ $('editDayBtn').textContent=finalEditing?'✓ Done Editing':`✎ Edit Day ${finalEditDay+1}`;
+}
+function money(n){return '₹'+Math.round(n).toLocaleString('en-IN')}
+const dealCosts=[
+{type:'Flight',desc:'BOM–BKK return airfare · 2 adults',cost:42000,charge:48000},
+{type:'Local Cab',desc:'Home ↔ Mumbai airport transfers',cost:2800,charge:4000}
+];
+let managerApproved=false;
+function extraCost(){return dealCosts.reduce((a,x)=>a+x.cost,0)}
+function extraCharge(){return dealCosts.reduce((a,x)=>a+x.charge,0)}
+function renderDealFinance(){
+ if(!$('dealCostTable'))return;
+ $('dealCostTable').innerHTML='<div class="costRow head"><div>TYPE</div><div>DESCRIPTION</div><div>AGENT COST</div><div>CUSTOMER CHARGE</div><div>MARGIN</div><div></div></div>'+dealCosts.map((x,i)=>`<div class="costRow"><div><b>${x.type}</b></div><div>${x.desc}</div><div>${money(x.cost)}</div><div>${money(x.charge)}</div><div class="gain">${money(x.charge-x.cost)}</div><div><button class="iconBtn" data-rmcost="${i}">×</button></div></div>`).join('');
+ renderProfit();
+}
+function renderProfit(){
+ if(!$('profitSummary'))return;
+ const n=+$('net').value||0,m=+$('margin').value||0;
+ const mar=$('marginType').value==='Fixed'?m:n*m/100;
+ const ancillaryMargin=extraCharge()-extraCost();
+ const grossProfit=mar+ancillaryMargin;
+ const paid=+$('tdsPaid').value||0,payable=+$('tdsPayable').value||0;
+ const cashProfit=grossProfit-paid-payable;
+ $('profitSummary').innerHTML=`<span class="eyebrow">DEAL PROFITABILITY</span>
+ <div class="pRow"><span>DMC package cost</span><b>${money(n)}</b></div>
+ <div class="pRow"><span>Ancillary agent cost</span><b>${money(extraCost())}</b></div>
+ <div class="pRow"><span>Package margin</span><b>${money(mar)}</b></div>
+ <div class="pRow"><span>Ancillary margin</span><b>${money(ancillaryMargin)}</b></div>
+ <div class="pRow"><span>Gross deal profit</span><b>${money(grossProfit)}</b></div>
+ <div class="pRow"><span>TDS paid / deducted</span><b>${money(paid)}</b></div>
+ <div class="pRow"><span>TDS payable</span><b>${money(payable)}</b></div>
+ <div class="pRow total"><span>Cash profit after tracked TDS</span><b>${money(cashProfit)}</b></div>
+ <div class="sub">Management view; not the statutory tax computation.</div>`;
+}
+function calc(){const n=+$('net').value||0,m=+$('margin').value||0;const mar=$('marginType').value==='Fixed'?m:n*m/100,extras=extraCharge(),sub=n+mar+extras,g=sub*(+$('gst').value||0)/100,t=(sub+g)*(+$('tcs').value||0)/100,total=sub+g+t;$('breakdown').innerHTML=`<span>DMC net package</span><b>${money(n)}</b><span>Agent margin</span><b>${money(mar)}</b><span>Agent-arranged services</span><b>${money(extras)}</b><span>GST</span><b>${money(g)}</b><span>TCS</span><b>${money(t)}</b><span>Customer price</span><b class="total">${money(total)}</b>`;$('pPrice').textContent=money(total);renderProfit();return total}
+function renderCustomer(){$('pBrand').textContent=$('brand').value.toUpperCase();$('pTitle').textContent=$('title').value;$('pDays').innerHTML=finalRows.map((r,i)=>`<div class="previewDay photoDay"><div class="dayCopy"><b class="gold">${r[0].toUpperCase()} · ${r[2].toUpperCase()}</b><p>${r[1]} · ${r[3]}</p></div><div class="dayPhoto" style="background-image:url('${dayPics[i%dayPics.length]}')" role="img" aria-label="${r[2]} travel image"><span>${r[2]}</span></div></div>`).join('');calc()}
+
+
+const cal={year:2026,month:9,start:'2026-10-12',end:'2026-10-18',pickingEnd:false};
+function isoDate(y,m,d){return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`}
+function prettyISO(v,withYear=true){const d=new Date(v+'T00:00:00');return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',...(withYear?{year:'numeric'}:{})})}
+function renderCalendar(){
+ const grid=$('calendarGrid'),title=$('calTitle'); if(!grid||!title)return;
+ const first=new Date(cal.year,cal.month,1), days=new Date(cal.year,cal.month+1,0).getDate();
+ let lead=(first.getDay()+6)%7, cells=[];
+ title.textContent=first.toLocaleDateString('en-GB',{month:'long',year:'numeric'});
+ for(let i=0;i<lead;i++)cells.push('<span></span>');
+ for(let d=1;d<=days;d++){let iso=isoDate(cal.year,cal.month,d),cls='calDay';if(cal.start&&iso===cal.start)cls+=' start';else if(cal.end&&iso===cal.end)cls+=' end';else if(cal.start&&cal.end&&iso>cal.start&&iso<cal.end)cls+=' range';cells.push(`<button type="button" class="${cls}" data-caldate="${iso}">${d}</button>`)}
+ grid.innerHTML=cells.join('');
+ const ds=$('dateSummary');
+ if(cal.start&&cal.end){let a=new Date(cal.start+'T00:00:00'),b=new Date(cal.end+'T00:00:00'),days=Math.round((b-a)/86400000)+1;ds.textContent=`${prettyISO(cal.start,false)} → ${prettyISO(cal.end,true)} · ${days} Days / ${days-1} Nights`;rfq.dates=`${prettyISO(cal.start,false)}–${prettyISO(cal.end,true)}`;rfq.duration=`${days-1} nights / ${days} days`}
+ else if(cal.start)ds.textContent=`Start: ${prettyISO(cal.start,true)} · now choose end date`;
+}
+function pickDate(iso){if(!cal.start||!cal.pickingEnd){cal.start=iso;cal.end='';cal.pickingEnd=true}else{if(iso<cal.start){cal.end=cal.start;cal.start=iso}else cal.end=iso;cal.pickingEnd=false}renderCalendar()}
+const dayPics=[
+'https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=500&q=80',
+'https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=500&q=80',
+'https://images.unsplash.com/photo-1540202404-a2f29016b523?auto=format&fit=crop&w=500&q=80',
+'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=500&q=80',
+'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?auto=format&fit=crop&w=500&q=80',
+'https://images.unsplash.com/photo-1534008897995-27a23e859048?auto=format&fit=crop&w=500&q=80',
+'https://images.unsplash.com/photo-1504214208698-ea1916a2195a?auto=format&fit=crop&w=500&q=80'];
+
+
+function bindDocImport(){
+ const choose=$('chooseDoc'),file=$('docFile'),read=$('readDoc');if($('reviseConnected'))$('reviseConnected').onclick=()=>toast('Revision started — original quote version will be retained ✓');if($('newConnectedOption'))$('newConnectedOption').onclick=()=>{$('addPkg')?.click();toast('New itinerary option added for connected agent ✓')};if(!choose||!file||!read)return;
+ choose.onclick=()=>file.click();
+ file.onchange=()=>{const f=file.files[0];if(!f)return;$('docName').textContent=f.name;read.disabled=false;const st=$('docStatus');st.className='docStatus show';st.innerHTML=`Ready to read <b>${f.name}</b>. AI will map its content to DMCGrid fields.`};
+ read.onclick=()=>{const f=file.files[0];if(!f)return;read.disabled=true;const st=$('docStatus');st.className='docStatus show';st.innerHTML='<b>AI reading quotation…</b> Identifying package, price, hotels, transfers, inclusions and itinerary.';
+ setTimeout(()=>{const p=packages[app.pkg];p.name='Imported Thailand Comfort 4★';p.price=142500;p.hotel='4★ Deluxe · Bangkok / Pattaya / Phuket';p.vehicle='Private Car / Camry or similar';p.meal='Breakfast';p.days=[
+ {label:'Day 1',acts:[{f:'10:30',t:'12:00',city:'Bangkok',desc:'Arrival, private airport transfer and hotel check-in',transfer:'Private Car',included:'Yes',notes:'Imported from document'}]},
+ {label:'Day 2',acts:[{f:'10:00',t:'17:00',city:'Bangkok',desc:'Grand Palace, Wat Arun and city sightseeing',transfer:'Private Car',included:'Yes',notes:'Imported from document'}]},
+ {label:'Day 3',acts:[{f:'10:00',t:'13:00',city:'Pattaya',desc:'Private transfer Bangkok to Pattaya',transfer:'Private Car',included:'Yes',notes:'Imported from document'}]},
+ {label:'Day 4',acts:[{f:'09:30',t:'15:00',city:'Pattaya',desc:'Coral Island experience',transfer:'Private Transfer',included:'Yes',notes:'Imported from document'}]},
+ {label:'Day 5',acts:[{f:'11:00',t:'15:00',city:'Phuket',desc:'Transfer to Phuket and leisure',transfer:'Private Car',included:'Yes',notes:'Imported from document'}]},
+ {label:'Day 6',acts:[{f:'08:30',t:'17:00',city:'Phuket',desc:'Phi Phi Island tour',transfer:'Shared Boat',included:'Yes',notes:'Imported from document'}]},
+ {label:'Day 7',acts:[{f:'11:00',t:'13:00',city:'Phuket',desc:'Private airport transfer and departure',transfer:'Private Car',included:'Yes',notes:'Imported from document'}]}
+ ];app.day=0;renderBuilder();setTimeout(()=>{bindDocImport();const st2=$('docStatus');st2.className='docStatus show';st2.innerHTML='<b>Mapped ✓</b> AI populated the existing builder. Review/edit all fields before Submit Quote.';const ex=$('docExtract');ex.className='docExtract show';ex.innerHTML='<div><small>CONFIDENCE</small><b>94%</b></div><div><small>PACKAGE</small><b>Comfort 4★</b></div><div><small>PRICE FOUND</small><b>₹1,42,500</b></div><div><small>ITINERARY</small><b>7 days mapped</b></div>'},0);toast('DMC document mapped into itinerary builder ✓')},650)}
+}
+
+function bind(){
+ $('agentLogin').onclick=()=>{if($('ae').value.toLowerCase()==='agent@dmcgrid.demo'&&$('ap').value==='Agent@123'){$('am').textContent='✓ Login successful';setTimeout(()=>go('agent'),180)}else $('am').textContent='Invalid demo credentials'};
+ $('dmcLogin').onclick=()=>{if($('de').value.toLowerCase()==='dmc1@dmcgrid.demo'&&$('dp').value==='Dmc@123'){$('dm').textContent='✓ Login successful';setTimeout(()=>go('dmc'),180)}else $('dm').textContent='Invalid demo credentials'};
+ $$('[data-mode]').forEach(b=>b.onclick=()=>setMode(b.dataset.mode));
+ $('structure').onclick=()=>{renderExtracts();$('aiReply').textContent='Structured successfully. Flights were not specified, so I left those fields blank.';toast('AI structured the RFQ ✓');setTimeout(()=>setMode('tabs'),450)};
+ $('voice').onclick=()=>toast('Voice transcribed into the same RFQ ✓');
+ $('rfqTabs').onclick=e=>{const b=e.target.closest('[data-rfqtab]');if(b){app.rfqStep=+b.dataset.rfqtab;renderRfqTabs()}};
+ $('prev').onclick=()=>{if(app.rfqStep>0){app.rfqStep--;renderRfqTabs()}};
+ $('next').onclick=()=>{if(app.rfqStep<5){app.rfqStep++;renderRfqTabs()}else toast('RFQ reviewed ✓')};
+ $('saveDraft').onclick=()=>toast('RFQ draft saved ✓');
+ $('publish').onclick=()=>{toast('RFQ published to matched DMCs ✓');setTimeout(()=>go('agent'),450)};
+ $('rfqPanel').oninput=e=>{const k=e.target.dataset.rfield;if(k){rfq[k]=e.target.value;rfq.ai.delete(k)}};
+ $('rfqPanel').onclick=e=>{if(e.target.dataset.year){rfq.year=e.target.dataset.year;cal.year=+rfq.year;cal.start=null;cal.end=null;renderRfqTabs();return}if(e.target.dataset.month!==undefined){const mi=+e.target.dataset.month;rfq.month=new Date(2000,mi,1).toLocaleString('en',{month:'long'});cal.month=mi;cal.year=+rfq.year;cal.start=null;cal.end=null;renderRfqTabs();return}const count=e.target.closest('[data-count]');if(count){const k=count.dataset.count,delta=+count.dataset.delta;rfq[k]=Math.max(k==='adults'?1:0,(+rfq[k]||0)+delta);rfq.ai.delete(k);renderRfqTabs();return}const c=e.target.closest('[data-choice]');if(c){const k=c.dataset.choice,v=c.dataset.val;if(k==='food')rfq.food=rfq.food.includes(v)?rfq.food.filter(x=>x!==v):[...rfq.food,v];else rfq[k]=v;rfq.ai.delete(k);renderRfqTabs();return}const d=e.target.closest('[data-caldate]');if(d){pickDate(d.dataset.caldate);return}if(e.target.closest('#calPrev')){cal.month--;if(cal.month<0){cal.month=11;cal.year--}renderCalendar();return}if(e.target.closest('#calNext')){cal.month++;if(cal.month>11){cal.month=0;cal.year++}renderCalendar();return}};
+ $('pkgTabs').onclick=e=>{const b=e.target.closest('[data-pkg]');if(b){app.pkg=+b.dataset.pkg;app.day=0;renderBuilder()}};
+ $('dayTabs').onclick=e=>{const b=e.target.closest('[data-day]');if(b){app.day=+b.dataset.day;renderBuilder()}};
+ $('pkgBasics').oninput=e=>{const k=e.target.dataset.pfield;if(k)packages[app.pkg][k]=e.target.value};
+ $('activityArea').oninput=e=>{if(e.target.dataset.af){const [i,k]=e.target.dataset.af.split(':');packages[app.pkg].days[app.day][+i][k]=e.target.value}};
+ $('activityArea').onchange=$('activityArea').oninput;
+ $('activityArea').onclick=e=>{const b=e.target.closest('[data-delact]');if(b){packages[app.pkg].days[app.day].splice(+b.dataset.delact,1);renderBuilder()}};
+ $('addDay').onclick=()=>{packages[app.pkg].days.push([]);app.day=packages[app.pkg].days.length-1;renderBuilder()};
+ $('removePkg').onclick=()=>{if(packages.length<=1){toast('At least one package option is required');return}packages.splice(app.pkg,1);app.pkg=Math.max(0,app.pkg-1);app.day=0;renderBuilder();toast('Package option removed ✓')};
+ $('addPkg').onclick=()=>{packages.push({name:`Option ${packages.length+1} · New Package`,price:'',hotel:'4★',room:'Deluxe',meal:'Breakfast',vehicle:'Private',food:'',days:[[]]});app.pkg=packages.length-1;app.day=0;renderBuilder();toast('Package option added ✓')};
+ $('aiQuote').onclick=()=>{packages.push({name:`Option ${packages.length+1} · AI Draft 4★`,price:'',hotel:'4★ · DMC to confirm',room:'Deluxe',meal:'Breakfast',vehicle:'Private',food:'Vegetarian + Indian',days:[[{f:'10:00',t:'12:00',city:'Bangkok',desc:'Arrival and private hotel transfer',transfer:'Private',inc:'Yes',notes:'DMC to verify'}]]});app.pkg=packages.length-1;app.day=0;renderBuilder();toast('AI draft created · DMC must verify price and services ✓')};
+ $('submitQuote').onclick=()=>{toast(`${packages.length} package options submitted ✓`);setTimeout(()=>go('dmc'),450)};
+
+ $('connectedWorkspace').onclick=e=>{const b=e.target.closest('[data-finalconnected]');if(!b)return;const visible=connectedQuoteVersions.filter(x=>app.connectedDmcs.has(x.d));const x=visible[+b.dataset.finalconnected];app.finalConnectedOption=+b.dataset.finalconnected;finalRows=[
+ ['Day 1','10:30','Bangkok','Arrival, private airport transfer and hotel check-in'],
+ ['Day 2',x.version.includes('v2')?'11:00':'10:00','Bangkok',x.version.includes('v2')?'Grand Palace, Wat Arun and relaxed city sightseeing':'Grand Palace, Wat Arun and city sightseeing'],
+ ['Day 3','10:00','Pattaya','Private transfer Bangkok to Pattaya'],
+ ['Day 4','09:30','Pattaya','Coral Island experience'],
+ ['Day 5','11:00','Phuket','Transfer to Phuket and leisure'],
+ ['Day 6','08:30','Phuket',x.name.includes('Family')?'Private Phi Phi Island experience':'Phi Phi Island tour'],
+ ['Day 7','11:00','Phuket','Private airport transfer and departure']
+ ];renderConnectedWorkspace();if(!$('continueFinal')){$('connectedWorkspace').insertAdjacentHTML('beforeend','<button class="btn primary" id="continueFinal" style="margin-top:10px">Create Final Customer Itinerary →</button>');$('continueFinal').onclick=()=>go('proposal')}toast(`${x.d} · ${x.name} chosen for final itinerary ✓`)};
+
+ $('matrix').onclick=e=>{const b=e.target.closest('[data-mselect]');if(!b)return;const i=+b.dataset.mselect,next=new Set(app.selected);next.has(i)?next.delete(i):next.add(i);const dmcs=new Set([...next].map(x=>quoteMeta[x].d));if(dmcs.size>2){toast('Maximum 2 distinct DMCs per RFQ');return}app.selected=next;renderMatrix();updateSelection()};
+ $('quotes').onclick=e=>{const b=e.target.closest('[data-select]');if(!b)return;const i=+b.dataset.select,next=new Set(app.selected);next.has(i)?next.delete(i):next.add(i);const dmcs=new Set([...next].map(x=>quoteMeta[x].d));if(dmcs.size>2){toast('Maximum 2 distinct DMCs per RFQ');return}app.selected=next;renderQuotes();updateSelection()};
+ $('compareDays').onclick=e=>{const b=e.target.closest('[data-cday]');if(b)renderCompareDay(+b.dataset.cday)};
+ $('connect').onclick=()=>{app.connected=true;const dmcs=new Set([...app.selected].map(i=>quoteMeta[i].d));app.connectedDmcs=dmcs;toast($('billing').value.startsWith('Wallet')?'Connected ✓ ₹999 debited once · balance ₹101':'Connected ✓ 1 lead consumed once');$('connect').textContent='Connected ✓';$('connect').disabled=true;$('connectionHint').textContent=dmcs.size===1?'Connected to 1 DMC. One DMC connection remains available.':'Connected to 2 DMCs · connection complete.';renderConnectedWorkspace();$('connectedWorkspace').scrollIntoView({behavior:'smooth',block:'start'})};
+ $('closeRfq').onclick=()=>{app.closed=!app.closed;$('closeRfq').textContent=app.closed?'Reactivate RFQ':'Close RFQ';toast(app.closed?'RFQ closed · further DMC quotes blocked':'RFQ reactivated')};
+ $('polish').onclick=()=>{finalRows[0][3]='Warm arrival in Bangkok with a private airport transfer and seamless hotel check-in.';finalRows[1][3]='Discover Bangkok’s Grand Palace and Wat Arun with a relaxed city sightseeing experience.';renderFinal();toast('AI polished copy without changing confirmed services ✓')};
+ $('recalc').onclick=()=>{const total=calc();$('recalc').textContent='Updated ✓ '+money(total);setTimeout(()=>$('recalc').textContent='Recalculate Proposal',1200);toast('Proposal recalculated and customer price updated ✓')};
+ ['net','margin','gst','tcs','marginType'].forEach(id=>{$(id).addEventListener(id==='marginType'?'change':'input',()=>calc())});
+ $('generate').onclick=()=>{if(!finalRows.length){toast('Add at least one itinerary row');return}renderCustomer();go('customer')};
+ $('print').onclick=()=>{renderCustomer();setTimeout(()=>window.print(),80)};
+}
+function boot(){document.body.insertAdjacentHTML('beforeend','<div class="screenAudit">V62 · DELETE TIME LINE</div>');renderExtracts();renderRfqTabs();renderBuilder();renderQuotes();renderMatrix();renderCompareDay();updateSelection();renderConnectedWorkspace();renderFinal();calc();bind()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+if(location.hash&&location.hash.length>1){setTimeout(()=>{go(location.hash.slice(1));if(location.hash.slice(1)==='proposal'&&$('managerApprove'))$('managerApprove').click()},80);}
+
+if($('addDealCost'))$('addDealCost').onclick=()=>{const desc=$('costDesc').value.trim(),cost=+$('costRetail').value,charge=+$('costCharge').value;if(!desc||!Number.isFinite(cost)||!Number.isFinite(charge)){toast('Enter description, agent cost and customer charge');return}dealCosts.push({type:$('costType').value,desc,cost,charge});$('costDesc').value='';$('costRetail').value='';$('costCharge').value='';renderDealFinance();calc();toast('Service added ✓')};
+if($('dealCostTable'))$('dealCostTable').onclick=e=>{const b=e.target.closest('[data-rmcost]');if(!b)return;dealCosts.splice(+b.dataset.rmcost,1);renderDealFinance();calc()};
+['tdsPaid','tdsPayable'].forEach(id=>{if($(id))$(id).oninput=()=>{renderProfit()}});
+if($('sendManager'))$('sendManager').onclick=()=>{$('approvalStatus').textContent='Pending manager approval';$('sendManager').textContent='Sent ✓';$('sendManager').disabled=true;$('managerApprove').style.display='inline-flex';toast('Final itinerary and deal sheet sent to Manager ✓')};
+if($('managerApprove'))$('managerApprove').onclick=()=>{managerApproved=true;$('approvalStatus').textContent='Manager approved ✓';$('managerApprove').textContent='Approved ✓';$('managerApprove').disabled=true;$('generate').disabled=false;$('approvalHint').textContent='Approved by manager · customer proposal can now be generated.';toast('Manager approved ✓')};
+renderDealFinance();calc();
+
+
+if($('dayEditTabs'))$('dayEditTabs').onclick=e=>{const b=e.target.closest('[data-fday]');if(!b)return;finalEditDay=+b.dataset.fday;finalEditing=false;renderFinal()};
+if($('editDayBtn'))$('editDayBtn').onclick=()=>{finalEditing=!finalEditing;renderFinal()};
+
+function sortCurrentDay(){
+ finalDays[finalEditDay].items.sort((a,b)=>{
+   const mins=v=>{const m=String(v||'').match(/^(\d{1,2}):(\d{2})$/);return m?(+m[1]*60 + +m[2]):9999};
+   return mins(a[0])-mins(b[0]);
+ });
+ syncFinalRows();renderFinal();
+}
+function moveTimeline(from,to){
+ const a=finalDays[finalEditDay].items;
+ if(to<0||to>=a.length||from===to)return;
+ const item=a.splice(from,1)[0];a.splice(to,0,item);syncFinalRows();renderFinal();
+}
+if($('dayEditBody')){
+ let draggedTimelineIndex=null;
+ $('dayEditBody').addEventListener('input',e=>{
+   const x=e.target;if(x.dataset.fi===undefined)return;
+   finalDays[finalEditDay].items[+x.dataset.fi][+x.dataset.ff]=x.value;syncFinalRows();
+ });
+ $('dayEditBody').addEventListener('change',e=>{
+   const x=e.target;if(x.dataset.fi===undefined)return;
+   finalDays[finalEditDay].items[+x.dataset.fi][+x.dataset.ff]=x.value;syncFinalRows();
+   if(x.dataset.ff==='0'){sortCurrentDay();toast('Timeline automatically sorted by time ✓')}
+ });
+ $('dayEditBody').addEventListener('click',e=>{
+   let b=e.target.closest('[data-fadd]');
+   if(b){finalDays[finalEditDay].items.push(['10:00',b.dataset.fadd,'Enter '+b.dataset.fadd.toLowerCase()+' details','Add details']);sortCurrentDay();toast(`${b.dataset.fadd} added at 10:00 and placed by time ✓`);return}
+   b=e.target.closest('[data-fdel]');if(b){const i=+b.dataset.fdel;const item=finalDays[finalEditDay].items[i];if(confirm(`Delete ${item[0]} · ${item[1]} · ${item[2]}?`)){finalDays[finalEditDay].items.splice(i,1);syncFinalRows();renderFinal();toast('Time-wise line deleted ✓')}return}
+   b=e.target.closest('[data-fup]');if(b){moveTimeline(+b.dataset.fup,+b.dataset.fup-1);toast('Moved up ✓');return}
+   b=e.target.closest('[data-fdown]');if(b){moveTimeline(+b.dataset.fdown,+b.dataset.fdown+1);toast('Moved down ✓');return}
+   if(e.target.closest('#sortDayTime')){sortCurrentDay();toast('Day sorted chronologically ✓');return}
+ });
+ $('dayEditBody').addEventListener('dragstart',e=>{const r=e.target.closest('[data-dragindex]');if(!r)return;draggedTimelineIndex=+r.dataset.dragindex;r.classList.add('dragging');if(e.dataTransfer)e.dataTransfer.effectAllowed='move'});
+ $('dayEditBody').addEventListener('dragend',()=>{document.querySelectorAll('.dragRow').forEach(r=>r.classList.remove('dragging','dragOver'));draggedTimelineIndex=null});
+ $('dayEditBody').addEventListener('dragover',e=>{const r=e.target.closest('[data-dragindex]');if(!r||draggedTimelineIndex===null)return;e.preventDefault();document.querySelectorAll('.dragRow').forEach(x=>x.classList.remove('dragOver'));r.classList.add('dragOver')});
+ $('dayEditBody').addEventListener('drop',e=>{const r=e.target.closest('[data-dragindex]');if(!r||draggedTimelineIndex===null)return;e.preventDefault();moveTimeline(draggedTimelineIndex,+r.dataset.dragindex);toast('Timeline reordered ✓')});
+}
+</script></body></html>
