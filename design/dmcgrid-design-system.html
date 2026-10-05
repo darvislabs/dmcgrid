@@ -86,6 +86,8 @@ a{color:var(--g-sand-gold);text-decoration:none}
 .badge-error{background:rgba(239,68,68,.14);color:var(--g-error)}
 .badge-info{background:rgba(59,130,246,.14);color:var(--g-info)}
 .badge-teal{background:rgba(14,165,163,.14);color:var(--g-teal)}
+.badge-gold{background:rgba(212,180,131,.16);color:var(--g-sand-gold)}
+.badge-ghost{background:transparent;border:1px solid var(--line);color:var(--g-stone)}
 .toast{position:fixed;top:72px;left:50%;transform:translateX(-50%);z-index:99;
   background:var(--g-sand-gold);color:var(--g-midnight);padding:10px 16px;
   border-radius:9px;font-size:13px;font-weight:600;box-shadow:0 8px 25px rgba(0,0,0,.4)}
@@ -93,6 +95,7 @@ table.dt{width:100%;border-collapse:collapse;font-size:14px}
 table.dt th{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   color:var(--g-stone);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
 table.dt td{padding:12px;border-bottom:1px solid var(--line-soft);font-weight:300}
+table.dt td.num,table.dt th.num{text-align:right;font-variant-numeric:tabular-nums}
 
 /* NAV / SIDEBAR */
 .topnav{height:64px;display:flex;align-items:center;justify-content:space-between;
@@ -179,10 +182,10 @@ hr.div{border:0;border-top:1px solid var(--line);margin:28px 0}
         <h3 class="t-h3" style="margin:0 0 10px">Badges</h3>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <span class="badge badge-success">● Connected</span>
+          <span class="badge badge-gold">● Verified DMC</span>
           <span class="badge badge-warning">● Pending approval</span>
           <span class="badge badge-error">● Rejected</span>
           <span class="badge badge-info">● Draft</span>
-          <span class="badge badge-teal">● Verified DMC</span>
         </div>
       </div>
       <div class="card">
@@ -193,9 +196,9 @@ hr.div{border:0;border-top:1px solid var(--line);margin:28px 0}
       <div class="card">
         <h3 class="t-h3" style="margin:0 0 10px">Table</h3>
         <table class="dt">
-          <tr><th>DMC</th><th>Quote</th><th>Status</th></tr>
-          <tr><td>Thai Horizons</td><td class="t-num">₹1,92,400</td><td><span class="badge badge-success">New</span></td></tr>
-          <tr><td>Bali Ground Co</td><td class="t-num">₹2,04,900</td><td><span class="badge badge-warning">Revised</span></td></tr>
+          <tr><th>DMC</th><th class="num">Quote</th><th>Status</th></tr>
+          <tr><td>Thai Horizons</td><td class="num t-num">₹1,92,400</td><td><span class="badge badge-success">New</span></td></tr>
+          <tr><td>Bali Ground Co</td><td class="num t-num">₹2,04,900</td><td><span class="badge badge-warning">Revised</span></td></tr>
         </table>
       </div>
     </div>
