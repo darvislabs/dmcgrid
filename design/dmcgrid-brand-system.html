@@ -1411,6 +1411,23 @@ function mnavTheme(){
 }
 // drawer links close on tap + active state
 document.querySelectorAll('[data-mnav]').forEach(a => a.addEventListener('click', mnavClose));
+// keyboard: Escape closes drawer; focus lands in drawer when open
+document.addEventListener('keydown', e => {
+  const d = document.getElementById('mnav-drawer');
+  if (e.key === 'Escape' && d.classList.contains('open')) {
+    mnavClose();
+    document.querySelector('.mnav-toggle').focus();
+  }
+});
+// focus trap: Tab cycles inside the drawer while open
+document.getElementById('mnav-drawer').addEventListener('keydown', e => {
+  if (e.key !== 'Tab') return;
+  const focusables = [...e.currentTarget.querySelectorAll('a[href], button')];
+  if (!focusables.length) return;
+  const first = focusables[0], last = focusables[focusables.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
 </script>
 </body>
 </html>
