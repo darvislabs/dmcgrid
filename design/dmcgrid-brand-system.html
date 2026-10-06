@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="icon" type="image/svg+xml" href="assets/logo/icon-512.svg">
 <link rel="apple-touch-icon" href="assets/logo/icon-512.svg">
+<script>
+(function(){try{var t=localStorage.getItem('dmc-theme');if(!t){t='dark';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();
+</script>
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -42,6 +45,10 @@ html[data-theme="light"]{
   --badge-success:#047857;--badge-warning:#92600A;--badge-error:#B91C1C;
   --badge-info:#1D4ED8;--badge-gold-t:#8A6524;--badge-teal-t:#0F766E;
 }
+html[data-theme="light"] .btn-gold{background:var(--g-sand-gold);border-color:#C4A26E;color:#0B0F14}
+html[data-theme="light"] .btn-outline{border-color:rgba(20,26,34,.24);color:#141A22}
+html[data-theme="light"] .btn-ghost{color:#4A5561}
+html[data-theme="light"] .btn{border-color:rgba(20,26,34,.14);background:#FFFFFF;color:#141A22}
 html[data-theme="light"] .badge-success{color:var(--badge-success)}
 html[data-theme="light"] .badge-warning{color:var(--badge-warning)}
 html[data-theme="light"] .badge-error{color:var(--badge-error)}
@@ -97,7 +104,52 @@ main{margin-left:216px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .demo{border:1px solid var(--t08);border-radius:var(--r-card);padding:22px;background:var(--surface)}
 .demo-title{font:10px var(--font-m);letter-spacing:.12em;color:var(--t30);text-transform:uppercase;margin-bottom:16px}
-@media(max-width:1024px){.sidebar{display:none}main{margin-left:0}.section{padding:48px 24px}.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+/* ═══ MOBILE SYSTEM (Linear/Vercel-grade) ═══ */
+@media(max-width:1024px){
+  .sidebar{display:none}main{margin-left:0}
+  .section{padding:56px 32px}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr 1fr}
+  .hero{padding:72px 40px}
+}
+@media(max-width:768px){
+  .section{padding:48px 20px}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr}
+  .hero{padding:56px 20px;min-height:88dvh}
+  /* inline-styled grids → stack (the 8-tile variants, ramp strip, construction splits) */
+  div[style*="grid-template-columns:repeat(4,1fr)"],div[style*="grid-template-columns:1.2fr .8fr"],div[style*="grid-template-columns:repeat(6,1fr)"]{grid-template-columns:1fr 1fr!important}
+  div[style*="grid-template-columns:repeat(12,1fr)"]{grid-template-columns:repeat(6,1fr)!important}
+  .dt{font-size:12px}
+  .demo{padding:16px}
+}
+@media(max-width:640px){
+  .section{padding:40px 16px}
+  .hero{padding:48px 16px;min-height:84dvh}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr}
+  div[style*="grid-template-columns:repeat(4,1fr)"],div[style*="grid-template-columns:1.2fr .8fr"]{grid-template-columns:1fr!important}
+  div[style*="grid-template-columns:repeat(6,1fr)"]{grid-template-columns:repeat(3,1fr)!important}
+  div[style*="grid-template-columns:repeat(12,1fr)"]{grid-template-columns:repeat(4,1fr)!important}
+  /* NO horizontal scroll: every wide table scrolls inside its own card */
+  .dt{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .dt table,.dt thead,.dt tbody,.dt tr{display:table;width:100%}
+  .btn{min-height:44px;padding:12px 18px;width:auto}
+  .kpi{padding:14px}
+  /* demo tiles stay on 2-col for logo variants (compact) but stack everything else */
+  .hero *{max-width:100%}
+  img{max-width:100%;height:auto}
+}
+@media(max-width:480px){
+  div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+  div[style*="grid-template-columns:repeat(6,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
+  .section{padding:36px 14px}
+  .demo{padding:12px}
+}
+/* tables live in scrolling wrappers everywhere (desktop too, dense matrixes) */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table-wrap .dt{min-width:640px}
+/* clamp-based fluid display type */
+h1,h2{overflow-wrap:break-word}
+.hero h1{font-size:clamp(34px,7vw,64px)}
+@media(max-width:640px){.hero h1{font-size:clamp(30px,9vw,44px)}}
 
 /* ============ HERO / COVER ============ */
 .hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 64px;position:relative;overflow:hidden;background:var(--bg)}
@@ -122,7 +174,7 @@ main{margin-left:216px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--t12);background:var(--surface);color:var(--text);border-radius:var(--r-btn);padding:11px 20px;font:500 13px var(--font-b);min-height:40px;transition:all .16s var(--ease-out)}
 .btn:hover{border-color:var(--t18)}
 .btn:active{transform:scale(.97)}
-.btn-gold{background:var(--accent);border-color:var(--accent);color:#141A22;font-weight:600}
+.btn-gold{background:var(--g-sand-gold);border-color:var(--g-sand-gold);color:#0B0F14;font-weight:600}
 .btn-gold:hover{filter:brightness(1.06)}
 .btn-outline{background:transparent;border-color:var(--t18)}
 .btn-ghost{border:0;background:transparent;color:var(--t65)}
@@ -235,7 +287,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <a href="#accessibility"><span class="n">18</span>Accessibility</a>
     <a href="#changelog"><span class="n">19</span>Changelog</a>
   </nav>
-  <button class="theme" onclick="const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';this.textContent=h.dataset.theme==='dark'?'LIGHT MODE':'DARK MODE'">LIGHT MODE</button>
+  <button class="theme" onclick="const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('dmc-theme',h.dataset.theme)}catch(e){};this.textContent=h.dataset.theme==='dark'?'LIGHT MODE':'DARK MODE'">LIGHT MODE</button>
   <div class="side-foot">v1.4 · Oct 2026</div>
 </aside>
 
@@ -291,7 +343,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <img src="assets/logo/dmcgrid-full-dark.svg" alt="DMCGrid Primary Horizontal" style="max-height:60px;width:auto">
         <small style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em;text-transform:uppercase">Primary Horizontal — dark</small>
       </div>
-      <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--g-ivory)">
+      <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-full-light.svg" alt="DMCGrid Primary Horizontal light" style="max-height:60px;width:auto">
         <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase">Primary Horizontal — light</small>
       </div>
@@ -299,7 +351,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <img src="assets/logo/dmcgrid-symbol-dark.svg" alt="DMCGrid Symbol" style="max-height:64px;width:auto">
         <small style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em;text-transform:uppercase">Symbol Only — dark</small>
       </div>
-      <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--g-ivory)">
+      <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-symbol-light.svg" alt="DMCGrid Symbol light" style="max-height:64px;width:auto">
         <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase">Symbol Only — light</small>
       </div>
@@ -324,19 +376,19 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 26px">
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--g-ivory)">
+      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-primary-transparent-black-full.svg" alt="Full black transparent" style="max-width:82%;max-height:56px;width:auto">
         <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase;text-align:center">Full — black mark</small>
       </div>
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--g-ivory)">
+      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-primary-transparent-black-stacked.svg" alt="Stacked black transparent" style="max-width:82%;max-height:56px;width:auto">
         <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase;text-align:center">Stacked — black mark</small>
       </div>
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--g-ivory)">
+      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-primary-transparent-black-wide.svg" alt="Wordmark black transparent" style="max-width:82%;max-height:56px;width:auto">
         <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase;text-align:center">Wordmark — black mark</small>
       </div>
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--g-ivory)">
+      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-primary-transparent-black-symbol.svg" alt="Symbol black transparent" style="max-width:82%;max-height:56px;width:auto">
         <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase;text-align:center">Symbol — black mark</small>
       </div>
@@ -450,7 +502,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </div>
     </div>
     <div class="mini-label">Type scale (binding)</div>
-    <table class="dt" style="max-width:860px">
+    <div class="table-wrap"><table class="dt" style="max-width:860px">
       <tr><th>Token</th><th>Face</th><th>Size / LH</th><th>Weight</th><th>Tracking</th><th>Use</th></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-h1</span></td><td>Satoshi Semibold</td><td class="num">56 / 64</td><td>600</td><td class="num">-5%</td><td>Hero, page H1</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-h2</span></td><td>Satoshi Semibold</td><td class="num">40 / 48</td><td>600</td><td class="num">-3%</td><td>Section titles</td></tr>
@@ -461,7 +513,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <tr><td><span class="mono" style="font-size:11px">--ts-cap</span></td><td>Cabinet Grotesk Regular</td><td class="num">14 / 20</td><td>400</td><td>0</td><td>Captions, hints</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-over</span></td><td>Satoshi Semibold</td><td class="num">12 / 16</td><td>600</td><td class="num">+.18em</td><td>Overlines, kickers</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--font-m</span></td><td>JetBrains Mono</td><td class="num">12-14 / 20</td><td>500</td><td>0</td><td>ALL money figures, IDs, refs</td></tr>
-    </table>
+    </table></div>
     <div class="mini-label">Rules</div>
     <div class="grid3">
       <div class="demo"><p class="copy"><b>Money is mono.</b> Every rupee figure, credit count, and reference ID renders in JetBrains Mono tabular. No exceptions — it is the trust signal.</p></div>
