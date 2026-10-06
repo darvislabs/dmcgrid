@@ -267,7 +267,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <a href="#color-system"><span class="n">04</span>Color System</a>
     <a href="#typography"><span class="n">05</span>Typography</a>
     <a href="#iconography"><span class="n">06</span>Iconography</a>
-  </div>
+  </nav>
   <div class="side-label">Foundation</div>
   <nav class="nav">
     <a href="#global-tokens"><span class="n">07</span>Global Tokens</a>
@@ -1154,8 +1154,7 @@ const spy = new IntersectionObserver(es => {
 }, { rootMargin: '-30% 0px -60% 0px' });
 secs.forEach(s => spy.observe(s));
 </script>
-
-// component library interactions
+<script>// component library interactions
 function toast(msg){
   let t = document.getElementById('dg-toast');
   if(!t){ t = document.createElement('div'); t.id='dg-toast';
@@ -1185,5 +1184,6 @@ function wizardBack(id){
     toast('Back to step ' + cur);
   }
 }
+</script>
 </body>
 </html>
