@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   DMCGrid Design Tokens v1.0 — single source of truth
+   DMCGrid Design Tokens v1.3 — single source of truth
    Source: Dhrumil's brand style guide (Oct 5, 2026)
    Fonts: Lufga PRIMARY (Adam Ladd — paid; stand-in: Outfit via
    fonts.css fallback chain) · Plus Jakarta Sans SECONDARY ·
@@ -13,6 +13,26 @@
   --g-ivory:      #F7F3E9;  /* background, clean surfaces */
   --g-stone:      #9CA3AF;  /* secondary text, borders, dividers */
   --g-earth:      #3A3F36;  /* supporting icons, muted UI */
+
+
+  /* ── NEUTRAL RAMP v1.3 (cool slate-tinted, harmonizes with Midnight) ──
+     Replaces flat grey reuse. One step per role:
+     50/100 light surfaces+borders · 200 disabled-light · 300 placeholder
+     400 secondary text dark (Stone) · 500 muted/meta · 600 icon-muted/hover
+     700 hairlines dark · 800 line-soft · 850 card surfaces (Slate)
+     900 raised/tooltips · 950 page bg (Midnight) */
+  --g-gray-50:  #F3F5F7;
+  --g-gray-100: #E8ECF0;
+  --g-gray-200: #D2D9DF;
+  --g-gray-300: #B4BDC5;
+  --g-gray-400: #9CA3AF;  /* = Stone */
+  --g-gray-500: #71808B;
+  --g-gray-600: #55636E;
+  --g-gray-700: #3E4A54;
+  --g-gray-800: #2A3441;  /* = line */
+  --g-gray-850: #232D39;  /* = line-soft */
+  --g-gray-900: #1F2937;  /* = Slate */
+  --g-gray-950: #0B0F14;  /* = Midnight */
 
   /* ── SEMANTIC ── */
   --g-success:    #10B981;  /* positive states */

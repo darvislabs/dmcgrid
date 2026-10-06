@@ -12,9 +12,9 @@
   --success:#10B981;--warning:#F59E0B;--error:#EF4444;--info:#3B82F6;
   --teal:#0EA5A3;--sunset:#F97316;
   --bg:var(--g-midnight);--surface:#151B23;--alt:#0E1319;--text:var(--g-ivory);
-  --t80:rgba(247,243,233,.8);--t65:rgba(247,243,233,.65);--t55:rgba(247,243,233,.55);
-  --t40:rgba(247,243,233,.4);--t30:rgba(247,243,233,.3);--t18:rgba(247,243,233,.18);
-  --t12:rgba(247,243,233,.12);--t08:rgba(247,243,233,.08);--t06:rgba(247,243,233,.06);--t04:rgba(247,243,233,.04);
+  --t80:#C7D0D8;--t65:#9DAAB5;--t55:#8396A3;
+  --t40:#5C6B77;--t30:rgba(255,255,255,.3);--t18:rgba(255,255,255,.18);
+  --t12:rgba(255,255,255,.12);--t08:rgba(255,255,255,.08);--t06:rgba(255,255,255,.06);--t04:rgba(255,255,255,.04);
   --line:#2A3441;--line-soft:#232D39;
   --accent:var(--g-sand-gold);
   --font-d:'Satoshi','Lufga',Inter,system-ui,'Segoe UI',Arial,sans-serif;
@@ -22,7 +22,7 @@
   --font-m:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;
   --r-card:14px;--r-btn:9px;--r-input:9px;--r-pill:999px;
   --ease-out:cubic-bezier(.23,1,.32,1);--ease-friction:cubic-bezier(.16,1,.3,1);--ease-inout:cubic-bezier(.77,0,.175,1);
-  --shadow-card:0 1px 3px rgba(0,0,0,.3),0 0 0 1px rgba(247,243,233,.05);
+  --shadow-card:0 1px 3px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.05);
   --shadow-hover:0 4px 14px rgba(0,0,0,.4),0 0 0 1px rgba(212,180,131,.18);
   --shadow-pop:0 12px 40px rgba(0,0,0,.5);
 }
@@ -338,6 +338,10 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div><div style="height:76px;border-radius:10px;background:#0EA5A3"></div><p class="copy" style="margin-top:8px"><b>Travel Teal</b><br>#0EA5A3</p></div>
       <div><div style="height:76px;border-radius:10px;background:#F97316"></div><p class="copy" style="margin-top:8px"><b>Sunset</b><br>#F97316</p></div>
     </div>
+    <div class="mini-label" style="margin-top:28px">Neutral ramp — 12 steps</div>
+    <p class="copy">Cool slate-tinted ramp, one role per step — replaces flat grey reuse. Stone/Slate/Midnight stay as named tokens; the ramp indexes every step between. Ivory (cream) is reserved for light-theme surfaces ONLY — never text or borders on dark.</p>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin:12px 0 10px"><div><div style="height:56px;border-radius:8px;background:#F3F5F7;border:1px solid #2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">50</div></div><div><div style="height:56px;border-radius:8px;background:#E8ECF0;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">100</div></div><div><div style="height:56px;border-radius:8px;background:#D2D9DF;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">200</div></div><div><div style="height:56px;border-radius:8px;background:#B4BDC5;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">300</div></div><div><div style="height:56px;border-radius:8px;background:#9CA3AF;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">400</div></div><div><div style="height:56px;border-radius:8px;background:#71808B;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">500</div></div><div><div style="height:56px;border-radius:8px;background:#55636E;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">600</div></div><div><div style="height:56px;border-radius:8px;background:#3E4A54;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">700</div></div><div><div style="height:56px;border-radius:8px;background:#2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">800</div></div><div><div style="height:56px;border-radius:8px;background:#232D39;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">850</div></div><div><div style="height:56px;border-radius:8px;background:#1F2937;border:1px solid #2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">900</div></div><div><div style="height:56px;border-radius:8px;background:#0B0F14;border:1px solid #2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">950</div></div></div>
+    <p class="copy"><b>Usage rules:</b> 50–200 light-theme borders/disabled · 300 placeholders · 400 secondary text · 500 muted meta · 600 icon hover · 700–850 dark hairlines/surfaces · 900–950 page layers. Never skip more than 2 steps between adjacent elements.</p>
     <div class="mini-label">Usage rules (binding)</div>
     <div class="grid2">
       <div class="demo"><div class="demo-title">One accent</div><p class="copy">Sand Gold is the ONLY brand accent. Buttons, active states, focus rings, key numerals. If everything is gold, nothing is — max one gold element per view section.</p></div>
