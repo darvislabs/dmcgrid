@@ -272,6 +272,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   <nav class="nav">
     <a href="#global-tokens"><span class="n">07</span>Global Tokens</a>
     <a href="#atoms"><span class="n">08</span>Atoms & UI Kit</a>
+    <a href="#component-library"><span class="n">08b</span>Component Library</a>
     <a href="#forms"><span class="n">09</span>Forms & Inputs</a>
     <a href="#data"><span class="n">10</span>Data Display</a>
     <a href="#feedback"><span class="n">11</span>Feedback</a>
@@ -631,6 +632,197 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   </div>
 </section>
 
+
+<!-- ============ 8b. COMPONENT LIBRARY (from V62, revamped) ============ -->
+<section class="section" id="component-library">
+  <div class="inner">
+    <div class="sec-head">
+      <div class="sec-kicker">FOUNDATION</div>
+      <h2>Component Library</h2>
+      <p class="sec-desc">Every product surface from the V62 prototype, rebuilt as real rendered components on the token system. Interactive, both themes, mobile-safe. This is the build spec for Phase 0.</p>
+    </div>
+
+    <div class="mini-label">RFQ Wizard — 6-step stepper (real, interactive)</div>
+    <div class="demo" style="margin-bottom:26px">
+      <div class="stepper" id="wizard-demo">
+        <div class="step current"><span class="n">1</span>Trip basics</div><div class="bar"></div>
+        <div class="step"><span class="n">2</span>Itinerary</div><div class="bar"></div>
+        <div class="step"><span class="n">3</span>Budget & pax</div><div class="bar"></div>
+        <div class="step"><span class="n">4</span>Preferences</div><div class="bar"></div>
+        <div class="step"><span class="n">5</span>Review</div><div class="bar"></div>
+        <div class="step"><span class="n">6</span>Submit</div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+        <button class="btn btn-gold" onclick="wizardNext(1)">Continue</button>
+        <button class="btn btn-outline" onclick="wizardBack(1)">Back</button>
+        <span class="copy" style="align-self:center;color:var(--t55)">Click Continue — stepper advances. Sticky footer pattern (Back + Continue + progress).</span>
+      </div>
+      <p class="copy" style="margin-top:10px">Steps 1–6 from V62. Current = gold ring, done = teal check, future = stone. Progress persists server-side per RFQ draft. On mobile the stepper scrolls horizontally inside its card — never the page.</p>
+    </div>
+
+    <div class="mini-label">Compare matrix — 3 anonymous quotes</div>
+    <div class="demo" style="margin-bottom:26px">
+      <div class="table-wrap">
+      <table class="dt" style="min-width:720px">
+        <tr><th></th><th>Quote A</th><th>Quote B</th><th>Quote C</th></tr>
+        <tr><td>Hotels</td><td>4★ Pattaya + 5★ BKK</td><td>5★ both cities</td><td>4★ both cities</td></tr>
+        <tr><td class="num">Net rate</td><td class="num">₹1,42,800</td><td class="num">₹1,58,200</td><td class="num">₹1,31,500</td></tr>
+        <tr><td class="num">Inclusions</td><td>Breakfast + transfers</td><td>Breakfast + dinner + transfers</td><td>Breakfast + transfers</td></tr>
+        <tr><td>Visa support</td><td>✓ included</td><td>✓ included</td><td>✗ add-on ₹2,400</td></tr>
+        <tr><td>Response time</td><td>4h 12m</td><td>11h 03m</td><td>1h 47m</td></tr>
+        <tr><td>DMC rating</td><td>4.6 ★ (128)</td><td>4.8 ★ (342)</td><td>4.2 ★ (57)</td></tr>
+      </table>
+      </div>
+      <p class="copy" style="margin-top:10px">Anonymity until connect — no DMC names, no branding, no contact channels. Rows sortable; cells with money in mono. On mobile this degrades to stacked option cards (per Responsive). Agent connects max 2 (credit burns ₹999/connect after free tier).</p>
+    </div>
+
+    <div class="mini-label">Quote card — one DMC's 3-option response</div>
+    <div class="grid3" style="margin-bottom:26px">
+      <div class="demo">
+        <div class="demo-title">OPTION 1 — Value</div>
+        <table class="dt" style="margin-bottom:10px">
+          <tr><td>Hotel A</td><td class="num">3N</td><td class="num">₹18,400</td></tr>
+          <tr><td>Hotel B</td><td class="num">2N</td><td class="num">₹21,000</td></tr>
+          <tr><td>Vehicle</td><td>Sedan</td><td class="num">₹12,500</td></tr>
+        </table>
+        <p class="copy" style="text-align:right;font-family:var(--font-m);font-size:13px"><b>Total ₹51,900</b></p>
+      </div>
+      <div class="demo" style="border-color:rgba(212,180,131,.5)">
+        <div class="demo-title" style="color:var(--g-sand-gold)">OPTION 2 — Comfort</div>
+        <table class="dt" style="margin-bottom:10px">
+          <tr><td>Hotel C</td><td class="num">3N</td><td class="num">₹24,800</td></tr>
+          <tr><td>Hotel D</td><td class="num">2N</td><td class="num">₹28,200</td></tr>
+          <tr><td>Vehicle</td><td>SUV</td><td class="num">₹16,900</td></tr>
+        </table>
+        <p class="copy" style="text-align:right;font-family:var(--font-m);font-size:13px"><b>Total ₹69,900</b></p>
+      </div>
+      <div class="demo">
+        <div class="demo-title">OPTION 3 — Premium</div>
+        <table class="dt" style="margin-bottom:10px">
+          <tr><td>Hotel E</td><td class="num">3N</td><td class="num">₹38,500</td></tr>
+          <tr><td>Hotel F</td><td class="num">2N</td><td class="num">₹41,000</td></tr>
+          <tr><td>Vehicle</td><td>Innova Crysta</td><td class="num">₹21,400</td></tr>
+        </table>
+        <p class="copy" style="text-align:right;font-family:var(--font-m);font-size:13px"><b>Total ₹1,00,900</b></p>
+      </div>
+    </div>
+
+    <div class="mini-label">Deal sheet — margin calculator (V62 formula, made real)</div>
+    <div class="grid2" style="margin-bottom:26px">
+      <div class="demo">
+        <div class="demo-title">Cost build-up</div>
+        <table class="dt">
+          <tr><td>Net rate (DMC quote)</td><td class="num">₹1,42,800</td></tr>
+          <tr><td>Agent margin (12%)</td><td class="num">+ ₹17,136</td></tr>
+          <tr><td>Ancillary (visa + insurance)</td><td class="num">+ ₹4,800</td></tr>
+          <tr><td><b>Subtotal</b></td><td class="num"><b>₹1,64,736</b></td></tr>
+          <tr><td>GST 18%</td><td class="num">+ ₹29,652</td></tr>
+          <tr><td>TCS 2% (flat, from 01.04.2026)</td><td class="num">+ ₹3,295</td></tr>
+          <tr><td><b>Customer price</b></td><td class="num"><b style="color:var(--g-sand-gold)">₹1,97,683</b></td></tr>
+        </table>
+      </div>
+      <div class="demo">
+        <div class="demo-title">Order of operations (binding)</div>
+        <p class="copy" style="font-family:var(--font-m);font-size:12px;line-height:1.9">net + margin<br>+ Σ ancillary<br>→ +GST 18%<br>→ +TCS 2%<br>→ customer price</p>
+        <p class="copy" style="margin-top:12px">TCS is collected by the agent (not the platform) and remitted against PAN — per §394(1) ITA 2025. The deal sheet NEVER exposes DMC net rates to the customer-facing proposal. Manager approval gates the send (States & Access).</p>
+        <button class="btn btn-gold" style="margin-top:14px" onclick="toast('Deal sheet saved — pending manager approval')">Save deal sheet</button>
+      </div>
+    </div>
+
+    <div class="mini-label">RFQ feed row — matched brief (DMC side)</div>
+    <div class="demo" style="margin-bottom:26px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid var(--t08);border-radius:10px;padding:14px 16px;margin-bottom:10px">
+        <div>
+          <div style="font:600 14px var(--font-d);margin-bottom:4px">Thailand · 5N/6D · 2A+2C · Mar 12–17</div>
+          <div style="font:400 12px var(--font-b);color:var(--t55)">Budget band ₹1.4–1.8L · Breakfast + transfers · 4★ preferred</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge badge-gold"><span class="dot"></span>Match 92%</span>
+          <button class="btn btn-teal btn-sm">Respond</button>
+          <button class="btn btn-ghost btn-sm">Decline</button>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid var(--t08);border-radius:10px;padding:14px 16px">
+        <div>
+          <div style="font:600 14px var(--font-d);margin-bottom:4px">Dubai · 4N/5D · 6 pax · Apr 02–06</div>
+          <div style="font:400 12px var(--font-b);color:var(--t55)">Budget band ₹2.2–2.8L · Desert safari + Marina · Visa needed</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="badge badge-success"><span class="dot"></span>Match 87%</span>
+          <button class="btn btn-teal btn-sm">Respond</button>
+          <button class="btn btn-ghost btn-sm">Decline</button>
+        </div>
+      </div>
+      <p class="copy" style="margin-top:10px">No agent identity until connect. Match score = destination fit + dates + budget band (server-computed). Decline with reason feeds the matching engine. Rows stack vertically on mobile.</p>
+    </div>
+
+    <div class="mini-label">Credit wallet + plans</div>
+    <div class="grid2" style="margin-bottom:26px">
+      <div class="demo">
+        <div class="demo-title">Wallet</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div><div style="font:400 11px var(--font-b);color:var(--t55);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Quote credits</div>
+          <div style="font:600 32px var(--font-d);font-family:var(--font-m)">14</div></div>
+          <div style="text-align:right"><div style="font:400 11px var(--font-b);color:var(--t55);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Connect credits</div>
+          <div style="font:600 32px var(--font-d);font-family:var(--font-m)">3</div></div>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="toast('Opening plans…')">Top up</button>
+        <p class="copy" style="margin-top:10px">Credits in mono, always. Free tier: 5 deals each side. Closed-system wallet — no cash-out (RBI/DPSS/2025-26/141 red line).</p>
+      </div>
+      <div class="demo">
+        <div class="demo-title">Plans — agent side</div>
+        <table class="dt">
+          <tr><th>Plan</th><th class="num">Price</th><th class="num">Credits</th></tr>
+          <tr><td>Starter</td><td class="num">₹999/mo</td><td class="num">5</td></tr>
+          <tr><td>Growth</td><td class="num">₹2,499/mo</td><td class="num">20</td></tr>
+          <tr><td>Scale</td><td class="num">₹5,999/mo</td><td class="num">60</td></tr>
+        </table>
+        <p class="copy" style="margin-top:10px">DMC plans: ₹1,499 / ₹3,999 / ₹7,999 → 10/40/100 quote credits. Verified badge ₹7,500/yr (teal). GST 18% on all plans.</p>
+      </div>
+    </div>
+
+    <div class="mini-label">Day-wise itinerary timeline (V62 day tabs, revamped)</div>
+    <div class="demo" style="margin-bottom:26px">
+      <div style="display:flex;gap:8px;margin-bottom:14px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px">
+        <button class="btn btn-gold btn-sm" onclick="toast('Day 1 loaded')">Day 1</button>
+        <button class="btn btn-outline btn-sm" onclick="toast('Day 2 loaded')">Day 2</button>
+        <button class="btn btn-outline btn-sm" onclick="toast('Day 3 loaded')">Day 3</button>
+        <button class="btn btn-outline btn-sm" onclick="toast('Day 4 loaded')">Day 4</button>
+        <button class="btn btn-outline btn-sm" onclick="toast('Day 5 loaded')">Day 5</button>
+      </div>
+      <table class="dt" style="max-width:720px">
+        <tr><th style="min-width:88px">Time</th><th>Activity</th><th>Inclusion</th></tr>
+        <tr><td class="num">09:00</td><td>BKK airport → Pattaya transfer</td><td>Private sedan</td></tr>
+        <tr><td class="num">14:00</td><td>Check-in + lunch</td><td>Buffet</td></tr>
+        <tr><td class="num">17:30</td><td>Coral Island speedboat</td><td>Shared</td></tr>
+        <tr><td class="num">20:00</td><td>Alcazar show</td><td>Ticket incl.</td></tr>
+      </table>
+      <p class="copy" style="margin-top:10px">Day tabs scroll horizontally inside the card on mobile. Time slots = mono. This component feeds both the DMC quote builder and the white-label proposal.</p>
+    </div>
+
+    <div class="mini-label">Payment methods + verification upload</div>
+    <div class="grid2">
+      <div class="demo">
+        <div class="demo-title">Payment methods</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+          <div style="border:1px solid var(--g-sand-gold);border-radius:9px;padding:10px 16px;font:600 13px var(--font-b);color:var(--text);background:rgba(212,180,131,.08)">UPI</div>
+          <div style="border:1px solid var(--t12);border-radius:9px;padding:10px 16px;font:500 13px var(--font-b);color:var(--t65)">Card</div>
+          <div style="border:1px solid var(--t12);border-radius:9px;padding:10px 16px;font:500 13px var(--font-b);color:var(--t65)">Netbanking</div>
+        </div>
+        <p class="copy">UPI primary (Indian trade default). Card via Razorpay (2.36% + GST). No wallets, no cash-out — closed-system credits only.</p>
+      </div>
+      <div class="demo">
+        <div class="demo-title">Verification upload (DMC KYC)</div>
+        <div style="border:1px dashed var(--t18);border-radius:10px;padding:22px;text-align:center;margin-bottom:10px">
+          <div style="font:500 13px var(--font-b);color:var(--t65);margin-bottom:4px">Drop IATA / company reg. / GST cert.</div>
+          <div style="font:400 11px var(--font-b);color:var(--t40)">PDF or JPG · max 10MB each</div>
+        </div>
+        <span class="badge badge-warning"><span class="dot"></span>Pending review</span>
+        <p class="copy" style="margin-top:8px">Upload → ops review (48h SLA) → verified badge (teal, ₹7,500/yr). Badge = trade trust signal, never decorative.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- ============ 09 FORMS ============ -->
 <section class="section alt" id="forms">
   <div class="inner">
@@ -927,8 +1119,12 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <h2>Changelog</h2>
     </div>
     <div class="grid2">
-      <div class="demo">
-        <div class="demo-title">v1.4 — October 2026</div>
+      <div class="demo"<div class="demo">
+        <div class="demo-title">v1.6 — October 2026</div>
+        <p class="copy"><b>Component Library section added (08b):</b> every product surface from the V62 prototype rebuilt as real rendered components — interactive 6-step wizard stepper, compare matrix (3 anonymous quotes), 3-option quote cards, deal sheet with the binding cost formula, RFQ feed rows with match scores, credit wallet + plans, day-wise itinerary timeline, payment methods, verification upload. Toast system live. Wizard + tabs interactive. All components theme-aware, mobile-safe (steppers and tables scroll inside their cards, never the page). Responsive overhaul: 5 breakpoints (1024/768/640/480 + desktop), zero horizontal page scroll, button contrast fixed (gold fill both themes, dark text 8.1:1), theme persistence + FOUC guard.</p>
+      </div>
+      >
+        <div class="demo-title">v1.5 — October 2026</div>
         <p class="copy"><b>Logo section rebuilt at Opexminds depth:</b> Core lockups (4) · Official variations — the full transparent set from Dhrumil's Notion page (8 tiles, white/black marks) · Grid & construction (24px grid overlay) · Clearance zones (0.5×/1×, X = mark height 105). Font specimens upgraded to full weight ladders (300→700) with rupee numerals. 16-file logo kit ships in assets/logo/. Sidebar version bumped.</p>
       </div>
       <div class="demo">
@@ -958,5 +1154,36 @@ const spy = new IntersectionObserver(es => {
 }, { rootMargin: '-30% 0px -60% 0px' });
 secs.forEach(s => spy.observe(s));
 </script>
+
+// component library interactions
+function toast(msg){
+  let t = document.getElementById('dg-toast');
+  if(!t){ t = document.createElement('div'); t.id='dg-toast';
+    t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface);color:var(--text);border:1px solid var(--accent);border-radius:10px;padding:12px 20px;font:500 13px var(--font-b);z-index:9999;opacity:0;transition:all .25s cubic-bezier(.23,1,.32,1);box-shadow:0 8px 30px rgba(0,0,0,.4);max-width:90vw;text-align:center';
+    document.body.appendChild(t);}
+  t.textContent = msg;
+  requestAnimationFrame(()=>{ t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)'; });
+  clearTimeout(t._h); t._h = setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(20px)'; }, 2400);
+}
+function wizardNext(id){
+  const steps = document.querySelectorAll('#wizard-demo .step');
+  const cur = [...steps].findIndex(st => st.classList.contains('current'));
+  if(cur < steps.length-1){
+    steps[cur].classList.remove('current'); steps[cur].classList.add('done');
+    steps[cur].querySelector('.n').textContent = '✓';
+    steps[cur+1].classList.add('current');
+    toast('Step ' + (cur+2) + ' of ' + steps.length);
+  } else toast('RFQ submitted — 1 quote credit burned');
+}
+function wizardBack(id){
+  const steps = document.querySelectorAll('#wizard-demo .step');
+  const cur = [...steps].findIndex(st => st.classList.contains('current'));
+  if(cur > 0){
+    steps[cur].classList.remove('current');
+    steps[cur-1].classList.remove('done'); steps[cur-1].classList.add('current');
+    steps[cur-1].querySelector('.n').textContent = cur;
+    toast('Back to step ' + cur);
+  }
+}
 </body>
 </html>
