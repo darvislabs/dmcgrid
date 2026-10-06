@@ -865,6 +865,80 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   </div>
 </section>
 
+
+<!-- 09b: real form components (V62) -->
+<div class="mini-label">Field components — real, interactive (from V62)</div>
+<div class="grid3" style="margin:12px 0 26px">
+  <div class="demo">
+    <div class="demo-title">Counter stepper — pax</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--t08);border-radius:10px;padding:12px 14px;margin-bottom:10px">
+      <span style="font:400 13px var(--font-b);color:var(--t65)">Adults</span>
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="btn btn-outline btn-sm" style="min-height:32px;min-width:32px;padding:0" onclick="stepper(this,-1,'adl')">−</button>
+        <b class="mono" id="adl" style="font-size:14px;min-width:24px;text-align:center">2</b>
+        <button class="btn btn-outline btn-sm" style="min-height:32px;min-width:32px;padding:0" onclick="stepper(this,1,'adl')">+</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid var(--t08);border-radius:10px;padding:12px 14px">
+      <span style="font:400 13px var(--font-b);color:var(--t65)">Children</span>
+      <div style="display:flex;align-items:center;gap:10px">
+        <button class="btn btn-outline btn-sm" style="min-height:32px;min-width:32px;padding:0" onclick="stepper(this,-1,'chl')">−</button>
+        <b class="mono" id="chl" style="font-size:14px;min-width:24px;text-align:center">1</b>
+        <button class="btn btn-outline btn-sm" style="min-height:32px;min-width:32px;padding:0" onclick="stepper(this,1,'chl')">+</button>
+      </div>
+    </div>
+    <p class="copy" style="margin-top:10px">Min 1 adult · max 30 pax. Values feed the RFQ brief server-side.</p>
+  </div>
+  <div class="demo">
+    <div class="demo-title">Money field + budget band</div>
+    <div class="field"><label>Budget per person</label>
+      <div style="position:relative"><span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font:500 13px var(--font-m);color:var(--t55)">₹</span><input value="1,45,000" style="padding-left:28px;font-family:var(--font-m);text-align:right"></div>
+      <div class="hint">Per person · Indian grouping · mono face</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+      <div style="border:1px solid var(--g-sand-gold);border-radius:999px;padding:8px 16px;font:600 12px var(--font-b);color:var(--text);background:rgba(212,180,131,.08)">₹1.2–1.6L</div>
+      <div style="border:1px solid var(--t12);border-radius:999px;padding:8px 16px;font:500 12px var(--font-b);color:var(--t65)">₹1.6–2.2L</div>
+      <div style="border:1px solid var(--t12);border-radius:999px;padding:8px 16px;font:500 12px var(--font-b);color:var(--t65)">₹2.2L+</div>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="demo-title">AI extract + confidence chips</div>
+    <div style="border:1px solid var(--t08);border-radius:10px;padding:12px 14px;margin-bottom:10px;background:var(--t04)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font:400 13px var(--font-b);color:var(--t65)">Destination: <b style="color:var(--text)">Thailand</b></span><span class="badge badge-success" style="font-size:10px">96%</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span style="font:400 13px var(--font-b);color:var(--t65)">Dates: <b style="color:var(--text)">Mar 12–17</b></span><span class="badge badge-success" style="font-size:10px">94%</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:400 13px var(--font-b);color:var(--t65)">Pax: <b style="color:var(--text)">2A+2C</b></span><span class="badge badge-warning" style="font-size:10px">71%</span></div>
+    </div>
+    <p class="copy">Paste any brief text → structured fields, each with a confidence chip. Low confidence (<85%) prompts the user; every AI value stays editable — the ✨ mark clears on manual edit.</p>
+  </div>
+</div>
+<div class="grid2" style="margin-bottom:26px">
+  <div class="demo">
+    <div class="demo-title">Choices — radio & checkbox</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><span style="width:18px;height:18px;border-radius:50%;border:2px solid var(--g-sand-gold);display:inline-flex;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:var(--g-sand-gold)"></span></span><span style="font:400 13px var(--font-b)">Round-trip flights included</span></label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><span style="width:18px;height:18px;border-radius:50%;border:2px solid var(--t18);display:inline-block"></span><span style="font:400 13px var(--font-b);color:var(--t65)">Visa assistance needed</span></label>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><span style="width:18px;height:18px;border-radius:5px;border:2px solid var(--teal);background:var(--teal);display:inline-flex;align-items:center;justify-content:center;color:#07211F;font-size:11px">✓</span><span style="font:400 13px var(--font-b)">Airport transfers</span></label>
+      <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><span style="width:18px;height:18px;border-radius:5px;border:2px solid var(--t18);display:inline-block"></span><span style="font:400 13px var(--font-b);color:var(--t65)">Travel insurance</span></label>
+    </div>
+  </div>
+  <div class="demo">
+    <div class="demo-title">Search + filter bar (workbench pattern)</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <div style="flex:1;min-width:160px;border:1px solid var(--t12);border-radius:9px;padding:9px 12px;font:400 13px var(--font-b);color:var(--t40)">⌕ Search RFQs…</div>
+      <div style="border:1px solid var(--t12);border-radius:9px;padding:9px 12px;font:500 12px var(--font-b);color:var(--t65)">Status: All ▾</div>
+      <div style="border:1px solid var(--t12);border-radius:9px;padding:9px 12px;font:500 12px var(--font-b);color:var(--t65)">Destination ▾</div>
+    </div>
+    <p class="copy">Toolbar = filters + actions (Pattern C). Filters never trap the user — always one click to clear all. Search placeholder in muted; active filters show as removable chips.</p>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <span class="badge badge-info">Thailand ✕</span>
+      <span class="badge badge-info">Mar 2026 ✕</span>
+      <span class="badge" style="border:1px solid var(--t12)">Clear all</span>
+    </div>
+  </div>
+</div>
+
 <!-- ============ 10 DATA DISPLAY ============ -->
 <section class="section" id="data">
   <div class="inner">
@@ -1004,6 +1078,57 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   </div>
 </section>
 
+
+<!-- 13b: proposal preview (Pattern D — premium document) -->
+<div class="mini-label">Proposal preview — Pattern D, the premium document</div>
+<div class="demo" style="margin:12px 0 26px;padding:0;overflow:hidden">
+  <div style="background:linear-gradient(135deg,#0B0F14 0%,#151B23 100%);padding:28px 24px;border-bottom:1px solid rgba(212,180,131,.3)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+      <div>
+        <div style="font:600 22px var(--font-d);color:#F7F3E9;letter-spacing:-.02em;margin-bottom:4px">Thailand · 5N/6D Family Escape</div>
+        <div style="font:400 12px var(--font-b);color:rgba(247,243,233,.6)">Prepared for the Sharma family · Mar 12–17, 2026 · 2A+2C</div>
+      </div>
+      <svg width="64" height="70" viewBox="0 0 96 105" style="color:#D4B483;flex-shrink:0"><use href="#dmc"/></svg>
+    </div>
+    <div style="display:flex;gap:20px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(247,243,233,.08)">
+      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Option</div><div style="font:600 13px var(--font-d);color:#D4B483">Comfort</div></div>
+      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Hotels</div><div style="font:600 13px var(--font-d);color:#F7F3E9">4★+5★</div></div>
+      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Per person</div><div style="font:600 13px var(--font-d);color:#F7F3E9;font-family:var(--font-m)">₹49,421</div></div>
+      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Total</div><div style="font:600 13px var(--font-d);color:#F7F3E9;font-family:var(--font-m)">₹1,97,683</div></div>
+    </div>
+  </div>
+  <div style="padding:22px 24px;background:var(--surface)">
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div style="flex:1;min-width:180px">
+        <div style="font:600 11px var(--font-d);color:var(--text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Day 1 · Bangkok → Pattaya</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:10px;align-items:baseline"><span class="mono" style="font-size:11px;color:var(--t55);min-width:44px">09:00</span><span style="font:400 13px var(--font-b);color:var(--t80)">BKK airport → Pattaya · private sedan</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline"><span class="mono" style="font-size:11px;color:var(--t55);min-width:44px">14:00</span><span style="font:400 13px var(--font-b);color:var(--t80)">Check-in + welcome lunch</span></div>
+          <div style="display:flex;gap:10px;align-items:baseline"><span class="mono" style="font-size:11px;color:var(--t55);min-width:44px">17:30</span><span style="font:400 13px var(--font-b);color:var(--t80)">Coral Island · speedboat</span></div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:180px;border-left:1px solid var(--t08);padding-left:16px">
+        <div style="font:600 11px var(--font-d);color:var(--text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Inclusions</div>
+        <div style="display:flex;flex-direction:column;gap:7px;font:400 13px var(--font-b);color:var(--t80)">
+          <span>✓ 5N accommodation (4★ Pattaya + 5★ BKK)</span>
+          <span>✓ Daily breakfast + 2 dinners</span>
+          <span>✓ All transfers · private AC</span>
+          <span>✓ Alcazar show · Coral Island</span>
+          <span style="color:var(--t55)">✗ Flights · visa fee (add-on)</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--t08);flex-wrap:wrap;gap:10px">
+      <span style="font:400 11px var(--font-b);color:var(--t55)">Prices include GST 18% + TCS 2% (§394(1) ITA 2025). Issuer: the agent.</span>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-outline btn-sm" onclick="toast('Proposal PDF exported')">Export PDF</button>
+        <button class="btn btn-gold btn-sm" onclick="toast('Sent to customer — pending manager approval was checked')">Send to customer</button>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="copy" style="margin-bottom:26px"><b>Pattern D rules:</b> the ONE surface where the brand performs — gold-on-dark chrome, tight display type, mono numerals. Print-true A4 at mm units for the PDF export. Everything else in the product stays quiet. Manager approval gates every send (States & Access). The proposal NEVER exposes DMC identity or net rates (R1).</p>
+
 <!-- ============ 14 STATES & ACCESS ============ -->
 <section class="section" id="admin-states">
   <div class="inner">
@@ -1132,6 +1257,10 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <div class="demo-title">v1.6 — October 2026</div>
         <p class="copy"><b>Component Library section added (08b):</b> every product surface from the V62 prototype rebuilt as real rendered components — interactive 6-step wizard stepper, compare matrix (3 anonymous quotes), 3-option quote cards, deal sheet with the binding cost formula, RFQ feed rows with match scores, credit wallet + plans, day-wise itinerary timeline, payment methods, verification upload. Toast system live. Wizard + tabs interactive. All components theme-aware, mobile-safe (steppers and tables scroll inside their cards, never the page). Responsive overhaul: 5 breakpoints (1024/768/640/480 + desktop), zero horizontal page scroll, button contrast fixed (gold fill both themes, dark text 8.1:1), theme persistence + FOUC guard.</p>
       </div>
+      <div class="demo">
+        <div class="demo-title">v1.7/v1.8 — October 2026</div>
+        <p class="copy"><b>v1.8:</b> Real form-field components from V62 — counter steppers (interactive ±), money field with ₹ prefix + Indian grouping, AI-extract with confidence chips, radio/checkbox sets, search + filter bar with removable chips. Proposal preview (Pattern D) — the premium gold-on-dark document with day-wise timeline, inclusions, GST/TCS footer, export/send actions. <b>v1.7:</b> ROOT font fix — fonts.css url() paths were doubling the directory (all 15 webfonts 404'd since v1.2); mobile root fixes (grid min-width:0, steppers/tabs scroll in-card). Verified via real-viewpoint Playwright: 390px zero h-scroll, 16/16 fonts loaded, 0 console errors.</p>
+      </div>
       >
         <div class="demo-title">v1.5 — October 2026</div>
         <p class="copy"><b>Logo section rebuilt at Opexminds depth:</b> Core lockups (4) · Official variations — the full transparent set from Dhrumil's Notion page (8 tiles, white/black marks) · Grid & construction (24px grid overlay) · Clearance zones (0.5×/1×, X = mark height 105). Font specimens upgraded to full weight ladders (300→700) with rupee numerals. 16-file logo kit ships in assets/logo/. Sidebar version bumped.</p>
@@ -1192,6 +1321,13 @@ function wizardBack(id){
     steps[cur-1].querySelector('.n').textContent = cur;
     toast('Back to step ' + cur);
   }
+}
+
+function stepper(btn, dir, id){
+  const el = document.getElementById(id);
+  let v = parseInt(el.textContent) + dir;
+  v = Math.max(id === 'adl' ? 1 : 0, Math.min(id === 'adl' ? 15 : 8, v));
+  el.textContent = v;
 }
 </script>
 </body>
