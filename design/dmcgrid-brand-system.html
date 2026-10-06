@@ -46,9 +46,9 @@ html[data-theme="light"]{
   --badge-info:#1D4ED8;--badge-gold-t:#8A6524;--badge-teal-t:#0F766E;
 }
 html[data-theme="light"] .btn-gold{background:var(--g-sand-gold);border-color:#C4A26E;color:#0B0F14}
-html[data-theme="light"] .btn-outline{border-color:rgba(20,26,34,.24);color:#141A22}
+html[data-theme="light"] .btn-outline:not(.btn-gold){border-color:rgba(20,26,34,.24);color:#141A22}
 html[data-theme="light"] .btn-ghost{color:#4A5561}
-html[data-theme="light"] .btn{border-color:rgba(20,26,34,.14);background:#FFFFFF;color:#141A22}
+html[data-theme="light"] .btn:not(.btn-gold):not(.btn-teal):not(.btn-danger){border-color:rgba(20,26,34,.14);background:#FFFFFF;color:#141A22}
 html[data-theme="light"] .badge-success{color:var(--badge-success)}
 html[data-theme="light"] .badge-warning{color:var(--badge-warning)}
 html[data-theme="light"] .badge-error{color:var(--badge-error)}
