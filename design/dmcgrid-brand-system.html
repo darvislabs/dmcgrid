@@ -108,6 +108,28 @@ main{margin-left:216px}
 .stepper{min-width:0}
 /* grid children never stretch their columns (mobile overflow root fix) */
 .grid2>*,.grid3>*,.grid4>*,.grid>*{min-width:0}
+/* ═══ MOBILE NAV (Linear-style drawer) ═══ */
+.mnav{display:none}
+.mnav-bar{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--t08)}
+.mnav-brand{display:flex;align-items:center;gap:8px;font:600 15px var(--font-d);color:var(--text)}
+.mnav-brand i{color:var(--accent);font-style:normal}
+.mnav-toggle{background:transparent;border:1px solid var(--t12);border-radius:9px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;color:var(--text);cursor:pointer}
+.mnav-toggle svg{width:20px;height:20px}
+.mnav-drawer{position:fixed;top:0;bottom:0;left:0;width:min(320px,86vw);z-index:1000;background:var(--surface);border-right:1px solid var(--line);transform:translateX(-105%);transition:transform .28s cubic-bezier(.23,1,.32,1);display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px}
+.mnav-drawer.open{transform:translateX(0)}
+.mnav-backdrop{position:fixed;inset:0;z-index:990;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .28s ease}
+.mnav-backdrop.show{opacity:1;pointer-events:auto}
+.mnav-drawer .brand{display:flex;align-items:center;gap:9px;padding:6px 8px 16px;border-bottom:1px solid var(--t08);margin-bottom:12px}
+.mnav-drawer a{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:9px;color:var(--t80);font:500 13.5px var(--font-b);text-decoration:none;min-height:44px}
+.mnav-drawer a.active{background:var(--t08);color:var(--text)}
+.mnav-drawer a .n{font:500 10px var(--font-m);color:var(--t40);min-width:24px}
+.mnav-drawer .side-label{font:600 10px var(--font-m);letter-spacing:.14em;text-transform:uppercase;color:var(--t40);padding:14px 12px 6px}
+@media(max-width:1024px){
+  .mnav{display:block}
+  main{padding-top:68px}
+}
+@media(prefers-reduced-motion:reduce){.mnav-drawer{transition:none}.mnav-backdrop{transition:none}}
+
 /* ═══ MOBILE SYSTEM (Linear/Vercel-grade) ═══ */
 @media(max-width:1024px){
   .sidebar{display:none}main{margin-left:0}
@@ -263,6 +285,42 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   <path d="M147.893 24.4019C151.653 24.4019 155.191 25.0698 158.506 26.4058C161.821 27.7417 164.654 29.5724 167.004 31.8979C169.379 34.1987 171.247 36.9696 172.608 40.2104C173.968 43.4513 174.649 46.9149 174.649 50.6011C174.649 54.2873 173.968 57.7508 172.608 60.9917C171.247 64.2326 169.379 67.0158 167.004 69.3413C164.654 71.6668 161.821 73.4976 158.506 74.8335C155.191 76.1694 151.653 76.8374 147.893 76.8374H127.223V24.4019H147.893ZM147.596 65.7417C151.876 65.7417 155.438 64.2944 158.284 61.3999C161.129 58.5054 162.551 54.9058 162.551 50.6011C162.551 46.2964 161.129 42.7091 158.284 39.8394C155.438 36.9448 151.876 35.4976 147.596 35.4976H139.024V65.7417H147.596ZM222.132 24.4019H236.494V76.8374H224.73V43.1792L211.482 68.0054H204.802L191.591 43.1792V76.8374H179.791V24.4019H194.375L208.216 50.3042L222.132 24.4019ZM269.393 77.7651C265.509 77.7651 261.848 77.0724 258.409 75.687C254.97 74.2769 252.026 72.3719 249.577 69.9722C247.128 67.5724 245.198 64.7026 243.788 61.3628C242.378 57.9982 241.673 54.411 241.673 50.6011C241.673 46.7912 242.378 43.2163 243.788 39.8765C245.198 36.5119 247.128 33.6297 249.577 31.23C252.026 28.8302 254.97 26.9377 258.409 25.5522C261.848 24.1668 265.509 23.4741 269.393 23.4741C274.267 23.4741 278.72 24.5256 282.753 26.6284C286.81 28.7065 290.088 31.5887 292.587 35.2749L282.382 41.5835C280.947 39.4806 279.091 37.8231 276.815 36.6108C274.539 35.3986 272.065 34.7925 269.393 34.7925C264.94 34.7925 261.217 36.3016 258.224 39.3198C255.23 42.3133 253.733 46.0737 253.733 50.6011C253.733 55.1284 255.23 58.9012 258.224 61.9194C261.217 64.9129 264.94 66.4097 269.393 66.4097C272.09 66.4097 274.564 65.8159 276.815 64.6284C279.091 63.4162 280.947 61.7586 282.382 59.6558L292.587 65.9644C290.088 69.6506 286.81 72.5451 282.753 74.6479C278.72 76.7261 274.267 77.7651 269.393 77.7651ZM323.705 48.0405H348.643V51.0835C348.643 56.1304 347.505 60.6948 345.229 64.7769C342.953 68.8341 339.786 72.0132 335.729 74.314C331.696 76.6147 327.156 77.7651 322.11 77.7651C318.275 77.7651 314.663 77.0724 311.274 75.687C307.884 74.2769 304.977 72.3719 302.553 69.9722C300.153 67.5724 298.248 64.7026 296.838 61.3628C295.453 57.9982 294.76 54.411 294.76 50.6011C294.76 45.5295 295.947 40.9279 298.322 36.7964C300.722 32.6401 304.025 29.3869 308.231 27.0366C312.436 24.6616 317.112 23.4741 322.258 23.4741C326.835 23.4741 331.053 24.4142 334.912 26.2944C338.796 28.1499 341.926 30.7104 344.301 33.9761L337.473 39.3569C335.815 37.1056 333.675 35.3491 331.053 34.0874C328.455 32.8009 325.598 32.1577 322.481 32.1577C317.211 32.1577 312.82 33.9142 309.307 37.4272C305.794 40.9403 304.037 45.3315 304.037 50.6011C304.037 55.8953 305.781 60.299 309.27 63.812C312.783 67.325 317.162 69.0815 322.406 69.0815C326.711 69.0815 330.397 67.8817 333.465 65.4819C336.557 63.0822 338.45 59.9526 339.143 56.0933H323.705V48.0405ZM374.566 37.4644H376.013V46.2222H374.566C370.805 46.2222 367.849 47.286 365.697 49.4136C363.569 51.5164 362.505 54.3739 362.505 57.9858V76.8374H353.97V38.0952H362.505V43.7729C365.598 39.5672 369.618 37.4644 374.566 37.4644ZM384.309 31.5269C382.775 31.5269 381.489 31.0073 380.45 29.9683C379.411 28.9292 378.891 27.6551 378.891 26.146C378.891 24.5874 379.411 23.3009 380.45 22.2866C381.489 21.2723 382.775 20.7651 384.309 20.7651C385.868 20.7651 387.167 21.2723 388.206 22.2866C389.245 23.3009 389.764 24.5874 389.764 26.146C389.764 27.6799 389.245 28.9663 388.206 30.0054C387.167 31.0197 385.868 31.5269 384.309 31.5269ZM380.042 76.8374V38.0952H388.577V76.8374H380.042ZM426.857 22.1011H435.393V76.8374H426.857V71.271C423.443 75.6004 418.916 77.7651 413.275 77.7651C409.688 77.7651 406.435 76.8869 403.516 75.1304C400.596 73.3491 398.308 70.9123 396.65 67.8198C395.018 64.7274 394.201 61.2762 394.201 57.4663C394.201 53.6564 395.018 50.2052 396.65 47.1128C398.308 44.0203 400.596 41.5959 403.516 39.8394C406.435 38.0581 409.688 37.1675 413.275 37.1675C418.941 37.1675 423.468 39.3198 426.857 43.6245V22.1011ZM414.945 69.5269C418.359 69.5269 421.192 68.3765 423.443 66.0757C425.719 63.7502 426.857 60.8804 426.857 57.4663C426.857 54.0275 425.719 51.1577 423.443 48.8569C421.192 46.5314 418.359 45.3687 414.945 45.3687C411.507 45.3687 408.637 46.5314 406.336 48.8569C404.06 51.1577 402.922 54.0275 402.922 57.4663C402.922 60.8804 404.06 63.7502 406.336 66.0757C408.637 68.3765 411.507 69.5269 414.945 69.5269Z" fill="currentColor"/>
 </symbol></defs></svg>
 <!-- SIDEBAR -->
+<div class="mnav">
+  <div class="mnav-bar">
+<button class="mnav-toggle" onclick="mnavToggle()" aria-label="Open navigation" aria-expanded="false">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+    </button>
+<div class="mnav-brand">DMC<i>Grid</i></div>
+<button class="mnav-toggle" onclick="mnavTheme()" aria-label="Toggle theme" style="font:600 10px var(--font-m);letter-spacing:.06em">THEME</button>
+  </div>
+<div class="mnav-backdrop" id="mnav-backdrop" onclick="mnavClose()"></div>
+<nav class="mnav-drawer" id="mnav-drawer" aria-label="Mobile navigation">
+<div class="brand"><svg width="20" height="22" viewBox="0 0 96 105" style="color:var(--g-ivory)"><use href="#dmc"/></svg><span style="font:600 15px var(--font-d);color:var(--text)"><b>DMC</b><i style="color:var(--accent);font-style:normal">Grid</i></span></div>
+    <div class="side-label">Brand</div>
+    <a href="#cover" data-mnav><span class="n">01</span>Cover</a>
+    <a href="#brand-purpose" data-mnav><span class="n">02</span>Brand Purpose</a>
+    <a href="#logo" data-mnav><span class="n">03</span>Logo</a>
+    <a href="#color-system" data-mnav><span class="n">04</span>Color System</a>
+    <a href="#typography" data-mnav><span class="n">05</span>Typography</a>
+    <a href="#iconography" data-mnav><span class="n">06</span>Iconography</a>
+    <div class="side-label">Foundation</div>
+    <a href="#global-tokens" data-mnav><span class="n">07</span>Global Tokens</a>
+    <a href="#atoms" data-mnav><span class="n">08</span>Atoms & UI Kit</a>
+    <a href="#component-library" data-mnav><span class="n">08b</span>Component Library</a>
+    <a href="#forms" data-mnav><span class="n">09</span>Forms & Inputs</a>
+    <a href="#data" data-mnav><span class="n">10</span>Data Display</a>
+    <a href="#feedback" data-mnav><span class="n">11</span>Feedback</a>
+    <a href="#motion" data-mnav><span class="n">12</span>Motion</a>
+    <div class="side-label">Product</div>
+    <a href="#product-components" data-mnav><span class="n">13</span>Product Components</a>
+    <a href="#admin-states" data-mnav><span class="n">14</span>States & Access</a>
+    <a href="#patterns" data-mnav><span class="n">15</span>Page Patterns</a>
+    <a href="#dodonts" data-mnav><span class="n">16</span>Do / Don't</a>
+    <a href="#responsive" data-mnav><span class="n">17</span>Responsive</a>
+    <a href="#accessibility" data-mnav><span class="n">18</span>Accessibility</a>
+    <a href="#changelog" data-mnav><span class="n">19</span>Changelog</a>
+  </nav>
+</div>
 <aside class="sidebar">
   <div class="brand">
     <div class="brand-line" style="display:flex;align-items:center;gap:9px"><svg width="22" height="24" viewBox="0 0 96 105" style="color:var(--g-ivory);flex-shrink:0"><use href="#dmc"/></svg><span><b>DMC</b><i>Grid</i></span></div>
@@ -298,7 +356,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <a href="#changelog"><span class="n">19</span>Changelog</a>
   </nav>
   <button class="theme" onclick="const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('dmc-theme',h.dataset.theme)}catch(e){};this.textContent=h.dataset.theme==='dark'?'LIGHT MODE':'DARK MODE'">LIGHT MODE</button>
-  <div class="side-foot">v1.4 · Oct 2026</div>
+  <div class="side-foot">v1.9 · Oct 2026</div>
 </aside>
 
 <main>
@@ -1257,7 +1315,11 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <div class="demo-title">v1.6 — October 2026</div>
         <p class="copy"><b>Component Library section added (08b):</b> every product surface from the V62 prototype rebuilt as real rendered components — interactive 6-step wizard stepper, compare matrix (3 anonymous quotes), 3-option quote cards, deal sheet with the binding cost formula, RFQ feed rows with match scores, credit wallet + plans, day-wise itinerary timeline, payment methods, verification upload. Toast system live. Wizard + tabs interactive. All components theme-aware, mobile-safe (steppers and tables scroll inside their cards, never the page). Responsive overhaul: 5 breakpoints (1024/768/640/480 + desktop), zero horizontal page scroll, button contrast fixed (gold fill both themes, dark text 8.1:1), theme persistence + FOUC guard.</p>
       </div>
-      <div class="demo">
+      <div class="demo"<div class="demo">
+        <div class="demo-title">v1.9 — October 2026</div>
+        <p class="copy"><b>Mobile navigation added:</b> fixed top bar (hamburger + brand + theme toggle, blurred backdrop, 44px targets) + slide-in drawer with all 20 sections grouped Brand/Foundation/Product. Drawer closes on link tap and backdrop tap; aria-expanded + aria-label wired. Verified via Playwright at 390px: bar visible, drawer slides (translateX 0), link tap navigates + closes, zero horizontal scroll maintained. The sidebar is no longer "missing" on mobile — it's replaced.</p>
+      </div>
+      >
         <div class="demo-title">v1.7/v1.8 — October 2026</div>
         <p class="copy"><b>v1.8:</b> Real form-field components from V62 — counter steppers (interactive ±), money field with ₹ prefix + Indian grouping, AI-extract with confidence chips, radio/checkbox sets, search + filter bar with removable chips. Proposal preview (Pattern D) — the premium gold-on-dark document with day-wise timeline, inclusions, GST/TCS footer, export/send actions. <b>v1.7:</b> ROOT font fix — fonts.css url() paths were doubling the directory (all 15 webfonts 404'd since v1.2); mobile root fixes (grid min-width:0, steppers/tabs scroll in-card). Verified via real-viewpoint Playwright: 390px zero h-scroll, 16/16 fonts loaded, 0 console errors.</p>
       </div>
@@ -1329,6 +1391,26 @@ function stepper(btn, dir, id){
   v = Math.max(id === 'adl' ? 1 : 0, Math.min(id === 'adl' ? 15 : 8, v));
   el.textContent = v;
 }
+
+// mobile nav
+function mnavToggle(){
+  const d = document.getElementById('mnav-drawer'), b = document.getElementById('mnav-backdrop');
+  const open = d.classList.toggle('open');
+  b.classList.toggle('show', open);
+  document.querySelector('.mnav-toggle').setAttribute('aria-expanded', open);
+}
+function mnavClose(){
+  document.getElementById('mnav-drawer').classList.remove('open');
+  document.getElementById('mnav-backdrop').classList.remove('show');
+  document.querySelector('.mnav-toggle').setAttribute('aria-expanded', 'false');
+}
+function mnavTheme(){
+  const h = document.documentElement;
+  h.dataset.theme = h.dataset.theme === 'dark' ? 'light' : 'dark';
+  try{localStorage.setItem('dmc-theme', h.dataset.theme)}catch(e){}
+}
+// drawer links close on tap + active state
+document.querySelectorAll('[data-mnav]').forEach(a => a.addEventListener('click', mnavClose));
 </script>
 </body>
 </html>
