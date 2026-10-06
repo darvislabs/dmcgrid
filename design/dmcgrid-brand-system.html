@@ -104,6 +104,10 @@ main{margin-left:216px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .demo{border:1px solid var(--t08);border-radius:var(--r-card);padding:22px;background:var(--surface)}
 .demo-title{font:10px var(--font-m);letter-spacing:.12em;color:var(--t30);text-transform:uppercase;margin-bottom:16px}
+/* steppers never expand their parent at any width */
+.stepper{min-width:0}
+/* grid children never stretch their columns (mobile overflow root fix) */
+.grid2>*,.grid3>*,.grid4>*,.grid>*{min-width:0}
 /* ═══ MOBILE SYSTEM (Linear/Vercel-grade) ═══ */
 @media(max-width:1024px){
   .sidebar{display:none}main{margin-left:0}
@@ -128,6 +132,11 @@ main{margin-left:216px}
   div[style*="grid-template-columns:repeat(4,1fr)"],div[style*="grid-template-columns:1.2fr .8fr"]{grid-template-columns:1fr!important}
   div[style*="grid-template-columns:repeat(6,1fr)"]{grid-template-columns:repeat(3,1fr)!important}
   div[style*="grid-template-columns:repeat(12,1fr)"]{grid-template-columns:repeat(4,1fr)!important}
+  /* steppers + tab rows scroll inside their cards — never the page */
+  .stepper{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .stepper::-webkit-scrollbar{display:none}
+  .tabs{flex-wrap:wrap}
+  .day-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
   /* NO horizontal scroll: every wide table scrolls inside its own card */
   .dt{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .dt table,.dt thead,.dt tbody,.dt tr{display:table;width:100%}
