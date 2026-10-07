@@ -1,6 +1,7 @@
 /* DMCGrid self-hosted fonts — Fontshare (ITF) free license: https://www.fontshare.com/licenses
    v1.2: Satoshi PRIMARY · Cabinet Grotesk SECONDARY · JetBrains Mono numerals
-   (Lufga dropped — was Adam Ladd paid; PJS retired to fallback) */
+   (Lufga dropped — was Adam Ladd paid. PJS retained as the shipped fallback for
+   Cabinet Grotesk — it loads but never renders unless Cabinet fails. +55KB payload.) */
 @font-face {
   font-family: 'Satoshi';
   src: url('satoshi-300.woff2') format('woff2');
