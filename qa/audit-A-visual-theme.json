@@ -1,0 +1,757 @@
+{
+  "battalion": "A",
+  "bugs": [
+    {
+      "id": "A01",
+      "title": "Invisible text: color ≈ background (channel diff 0) in dark theme",
+      "severity": "Critical",
+      "category": "invisible-text",
+      "viewport": "1440x900",
+      "description": "4 element(s): text rgb(212, 180, 131) (declared rgb(212, 180, 131)) on background rgb(212, 180, 131) (from html > body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1)). Sizes: 9px/400, 11px/600. Channel diff 0 < 30 — effectively unreadable. Examples: body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1) > span.n :: \"01\" | div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(2) :: \"Quotes received\" | div.inner > div.demo:nth-of-type(11) > div:nth-of-type(1) > div:nth-of-type(2) > span.badge :: \"Match 92%\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1) > span.n",
+      "expected": "Text visually distinguishable (channel diff ≥ 30, ratio ≥ 4.5)",
+      "actual": "ratio 1:1, channel diff 0",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A01-context-dark.png",
+      "suggested_fix": "Darken text 60% toward black (≈#554834) on bg #D4B483 → ratio 4.51"
+    },
+    {
+      "id": "A02",
+      "title": "Invisible text: color ≈ background (channel diff 22) in dark theme",
+      "severity": "Critical",
+      "category": "invisible-text",
+      "viewport": "1440x900",
+      "description": "4 element(s): text rgb(247, 243, 233) (declared rgb(247, 243, 233)) on background rgb(255, 255, 255) (from html > body > aside.sidebar > button.theme). Sizes: 9px/400, 13px/700. Channel diff 22 < 30 — effectively unreadable. Examples: html > body > aside.sidebar > button.theme :: \"LIGHT MODE\" | div.demo:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1) > b :: \"Thailand\" | div.demo:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1) > b :: \"Mar 12–17\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: html > body > aside.sidebar > button.theme",
+      "expected": "Text visually distinguishable (channel diff ≥ 30, ratio ≥ 4.5)",
+      "actual": "ratio 1.11:1, channel diff 22",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A02-bug.png",
+      "suggested_fix": "Darken text 55% toward black (≈#6F6D69) on bg #FFFFFF → ratio 5.14"
+    },
+    {
+      "id": "A03",
+      "title": "Invisible text: color ≈ background (channel diff 0) in light theme",
+      "severity": "Critical",
+      "category": "invisible-text",
+      "viewport": "1440x900",
+      "description": "8 element(s): text rgb(20, 26, 34) (declared rgb(20, 26, 34)) on background rgb(20, 26, 34) (from html > body > aside.sidebar > button.theme). Sizes: 9px/400, 11px/600, 13px/400, 13px/700. Channel diff 0 < 30 — effectively unreadable. Examples: html > body > aside.sidebar > button.theme :: \"LIGHT MODE\" | div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(7) :: \"Closed\" | div.grid3:nth-of-type(2) > div.demo:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1) :: \"Destination:\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: html > body > aside.sidebar > button.theme\n(requires clicking THEME toggle first)",
+      "expected": "Text visually distinguishable (channel diff ≥ 30, ratio ≥ 4.5)",
+      "actual": "ratio 1:1, channel diff 0",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A03-bug.png",
+      "suggested_fix": "Lighten text 50% toward white (≈#8A8D91) on bg #141A22 → ratio 5.21"
+    },
+    {
+      "id": "A04",
+      "title": "Invisible text: color ≈ background (channel diff 0) in light theme",
+      "severity": "Critical",
+      "category": "invisible-text",
+      "viewport": "1440x900",
+      "description": "1 element(s): text rgb(247, 243, 233) (declared rgb(247, 243, 233)) on background rgb(247, 243, 233) (from section#cover). Sizes: 64px/600. Channel diff 0 < 30 — effectively unreadable. Examples: section#cover > div.hero-content:nth-of-type(7) > h1.hero-title :: \"From request to reality.\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#cover > div.hero-content:nth-of-type(7) > h1.hero-title\n(requires clicking THEME toggle first)",
+      "expected": "Text visually distinguishable (channel diff ≥ 30, ratio ≥ 3)",
+      "actual": "ratio 1:1, channel diff 0",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A04-bug.png",
+      "suggested_fix": "Darken text 55% toward black (≈#6F6D69) on bg #F7F3E9 → ratio 4.64"
+    },
+    {
+      "id": "A05",
+      "title": "Invisible text: color ≈ background (channel diff 21) in light theme",
+      "severity": "Critical",
+      "category": "invisible-text",
+      "viewport": "1440x900",
+      "description": "3 element(s): text rgb(20, 26, 34) (declared rgb(20, 26, 34)) on background rgb(31, 41, 55) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(1)). Sizes: 12px/500. Channel diff 21 < 30 — effectively unreadable. Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(1) :: \"✓ Quote submitted · 1 credit debited\" | div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(2) :: \"Time-wise line deleted · Undo\" | div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(3) :: \"✕ Connect failed — insufficient credits\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(1)\n(requires clicking THEME toggle first)",
+      "expected": "Text visually distinguishable (channel diff ≥ 30, ratio ≥ 4.5)",
+      "actual": "ratio 1.19:1, channel diff 21",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A05-bug.png",
+      "suggested_fix": "Lighten text 55% toward white (≈#95989C) on bg #1F2937 → ratio 5.07"
+    },
+    {
+      "id": "A06",
+      "title": "WCAG AA contrast fail (1.29:1 < 4.5:1) — rgb(251, 191, 36) on rgb(245, 158, 11) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "4 element(s): text rgb(251, 191, 36) (declared rgb(251, 191, 36)) on background rgb(245, 158, 11) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(4)). Sizes: 11px/600, 10px/600. Worst ratio 1.29:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(4) :: \"Pending approval\" | section#component-library > div.inner > div.grid2:nth-of-type(17) > div.demo:nth-of-type(2) > span.badge :: \"Pending review\" | div.grid3:nth-of-type(2) > div.demo:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3) > span.badge:nth-of-type(2) :: \"71%\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(4)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.29:1, channel diff 33",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A06-bug.png",
+      "suggested_fix": "Darken text 70% toward black (≈#4B390B) on bg #F59E0B → ratio 5.15"
+    },
+    {
+      "id": "A07",
+      "title": "WCAG AA contrast fail (1.32:1 < 4.5:1) — rgb(52, 211, 153) on rgb(16, 185, 129) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "5 element(s): text rgb(52, 211, 153) (declared rgb(52, 211, 153)) on background rgb(16, 185, 129) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(3)). Sizes: 11px/600, 10px/600. Worst ratio 1.32:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(3) :: \"Connected\" | div.inner > div.demo:nth-of-type(11) > div:nth-of-type(2) > div:nth-of-type(2) > span.badge :: \"Match 87%\" | div.grid3:nth-of-type(2) > div.demo:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1) > span.badge:nth-of-type(2) :: \"96%\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(3)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.32:1, channel diff 36",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A07-bug.png",
+      "suggested_fix": "Darken text 70% toward black (≈#103F2E) on bg #10B981 → ratio 4.66"
+    },
+    {
+      "id": "A08",
+      "title": "WCAG AA contrast fail (1.36:1 < 4.5:1) — rgb(248, 113, 113) on rgb(239, 68, 68) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "1 element(s): text rgb(248, 113, 113) (declared rgb(248, 113, 113)) on background rgb(239, 68, 68) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(5)). Sizes: 11px/600. Worst ratio 1.36:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(5) :: \"Rejected\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(5)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.36:1, channel diff 45",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A08-bug.png",
+      "suggested_fix": "Choose a color with ratio ≥ 4.5 against #EF4444"
+    },
+    {
+      "id": "A09",
+      "title": "WCAG AA contrast fail (1.45:1 < 4.5:1) — rgb(96, 165, 250) on rgb(59, 130, 246) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "4 element(s): text rgb(96, 165, 250) (declared rgb(96, 165, 250)) on background rgb(59, 130, 246) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(1)). Sizes: 11px/600. Worst ratio 1.45:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(1) :: \"Draft\" | main > div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div:nth-of-type(3) > span.badge:nth-of-type(1) :: \"Thailand ✕\" | main > div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div:nth-of-type(3) > span.badge:nth-of-type(2) :: \"Mar 2026 ✕\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(1)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.45:1, channel diff 37",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A09-bug.png",
+      "suggested_fix": "Choose a color with ratio ≥ 4.5 against #3B82F6"
+    },
+    {
+      "id": "A10",
+      "title": "WCAG AA contrast fail (1.63:1 < 4.5:1) — rgb(45, 212, 191) on rgb(14, 165, 163) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "1 element(s): text rgb(45, 212, 191) (declared rgb(45, 212, 191)) on background rgb(14, 165, 163) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(6)). Sizes: 11px/600. Worst ratio 1.63:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(6) :: \"Verified DMC\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(6)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.63:1, channel diff 47",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A10-bug.png",
+      "suggested_fix": "Choose a color with ratio ≥ 4.5 against #0EA5A3"
+    },
+    {
+      "id": "A11",
+      "title": "WCAG AA contrast fail (1.78:1 < 4.5:1) — rgb(247, 243, 233) on rgb(212, 180, 131) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "3 element(s): text rgb(247, 243, 233) (declared rgb(247, 243, 233)) on background rgb(212, 180, 131) (from html > body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1)). Sizes: 12px/400, 13px/600, 12px/600. Worst ratio 1.78:1, threshold 4.5:1 (normal text). Examples: html > body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1) :: \"Cover\" | div.inner > div.grid2:nth-of-type(17) > div.demo:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) :: \"UPI\" | main > div.grid3:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) :: \"₹1.2–1.6L\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: html > body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.78:1, channel diff 102",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A11-context-dark.png",
+      "suggested_fix": "Darken text 70% toward black (≈#4A4946) on bg #D4B483 → ratio 4.57"
+    },
+    {
+      "id": "A12",
+      "title": "WCAG AA contrast fail (2.37:1 < 4.5:1) — rgb(157, 170, 181) on rgb(255, 255, 255) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "4 element(s): text rgb(157, 170, 181) (declared rgb(157, 170, 181)) on background rgb(255, 255, 255) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(7)). Sizes: 11px/600, 13px/400. Worst ratio 2.37:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(7) :: \"Closed\" | div.grid3:nth-of-type(2) > div.demo:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(1) :: \"Destination:\" | div.grid3:nth-of-type(2) > div.demo:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > span:nth-of-type(1) :: \"Dates:\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(7)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.37:1, channel diff 98",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A12-bug.png",
+      "suggested_fix": "Darken text 30% toward black (≈#6E777F) on bg #FFFFFF → ratio 4.56"
+    },
+    {
+      "id": "A13",
+      "title": "WCAG AA contrast fail (2.65:1 < 4.5:1) — rgb(84, 87, 91) on rgb(11, 15, 20) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "24 element(s): text rgb(84, 87, 91) (declared rgba(255, 255, 255, 0.3)) on background rgb(11, 15, 20) (from html > body > aside.sidebar). Sizes: 9px/400. Worst ratio 2.65:1, threshold 4.5:1 (normal text). Examples: html > body > aside.sidebar > div.brand:nth-of-type(1) > div.brand-sub:nth-of-type(2) :: \"Brand & Design System\" | html > body > aside.sidebar > div.side-label:nth-of-type(2) :: \"Brand\" | body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(2) > span.n :: \"02\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: html > body > aside.sidebar > div.brand:nth-of-type(1) > div.brand-sub:nth-of-type(2)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.65:1, channel diff 73",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A13-bug.png",
+      "suggested_fix": "Lighten text 25% toward white (≈#7F8184) on bg #0B0F14 → ratio 4.92"
+    },
+    {
+      "id": "A14",
+      "title": "WCAG AA contrast fail (2.68:1 < 4.5:1) — rgb(86, 90, 94) on rgb(14, 19, 25) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "2 element(s): text rgb(86, 90, 94) (declared rgba(255, 255, 255, 0.3)) on background rgb(14, 19, 25) (from section#changelog). Sizes: 10px/400. Worst ratio 2.68:1, threshold 4.5:1 (normal text). Examples: section#changelog > div.inner:nth-of-type(1) > div.grid2:nth-of-type(2) > div.demo-title:nth-of-type(3) :: \"v1.7/v1.8 — October 2026\" | section#changelog > div.inner:nth-of-type(1) > div.demo-title:nth-of-type(3) :: \"v1.5 — October 2026\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: section#changelog > div.inner:nth-of-type(1) > div.grid2:nth-of-type(2) > div.demo-title:nth-of-type(3)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.68:1, channel diff 72",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A14-bug.png",
+      "suggested_fix": "Lighten text 25% toward white (≈#808386) on bg #0E1319 → ratio 4.91"
+    },
+    {
+      "id": "A15",
+      "title": "WCAG AA contrast fail (2.7:1 < 4.5:1) — rgb(91, 95, 101) on rgb(21, 27, 35) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "86 element(s): text rgb(91, 95, 101) (declared rgba(255, 255, 255, 0.3)) on background rgb(21, 27, 35) (from section#brand-purpose > div.inner > div.grid2:nth-of-type(4) > div.demo:nth-of-type(1)). Sizes: 10px/400, 11px/500, 10px/500, 9px/400, 13px/400. Worst ratio 2.7:1, threshold 4.5:1 (normal text). Examples: section#brand-purpose > div.inner > div.grid2:nth-of-type(4) > div.demo:nth-of-type(1) > div.demo-title :: \"We sound like\" | section#brand-purpose > div.inner > div.grid2:nth-of-type(4) > div.demo:nth-of-type(2) > div.demo-title :: \"We never sound like\" | section#color-system > div.inner > div.grid2:nth-of-type(9) > div.demo:nth-of-type(1) > div.demo-title :: \"One accent\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: section#brand-purpose > div.inner > div.grid2:nth-of-type(4) > div.demo:nth-of-type(1) > div.demo-title",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.7:1, channel diff 70",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A15-bug.png",
+      "suggested_fix": "Lighten text 25% toward white (≈#84878C) on bg #151B23 → ratio 4.80"
+    },
+    {
+      "id": "A16",
+      "title": "WCAG AA contrast fail (3.15:1 < 4.5:1) — rgb(92, 107, 119) on rgb(21, 27, 35) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "34 element(s): text rgb(92, 107, 119) (declared rgb(92, 107, 119)) on background rgb(21, 27, 35) (from section#atoms > div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1)). Sizes: 12px/500, 10px/600, 12px/600, 11px/400, 13px/400. Worst ratio 3.15:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1) > div.tabs:nth-of-type(2) > button.tab:nth-of-type(2) :: \"Deal sheet\" | div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1) > div.tabs:nth-of-type(2) > button.tab:nth-of-type(3) :: \"Proposal\" | div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1) > div.tabs:nth-of-type(2) > button.tab:nth-of-type(4) :: \"History\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1) > div.tabs:nth-of-type(2) > button.tab:nth-of-type(2)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 3.15:1, channel diff 84",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A16-bug.png",
+      "suggested_fix": "Lighten text 20% toward white (≈#7D8992) on bg #151B23 → ratio 4.81"
+    },
+    {
+      "id": "A17",
+      "title": "WCAG AA contrast fail (3.4:1 < 4.5:1) — rgb(92, 107, 119) on rgb(14, 19, 25) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "6 element(s): text rgb(92, 107, 119) (declared rgb(92, 107, 119)) on background rgb(14, 19, 25) (from section#typography). Sizes: 10px/600. Worst ratio 3.4:1, threshold 4.5:1 (normal text). Examples: div.table-wrap:nth-of-type(4) > table.dt > tbody > tr:nth-of-type(1) > th:nth-of-type(1) :: \"Token\" | div.table-wrap:nth-of-type(4) > table.dt > tbody > tr:nth-of-type(1) > th:nth-of-type(2) :: \"Face\" | div.table-wrap:nth-of-type(4) > table.dt > tbody > tr:nth-of-type(1) > th:nth-of-type(3) :: \"Size / LH\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: div.table-wrap:nth-of-type(4) > table.dt > tbody > tr:nth-of-type(1) > th:nth-of-type(1)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 3.4:1, channel diff 94",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A17-bug.png",
+      "suggested_fix": "Lighten text 15% toward white (≈#74818B) on bg #0E1319 → ratio 4.68"
+    },
+    {
+      "id": "A18",
+      "title": "WCAG AA contrast fail (3.5:1 < 4.5:1) — rgb(92, 107, 119) on rgb(11, 15, 20) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "25 element(s): text rgb(92, 107, 119) (declared rgb(92, 107, 119)) on background rgb(11, 15, 20) (from html > body > aside.sidebar). Sizes: 12px/400. Worst ratio 3.5:1, threshold 4.5:1 (normal text). Examples: html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(2) :: \"Brand Purpose\" | html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(3) :: \"Logo\" | html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(4) :: \"Color System\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(2)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 3.5:1, channel diff 99",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A18-bug.png",
+      "suggested_fix": "Lighten text 15% toward white (≈#74818B) on bg #0B0F14 → ratio 4.83"
+    },
+    {
+      "id": "A19",
+      "title": "WCAG AA contrast fail (3.86:1 < 4.5:1) — rgb(107, 114, 128) on rgb(14, 19, 25) in dark theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "6 element(s): text rgb(107, 114, 128) (declared rgb(107, 114, 128)) on background rgb(14, 19, 25) (from section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(2)). Sizes: 9px/400. Worst ratio 3.86:1, threshold 4.5:1 (normal text). Examples: section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(2) > small :: \"Primary Horizontal — light\" | section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(4) > small :: \"Symbol Only — light\" | section#logo > div.inner > div:nth-of-type(6) > div.demo:nth-of-type(1) > small :: \"Full — black mark\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(2) > small",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 3.86:1, channel diff 103",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A19-bug.png",
+      "suggested_fix": "Lighten text 10% toward white (≈#7A808D) on bg #0E1319 → ratio 4.71"
+    },
+    {
+      "id": "A20",
+      "title": "WCAG AA contrast fail (1.72:1 < 4.5:1) — rgb(185, 28, 28) on rgb(239, 68, 68) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "1 element(s): text rgb(185, 28, 28) (declared rgb(185, 28, 28)) on background rgb(239, 68, 68) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(5)). Sizes: 11px/600. Worst ratio 1.72:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(5) :: \"Rejected\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(5)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.72:1, channel diff 54",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A20-bug.png",
+      "suggested_fix": "Choose a color with ratio ≥ 4.5 against #EF4444"
+    },
+    {
+      "id": "A21",
+      "title": "WCAG AA contrast fail (1.81:1 < 4.5:1) — rgb(15, 118, 110) on rgb(14, 165, 163) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "1 element(s): text rgb(15, 118, 110) (declared rgb(15, 118, 110)) on background rgb(14, 165, 163) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(6)). Sizes: 11px/600. Worst ratio 1.81:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(6) :: \"Verified DMC\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(6)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.81:1, channel diff 53",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A21-bug.png",
+      "suggested_fix": "Choose a color with ratio ≥ 4.5 against #0EA5A3"
+    },
+    {
+      "id": "A22",
+      "title": "WCAG AA contrast fail (1.82:1 < 4.5:1) — rgb(29, 78, 216) on rgb(59, 130, 246) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "4 element(s): text rgb(29, 78, 216) (declared rgb(29, 78, 216)) on background rgb(59, 130, 246) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(1)). Sizes: 11px/600. Worst ratio 1.82:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(1) :: \"Draft\" | main > div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div:nth-of-type(3) > span.badge:nth-of-type(1) :: \"Thailand ✕\" | main > div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div:nth-of-type(3) > span.badge:nth-of-type(2) :: \"Mar 2026 ✕\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(1)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.82:1, channel diff 52",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A22-bug.png",
+      "suggested_fix": "Choose a color with ratio ≥ 4.5 against #3B82F6"
+    },
+    {
+      "id": "A23",
+      "title": "WCAG AA contrast fail (1.97:1 < 4.5:1) — rgb(212, 180, 131) on rgb(255, 255, 255) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "6 element(s): text rgb(212, 180, 131) (declared rgb(212, 180, 131)) on background rgb(255, 255, 255) (from section#logo > div.inner > div:nth-of-type(10) > div.demo:nth-of-type(1)). Sizes: 10px/400, 12px/700. Worst ratio 1.97:1, threshold 4.5:1 (normal text). Examples: div.inner > div:nth-of-type(10) > div.demo:nth-of-type(1) > div > div:nth-of-type(1) :: \"X\" | div.inner > div:nth-of-type(10) > div.demo:nth-of-type(1) > div > div:nth-of-type(2) :: \"X\" | div.inner > div:nth-of-type(10) > div.demo:nth-of-type(1) > div > div:nth-of-type(3) :: \"X\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div:nth-of-type(10) > div.demo:nth-of-type(1) > div > div:nth-of-type(1)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 1.97:1, channel diff 124",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A23-bug.png",
+      "suggested_fix": "Darken text 40% toward black (≈#7F6C4F) on bg #FFFFFF → ratio 5.05"
+    },
+    {
+      "id": "A24",
+      "title": "WCAG AA contrast fail (2.16:1 < 4.5:1) — rgb(4, 120, 87) on rgb(16, 185, 129) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "5 element(s): text rgb(4, 120, 87) (declared rgb(4, 120, 87)) on background rgb(16, 185, 129) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(3)). Sizes: 11px/600, 10px/600. Worst ratio 2.16:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(3) :: \"Connected\" | div.inner > div.demo:nth-of-type(11) > div:nth-of-type(2) > div:nth-of-type(2) > span.badge :: \"Match 87%\" | div.grid3:nth-of-type(2) > div.demo:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1) > span.badge:nth-of-type(2) :: \"96%\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(3)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.16:1, channel diff 65",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A24-bug.png",
+      "suggested_fix": "Darken text 45% toward black (≈#024230) on bg #10B981 → ratio 4.54"
+    },
+    {
+      "id": "A25",
+      "title": "WCAG AA contrast fail (2.29:1 < 4.5:1) — rgb(156, 163, 175) on rgb(247, 243, 233) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "12 element(s): text rgb(156, 163, 175) (declared rgb(156, 163, 175)) on background rgb(247, 243, 233) (from section#color-system). Sizes: 9px/500. Worst ratio 2.29:1, threshold 4.5:1 (normal text). Examples: section#color-system > div.inner > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2) :: \"50\" | section#color-system > div.inner > div:nth-of-type(7) > div:nth-of-type(2) > div:nth-of-type(2) :: \"100\" | section#color-system > div.inner > div:nth-of-type(7) > div:nth-of-type(3) > div:nth-of-type(2) :: \"200\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#color-system > div.inner > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.29:1, channel diff 91",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A25-bug.png",
+      "suggested_fix": "Darken text 35% toward black (≈#656A72) on bg #F7F3E9 → ratio 4.91"
+    },
+    {
+      "id": "A26",
+      "title": "WCAG AA contrast fail (2.46:1 < 4.5:1) — rgb(153, 151, 146) on rgb(241, 235, 221) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "2 element(s): text rgb(153, 151, 146) (declared rgba(20, 26, 34, 0.4)) on background rgb(241, 235, 221) (from section#changelog). Sizes: 10px/400. Worst ratio 2.46:1, threshold 4.5:1 (normal text). Examples: section#changelog > div.inner:nth-of-type(1) > div.grid2:nth-of-type(2) > div.demo-title:nth-of-type(3) :: \"v1.7/v1.8 — October 2026\" | section#changelog > div.inner:nth-of-type(1) > div.demo-title:nth-of-type(3) :: \"v1.5 — October 2026\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#changelog > div.inner:nth-of-type(1) > div.grid2:nth-of-type(2) > div.demo-title:nth-of-type(3)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.46:1, channel diff 88",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A26-bug.png",
+      "suggested_fix": "Darken text 30% toward black (≈#6B6A66) on bg #F1EBDD → ratio 4.57"
+    },
+    {
+      "id": "A27",
+      "title": "WCAG AA contrast fail (2.48:1 < 4.5:1) — rgb(156, 156, 153) on rgb(247, 243, 233) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "24 element(s): text rgb(156, 156, 153) (declared rgba(20, 26, 34, 0.4)) on background rgb(247, 243, 233) (from html > body > aside.sidebar). Sizes: 9px/400. Worst ratio 2.48:1, threshold 4.5:1 (normal text). Examples: html > body > aside.sidebar > div.brand:nth-of-type(1) > div.brand-sub:nth-of-type(2) :: \"Brand & Design System\" | html > body > aside.sidebar > div.side-label:nth-of-type(2) :: \"Brand\" | body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(2) > span.n :: \"02\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: html > body > aside.sidebar > div.brand:nth-of-type(1) > div.brand-sub:nth-of-type(2)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.48:1, channel diff 91",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A27-bug.png",
+      "suggested_fix": "Darken text 30% toward black (≈#6D6D6B) on bg #F7F3E9 → ratio 4.67"
+    },
+    {
+      "id": "A28",
+      "title": "WCAG AA contrast fail (2.51:1 < 4.5:1) — rgb(146, 96, 10) on rgb(245, 158, 11) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "4 element(s): text rgb(146, 96, 10) (declared rgb(146, 96, 10)) on background rgb(245, 158, 11) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(4)). Sizes: 11px/600, 10px/600. Worst ratio 2.51:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(4) :: \"Pending approval\" | section#component-library > div.inner > div.grid2:nth-of-type(17) > div.demo:nth-of-type(2) > span.badge :: \"Pending review\" | div.grid3:nth-of-type(2) > div.demo:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3) > span.badge:nth-of-type(2) :: \"71%\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(4)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.51:1, channel diff 99",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A28-bug.png",
+      "suggested_fix": "Darken text 40% toward black (≈#583A06) on bg #F59E0B → ratio 4.86"
+    },
+    {
+      "id": "A29",
+      "title": "WCAG AA contrast fail (2.53:1 < 4.5:1) — rgb(161, 163, 167) on rgb(255, 255, 255) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "86 element(s): text rgb(161, 163, 167) (declared rgba(20, 26, 34, 0.4)) on background rgb(255, 255, 255) (from section#brand-purpose > div.inner > div.grid2:nth-of-type(4) > div.demo:nth-of-type(1)). Sizes: 10px/400, 11px/500, 10px/500, 9px/400, 13px/400. Worst ratio 2.53:1, threshold 4.5:1 (normal text). Examples: section#brand-purpose > div.inner > div.grid2:nth-of-type(4) > div.demo:nth-of-type(1) > div.demo-title :: \"We sound like\" | section#brand-purpose > div.inner > div.grid2:nth-of-type(4) > div.demo:nth-of-type(2) > div.demo-title :: \"We never sound like\" | section#color-system > div.inner > div.grid2:nth-of-type(9) > div.demo:nth-of-type(1) > div.demo-title :: \"One accent\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#brand-purpose > div.inner > div.grid2:nth-of-type(4) > div.demo:nth-of-type(1) > div.demo-title\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.53:1, channel diff 94",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A29-bug.png",
+      "suggested_fix": "Darken text 30% toward black (≈#717275) on bg #FFFFFF → ratio 4.81"
+    },
+    {
+      "id": "A30",
+      "title": "WCAG AA contrast fail (2.54:1 < 4.5:1) — rgb(156, 163, 175) on rgb(255, 255, 255) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "19 element(s): text rgb(156, 163, 175) (declared rgb(156, 163, 175)) on background rgb(255, 255, 255) (from section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(1)). Sizes: 9px/400, 10px/400. Worst ratio 2.54:1, threshold 4.5:1 (normal text). Examples: section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(1) > small :: \"Primary Horizontal — dark\" | section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(3) > small :: \"Symbol Only — dark\" | section#logo > div.inner > div:nth-of-type(5) > div.demo:nth-of-type(1) > small :: \"Full — transparent\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(1) > small\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.54:1, channel diff 99",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A30-bug.png",
+      "suggested_fix": "Darken text 30% toward black (≈#6D727A) on bg #FFFFFF → ratio 4.83"
+    },
+    {
+      "id": "A31",
+      "title": "WCAG AA contrast fail (2.54:1 < 4.5:1) — rgb(16, 185, 129) on rgb(255, 255, 255) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "3 element(s): text rgb(16, 185, 129) (declared rgb(16, 185, 129)) on background rgb(255, 255, 255) (from div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div.grid3:nth-of-type(2) > div.kpi:nth-of-type(1)). Sizes: 11px/600, 10px/400. Worst ratio 2.54:1, threshold 4.5:1 (normal text). Examples: div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div.grid3:nth-of-type(2) > div.kpi:nth-of-type(1) > div.k-delta:nth-of-type(3) :: \"▲ 3 this week\" | div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div.grid3:nth-of-type(2) > div.kpi:nth-of-type(3) > div.k-delta:nth-of-type(3) :: \"▲ 1.1 pts\" | section#dodonts > div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div.demo-title :: \"DO\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div.grid3:nth-of-type(2) > div.kpi:nth-of-type(1) > div.k-delta:nth-of-type(3)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.54:1, channel diff 239",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A31-bug.png",
+      "suggested_fix": "Darken text 30% toward black (≈#0B825A) on bg #FFFFFF → ratio 4.85"
+    },
+    {
+      "id": "A32",
+      "title": "WCAG AA contrast fail (2.69:1 < 4.5:1) — rgb(138, 101, 36) on rgb(212, 180, 131) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "4 element(s): text rgb(138, 101, 36) (declared rgb(138, 101, 36)) on background rgb(212, 180, 131) (from html > body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1)). Sizes: 9px/400, 11px/600. Worst ratio 2.69:1, threshold 4.5:1 (normal text). Examples: body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1) > span.n :: \"01\" | div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(2) :: \"Quotes received\" | div.inner > div.demo:nth-of-type(11) > div:nth-of-type(1) > div:nth-of-type(2) > span.badge :: \"Match 92%\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1) > span.n\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.69:1, channel diff 95",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A32-context-light.png",
+      "suggested_fix": "Darken text 35% toward black (≈#5A4217) on bg #D4B483 → ratio 4.81"
+    },
+    {
+      "id": "A33",
+      "title": "WCAG AA contrast fail (2.72:1 < 4.5:1) — rgb(144, 143, 139) on rgb(241, 235, 221) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "6 element(s): text rgb(144, 143, 139) (declared rgba(20, 26, 34, 0.44)) on background rgb(241, 235, 221) (from section#typography). Sizes: 10px/600. Worst ratio 2.72:1, threshold 4.5:1 (normal text). Examples: div.table-wrap:nth-of-type(4) > table.dt > tbody > tr:nth-of-type(1) > th:nth-of-type(1) :: \"Token\" | div.table-wrap:nth-of-type(4) > table.dt > tbody > tr:nth-of-type(1) > th:nth-of-type(2) :: \"Face\" | div.table-wrap:nth-of-type(4) > table.dt > tbody > tr:nth-of-type(1) > th:nth-of-type(3) :: \"Size / LH\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.table-wrap:nth-of-type(4) > table.dt > tbody > tr:nth-of-type(1) > th:nth-of-type(1)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.72:1, channel diff 97",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A33-bug.png",
+      "suggested_fix": "Darken text 30% toward black (≈#656461) on bg #F1EBDD → ratio 4.97"
+    },
+    {
+      "id": "A34",
+      "title": "WCAG AA contrast fail (2.75:1 < 4.5:1) — rgb(147, 148, 145) on rgb(247, 243, 233) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "25 element(s): text rgb(147, 148, 145) (declared rgba(20, 26, 34, 0.44)) on background rgb(247, 243, 233) (from html > body > aside.sidebar). Sizes: 12px/400. Worst ratio 2.75:1, threshold 4.5:1 (normal text). Examples: html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(2) :: \"Brand Purpose\" | html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(3) :: \"Logo\" | html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(4) :: \"Color System\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(2)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.75:1, channel diff 100",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A34-bug.png",
+      "suggested_fix": "Darken text 25% toward black (≈#6E6F6D) on bg #F7F3E9 → ratio 4.56"
+    },
+    {
+      "id": "A35",
+      "title": "WCAG AA contrast fail (2.82:1 < 4.5:1) — rgb(152, 154, 158) on rgb(255, 255, 255) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "34 element(s): text rgb(152, 154, 158) (declared rgba(20, 26, 34, 0.44)) on background rgb(255, 255, 255) (from section#atoms > div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1)). Sizes: 12px/500, 10px/600, 12px/600, 11px/400, 13px/400. Worst ratio 2.82:1, threshold 4.5:1 (normal text). Examples: div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1) > div.tabs:nth-of-type(2) > button.tab:nth-of-type(2) :: \"Deal sheet\" | div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1) > div.tabs:nth-of-type(2) > button.tab:nth-of-type(3) :: \"Proposal\" | div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1) > div.tabs:nth-of-type(2) > button.tab:nth-of-type(4) :: \"History\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(1) > div.tabs:nth-of-type(2) > button.tab:nth-of-type(2)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 2.82:1, channel diff 103",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A35-bug.png",
+      "suggested_fix": "Darken text 25% toward black (≈#727477) on bg #FFFFFF → ratio 4.71"
+    },
+    {
+      "id": "A36",
+      "title": "WCAG AA contrast fail (3.76:1 < 4.5:1) — rgb(239, 68, 68) on rgb(255, 255, 255) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "5 element(s): text rgb(239, 68, 68) (declared rgb(239, 68, 68)) on background rgb(255, 255, 255) (from div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div.grid3:nth-of-type(2) > div.kpi:nth-of-type(2)). Sizes: 11px/600, 11px/400, 12px/400, 10px/400. Worst ratio 3.76:1, threshold 4.5:1 (normal text). Examples: div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div.grid3:nth-of-type(2) > div.kpi:nth-of-type(2) > div.k-delta:nth-of-type(3) :: \"▼ used 2 today\" | div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div.field:nth-of-type(4) > div.err-msg :: \"Enter a realistic budget — minimum ₹5,000 per person\" | div.inner > div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div:nth-of-type(4) > p.copy :: \"Couldn't load quotes.\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.grid2:nth-of-type(3) > div.demo:nth-of-type(2) > div.grid3:nth-of-type(2) > div.kpi:nth-of-type(2) > div.k-delta:nth-of-type(3)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 3.76:1, channel diff 187",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A36-bug.png",
+      "suggested_fix": "Darken text 10% toward black (≈#D73D3D) on bg #FFFFFF → ratio 4.53"
+    },
+    {
+      "id": "A37",
+      "title": "WCAG AA contrast fail (4.06:1 < 4.5:1) — rgb(113, 114, 113) on rgb(241, 235, 221) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "8 element(s): text rgb(113, 114, 113) (declared rgba(20, 26, 34, 0.58)) on background rgb(241, 235, 221) (from section#logo). Sizes: 12px/400. Worst ratio 4.06:1, threshold 4.5:1 (normal text). Examples: section#logo > div.inner > div.sec-head:nth-of-type(1) > p.sec-desc :: \"The mark: a curved path forming a D and a journey — \"a path \" | section#typography > div.inner > div.sec-head:nth-of-type(1) > p.sec-desc :: \"Satoshi is the primary voice — display, headings, product UI\" | section#global-tokens > div.inner > div.sec-head:nth-of-type(1) > p.sec-desc :: \"Radii, spacing, elevation, motion. The full token layer ship\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#logo > div.inner > div.sec-head:nth-of-type(1) > p.sec-desc\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 4.06:1, channel diff 128",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A37-bug.png",
+      "suggested_fix": "Darken text 10% toward black (≈#666766) on bg #F1EBDD → ratio 4.81"
+    },
+    {
+      "id": "A38",
+      "title": "WCAG AA contrast fail (4.07:1 < 4.5:1) — rgb(107, 114, 128) on rgb(241, 235, 221) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "6 element(s): text rgb(107, 114, 128) (declared rgb(107, 114, 128)) on background rgb(241, 235, 221) (from section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(2)). Sizes: 9px/400. Worst ratio 4.07:1, threshold 4.5:1 (normal text). Examples: section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(2) > small :: \"Primary Horizontal — light\" | section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(4) > small :: \"Symbol Only — light\" | section#logo > div.inner > div:nth-of-type(6) > div.demo:nth-of-type(1) > small :: \"Full — black mark\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#logo > div.inner > div:nth-of-type(3) > div.demo:nth-of-type(2) > small\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 4.07:1, channel diff 134",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A38-bug.png",
+      "suggested_fix": "Darken text 10% toward black (≈#606773) on bg #F1EBDD → ratio 4.81"
+    },
+    {
+      "id": "A39",
+      "title": "WCAG AA contrast fail (4.18:1 < 4.5:1) — rgb(115, 117, 118) on rgb(247, 243, 233) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "11 element(s): text rgb(115, 117, 118) (declared rgba(20, 26, 34, 0.58)) on background rgb(247, 243, 233) (from section#cover). Sizes: 10px/600, 12px/400. Worst ratio 4.18:1, threshold 4.5:1 (normal text). Examples: section#cover > div.hero-content:nth-of-type(7) > div.hero-ver:nth-of-type(4) :: \"SATOSHI · CABINET GROTESK · JETBRAINS MONO\" | section#brand-purpose > div.inner > div.sec-head:nth-of-type(1) > p.sec-desc :: \"What DMCGrid stands for, the promise it makes to both sides \" | section#color-system > div.inner > div.sec-head:nth-of-type(1) > p.sec-desc :: \"Midnight-first dark scheme with Sand Gold as the single acce\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#cover > div.hero-content:nth-of-type(7) > div.hero-ver:nth-of-type(4)\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 4.18:1, channel diff 132",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A39-bug.png",
+      "suggested_fix": "Darken text 5% toward black (≈#6D6F70) on bg #F7F3E9 → ratio 4.55"
+    },
+    {
+      "id": "A40",
+      "title": "WCAG AA contrast fail (4.31:1 < 4.5:1) — rgb(119, 122, 127) on rgb(255, 255, 255) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "16 element(s): text rgb(119, 122, 127) (declared rgba(20, 26, 34, 0.58)) on background rgb(255, 255, 255) (from section#component-library > div.inner > div.demo:nth-of-type(3)). Sizes: 12px/400, 11px/400, 11px/600, 13px/500, 13px/400. Worst ratio 4.31:1, threshold 4.5:1 (normal text). Examples: section#component-library > div.inner > div.demo:nth-of-type(3) > div:nth-of-type(2) > span.copy :: \"Click Continue — stepper advances. Sticky footer pattern (Ba\" | div.inner > div.demo:nth-of-type(11) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) :: \"Budget band ₹1.4–1.8L · Breakfast + transfers · 4★ preferred\" | div.inner > div.demo:nth-of-type(11) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) :: \"Budget band ₹2.2–2.8L · Desert safari + Marina · Visa needed\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#component-library > div.inner > div.demo:nth-of-type(3) > div:nth-of-type(2) > span.copy\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 4.31:1, channel diff 136",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A40-bug.png",
+      "suggested_fix": "Darken text 5% toward black (≈#717479) on bg #FFFFFF → ratio 4.70"
+    },
+    {
+      "id": "A41",
+      "title": "WCAG AA contrast fail (4.45:1 < 4.5:1) — rgb(138, 101, 36) on rgb(241, 235, 221) in light theme",
+      "severity": "High",
+      "category": "contrast",
+      "viewport": "1440x900",
+      "description": "18 element(s): text rgb(138, 101, 36) (declared rgb(138, 101, 36)) on background rgb(241, 235, 221) (from section#logo). Sizes: 10px/400. Worst ratio 4.45:1, threshold 4.5:1 (normal text). Examples: section#logo > div.inner > div.sec-head:nth-of-type(1) > div.sec-kicker :: \"BRAND\" | section#logo > div.inner > div.mini-label:nth-of-type(2) :: \"Core lockups\" | section#logo > div.inner > div.mini-label:nth-of-type(4) :: \"Official variations — transparent set (from Notion)\"",
+      "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#logo > div.inner > div.sec-head:nth-of-type(1) > div.sec-kicker\n(requires clicking THEME toggle first)",
+      "expected": "Contrast ratio ≥ 4.5:1",
+      "actual": "ratio 4.45:1, channel diff 185",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A41-bug.png",
+      "suggested_fix": "Darken text 5% toward black (≈#836022) on bg #F1EBDD → ratio 4.83"
+    }
+  ],
+  "bug_count": 41,
+  "checks_passed": [
+    "theme toggle switches dark→light (html[data-theme])",
+    "localStorage 'dmc-theme' persisted after toggle",
+    "reload keeps light theme (html[data-theme] + localStorage)",
+    "no FOUC on reload (rAF theme samples all light)",
+    "gold buttons rgb(212,180,131) fill with dark AA text in BOTH themes"
+  ],
+  "checks_failed": [],
+  "check_details": [
+    {
+      "check": "theme toggle switches dark→light (html[data-theme])",
+      "passed": true,
+      "detail": "before=dark after=light"
+    },
+    {
+      "check": "localStorage 'dmc-theme' persisted after toggle",
+      "passed": true,
+      "detail": "localStorage.dmc-theme=light"
+    },
+    {
+      "check": "reload keeps light theme (html[data-theme] + localStorage)",
+      "passed": true,
+      "detail": "after reload: theme=light ls=light"
+    },
+    {
+      "check": "no FOUC on reload (rAF theme samples all light)",
+      "passed": true,
+      "detail": "43 rAF samples, all light"
+    },
+    {
+      "check": "gold buttons rgb(212,180,131) fill with dark AA text in BOTH themes",
+      "passed": true,
+      "detail": "dark: 3 gold variants, 0 issues; light: 3 variants, 0 issues"
+    }
+  ],
+  "meta": {
+    "url_used": "http://127.0.0.1:8778/dmcgrid-brand-system.html",
+    "url_requested": "https://dmcgrid.gomedicure.com",
+    "viewport": "1440x900",
+    "sweep_counts": {
+      "dark_elements": 832,
+      "light_elements": 832,
+      "dark_button_variants": 14,
+      "light_button_variants": 14
+    },
+    "gold_variants_found": {
+      "dark": [
+        "btn btn-gold → rgb(212, 180, 131)/rgb(11, 15, 20)",
+        "btn btn-gold btn-sm → rgb(212, 180, 131)/rgb(11, 15, 20)",
+        "btn btn-gold btn-lg → rgb(212, 180, 131)/rgb(11, 15, 20)"
+      ],
+      "light": [
+        "btn btn-gold → rgb(212, 180, 131)/rgb(11, 15, 20)",
+        "btn btn-gold btn-sm → rgb(212, 180, 131)/rgb(11, 15, 20)",
+        "btn btn-gold btn-lg → rgb(212, 180, 131)/rgb(11, 15, 20)"
+      ]
+    },
+    "worst_contrast": {
+      "dark": [
+        "1.29:1 — rgb(251, 191, 36) on rgb(245, 158, 11) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(4)) x4",
+        "1.32:1 — rgb(52, 211, 153) on rgb(16, 185, 129) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(3)) x5",
+        "1.36:1 — rgb(248, 113, 113) on rgb(239, 68, 68) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(5)) x1",
+        "1.45:1 — rgb(96, 165, 250) on rgb(59, 130, 246) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(1)) x4",
+        "1.63:1 — rgb(45, 212, 191) on rgb(14, 165, 163) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(6)) x1",
+        "1.78:1 — rgb(247, 243, 233) on rgb(212, 180, 131) (solid, from html > body > aside.sidebar > nav.nav:nth-of-type(1) > a.active:nth-of-type(1)) x3",
+        "2.37:1 — rgb(157, 170, 181) on rgb(255, 255, 255) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(7)) x4",
+        "2.65:1 — rgb(84, 87, 91) on rgb(11, 15, 20) (solid, from html > body > aside.sidebar) x24"
+      ],
+      "light": [
+        "1.72:1 — rgb(185, 28, 28) on rgb(239, 68, 68) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(5)) x1",
+        "1.81:1 — rgb(15, 118, 110) on rgb(14, 165, 163) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(6)) x1",
+        "1.82:1 — rgb(29, 78, 216) on rgb(59, 130, 246) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(1)) x4",
+        "1.97:1 — rgb(212, 180, 131) on rgb(255, 255, 255) (solid, from section#logo > div.inner > div:nth-of-type(10) > div.demo:nth-of-type(1)) x6",
+        "2.16:1 — rgb(4, 120, 87) on rgb(16, 185, 129) (solid, from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(2) > div:nth-of-type(2) > span.badge:nth-of-type(3)) x5",
+        "2.29:1 — rgb(156, 163, 175) on rgb(247, 243, 233) (solid, from section#color-system) x12",
+        "2.46:1 — rgb(153, 151, 146) on rgb(241, 235, 221) (solid, from section#changelog) x2",
+        "2.48:1 — rgb(156, 156, 153) on rgb(247, 243, 233) (solid, from html > body > aside.sidebar) x24"
+      ]
+    },
+    "hidden_text_elements": {
+      "dark": 48,
+      "light": 48,
+      "samples": {
+        "dark": [
+          {
+            "path": "html > body > div.mnav > div.mnav-bar:nth-of-type(1) > div.mnav-brand",
+            "text": "DMC",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "DIV",
+            "cls": "mnav-brand"
+          },
+          {
+            "path": "body > div.mnav > div.mnav-bar:nth-of-type(1) > div.mnav-brand > i",
+            "text": "Grid",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "I",
+            "cls": ""
+          },
+          {
+            "path": "html > body > div.mnav > div.mnav-bar:nth-of-type(1) > button.mnav-toggle:nth-of-type(2)",
+            "text": "THEME",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "BUTTON",
+            "cls": "mnav-toggle"
+          },
+          {
+            "path": "nav#mnav-drawer > div.brand:nth-of-type(1) > span > b",
+            "text": "DMC",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "B",
+            "cls": ""
+          },
+          {
+            "path": "nav#mnav-drawer > div.brand:nth-of-type(1) > span > i",
+            "text": "Grid",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "I",
+            "cls": ""
+          },
+          {
+            "path": "nav#mnav-drawer > div.side-label:nth-of-type(2)",
+            "text": "Brand",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "DIV",
+            "cls": "side-label"
+          }
+        ],
+        "light": [
+          {
+            "path": "html > body > div.mnav > div.mnav-bar:nth-of-type(1) > div.mnav-brand",
+            "text": "DMC",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "DIV",
+            "cls": "mnav-brand"
+          },
+          {
+            "path": "body > div.mnav > div.mnav-bar:nth-of-type(1) > div.mnav-brand > i",
+            "text": "Grid",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "I",
+            "cls": ""
+          },
+          {
+            "path": "html > body > div.mnav > div.mnav-bar:nth-of-type(1) > button.mnav-toggle:nth-of-type(2)",
+            "text": "THEME",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "BUTTON",
+            "cls": "mnav-toggle"
+          },
+          {
+            "path": "nav#mnav-drawer > div.brand:nth-of-type(1) > span > b",
+            "text": "DMC",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "B",
+            "cls": ""
+          },
+          {
+            "path": "nav#mnav-drawer > div.brand:nth-of-type(1) > span > i",
+            "text": "Grid",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "I",
+            "cls": ""
+          },
+          {
+            "path": "nav#mnav-drawer > div.side-label:nth-of-type(2)",
+            "text": "Brand",
+            "reason": "zero-size-box",
+            "opacity": "1",
+            "w": 0,
+            "h": 0,
+            "tag": "DIV",
+            "cls": "side-label"
+          }
+        ]
+      }
+    },
+    "console_errors": [],
+    "screenshots": [
+      "dark-default.png",
+      "dark-default-full.png",
+      "light.png",
+      "light-full.png",
+      "reload-immediate.png"
+    ]
+  }
+}

@@ -677,6 +677,18 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <div class="tabs" style="margin-bottom:18px">
           <button class="tab active">Compare</button><button class="tab">Deal sheet</button><button class="tab">Proposal</button><button class="tab">History</button>
         </div>
+        <div class="tabpanel">
+          <p class="copy" style="margin:8px 0 0">Compare view — side-by-side anonymous quotes. Prices in mono tabular, winner highlighted with the gold ring. Reveal DMC identity only after Connect.</p>
+        </div>
+        <div class="tabpanel" style="display:none">
+          <p class="copy" style="margin:8px 0 0">Deal sheet view — the binding quote: net + margin + ancillary → +GST 18% → +TCS 2% → customer price. Every number mono, right-aligned.</p>
+        </div>
+        <div class="tabpanel" style="display:none">
+          <p class="copy" style="margin:8px 0 0">Proposal view — the client-facing document (Pattern D): premium gold-on-dark, day-wise timeline, inclusions/exclusions footer.</p>
+        </div>
+        <div class="tabpanel" style="display:none">
+          <p class="copy" style="margin:8px 0 0">History view — every quote sent, won, lost. Status dots + text (never color alone), timestamps in mono.</p>
+        </div>
         <div class="stepper">
           <div class="step done"><span class="n">✓</span>Travel</div><div class="bar"></div>
           <div class="step done"><span class="n">✓</span>Stays</div><div class="bar"></div>
@@ -1031,12 +1043,36 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">Time-wise itinerary (day tabs + timeline)</div>
         <div class="tabs" style="margin-bottom:14px"><button class="tab active">Day 1</button><button class="tab">Day 2</button><button class="tab">Day 3</button><button class="tab">Day 4</button><button class="tab">Day 5</button><button class="tab">Day 6</button><button class="tab">Day 7</button></div>
-        <table class="dt">
+        <div class="tabpanel"><table class="dt">
           <tr><th>Time</th><th>Activity</th><th></th></tr>
           <tr><td class="num" style="width:80px">9:00 AM</td><td>Airport pickup · SUV</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
           <tr><td class="num">11:30 AM</td><td>Hotel check-in · Patong</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
           <tr><td class="num">4:00 PM</td><td>Phi Phi sunset cruise</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
-        </table>
+        </table></div>
+        <div class="tabpanel" style="display:none"><table class="dt">
+          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <tr><td class="num" style="width:80px">8:30 AM</td><td>Breakfast · hotel</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">10:00 AM</td><td>Phi Phi ferry · speedboat</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Lunch · beach club</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">4:00 PM</td><td>Maya Bay snorkel</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">7:30 PM</td><td>Dinner · Kata nights</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
+        </table></div>
+        <div class="tabpanel" style="display:none"><table class="dt">
+          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <tr><td class="num" style="width:80px">9:00 AM</td><td>Old Phuket Town walk · Sino-Portuguese</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">12:30 PM</td><td>Lunch · Lock Tien food court</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">3:00 PM</td><td>Big Buddha viewpoint</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">6:00 PM</td><td>Sunset · Promthep Cape</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">8:00 PM</td><td>Sunday street market</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
+        </table></div>
+        <div class="tabpanel" style="display:none"><table class="dt">
+          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <tr><td class="num" style="width:80px">8:00 AM</td><td>Breakfast · hotel</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">9:30 AM</td><td>Catamaran charter · private</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Lunch onboard · chef</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">3:30 PM</td><td>Coral Island · swim</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">7:00 PM</td><td>BBQ dinner · yacht deck</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
+        </table></div>
+        <div class="tabpanel" style="display:none"><table class="dt">
+          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <tr><td class="num" style="width:80px">9:30 AM</td><td>Spa & wellness · resort</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">12:00 PM</td><td>Lunch · poolside</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">2:00 PM</td><td>Thai cooking class</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">7:00 PM</td><td>Dinner · Surin rooftop</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
+        </table></div>
+        <div class="tabpanel" style="display:none"><table class="dt">
+          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <tr><td class="num" style="width:80px">8:30 AM</td><td>Check-out · express</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">10:00 AM</td><td>Similan day trip · dive</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Beach lunch · island</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">5:00 PM</td><td>Return ferry</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">8:30 PM</td><td>Farewell dinner · Bang Tao</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
+        </table></div>
+        <div class="tabpanel" style="display:none"><table class="dt">
+          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <tr><td class="num" style="width:80px">9:00 AM</td><td>Breakfast · late checkout</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">11:00 AM</td><td>Last-minute shopping · Jungceylon</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Airport transfer · SUV</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">3:40 PM</td><td>Flight HKT → BOM</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
+        </table></div>
         <p class="copy" style="margin-top:12px">Chronologically normalized (V62 sorts on entry). Drag or ↑↓ to reorder; add Flight/Cab/Transfer/Hotel/Meal lines. Photos per line in proposal view.</p>
       </div>
       <div class="demo">
@@ -1391,6 +1427,28 @@ function stepper(btn, dir, id){
   v = Math.max(id === 'adl' ? 1 : 0, Math.min(id === 'adl' ? 15 : 8, v));
   el.textContent = v;
 }
+
+
+// tabs — generic switcher
+function tabsInit(){
+  document.querySelectorAll('.tabs').forEach(function(grp){
+    var tabs = grp.querySelectorAll('.tab');
+    tabs.forEach(function(t, i){
+      t.setAttribute('role','tab');
+      t.setAttribute('aria-selected', t.classList.contains('active') ? 'true' : 'false');
+      t.addEventListener('click', function(){
+        tabs.forEach(function(x){ x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
+        t.classList.add('active'); t.setAttribute('aria-selected','true');
+        var wrap = grp.closest('.demo, .demo-full, [data-tabwrap]') || grp.parentElement;
+        wrap.querySelectorAll(':scope > .tabpanel').forEach(function(pn, pi){
+          pn.style.display = (pi === i) ? '' : 'none';
+          pn.setAttribute('aria-hidden', (pi === i) ? 'false' : 'true');
+        });
+      });
+    });
+  });
+}
+tabsInit();
 
 // mobile nav
 function mnavToggle(){
