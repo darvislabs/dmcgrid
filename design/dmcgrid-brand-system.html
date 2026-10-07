@@ -491,8 +491,9 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <p class="copy" style="margin-bottom:8px">Each tile holds both colorways: the white mark renders on dark, the black mark on light. The mark swaps with the theme automatically, everywhere the logo appears.</p>
     <div class="mini-label">Grid & construction</div>
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin:12px 0 26px">
-      <div class="demo" style="position:relative;min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--surface);background-image:linear-gradient(var(--t06) 1px,transparent 1px),linear-gradient(90deg,var(--t06) 1px,transparent 1px);background-size:24px 24px">
-        <img src="assets/logo/dmcgrid-symbol-dark.svg" alt="Construction grid" style="max-height:120px;width:auto">
+      <div class="demo" style="position:relative;min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--surface);background-image:linear-gradient(var(--t06) 1px,transparent 1px),linear-gradient(90deg,var(--t06) 1px,transparent 1px);background-size:24px 24px" logo-swap">
+        <img class="dk" src="assets/logo/dmcgrid-symbol-dark.svg" alt="Construction grid" style="max-height:120px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-symbol-light.svg" alt="Construction grid" style="max-height:120px;width:auto">
         <small style="position:absolute;bottom:12px;left:14px;font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">24px construction grid</small>
       </div>
       <div class="demo" style="padding:20px">
@@ -502,13 +503,14 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     </div>
     <div class="mini-label">Clearance zones</div>
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin:12px 0 26px">
-      <div class="demo" style="min-height:200px;display:flex;align-items:center;justify-content:center;background:var(--surface)">
+      <div class="demo" style="min-height:200px;display:flex;align-items:center;justify-content:center;background:var(--surface)" logo-swap">
         <div style="position:relative;padding:40px;border:1px dashed rgba(212,180,131,.4);border-radius:8px">
           <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
           <div style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
           <div style="position:absolute;left:-14px;top:50%;transform:translateY(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
           <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
-          <img src="assets/logo/dmcgrid-full-dark.svg" alt="Clearance demo" style="max-height:48px;width:auto">
+          <img class="dk" src="assets/logo/dmcgrid-full-dark.svg" alt="Clearance demo" style="max-height:48px;width:auto">
+          <img class="lt" src="assets/logo/dmcgrid-full-light.svg" alt="Clearance demo" style="max-height:48px;width:auto">
         </div>
       </div>
       <div class="demo" style="padding:20px">
@@ -772,8 +774,8 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="mini-label">Compare matrix — 3 anonymous quotes</div>
     <div class="demo" style="margin-bottom:26px">
       <div class="table-wrap">
-      <table class="dt" style="min-width:720px">
-        <tr><th></th><th>Quote A</th><th>Quote B</th><th>Quote C</th></tr>
+      <table class="dt" style="min-width:720px;table-layout:fixed">
+        <tr><th style="width:19%"></th><th style="width:27%">Quote A</th><th style="width:27%">Quote B</th><th style="width:27%">Quote C</th></tr>
         <tr><td>Hotels</td><td>4★ Pattaya + 5★ BKK</td><td>5★ both cities</td><td>4★ both cities</td></tr>
         <tr><td>Net rate</td><td class="num">₹1,42,800</td><td class="num">₹1,58,200</td><td class="num">₹1,31,500</td></tr>
         <tr><td>Inclusions</td><td>Breakfast + transfers</td><td>Breakfast + dinner + transfers</td><td>Breakfast + transfers</td></tr>
@@ -797,9 +799,10 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         </table>
         <p class="copy" style="text-align:right;font-family:var(--font-m);font-size:13px"><b>Total ₹51,900</b></p>
       </div>
-      <div class="demo" style="border-color:rgba(212,180,131,.5)">
-        <div class="demo-title" style="color:var(--accent)">OPTION 2 — Comfort</div>
+      <div class="demo">
+        <div class="demo-title">OPTION 2 — Comfort <span class="badge badge-gold" style="margin-left:8px">Recommended</span></div>
         <table class="dt" style="margin-bottom:10px">
+          <thead><tr><th style="width:38%">Item</th><th class="num" style="width:22%">Nights</th><th class="num" style="width:40%">Net rate</th></tr></thead>
           <tr><td>Hotel C</td><td class="num">3N</td><td class="num">₹24,800</td></tr>
           <tr><td>Hotel D</td><td class="num">2N</td><td class="num">₹28,200</td></tr>
           <tr><td>Vehicle</td><td>SUV</td><td class="num">₹16,900</td></tr>
@@ -809,6 +812,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">OPTION 3 — Premium</div>
         <table class="dt" style="margin-bottom:10px">
+          <thead><tr><th style="width:38%">Item</th><th class="num" style="width:22%">Nights</th><th class="num" style="width:40%">Net rate</th></tr></thead>
           <tr><td>Hotel E</td><td class="num">3N</td><td class="num">₹38,500</td></tr>
           <tr><td>Hotel F</td><td class="num">2N</td><td class="num">₹41,000</td></tr>
           <tr><td>Vehicle</td><td>Innova Crysta</td><td class="num">₹21,400</td></tr>
