@@ -1,0 +1,291 @@
+{
+ "battalion": "A",
+ "bugs": [
+  {
+   "id": "A01",
+   "title": "Invisible text: color ≈ background (channel diff 0) in light theme",
+   "severity": "Critical",
+   "category": "invisible-text",
+   "viewport": "1440x900",
+   "description": "1 element(s): text rgb(247, 243, 233) (declared rgb(247, 243, 233)) on background rgb(247, 243, 233) (from section#cover). Sizes: 64px/600. Channel diff 0 < 30 — effectively unreadable. Examples: section#cover > div.hero-content:nth-of-type(7) > h1.hero-title :: \"From request to reality.\"",
+   "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#cover > div.hero-content:nth-of-type(7) > h1.hero-title\n(requires clicking THEME toggle first)",
+   "expected": "Text visually distinguishable (channel diff ≥ 30, ratio ≥ 3)",
+   "actual": "ratio 1:1, channel diff 0",
+   "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A01-bug.png",
+   "suggested_fix": "Darken text 55% toward black (≈#6F6D69) on bg #F7F3E9 → ratio 4.64"
+  },
+  {
+   "id": "A02",
+   "title": "Invisible text: color ≈ background (channel diff 21) in light theme",
+   "severity": "Critical",
+   "category": "invisible-text",
+   "viewport": "1440x900",
+   "description": "3 element(s): text rgb(20, 26, 34) (declared rgb(20, 26, 34)) on background rgb(31, 41, 55) (from div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(1)). Sizes: 12px/500. Channel diff 21 < 30 — effectively unreadable. Examples: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(1) :: \"✓ Quote submitted · 1 credit debited\" | div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(2) :: \"Time-wise line deleted · Undo\" | div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(3) :: \"✕ Connect failed — insufficient credits\"",
+   "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div.grid2:nth-of-type(2) > div.demo:nth-of-type(1) > div:nth-of-type(2) > span.toast:nth-of-type(1)\n(requires clicking THEME toggle first)",
+   "expected": "Text visually distinguishable (channel diff ≥ 30, ratio ≥ 4.5)",
+   "actual": "ratio 1.19:1, channel diff 21",
+   "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A02-bug.png",
+   "suggested_fix": "Lighten text 55% toward white (≈#95989C) on bg #1F2937 → ratio 5.07"
+  },
+  {
+   "id": "A03",
+   "title": "Toast (shown state) contrast fail in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "1.19:1",
+   "screenshot_path": "toast-shown-light.png",
+   "suggested_fix": "Lighten text 55% toward white (≈#95989C) on bg #1F2937 → ratio 5.07"
+  },
+  {
+   "id": "A04",
+   "title": "WCAG AA contrast fail (2.65:1 < 4.5:1) — rgb(84, 87, 91) on rgb(11, 15, 20) in dark theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.65:1, channel diff 73",
+   "screenshot_path": "A04-bug.png",
+   "suggested_fix": "Lighten text 25% toward white (≈#7F8184) on bg #0B0F14 → ratio 4.92"
+  },
+  {
+   "id": "A05",
+   "title": "WCAG AA contrast fail (2.68:1 < 4.5:1) — rgb(86, 90, 94) on rgb(14, 19, 25) in dark theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.68:1, channel diff 72",
+   "screenshot_path": "A05-bug.png",
+   "suggested_fix": "Lighten text 25% toward white (≈#808386) on bg #0E1319 → ratio 4.91"
+  },
+  {
+   "id": "A06",
+   "title": "WCAG AA contrast fail (2.7:1 < 4.5:1) — rgb(91, 95, 101) on rgb(21, 27, 35) in dark theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.7:1, channel diff 70",
+   "screenshot_path": "A06-bug.png",
+   "suggested_fix": "Lighten text 25% toward white (≈#84878C) on bg #151B23 → ratio 4.80"
+  },
+  {
+   "id": "A07",
+   "title": "WCAG AA contrast fail (3.15:1 < 4.5:1) — rgb(92, 107, 119) on rgb(21, 27, 35) in dark theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 3.15:1, channel diff 84",
+   "screenshot_path": "A07-bug.png",
+   "suggested_fix": "Lighten text 20% toward white (≈#7D8992) on bg #151B23 → ratio 4.81"
+  },
+  {
+   "id": "A08",
+   "title": "WCAG AA contrast fail (3.4:1 < 4.5:1) — rgb(92, 107, 119) on rgb(14, 19, 25) in dark theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 3.4:1, channel diff 94",
+   "screenshot_path": "A08-bug.png",
+   "suggested_fix": "Lighten text 15% toward white (≈#74818B) on bg #0E1319 → ratio 4.68"
+  },
+  {
+   "id": "A09",
+   "title": "WCAG AA contrast fail (3.5:1 < 4.5:1) — rgb(92, 107, 119) on rgb(11, 15, 20) in dark theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 3.5:1, channel diff 99",
+   "screenshot_path": "A09-element.png",
+   "suggested_fix": "Lighten text 15% toward white (≈#74818B) on bg #0B0F14 → ratio 4.83"
+  },
+  {
+   "id": "A10",
+   "title": "WCAG AA contrast fail (3.86:1 < 4.5:1) — rgb(107, 114, 128) on rgb(14, 19, 25) in dark theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 3.86:1, channel diff 103",
+   "screenshot_path": "A10-bug.png",
+   "suggested_fix": "Lighten text 10% toward white (≈#7A808D) on bg #0E1319 → ratio 4.71"
+  },
+  {
+   "id": "A11",
+   "title": "WCAG AA contrast fail (1.97:1 < 4.5:1) — rgb(212, 180, 131) on rgb(255, 255, 255) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 1.97:1, channel diff 124",
+   "screenshot_path": "A11-element.png",
+   "suggested_fix": "Darken text 40% toward black (≈#7F6C4F) on bg #FFFFFF → ratio 5.05"
+  },
+  {
+   "id": "A12",
+   "title": "WCAG AA contrast fail (2:1 < 4.5:1) — rgb(156, 163, 175) on rgb(228, 228, 230) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2:1, channel diff 72",
+   "screenshot_path": "A12-bug.png",
+   "suggested_fix": "Darken text 40% toward black (≈#5E6269) on bg #E4E4E6 → ratio 4.84"
+  },
+  {
+   "id": "A13",
+   "title": "WCAG AA contrast fail (2.29:1 < 4.5:1) — rgb(156, 163, 175) on rgb(247, 243, 233) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.29:1, channel diff 91",
+   "screenshot_path": "A13-element.png",
+   "suggested_fix": "Darken text 35% toward black (≈#656A72) on bg #F7F3E9 → ratio 4.91"
+  },
+  {
+   "id": "A14",
+   "title": "WCAG AA contrast fail (2.46:1 < 4.5:1) — rgb(153, 151, 146) on rgb(241, 235, 221) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.46:1, channel diff 88",
+   "screenshot_path": "A14-bug.png",
+   "suggested_fix": "Darken text 30% toward black (≈#6B6A66) on bg #F1EBDD → ratio 4.57"
+  },
+  {
+   "id": "A15",
+   "title": "WCAG AA contrast fail (2.48:1 < 4.5:1) — rgb(156, 156, 153) on rgb(247, 243, 233) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.48:1, channel diff 91",
+   "screenshot_path": "A15-bug.png",
+   "suggested_fix": "Darken text 30% toward black (≈#6D6D6B) on bg #F7F3E9 → ratio 4.67"
+  },
+  {
+   "id": "A16",
+   "title": "WCAG AA contrast fail (2.53:1 < 4.5:1) — rgb(161, 163, 167) on rgb(255, 255, 255) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.53:1, channel diff 94",
+   "screenshot_path": "A16-bug.png",
+   "suggested_fix": "Darken text 30% toward black (≈#717275) on bg #FFFFFF → ratio 4.81"
+  },
+  {
+   "id": "A17",
+   "title": "WCAG AA contrast fail (2.54:1 < 4.5:1) — rgb(156, 163, 175) on rgb(255, 255, 255) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.54:1, channel diff 99",
+   "screenshot_path": "A17-bug.png",
+   "suggested_fix": "Darken text 30% toward black (≈#6D727A) on bg #FFFFFF → ratio 4.83"
+  },
+  {
+   "id": "A18",
+   "title": "WCAG AA contrast fail (2.54:1 < 4.5:1) — rgb(16, 185, 129) on rgb(255, 255, 255) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.54:1, channel diff 239",
+   "screenshot_path": "A18-bug.png",
+   "suggested_fix": "Darken text 30% toward black (≈#0B825A) on bg #FFFFFF → ratio 4.85"
+  },
+  {
+   "id": "A19",
+   "title": "WCAG AA contrast fail (2.72:1 < 4.5:1) — rgb(144, 143, 139) on rgb(241, 235, 221) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.72:1, channel diff 97",
+   "screenshot_path": "A19-bug.png",
+   "suggested_fix": "Darken text 30% toward black (≈#656461) on bg #F1EBDD → ratio 4.97"
+  },
+  {
+   "id": "A20",
+   "title": "WCAG AA contrast fail (2.75:1 < 4.5:1) — rgb(147, 148, 145) on rgb(247, 243, 233) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.75:1, channel diff 100",
+   "screenshot_path": "A20-element.png",
+   "suggested_fix": "Darken text 25% toward black (≈#6E6F6D) on bg #F7F3E9 → ratio 4.56"
+  },
+  {
+   "id": "A21",
+   "title": "WCAG AA contrast fail (2.82:1 < 4.5:1) — rgb(152, 154, 158) on rgb(255, 255, 255) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 2.82:1, channel diff 103",
+   "screenshot_path": "A21-bug.png",
+   "suggested_fix": "Darken text 25% toward black (≈#727477) on bg #FFFFFF → ratio 4.71"
+  },
+  {
+   "id": "A22",
+   "title": "WCAG AA contrast fail (3.76:1 < 4.5:1) — rgb(239, 68, 68) on rgb(255, 255, 255) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 3.76:1, channel diff 187",
+   "screenshot_path": "A22-bug.png",
+   "suggested_fix": "Darken text 10% toward black (≈#D73D3D) on bg #FFFFFF → ratio 4.53"
+  },
+  {
+   "id": "A23",
+   "title": "WCAG AA contrast fail (4.06:1 < 4.5:1) — rgb(113, 114, 113) on rgb(241, 235, 221) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 4.06:1, channel diff 128",
+   "screenshot_path": "A23-bug.png",
+   "suggested_fix": "Darken text 10% toward black (≈#666766) on bg #F1EBDD → ratio 4.81"
+  },
+  {
+   "id": "A24",
+   "title": "WCAG AA contrast fail (4.07:1 < 4.5:1) — rgb(107, 114, 128) on rgb(241, 235, 221) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 4.07:1, channel diff 134",
+   "screenshot_path": "A24-bug.png",
+   "suggested_fix": "Darken text 10% toward black (≈#606773) on bg #F1EBDD → ratio 4.81"
+  },
+  {
+   "id": "A25",
+   "title": "WCAG AA contrast fail (4.18:1 < 4.5:1) — rgb(115, 117, 118) on rgb(247, 243, 233) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 4.18:1, channel diff 132",
+   "screenshot_path": "A25-bug.png",
+   "suggested_fix": "Darken text 5% toward black (≈#6D6F70) on bg #F7F3E9 → ratio 4.55"
+  },
+  {
+   "id": "A26",
+   "title": "WCAG AA contrast fail (4.31:1 < 4.5:1) — rgb(119, 122, 127) on rgb(255, 255, 255) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 4.31:1, channel diff 136",
+   "screenshot_path": "A26-bug.png",
+   "suggested_fix": "Darken text 5% toward black (≈#717479) on bg #FFFFFF → ratio 4.70"
+  },
+  {
+   "id": "A27",
+   "title": "WCAG AA contrast fail (4.45:1 < 4.5:1) — rgb(138, 101, 36) on rgb(241, 235, 221) in light theme",
+   "severity": "High",
+   "category": "contrast",
+   "viewport": "1440x900",
+   "actual": "ratio 4.45:1, channel diff 185",
+   "screenshot_path": "A27-bug.png",
+   "suggested_fix": "Darken text 5% toward black (≈#836022) on bg #F1EBDD → ratio 4.83"
+  }
+ ],
+ "checks_passed": [
+  "theme toggle switches dark→light (html[data-theme])",
+  "localStorage 'dmc-theme' persisted after toggle",
+  "reload keeps light theme (html[data-theme] + localStorage)",
+  "no FOUC on reload (rAF theme samples all light)",
+  "toast (shown state) readable in dark theme",
+  "gold buttons rgb(212,180,131) fill with dark AA text in BOTH themes"
+ ],
+ "bug_count": 27,
+ "note": "Full per-bug detail (complete descriptions, steps_to_reproduce, expected/actual, viewport) in /home/ubuntu/dmcgrid/qa/audit-A-visual-theme.json; all screenshots in /home/ubuntu/dmcgrid/qa/screenshots/"
+}

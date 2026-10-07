@@ -115,7 +115,7 @@
       "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set dark theme (click THEME toggle)\n3. Inspect element: html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(2)",
       "expected": "Contrast ratio ≥ 4.5:1",
       "actual": "ratio 3.5:1, channel diff 99",
-      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A09-context-dark.png",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A09-element.png",
       "suggested_fix": "Lighten text 15% toward white (≈#74818B) on bg #0B0F14 → ratio 4.83"
     },
     {
@@ -141,7 +141,7 @@
       "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: div.inner > div:nth-of-type(10) > div.demo:nth-of-type(1) > div > div:nth-of-type(1)\n(requires clicking THEME toggle first)",
       "expected": "Contrast ratio ≥ 4.5:1",
       "actual": "ratio 1.97:1, channel diff 124",
-      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A11-context-light.png",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A11-element.png",
       "suggested_fix": "Darken text 40% toward black (≈#7F6C4F) on bg #FFFFFF → ratio 5.05"
     },
     {
@@ -167,7 +167,7 @@
       "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: section#color-system > div.inner > div:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2)\n(requires clicking THEME toggle first)",
       "expected": "Contrast ratio ≥ 4.5:1",
       "actual": "ratio 2.29:1, channel diff 91",
-      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A13-context-light.png",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A13-element.png",
       "suggested_fix": "Darken text 35% toward black (≈#656A72) on bg #F7F3E9 → ratio 4.91"
     },
     {
@@ -258,7 +258,7 @@
       "steps_to_reproduce": "1. Open http://127.0.0.1:8778/dmcgrid-brand-system.html\n2. Set light theme (click THEME toggle)\n3. Inspect element: html > body > aside.sidebar > nav.nav:nth-of-type(1) > a:nth-of-type(2)\n(requires clicking THEME toggle first)",
       "expected": "Contrast ratio ≥ 4.5:1",
       "actual": "ratio 2.75:1, channel diff 100",
-      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A20-context-light.png",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/A20-element.png",
       "suggested_fix": "Darken text 25% toward black (≈#6E6F6D) on bg #F7F3E9 → ratio 4.56"
     },
     {

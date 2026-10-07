@@ -1,0 +1,252 @@
+{
+  "battalion": "C",
+  "url_tested": "http://127.0.0.1:8778/dmcgrid-brand-system.html",
+  "live_site_status": "https://dmcgrid.gomedicure.com unreachable (connection failed twice, curl 000) — fallback used per task spec",
+  "engine": "Playwright node + chromium-headless-shell (page.on console + page.on pageerror, all types captured)",
+  "bug_count": 12,
+  "bugs": [
+    {
+      "id": "C01",
+      "title": "RFQ wizard steps 1-6 are not clickable — no click handlers on .step elements",
+      "severity": "High",
+      "category": "wizard",
+      "viewport": "1920x992 desktop",
+      "description": "Each of the 6 wizard steps was clicked individually: zero response every time. .step elements have no onclick, no cursor:pointer, no aria — state (current/done classes + ✓ marks) never changes. Only Continue/Back buttons work.",
+      "steps_to_reproduce": "Section 08b → RFQ Wizard → click any step (1-6).",
+      "expected": "Clicked step becomes current (gold ring), per 'clickable steps' claim.",
+      "actual": "No state change on any of the 6 steps (verified via class inspection after click).",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C01-wizard-step-1.png",
+      "suggested_fix": "Add click handlers: steps.forEach((s,i)=>s.addEventListener('click',()=>jumpToStep(i))) — jumpToStep sets current/done classes and ✓ marks; add cursor:pointer + role=button + aria-current."
+    },
+    {
+      "id": "C02",
+      "title": "Tabs never switch — atoms (4 tabs) and calendar (Day 1-7) tab bars are dead",
+      "severity": "High",
+      "category": "tabs",
+      "viewport": "1920x992 desktop",
+      "description": "Every tab clicked in both groups: .active class never moves from the first tab, no panels exist to switch (0 [role=tabpanel]/.tab-panel in DOM), no onclick handlers, yet cursor:pointer implies interactivity. Misleading affordance.",
+      "steps_to_reproduce": "Section 07 atoms → click 'Deal sheet' tab; section 10 data → click 'Day 2' tab.",
+      "expected": "Active state moves to clicked tab; associated panel/view switches.",
+      "actual": "active stays on tab 0 in both groups; no panel change (none exist).",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C02-tabs-dead-atoms.png, /home/ubuntu/dmcgrid/qa/screenshots/C02-tabs-dead-calendar.png",
+      "suggested_fix": "Add a delegated handler: document.querySelectorAll('.tabs').forEach(g=>g.addEventListener('click',e=>{const t=e.target.closest('.tab'); if(!t)return; g.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); t.classList.add('active');})) and wire day-tab clicks to the itinerary content."
+    },
+    {
+      "id": "C03",
+      "title": "Radio set is non-interactive decoration — no inputs, no toggle, no single-select",
+      "severity": "High",
+      "category": "forms",
+      "viewport": "1920x992 desktop",
+      "description": "Radio-look labels ('Round-trip flights included', 'Visa assistance needed') are styled <span>s inside <label>s with no <input type=radio>. Clicking causes zero visual change; not focusable (tabIndex -1); single-select enforcement impossible without inputs. Claimed 'real, interactive (from V62)' is false.",
+      "steps_to_reproduce": "Section 09b → Choices → click 'Visa assistance needed'.",
+      "expected": "Radio fills; first radio deselects (single-select); keyboard operable.",
+      "actual": "Zero response; outerHTML identical before/after click.",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C03-choices-dead.png",
+      "suggested_fix": "Replace decorative spans with real <input type=radio name=trip-options> + <input type=checkbox>, CSS :checked sibling selectors for visuals — gives toggle, single-select, and keyboard support for free."
+    },
+    {
+      "id": "C04",
+      "title": "Checkbox set is non-interactive decoration — no inputs, no toggle",
+      "severity": "High",
+      "category": "forms",
+      "viewport": "1920x992 desktop",
+      "description": "Checkbox-look labels ('Airport transfers' pre-checked, 'Travel insurance') are styled spans with no <input type=checkbox>. Clicking 'Travel insurance' causes zero visual change; not focusable.",
+      "steps_to_reproduce": "Section 09b → Choices → click 'Travel insurance'.",
+      "expected": "Checkbox toggles ✓ on/off.",
+      "actual": "Zero response.",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C04-choices-dead.png",
+      "suggested_fix": "Same as C03 — real checkbox inputs with :checked-based styling."
+    },
+    {
+      "id": "C05",
+      "title": "Search bar is a static <div> — cannot type into it",
+      "severity": "High",
+      "category": "forms",
+      "viewport": "1920x992 desktop",
+      "description": "The '⌕ Search RFQs…' workbench search element is a non-editable <div> (not input/textarea/contenteditable): no focus, no value, typing impossible, no handlers. 'Real, interactive' claim false for this component.",
+      "steps_to_reproduce": "Section 09b → Search + filter bar → click the search box → type.",
+      "expected": "Accepts focus and text input.",
+      "actual": "div ignores input entirely; cursor=auto, isContentEditable=false.",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C05-search-dead-div.png",
+      "suggested_fix": "Replace with <input type=search placeholder='Search RFQs…'> keeping the same styling (padding/border-radius)."
+    },
+    {
+      "id": "C06",
+      "title": "Filter chips cannot be removed — no click handlers on ✕ chips",
+      "severity": "High",
+      "category": "forms",
+      "viewport": "1920x992 desktop",
+      "description": "Filter chips ('Thailand ✕', 'Mar 2026 ✕') are .badge spans with no onclick. Clicking ✕ (also 10x rapid) removes nothing. Claimed 'removable chips' is false.",
+      "steps_to_reproduce": "Section 09b → click ✕ on the 'Thailand' chip (or 10x fast).",
+      "expected": "Chip removed from the filter bar.",
+      "actual": "Still 2 chips after 1 click and after 10 rapid clicks.",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C06-chips-not-removable.png",
+      "suggested_fix": "Add onclick to each chip (or delegated handler on the chip bar): chip.remove() on ✕ click; 'Clear all' removes all chips."
+    },
+    {
+      "id": "C07",
+      "title": "'Clear all' chip does not clear filters — no handler",
+      "severity": "High",
+      "category": "forms",
+      "viewport": "1920x992 desktop",
+      "description": "'Clear all' badge has no onclick; after click both chips remain. Contradicts its own section copy: 'Filters never trap the user — always one click to clear all.'",
+      "steps_to_reproduce": "Section 09b → click 'Clear all'.",
+      "expected": "All filter chips removed in one click.",
+      "actual": "2 chips remain.",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C07-clear-all-dead.png",
+      "suggested_fix": "Add handler removing all chip elements and resetting filter state."
+    },
+    {
+      "id": "C08",
+      "title": "Money field: no Indian grouping on user input",
+      "severity": "Medium",
+      "category": "forms",
+      "viewport": "1920x992 desktop",
+      "description": "₹ prefix stays and does not overlap the value, but typing '987654' leaves raw unformatted digits — grouping ('9,87,654') exists only in the pre-filled demo value; no formatting JS is attached to the input. Section copy promises 'Indian grouping'.",
+      "steps_to_reproduce": "Section 09b → Budget per person → clear field → type 987654.",
+      "expected": "Value formats to 9,87,654 on input (Indian grouping).",
+      "actual": "Stays '987654'.",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C08-money-no-grouping.png",
+      "suggested_fix": "input.addEventListener('input', e=>{ const digits=e.target.value.replace(/\\D/g,''); /* Indian grouping: last 3, then 2s */ e.target.value=digits.replace(/(\\d)(?=(\\d\\d)+\\d$)/,'$1,').replace(/(\\d)(?=(\\d\\d)+$)/g,'$1,'); }) — strip non-digits first."
+    },
+    {
+      "id": "C09",
+      "title": "No copy buttons or clipboard actions exist anywhere on the page",
+      "severity": "Medium",
+      "category": "feedback",
+      "viewport": "1920x992 desktop",
+      "description": "Zero buttons with copy/clipboard behavior found (0 clipboard/execCommand references in the whole document). The component library ships no copy affordance despite the interactive-library claim.",
+      "steps_to_reproduce": "Search the page for any copy button or navigator.clipboard call.",
+      "expected": "Copy buttons present on copyable content (tokens, code, quotes).",
+      "actual": "None exist; nothing to trigger.",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C09-feedback-no-copy.png",
+      "suggested_fix": "Add copy buttons to swatch hex values / token names: navigator.clipboard.writeText(text) + toast('Copied …') on success."
+    },
+    {
+      "id": "C10",
+      "title": "Zero <form> elements — no native validation or submit semantics",
+      "severity": "Medium",
+      "category": "forms",
+      "viewport": "1920x992 desktop",
+      "description": "The Forms section and wizard demo contain no <form>: fields are bare inputs with no name/required/validation JS/submit handler. Empty-input submit is undefined (Enter does nothing, no error state appears on empty money field). Copy promises 'Every field: label, input, hint, error. Every form: loading, empty, error states.'",
+      "steps_to_reproduce": "Inspect DOM: document.querySelectorAll('form').length === 0; press Enter on empty Destination; clear money field.",
+      "expected": "Form wrapper with validation, or JS validation with visible error states.",
+      "actual": "No form, no validation, no error surfaced on empty submit.",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C10-no-form-validation.png",
+      "suggested_fix": "Wrap wizard fields in <form novalidate> with JS validation: on submit/Enter, check required fields and toggle .error class + .err-msg visibility per field."
+    },
+    {
+      "id": "C11",
+      "title": "Money field accepts 40 chars with no clamp/maxlength",
+      "severity": "Low",
+      "category": "forms",
+      "viewport": "1920x992 desktop",
+      "description": "40-digit input accepted in full (no maxLength attribute, no input clamping); value overflows visually in the right-aligned box.",
+      "steps_to_reproduce": "Type 40 digits into Budget per person.",
+      "expected": "Length clamp or format-and-truncate.",
+      "actual": "All 40 chars accepted (maxLength unlimited).",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C11-money-40-chars.png",
+      "suggested_fix": "Add maxLength=12 (≈ ₹99,99,99,999) or clamp digits in the formatter from C08."
+    },
+    {
+      "id": "C12",
+      "title": "Stepper clamp contradicts stated 'max 30 pax' copy",
+      "severity": "Low",
+      "category": "forms",
+      "viewport": "1920x992 desktop",
+      "description": "Clamping itself works correctly (adults 1-15, children 0-8, verified with 15+ rapid clicks), but the copy directly below says 'Min 1 adult · max 30 pax' — 30 pax is unreachable (15+8=23 combined max).",
+      "steps_to_reproduce": "Section 09b → click Adults + repeatedly (stops at 15).",
+      "expected": "Max 30 pax reachable per copy.",
+      "actual": "Adults max 15, children max 8 (23 combined).",
+      "screenshot_path": "/home/ubuntu/dmcgrid/qa/screenshots/C12-stepper-clamp-mismatch.png",
+      "suggested_fix": "Align copy with code (max 15 adults + 8 children) or raise stepper max to make 30 pax reachable."
+    }
+  ],
+  "checks_passed": [
+    "Console: 0 errors + 0 pageerrors + 0 warnings on load (desktop 1920x992)",
+    "Console: still 0 after ALL interactions (wizard, tabs, steppers, chips, toasts, theme, edge cases)",
+    "Console: 0 errors on mobile 390x844 load + theme/toast/stepper interactions",
+    "Wizard Continue: advances current step, prior step gets ✓, toast 'Step N of 6' shows",
+    "Wizard Back: restores prior step (✓ restored to number), correctly guarded at step 1 (no-op)",
+    "Wizard Continue at final step: submit toast 'RFQ submitted — 1 quote credit burned' shows",
+    "Wizard: state fully sane after 10 rapid Continue clicks (current stays on 6, 1-5 done)",
+    "Counter steppers: clamp correctly at min (adults 1, children 0) and max (adults 15, children 8) under 15+ rapid minus/plus clicks — no negative, no overshoot",
+    "Money field: ₹ prefix renders inside input, does not overlap typed value, mono face, right-aligned",
+    "Money field: pre-filled demo value uses Indian grouping (1,45,000)",
+    "Toast: appears on trigger (opacity 1 at 400ms), auto-dismisses (opacity 0 by 3400ms)",
+    "Theme toggle: 10 rapid clicks → original theme restored (parity OK), button label matches theme, no stuck state",
+    "Tabs exist with correct labels (Compare/Deal sheet/Proposal/History; Day 1-7) but see C02 — switching is broken"
+  ],
+  "console_errors": [],
+  "console_warnings": [],
+  "console_result": "ZERO errors/warnings/pageerrors on load, after every interaction, and after edge cases — verified on BOTH the served v1.8 build (desktop 1920x992 + mobile 390x844) AND the current disk v1.9 build. Claim VERIFIED.",
+  "edge_case_results": {
+    "theme_toggle_10x": {
+      "result": "PASS",
+      "detail": "dark→dark parity, label synced, body bg correct"
+    },
+    "rapid_continue_10x": {
+      "result": "PASS",
+      "detail": "current stays on final step, done=5, labels ✓,✓,✓,✓,✓,6"
+    },
+    "stepper_rapid_clicks": {
+      "result": "PASS",
+      "detail": "clamps hold under 15 minus + 40 plus clicks"
+    },
+    "rapid_chip_add_remove": {
+      "result": "FAIL (see C06/C07)",
+      "detail": "chips are static; nothing removable, nothing to add"
+    },
+    "empty_input_submit": {
+      "result": "FAIL (see C10)",
+      "detail": "no form/validation; Enter no-op; empty money accepted silently"
+    },
+    "money_30+_chars": {
+      "result": "FAIL (see C11)",
+      "detail": "40 chars accepted, no maxlength"
+    }
+  },
+  "screenshots_dir": "/home/ubuntu/dmcgrid/qa/screenshots/",
+  "notes": "Zero-console-error claim is the only claim that fully holds. The 'interactive Component Library' claim fails for 5 of its interactive components (wizard step jumps, tabs, radio/checkbox, search, chips). Copy-to-clipboard is absent entirely. Live site was down during the audit; all findings apply to the fallback build served at 127.0.0.1:8778 (same source file).",
+  "builds_tested": {
+    "served_v1.8": {
+      "url": "http://127.0.0.1:8778/dmcgrid-brand-system.html",
+      "note": "What the URL-under-test served during the audit window (12:30). Tabs, radio/checkbox, search all dead here.",
+      "bugs_applying": [
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12"
+      ]
+    },
+    "disk_v1.9_current": {
+      "path": "/home/ubuntu/dmcgrid/design/dmcgrid-brand-system.html (md5 6b2618fa955f, 129440 bytes)",
+      "note": "Updated mid-audit (11:57) by a parallel fix battalion. Re-tested 12:40 via file://.",
+      "resolved": [
+        "C02 (tabs switch, tabpanels now present)",
+        "C03 (real radio inputs, single-select enforced)",
+        "C04 (real checkbox inputs, toggle works)",
+        "C05 (search is now <input>, typable)"
+      ],
+      "still_open": [
+        "C01 (wizard steps still no click handlers)",
+        "C06 (chips not removable)",
+        "C07 (Clear all dead)",
+        "C08 (no money grouping on input)",
+        "C09 (no copy buttons)",
+        "C10 (no <form>/validation)",
+        "C11 (no maxlength)",
+        "C12 (clamp/copy mismatch)"
+      ]
+    }
+  },
+  "deployment_note": "Bugs C02-C05 are FIXED in the current source (v1.9) but NOT yet deployed — the URL under test still serves v1.8 where they reproduce. Re-run this audit against the live URL after redeploy to verify the fixes end-to-end."
+}

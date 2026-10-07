@@ -18,7 +18,7 @@
   --teal:#0EA5A3;--sunset:#F97316;
   --bg:var(--g-midnight);--surface:#151B23;--alt:#0E1319;--text:var(--g-ivory);
   --t80:#C7D0D8;--t65:#9DAAB5;--t55:#8396A3;
-  --t40:#5C6B77;--t30:rgba(255,255,255,.3);--t18:rgba(255,255,255,.18);
+  --t40:#7A8A99;--t30:rgba(255,255,255,.48);--t18:rgba(255,255,255,.18);
   --t12:rgba(255,255,255,.12);--t08:rgba(255,255,255,.08);--t06:rgba(255,255,255,.06);--t04:rgba(255,255,255,.04);
   --line:#2A3441;--line-soft:#232D39;
   --accent:var(--g-sand-gold);
@@ -33,12 +33,13 @@
 }
 html[data-theme="light"]{
   --bg:#F7F3E9;--surface:#FFFFFF;--alt:#F1EBDD;--text:#141A22;
-  --t80:rgba(20,26,34,.8);--t65:rgba(20,26,34,.68);--t55:rgba(20,26,34,.58);
-  --t40:rgba(20,26,34,.44);--t30:rgba(20,26,34,.4);--t18:rgba(20,26,34,.18);
+  --t80:rgba(20,26,34,.8);--t65:rgba(20,26,34,.68);--t55:rgba(20,26,34,.65);
+  --t40:rgba(20,26,34,.65);--t30:rgba(20,26,34,.65);--t18:rgba(20,26,34,.18);
   --t12:rgba(20,26,34,.12);--t08:rgba(20,26,34,.08);--t06:rgba(20,26,34,.06);--t04:rgba(20,26,34,.04);
   --line:#D9D2C0;--line-soft:#E4DECF;
   /* WCAG: light accent swaps to bronze — sand gold fails 4.5:1 on ivory */
-  --accent:#8A6524;--g-sand-gold-btn:#D4B483;
+  --accent:#7E5F1E;
+  --success:#047857;--error:#DC2626;--g-sand-gold-btn:#D4B483;
   --shadow-card:0 1px 3px rgba(20,26,34,.08),0 0 0 1px rgba(20,26,34,.05);
   --shadow-hover:0 4px 14px rgba(20,26,34,.12),0 0 0 1px rgba(138,101,36,.2);
   /* AA badge text in light mode: darker variants */
@@ -52,6 +53,11 @@ html[data-theme="light"] .btn:not(.btn-gold):not(.btn-teal):not(.btn-danger){bor
 html[data-theme="light"] .badge-success{color:var(--badge-success)}
 html[data-theme="light"] .badge-warning{color:var(--badge-warning)}
 html[data-theme="light"] .badge-error{color:var(--badge-error)}
+[data-theme="light"] .up{color:#047857}
+[data-theme="light"] .err-msg{color:#DC2626}
+[data-theme="light"] .demo-title[style*="--success"],[data-theme="light"] [style*="color:var(--success)"]{color:#047857}
+[data-theme="light"] [style*="color:var(--error)"]{color:#DC2626}
+[data-theme="light"] .down{color:#DC2626}
 html[data-theme="light"] .badge-info{color:var(--badge-info)}
 html[data-theme="light"] .badge-gold{color:var(--badge-gold-t)}
 html[data-theme="light"] .badge-teal{color:var(--badge-teal-t)}
@@ -254,8 +260,9 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
 .pcard .pc-eyebrow{font:9px var(--font-m);letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
 .pcard h4{font-family:var(--font-d);font-size:17px;font-weight:700;margin:0 0 8px}
 /* toast */
-.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-8px);z-index:99;background:var(--g-slate);color:var(--text);padding:11px 18px;border-radius:10px;font:500 12px var(--font-b);box-shadow:var(--shadow-pop);border:1px solid var(--t12);opacity:0;transition:opacity .2s var(--ease-out),transform .2s var(--ease-out)}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-8px);z-index:99;background:var(--g-slate);color:var(--g-ivory);padding:11px 18px;border-radius:10px;font:500 12px var(--font-b);box-shadow:var(--shadow-pop);border:1px solid var(--t12);opacity:0;transition:opacity .2s var(--ease-out),transform .2s var(--ease-out)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+[data-theme="light"] .toast{background:#FFFFFF;color:#141A22;box-shadow:0 8px 24px rgba(20,26,34,.14)}
 /* tabs */
 .tabs{display:flex;gap:2px;border-bottom:1px solid var(--t12)}
 .tab{padding:10px 16px;font:500 12px var(--font-b);color:var(--t40);background:transparent;border:0;border-bottom:2px solid transparent;transition:color .16s var(--ease-out),border-color .16s var(--ease-out)}
@@ -269,6 +276,8 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
 .kpi .k-val{font-family:var(--font-d);font-size:26px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
 .kpi .k-delta{font:700 11px var(--font-b);margin-top:6px}
 .kpi .up{color:var(--success)}.kpi .down{color:var(--error)}
+[data-theme="light"] .up{color:#047857}
+[data-theme="light"] .k-delta.down,.kpi [data-theme="light"] .down{color:#DC2626}
 
 </style>
 </head>
@@ -295,7 +304,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   </div>
 <div class="mnav-backdrop" id="mnav-backdrop" onclick="mnavClose()"></div>
 <nav class="mnav-drawer" id="mnav-drawer" aria-label="Mobile navigation">
-<div class="brand"><svg width="20" height="22" viewBox="0 0 96 105" style="color:var(--g-ivory)"><use href="#dmc"/></svg><span style="font:700 15px var(--font-d);color:var(--text)"><b>DMC</b><i style="color:var(--accent);font-style:normal">Grid</i></span></div>
+<div class="brand"><svg width="20" height="22" viewBox="0 0 96 105" style="color:var(--text)"><use href="#dmc"/></svg><span style="font:700 15px var(--font-d);color:var(--text)"><b>DMC</b><i style="color:var(--accent);font-style:normal">Grid</i></span></div>
     <div class="side-label">Brand</div>
     <a href="#cover" data-mnav><span class="n">01</span>Cover</a>
     <a href="#brand-purpose" data-mnav><span class="n">02</span>Brand Purpose</a>
@@ -323,7 +332,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
 </div>
 <aside class="sidebar">
   <div class="brand">
-    <div class="brand-line" style="display:flex;align-items:center;gap:9px"><svg width="22" height="24" viewBox="0 0 96 105" style="color:var(--g-ivory);flex-shrink:0"><use href="#dmc"/></svg><span><b>DMC</b><i>Grid</i></span></div>
+    <div class="brand-line" style="display:flex;align-items:center;gap:9px"><svg width="22" height="24" viewBox="0 0 96 105" style="color:var(--text);flex-shrink:0"><use href="#dmc"/></svg><span><b>DMC</b><i>Grid</i></span></div>
     <div class="brand-sub">Brand & Design System</div>
   </div>
   <div class="side-label">Brand</div>
@@ -368,7 +377,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   <div class="hero-content">
     <div class="hero-logo"><span style="font:700 44px var(--font-d);letter-spacing:-.03em">DMC<span style="color:var(--accent)">Grid</span></span></div>
     <div class="hero-kicker"><span>TRAVEL COMMERCE INFRASTRUCTURE</span></div>
-    <h1 class="hero-title" style="font-family:var(--font-d);font-size:clamp(40px,3rem+4vw,84px);font-weight:700;color:var(--g-ivory);letter-spacing:-.04em;line-height:1;margin:0 0 20px">From request<br>to reality.</h1>
+    <h1 class="hero-title" style="font-family:var(--font-d);font-size:clamp(40px,3rem+4vw,84px);font-weight:700;color:var(--text);letter-spacing:-.04em;line-height:1;margin:0 0 20px">From request<br>to reality.</h1>
     <p class="copy" style="text-align:center;margin:0 auto 30px;max-width:520px;color:var(--t65)">The operating network for modern B2B travel sourcing. Connecting agents, DMCs and destinations through one structured system.</p>
     <div class="hero-meta">BRAND & DESIGN SYSTEM · V1.0</div>
     <div class="hero-ver">SATOSHI · CABINET GROTESK · JETBRAINS MONO</div>
@@ -409,56 +418,56 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:12px 0 26px">
       <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--surface)">
         <img src="assets/logo/dmcgrid-full-dark.svg" alt="DMCGrid Primary Horizontal" style="max-height:60px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em;text-transform:uppercase">Primary Horizontal — dark</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Primary Horizontal — dark</small>
       </div>
       <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-full-light.svg" alt="DMCGrid Primary Horizontal light" style="max-height:60px;width:auto">
-        <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase">Primary Horizontal — light</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Primary Horizontal — light</small>
       </div>
       <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--surface)">
         <img src="assets/logo/dmcgrid-symbol-dark.svg" alt="DMCGrid Symbol" style="max-height:64px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em;text-transform:uppercase">Symbol Only — dark</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Symbol Only — dark</small>
       </div>
       <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-symbol-light.svg" alt="DMCGrid Symbol light" style="max-height:64px;width:auto">
-        <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase">Symbol Only — light</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Symbol Only — light</small>
       </div>
     </div>
     <div class="mini-label">Official variations — transparent set (from Notion)</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0 8px">
       <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
         <img src="assets/logo/dmcgrid-primary-transparent-white-full.svg" alt="Full white transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em;text-transform:uppercase;text-align:center">Full — transparent</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Full — transparent</small>
       </div>
       <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
         <img src="assets/logo/dmcgrid-primary-transparent-white-stacked.svg" alt="Stacked white transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em;text-transform:uppercase;text-align:center">Stacked — transparent</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Stacked — transparent</small>
       </div>
       <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
         <img src="assets/logo/dmcgrid-primary-transparent-white-wide.svg" alt="Wordmark white transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em;text-transform:uppercase;text-align:center">Wordmark — transparent</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Wordmark — transparent</small>
       </div>
       <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
         <img src="assets/logo/dmcgrid-primary-transparent-white-symbol.svg" alt="Symbol white transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em;text-transform:uppercase;text-align:center">Symbol — transparent</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Symbol — transparent</small>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 26px">
       <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-primary-transparent-black-full.svg" alt="Full black transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase;text-align:center">Full — black mark</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Full — black mark</small>
       </div>
       <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-primary-transparent-black-stacked.svg" alt="Stacked black transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase;text-align:center">Stacked — black mark</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Stacked — black mark</small>
       </div>
       <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-primary-transparent-black-wide.svg" alt="Wordmark black transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase;text-align:center">Wordmark — black mark</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Wordmark — black mark</small>
       </div>
       <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
         <img src="assets/logo/dmcgrid-primary-transparent-black-symbol.svg" alt="Symbol black transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:#6B7280;letter-spacing:.1em;text-transform:uppercase;text-align:center">Symbol — black mark</small>
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Symbol — black mark</small>
       </div>
     </div>
     <p class="copy" style="margin-bottom:26px"><b>Full kit (16 files) ships with the system in assets/logo/</b> — original SVGs from Dhrumil's Notion logo page, dark/light recolors, and the complete transparent set. Use white-mark versions on dark surfaces, black-mark on light, color variants everywhere else. The gold dot stays #D4B483 (bronze #8A6524 on light theme).</p>
@@ -466,7 +475,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin:12px 0 26px">
       <div class="demo" style="position:relative;min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--surface);background-image:linear-gradient(var(--t06) 1px,transparent 1px),linear-gradient(90deg,var(--t06) 1px,transparent 1px);background-size:24px 24px">
         <img src="assets/logo/dmcgrid-symbol-dark.svg" alt="Construction grid" style="max-height:120px;width:auto">
-        <small style="position:absolute;bottom:12px;left:14px;font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em;text-transform:uppercase">24px construction grid</small>
+        <small style="position:absolute;bottom:12px;left:14px;font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">24px construction grid</small>
       </div>
       <div class="demo" style="padding:20px">
         <p class="copy" style="margin-bottom:10px"><b>The mark:</b> a curved path forming a D and a journey — "a path to a destination." Two strokes build the D, the gold dot (#D4B483) is the destination point. Official SVG viewBox 0 0 96 105 (symbol) / 0 0 442 105 (full lockup). Source: Dhrumil's Notion logo page, Oct 6.</p>
@@ -477,19 +486,19 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin:12px 0 26px">
       <div class="demo" style="min-height:200px;display:flex;align-items:center;justify-content:center;background:var(--surface)">
         <div style="position:relative;padding:40px;border:1px dashed rgba(212,180,131,.4);border-radius:8px">
-          <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font:italic 10px var(--font-m);color:var(--g-sand-gold)">X</div>
-          <div style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font:italic 10px var(--font-m);color:var(--g-sand-gold)">X</div>
-          <div style="position:absolute;left:-14px;top:50%;transform:translateY(-50%);font:italic 10px var(--font-m);color:var(--g-sand-gold)">X</div>
-          <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font:italic 10px var(--font-m);color:var(--g-sand-gold)">X</div>
+          <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
+          <div style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
+          <div style="position:absolute;left:-14px;top:50%;transform:translateY(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
+          <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
           <img src="assets/logo/dmcgrid-full-dark.svg" alt="Clearance demo" style="max-height:48px;width:auto">
         </div>
       </div>
       <div class="demo" style="padding:20px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">Min clearance</span><b style="font:700 16px var(--font-d)">0.5×</b></div>
-          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">Preferred</span><b style="font:700 16px var(--font-d)">1×</b></div>
-          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">X = mark height</span><b style="font:700 16px var(--font-d)">105 units</b></div>
-          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">Min digital size</span><b style="font:700 16px var(--font-d)">24px</b></div>
+          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--t40);text-transform:uppercase;letter-spacing:.08em;display:block">Min clearance</span><b style="font:700 16px var(--font-d)">0.5×</b></div>
+          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--t40);text-transform:uppercase;letter-spacing:.08em;display:block">Preferred</span><b style="font:700 16px var(--font-d)">1×</b></div>
+          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--t40);text-transform:uppercase;letter-spacing:.08em;display:block">X = mark height</span><b style="font:700 16px var(--font-d)">105 units</b></div>
+          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--t40);text-transform:uppercase;letter-spacing:.08em;display:block">Min digital size</span><b style="font:700 16px var(--font-d)">24px</b></div>
         </div>
       </div>
     </div>
@@ -531,7 +540,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     </div>
     <div class="mini-label" style="margin-top:28px">Neutral ramp — 12 steps</div>
     <p class="copy">Cool slate-tinted ramp, one role per step — replaces flat grey reuse. Stone/Slate/Midnight stay as named tokens; the ramp indexes every step between. Ivory (cream) is reserved for light-theme surfaces ONLY — never text or borders on dark.</p>
-    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin:12px 0 10px"><div><div style="height:56px;border-radius:8px;background:#F3F5F7;border:1px solid #2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">50</div></div><div><div style="height:56px;border-radius:8px;background:#E8ECF0;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">100</div></div><div><div style="height:56px;border-radius:8px;background:#D2D9DF;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">200</div></div><div><div style="height:56px;border-radius:8px;background:#B4BDC5;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">300</div></div><div><div style="height:56px;border-radius:8px;background:#9CA3AF;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">400</div></div><div><div style="height:56px;border-radius:8px;background:#71808B;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">500</div></div><div><div style="height:56px;border-radius:8px;background:#55636E;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">600</div></div><div><div style="height:56px;border-radius:8px;background:#3E4A54;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">700</div></div><div><div style="height:56px;border-radius:8px;background:#2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">800</div></div><div><div style="height:56px;border-radius:8px;background:#232D39;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">850</div></div><div><div style="height:56px;border-radius:8px;background:#1F2937;border:1px solid #2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">900</div></div><div><div style="height:56px;border-radius:8px;background:#0B0F14;border:1px solid #2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--g-stone);margin-top:4px">950</div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin:12px 0 10px"><div><div style="height:56px;border-radius:8px;background:#F3F5F7;border:1px solid #2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">50</div></div><div><div style="height:56px;border-radius:8px;background:#E8ECF0;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">100</div></div><div><div style="height:56px;border-radius:8px;background:#D2D9DF;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">200</div></div><div><div style="height:56px;border-radius:8px;background:#B4BDC5;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">300</div></div><div><div style="height:56px;border-radius:8px;background:#9CA3AF;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">400</div></div><div><div style="height:56px;border-radius:8px;background:#71808B;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">500</div></div><div><div style="height:56px;border-radius:8px;background:#55636E;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">600</div></div><div><div style="height:56px;border-radius:8px;background:#3E4A54;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">700</div></div><div><div style="height:56px;border-radius:8px;background:#2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">800</div></div><div><div style="height:56px;border-radius:8px;background:#232D39;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">850</div></div><div><div style="height:56px;border-radius:8px;background:#1F2937;border:1px solid #2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">900</div></div><div><div style="height:56px;border-radius:8px;background:#0B0F14;border:1px solid #2A3441;"></div><div style="font:500 9px var(--font-b);color:var(--t40);margin-top:4px">950</div></div></div>
     <p class="copy"><b>Usage rules:</b> 50–200 light-theme borders/disabled · 300 placeholders · 400 secondary text · 500 muted meta · 600 icon hover · 700–850 dark hairlines/surfaces · 900–950 page layers. Never skip more than 2 steps between adjacent elements.</p>
     <div class="mini-label">Usage rules (binding)</div>
     <div class="grid2">
@@ -554,18 +563,18 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="grid2" style="margin-bottom:26px">
       <div class="demo">
         <div class="demo-title">Primary — Satoshi (Fontshare, free for commercial use · ITF)</div>
-        <div style="font:300 30px var(--font-d);letter-spacing:-.01em;border-bottom:1px solid var(--line);padding:8px 0">Aa Bb Cc — 0123456789 <span style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em">LIGHT 300</span></div>
-        <div style="font:400 30px var(--font-d);letter-spacing:-.01em;border-bottom:1px solid var(--line);padding:8px 0">Aa Bb Cc — 0123456789 <span style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em">REGULAR 400</span></div>
-        <div style="font:500 30px var(--font-d);letter-spacing:-.01em;border-bottom:1px solid var(--line);padding:8px 0">Aa Bb Cc — 0123456789 <span style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em">MEDIUM 500</span></div>
-        <div style="font:700 30px var(--font-d);letter-spacing:-.01em;padding:8px 0">Aa Bb Cc — 0123456789 <span style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em">BOLD 700</span></div>
+        <div style="font:300 30px var(--font-d);letter-spacing:-.01em;border-bottom:1px solid var(--line);padding:8px 0">Aa Bb Cc — 0123456789 <span style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em">LIGHT 300</span></div>
+        <div style="font:400 30px var(--font-d);letter-spacing:-.01em;border-bottom:1px solid var(--line);padding:8px 0">Aa Bb Cc — 0123456789 <span style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em">REGULAR 400</span></div>
+        <div style="font:500 30px var(--font-d);letter-spacing:-.01em;border-bottom:1px solid var(--line);padding:8px 0">Aa Bb Cc — 0123456789 <span style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em">MEDIUM 500</span></div>
+        <div style="font:700 30px var(--font-d);letter-spacing:-.01em;padding:8px 0">Aa Bb Cc — 0123456789 <span style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em">BOLD 700</span></div>
         <p class="copy" style="margin-top:10px">Display + headings + UI chrome. Tight tracking on display sizes (-2% to -5%).</p>
       </div>
       <div class="demo">
         <div class="demo-title">Secondary — Cabinet Grotesk (Fontshare, free · ITF)</div>
-        <div style="font:300 24px var(--font-b);border-bottom:1px solid var(--line);padding:7px 0">The quick brown fox — ₹1,92,400 <span style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em">LIGHT 300</span></div>
-        <div style="font:400 24px var(--font-b);border-bottom:1px solid var(--line);padding:7px 0">The quick brown fox — ₹1,92,400 <span style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em">REGULAR 400</span></div>
-        <div style="font:500 24px var(--font-b);border-bottom:1px solid var(--line);padding:7px 0">The quick brown fox — ₹1,92,400 <span style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em">MEDIUM 500</span></div>
-        <div style="font:700 24px var(--font-b);padding:7px 0">The quick brown fox — ₹1,92,400 <span style="font:9px var(--font-m);color:var(--g-stone);letter-spacing:.1em">BOLD 700</span></div>
+        <div style="font:300 24px var(--font-b);border-bottom:1px solid var(--line);padding:7px 0">The quick brown fox — ₹1,92,400 <span style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em">LIGHT 300</span></div>
+        <div style="font:400 24px var(--font-b);border-bottom:1px solid var(--line);padding:7px 0">The quick brown fox — ₹1,92,400 <span style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em">REGULAR 400</span></div>
+        <div style="font:500 24px var(--font-b);border-bottom:1px solid var(--line);padding:7px 0">The quick brown fox — ₹1,92,400 <span style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em">MEDIUM 500</span></div>
+        <div style="font:700 24px var(--font-b);padding:7px 0">The quick brown fox — ₹1,92,400 <span style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em">BOLD 700</span></div>
         <p class="copy" style="margin-top:10px">Body copy, form labels, table text, chat, email. Never used for display headlines.</p>
       </div>
     </div>
@@ -767,7 +776,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <p class="copy" style="text-align:right;font-family:var(--font-m);font-size:13px"><b>Total ₹51,900</b></p>
       </div>
       <div class="demo" style="border-color:rgba(212,180,131,.5)">
-        <div class="demo-title" style="color:var(--g-sand-gold)">OPTION 2 — Comfort</div>
+        <div class="demo-title" style="color:var(--accent)">OPTION 2 — Comfort</div>
         <table class="dt" style="margin-bottom:10px">
           <tr><td>Hotel C</td><td class="num">3N</td><td class="num">₹24,800</td></tr>
           <tr><td>Hotel D</td><td class="num">2N</td><td class="num">₹28,200</td></tr>
@@ -797,7 +806,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
           <tr><td><b>Subtotal</b></td><td class="num"><b>₹1,64,736</b></td></tr>
           <tr><td>GST 18%</td><td class="num">+ ₹29,652</td></tr>
           <tr><td>TCS 2% (flat, from 01.04.2026)</td><td class="num">+ ₹3,295</td></tr>
-          <tr><td><b>Customer price</b></td><td class="num"><b style="color:var(--g-sand-gold)">₹1,97,683</b></td></tr>
+          <tr><td><b>Customer price</b></td><td class="num"><b style="color:var(--accent)">₹1,97,683</b></td></tr>
         </table>
       </div>
       <div class="demo">
