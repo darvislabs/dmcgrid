@@ -72,8 +72,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opa
 /* ============ SIDEBAR ============ */
 .sidebar{position:fixed;inset:0 auto 0 0;width:216px;background:var(--bg);border-right:1px solid var(--t06);z-index:20;display:flex;flex-direction:column}
 .brand{padding:22px 18px 14px;border-bottom:1px solid var(--t06)}
-.brand-line{display:flex;align-items:center;gap:9px;font:600 15px var(--font-d);letter-spacing:-.02em}
-.brand-line b{font-weight:600}.brand-line i{font-style:normal;color:var(--accent)}
+.brand-line{display:flex;align-items:center;gap:9px;font:700 15px var(--font-d);letter-spacing:-.02em}
+.brand-line b{font-weight:700}.brand-line i{font-style:normal;color:var(--accent)}
 .brand-sub{font:9px var(--font-m);letter-spacing:.14em;color:var(--t30);text-transform:uppercase;margin-top:3px}
 .side-label{font:9px var(--font-m);letter-spacing:.12em;color:var(--t30);padding:14px 18px 4px;text-transform:uppercase}
 .nav{overflow-y:auto;flex:1;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:var(--t12) transparent}
@@ -91,7 +91,7 @@ main{margin-left:216px}
 .section.alt{background:var(--alt)}
 .inner{max-width:1320px;margin:auto}
 .sec-head{margin-bottom:44px}
-.sec-head h2{font-family:var(--font-d);font-size:clamp(26px,1.3rem+1.8vw,44px);font-weight:600;color:var(--text);margin:0;line-height:1.1;letter-spacing:-.02em}
+.sec-head h2{font-family:var(--font-d);font-size:clamp(26px,1.3rem+1.8vw,44px);font-weight:700;color:var(--text);margin:0;line-height:1.1;letter-spacing:-.02em}
 .sec-kicker{font:10px var(--font-m);letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:12px}
 .sec-kicker::after{content:"";height:1px;flex:1;background:var(--t08);max-width:120px}
 .sec-desc{font-size:12px;color:var(--t55);max-width:620px;margin:14px 0 0;line-height:1.7}
@@ -111,7 +111,7 @@ main{margin-left:216px}
 /* ═══ MOBILE NAV (Linear-style drawer) ═══ */
 .mnav{display:none}
 .mnav-bar{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--t08)}
-.mnav-brand{display:flex;align-items:center;gap:8px;font:600 15px var(--font-d);color:var(--text)}
+.mnav-brand{display:flex;align-items:center;gap:8px;font:700 15px var(--font-d);color:var(--text)}
 .mnav-brand i{color:var(--accent);font-style:normal}
 .mnav-toggle{background:transparent;border:1px solid var(--t12);border-radius:9px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;color:var(--text);cursor:pointer}
 .mnav-toggle svg{width:20px;height:20px}
@@ -123,7 +123,7 @@ main{margin-left:216px}
 .mnav-drawer a{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:9px;color:var(--t80);font:500 13.5px var(--font-b);text-decoration:none;min-height:44px}
 .mnav-drawer a.active{background:var(--t08);color:var(--text)}
 .mnav-drawer a .n{font:500 10px var(--font-m);color:var(--t40);min-width:24px}
-.mnav-drawer .side-label{font:600 10px var(--font-m);letter-spacing:.14em;text-transform:uppercase;color:var(--t40);padding:14px 12px 6px}
+.mnav-drawer .side-label{font:700 10px var(--font-m);letter-spacing:.14em;text-transform:uppercase;color:var(--t40);padding:14px 12px 6px}
 @media(max-width:1024px){
   .mnav{display:block}
   main{padding-top:68px}
@@ -197,26 +197,26 @@ h1,h2{overflow-wrap:break-word}
 .hero-kicker::before,.hero-kicker::after{content:"";height:1px;width:72px;background:rgba(212,180,131,.35)}
 .hero-kicker span{font:10px var(--font-m);letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
 .hero-title{margin:0 0 24px;font-optical-sizing:auto}
-.hero-meta{font:600 12px var(--font-m);letter-spacing:.18em;color:var(--t80);text-transform:uppercase;margin-bottom:10px}
-.hero-ver{font:600 10px var(--font-m);letter-spacing:.14em;color:var(--t55);text-transform:uppercase}
-.hero-time{font:600 10px var(--font-m);letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-top:14px}
+.hero-meta{font:700 12px var(--font-m);letter-spacing:.18em;color:var(--t80);text-transform:uppercase;margin-bottom:10px}
+.hero-ver{font:700 10px var(--font-m);letter-spacing:.14em;color:var(--t55);text-transform:uppercase}
+.hero-time{font:700 10px var(--font-m);letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-top:14px}
 
 /* ============ COMPONENT CLASSES ============ */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--t12);background:var(--surface);color:var(--text);border-radius:var(--r-btn);padding:11px 20px;font:500 13px var(--font-b);min-height:40px;transition:all .16s var(--ease-out)}
 .btn:hover{border-color:var(--t18)}
 .btn:active{transform:scale(.97)}
-.btn-gold{background:var(--g-sand-gold);border-color:var(--g-sand-gold);color:#0B0F14;font-weight:600}
+.btn-gold{background:var(--g-sand-gold);border-color:var(--g-sand-gold);color:#0B0F14;font-weight:700}
 .btn-gold:hover{filter:brightness(1.06)}
 .btn-outline{background:transparent;border-color:var(--t18)}
 .btn-ghost{border:0;background:transparent;color:var(--t65)}
 .btn-ghost:hover{color:var(--text)}
-.btn-teal{background:var(--teal);border-color:var(--teal);color:#07211F;font-weight:600}
+.btn-teal{background:var(--teal);border-color:var(--teal);color:#07211F;font-weight:700}
 .btn-danger{background:transparent;border-color:rgba(239,68,68,.4);color:var(--error)}
 .btn-danger:hover{border-color:var(--error)}
 .btn-sm{min-height:32px;padding:6px 13px;font-size:12px}
 .btn-lg{min-height:48px;padding:14px 26px;font-size:14px}
 .btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
-.badge{display:inline-flex;align-items:center;gap:6px;border-radius:var(--r-pill);padding:4px 11px;font:600 11px var(--font-b);letter-spacing:.02em}
+.badge{display:inline-flex;align-items:center;gap:6px;border-radius:var(--r-pill);padding:4px 11px;font:700 11px var(--font-b);letter-spacing:.02em}
 .badge .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
 .badge-success{background:rgba(16,185,129,.13);color:#34D399}
 .badge-warning{background:rgba(245,158,11,.13);color:#FBBF24}
@@ -226,7 +226,7 @@ h1,h2{overflow-wrap:break-word}
 .badge-teal{background:rgba(14,165,163,.14);color:#2DD4BF}
 .badge-neutral{background:var(--t08);color:var(--t65)}
 .field{margin:0 0 14px}
-.field label{display:block;font:600 11px var(--font-b);letter-spacing:.04em;color:var(--t55);margin-bottom:6px;text-transform:uppercase}
+.field label{display:block;font:700 11px var(--font-b);letter-spacing:.04em;color:var(--t55);margin-bottom:6px;text-transform:uppercase}
 .field .hint{font-size:11px;color:var(--t40);margin-top:5px}
 .input,.field input,.field select,.field textarea{width:100%;background:var(--alt);border:1px solid var(--t12);border-radius:var(--r-input);padding:11px 13px;color:var(--text);min-height:42px;transition:border-color .16s var(--ease-out),box-shadow .16s var(--ease-out)}
 .field textarea{min-height:88px;resize:vertical}
@@ -244,7 +244,7 @@ h1,h2{overflow-wrap:break-word}
 .stepper .bar{width:26px;height:1px;background:var(--t12)}
 /* table */
 table.dt{width:100%;border-collapse:collapse;font-size:13px}
-table.dt th{font:600 10px var(--font-m);letter-spacing:.1em;text-transform:uppercase;color:var(--t40);text-align:left;padding:10px 14px;border-bottom:1px solid var(--t12)}
+table.dt th{font:700 10px var(--font-m);letter-spacing:.1em;text-transform:uppercase;color:var(--t40);text-align:left;padding:10px 14px;border-bottom:1px solid var(--t12)}
 table.dt td{padding:13px 14px;border-bottom:1px solid var(--t06);font-weight:400}
 table.dt tr:hover td{background:var(--t04)}
 table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-variant-numeric:tabular-nums;font-size:12px}
@@ -252,7 +252,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
 .pcard{border:1px solid var(--t08);border-radius:var(--r-card);background:var(--surface);padding:20px;transition:border-color .2s var(--ease-out),box-shadow .2s var(--ease-out)}
 .pcard:hover{border-color:var(--t18);box-shadow:var(--shadow-hover)}
 .pcard .pc-eyebrow{font:9px var(--font-m);letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
-.pcard h4{font-family:var(--font-d);font-size:17px;font-weight:600;margin:0 0 8px}
+.pcard h4{font-family:var(--font-d);font-size:17px;font-weight:700;margin:0 0 8px}
 /* toast */
 .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-8px);z-index:99;background:var(--g-slate);color:var(--text);padding:11px 18px;border-radius:10px;font:500 12px var(--font-b);box-shadow:var(--shadow-pop);border:1px solid var(--t12);opacity:0;transition:opacity .2s var(--ease-out),transform .2s var(--ease-out)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -266,8 +266,8 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
 /* kpi */
 .kpi{border:1px solid var(--t08);border-radius:var(--r-card);padding:18px 20px;background:var(--surface)}
 .kpi .k-label{font:9px var(--font-m);letter-spacing:.13em;color:var(--t30);text-transform:uppercase}
-.kpi .k-val{font-family:var(--font-d);font-size:26px;font-weight:600;margin-top:6px;font-variant-numeric:tabular-nums}
-.kpi .k-delta{font:600 11px var(--font-b);margin-top:6px}
+.kpi .k-val{font-family:var(--font-d);font-size:26px;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums}
+.kpi .k-delta{font:700 11px var(--font-b);margin-top:6px}
 .kpi .up{color:var(--success)}.kpi .down{color:var(--error)}
 
 </style>
@@ -291,11 +291,11 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
     </button>
 <div class="mnav-brand">DMC<i>Grid</i></div>
-<button class="mnav-toggle" onclick="mnavTheme()" aria-label="Toggle theme" style="font:600 10px var(--font-m);letter-spacing:.06em">THEME</button>
+<button class="mnav-toggle" onclick="mnavTheme()" aria-label="Toggle theme" style="font:700 10px var(--font-m);letter-spacing:.06em">THEME</button>
   </div>
 <div class="mnav-backdrop" id="mnav-backdrop" onclick="mnavClose()"></div>
 <nav class="mnav-drawer" id="mnav-drawer" aria-label="Mobile navigation">
-<div class="brand"><svg width="20" height="22" viewBox="0 0 96 105" style="color:var(--g-ivory)"><use href="#dmc"/></svg><span style="font:600 15px var(--font-d);color:var(--text)"><b>DMC</b><i style="color:var(--accent);font-style:normal">Grid</i></span></div>
+<div class="brand"><svg width="20" height="22" viewBox="0 0 96 105" style="color:var(--g-ivory)"><use href="#dmc"/></svg><span style="font:700 15px var(--font-d);color:var(--text)"><b>DMC</b><i style="color:var(--accent);font-style:normal">Grid</i></span></div>
     <div class="side-label">Brand</div>
     <a href="#cover" data-mnav><span class="n">01</span>Cover</a>
     <a href="#brand-purpose" data-mnav><span class="n">02</span>Brand Purpose</a>
@@ -366,9 +366,9 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   <div class="hero-grid"></div>
   <div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
   <div class="hero-content">
-    <div class="hero-logo"><span style="font:600 44px var(--font-d);letter-spacing:-.03em">DMC<span style="color:var(--accent)">Grid</span></span></div>
+    <div class="hero-logo"><span style="font:700 44px var(--font-d);letter-spacing:-.03em">DMC<span style="color:var(--accent)">Grid</span></span></div>
     <div class="hero-kicker"><span>TRAVEL COMMERCE INFRASTRUCTURE</span></div>
-    <h1 class="hero-title" style="font-family:var(--font-d);font-size:clamp(40px,3rem+4vw,84px);font-weight:600;color:var(--g-ivory);letter-spacing:-.04em;line-height:1;margin:0 0 20px">From request<br>to reality.</h1>
+    <h1 class="hero-title" style="font-family:var(--font-d);font-size:clamp(40px,3rem+4vw,84px);font-weight:700;color:var(--g-ivory);letter-spacing:-.04em;line-height:1;margin:0 0 20px">From request<br>to reality.</h1>
     <p class="copy" style="text-align:center;margin:0 auto 30px;max-width:520px;color:var(--t65)">The operating network for modern B2B travel sourcing. Connecting agents, DMCs and destinations through one structured system.</p>
     <div class="hero-meta">BRAND & DESIGN SYSTEM · V1.0</div>
     <div class="hero-ver">SATOSHI · CABINET GROTESK · JETBRAINS MONO</div>
@@ -486,10 +486,10 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </div>
       <div class="demo" style="padding:20px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">Min clearance</span><b style="font:600 16px var(--font-d)">0.5×</b></div>
-          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">Preferred</span><b style="font:600 16px var(--font-d)">1×</b></div>
-          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">X = mark height</span><b style="font:600 16px var(--font-d)">105 units</b></div>
-          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">Min digital size</span><b style="font:600 16px var(--font-d)">24px</b></div>
+          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">Min clearance</span><b style="font:700 16px var(--font-d)">0.5×</b></div>
+          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">Preferred</span><b style="font:700 16px var(--font-d)">1×</b></div>
+          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">X = mark height</span><b style="font:700 16px var(--font-d)">105 units</b></div>
+          <div style="padding:10px;border:1px solid var(--line);border-radius:8px"><span style="font:10px var(--font-m);color:var(--g-stone);text-transform:uppercase;letter-spacing:.08em;display:block">Min digital size</span><b style="font:700 16px var(--font-d)">24px</b></div>
         </div>
       </div>
     </div>
@@ -572,14 +572,14 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="mini-label">Type scale (binding)</div>
     <div class="table-wrap"><table class="dt" style="max-width:860px">
       <tr><th>Token</th><th>Face</th><th>Size / LH</th><th>Weight</th><th>Tracking</th><th>Use</th></tr>
-      <tr><td><span class="mono" style="font-size:11px">--ts-h1</span></td><td>Satoshi Semibold</td><td class="num">56 / 64</td><td>600</td><td class="num">-5%</td><td>Hero, page H1</td></tr>
-      <tr><td><span class="mono" style="font-size:11px">--ts-h2</span></td><td>Satoshi Semibold</td><td class="num">40 / 48</td><td>600</td><td class="num">-3%</td><td>Section titles</td></tr>
+      <tr><td><span class="mono" style="font-size:11px">--ts-h1</span></td><td>Satoshi Bold</td><td class="num">56 / 64</td><td>700</td><td class="num">-5%</td><td>Hero, page H1</td></tr>
+      <tr><td><span class="mono" style="font-size:11px">--ts-h2</span></td><td>Satoshi Bold</td><td class="num">40 / 48</td><td>700</td><td class="num">-3%</td><td>Section titles</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-h3</span></td><td>Satoshi Medium</td><td class="num">28 / 36</td><td>500</td><td class="num">-2%</td><td>Card titles</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-h4</span></td><td>Satoshi Medium</td><td class="num">20 / 28</td><td>500</td><td>0</td><td>Subheadings</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-bodyL</span></td><td>Cabinet Grotesk Light</td><td class="num">18 / 28</td><td>300</td><td>0</td><td>Intro copy</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-body</span></td><td>Cabinet Grotesk Regular</td><td class="num">16 / 24</td><td>400</td><td>0</td><td>Body, tables</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-cap</span></td><td>Cabinet Grotesk Regular</td><td class="num">14 / 20</td><td>400</td><td>0</td><td>Captions, hints</td></tr>
-      <tr><td><span class="mono" style="font-size:11px">--ts-over</span></td><td>Satoshi Semibold</td><td class="num">12 / 16</td><td>600</td><td class="num">+.18em</td><td>Overlines, kickers</td></tr>
+      <tr><td><span class="mono" style="font-size:11px">--ts-over</span></td><td>Satoshi Bold</td><td class="num">12 / 16</td><td>700</td><td class="num">+.18em</td><td>Overlines, kickers</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--font-m</span></td><td>JetBrains Mono</td><td class="num">12-14 / 20</td><td>500</td><td>0</td><td>ALL money figures, IDs, refs</td></tr>
     </table></div>
     <div class="mini-label">Rules</div>
@@ -800,7 +800,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="demo" style="margin-bottom:26px">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid var(--t08);border-radius:10px;padding:14px 16px;margin-bottom:10px">
         <div>
-          <div style="font:600 14px var(--font-d);margin-bottom:4px">Thailand · 5N/6D · 2A+2C · Mar 12–17</div>
+          <div style="font:700 14px var(--font-d);margin-bottom:4px">Thailand · 5N/6D · 2A+2C · Mar 12–17</div>
           <div style="font:400 12px var(--font-b);color:var(--t55)">Budget band ₹1.4–1.8L · Breakfast + transfers · 4★ preferred</div>
         </div>
         <div style="display:flex;align-items:center;gap:12px">
@@ -811,7 +811,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid var(--t08);border-radius:10px;padding:14px 16px">
         <div>
-          <div style="font:600 14px var(--font-d);margin-bottom:4px">Dubai · 4N/5D · 6 pax · Apr 02–06</div>
+          <div style="font:700 14px var(--font-d);margin-bottom:4px">Dubai · 4N/5D · 6 pax · Apr 02–06</div>
           <div style="font:400 12px var(--font-b);color:var(--t55)">Budget band ₹2.2–2.8L · Desert safari + Marina · Visa needed</div>
         </div>
         <div style="display:flex;align-items:center;gap:12px">
@@ -829,9 +829,9 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <div class="demo-title">Wallet</div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
           <div><div style="font:400 11px var(--font-b);color:var(--t55);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Quote credits</div>
-          <div style="font:600 32px var(--font-d);font-family:var(--font-m)">14</div></div>
+          <div style="font:700 32px var(--font-d);font-family:var(--font-m)">14</div></div>
           <div style="text-align:right"><div style="font:400 11px var(--font-b);color:var(--t55);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Connect credits</div>
-          <div style="font:600 32px var(--font-d);font-family:var(--font-m)">3</div></div>
+          <div style="font:700 32px var(--font-d);font-family:var(--font-m)">3</div></div>
         </div>
         <button class="btn btn-gold btn-sm" onclick="toast('Opening plans…')">Top up</button>
         <p class="copy" style="margin-top:10px">Credits in mono, always. Free tier: 5 deals each side. Closed-system wallet — no cash-out (RBI/DPSS/2025-26/141 red line).</p>
@@ -872,7 +872,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">Payment methods</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-          <div style="border:1px solid var(--g-sand-gold);border-radius:9px;padding:10px 16px;font:600 13px var(--font-b);color:var(--text);background:rgba(212,180,131,.08)">UPI</div>
+          <div style="border:1px solid var(--g-sand-gold);border-radius:9px;padding:10px 16px;font:700 13px var(--font-b);color:var(--text);background:rgba(212,180,131,.08)">UPI</div>
           <div style="border:1px solid var(--t12);border-radius:9px;padding:10px 16px;font:500 13px var(--font-b);color:var(--t65)">Card</div>
           <div style="border:1px solid var(--t12);border-radius:9px;padding:10px 16px;font:500 13px var(--font-b);color:var(--t65)">Netbanking</div>
         </div>
@@ -954,7 +954,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="hint">Per person · Indian grouping · mono face</div>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-      <div style="border:1px solid var(--g-sand-gold);border-radius:999px;padding:8px 16px;font:600 12px var(--font-b);color:var(--text);background:rgba(212,180,131,.08)">₹1.2–1.6L</div>
+      <div style="border:1px solid var(--g-sand-gold);border-radius:999px;padding:8px 16px;font:700 12px var(--font-b);color:var(--text);background:rgba(212,180,131,.08)">₹1.2–1.6L</div>
       <div style="border:1px solid var(--t12);border-radius:999px;padding:8px 16px;font:500 12px var(--font-b);color:var(--t65)">₹1.6–2.2L</div>
       <div style="border:1px solid var(--t12);border-radius:999px;padding:8px 16px;font:500 12px var(--font-b);color:var(--t65)">₹2.2L+</div>
     </div>
@@ -1079,7 +1079,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">Modal — connect confirmation</div>
         <div class="modal" style="max-width:100%">
-          <h4 style="font-family:var(--font-d);font-size:16px;font-weight:600;margin:0 0 8px">Connect with Thai Horizons?</h4>
+          <h4 style="font-family:var(--font-d);font-size:16px;font-weight:700;margin:0 0 8px">Connect with Thai Horizons?</h4>
           <p class="copy">This debits <b class="mono">1 connect credit</b> (18 left). Thai Horizons will see your identity and full brief. You'll unlock their quote versions and direct chat.</p>
           <div style="display:flex;gap:10px;margin-top:18px;justify-content:flex-end">
             <button class="btn btn-ghost">Cancel</button>
@@ -1143,22 +1143,22 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   <div style="background:linear-gradient(135deg,#0B0F14 0%,#151B23 100%);padding:28px 24px;border-bottom:1px solid rgba(212,180,131,.3)">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
       <div>
-        <div style="font:600 22px var(--font-d);color:#F7F3E9;letter-spacing:-.02em;margin-bottom:4px">Thailand · 5N/6D Family Escape</div>
+        <div style="font:700 22px var(--font-d);color:#F7F3E9;letter-spacing:-.02em;margin-bottom:4px">Thailand · 5N/6D Family Escape</div>
         <div style="font:400 12px var(--font-b);color:rgba(247,243,233,.6)">Prepared for the Sharma family · Mar 12–17, 2026 · 2A+2C</div>
       </div>
       <svg width="64" height="70" viewBox="0 0 96 105" style="color:#D4B483;flex-shrink:0"><use href="#dmc"/></svg>
     </div>
     <div style="display:flex;gap:20px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(247,243,233,.08)">
-      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Option</div><div style="font:600 13px var(--font-d);color:#D4B483">Comfort</div></div>
-      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Hotels</div><div style="font:600 13px var(--font-d);color:#F7F3E9">4★+5★</div></div>
-      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Per person</div><div style="font:600 13px var(--font-d);color:#F7F3E9;font-family:var(--font-m)">₹49,421</div></div>
-      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Total</div><div style="font:600 13px var(--font-d);color:#F7F3E9;font-family:var(--font-m)">₹1,97,683</div></div>
+      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Option</div><div style="font:700 13px var(--font-d);color:#D4B483">Comfort</div></div>
+      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Hotels</div><div style="font:700 13px var(--font-d);color:#F7F3E9">4★+5★</div></div>
+      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Per person</div><div style="font:700 13px var(--font-d);color:#F7F3E9;font-family:var(--font-m)">₹49,421</div></div>
+      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Total</div><div style="font:700 13px var(--font-d);color:#F7F3E9;font-family:var(--font-m)">₹1,97,683</div></div>
     </div>
   </div>
   <div style="padding:22px 24px;background:var(--surface)">
     <div style="display:flex;gap:12px;flex-wrap:wrap">
       <div style="flex:1;min-width:180px">
-        <div style="font:600 11px var(--font-d);color:var(--text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Day 1 · Bangkok → Pattaya</div>
+        <div style="font:700 11px var(--font-d);color:var(--text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Day 1 · Bangkok → Pattaya</div>
         <div style="display:flex;flex-direction:column;gap:8px">
           <div style="display:flex;gap:10px;align-items:baseline"><span class="mono" style="font-size:11px;color:var(--t55);min-width:44px">09:00</span><span style="font:400 13px var(--font-b);color:var(--t80)">BKK airport → Pattaya · private sedan</span></div>
           <div style="display:flex;gap:10px;align-items:baseline"><span class="mono" style="font-size:11px;color:var(--t55);min-width:44px">14:00</span><span style="font:400 13px var(--font-b);color:var(--t80)">Check-in + welcome lunch</span></div>
@@ -1166,7 +1166,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         </div>
       </div>
       <div style="flex:1;min-width:180px;border-left:1px solid var(--t08);padding-left:16px">
-        <div style="font:600 11px var(--font-d);color:var(--text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Inclusions</div>
+        <div style="font:700 11px var(--font-d);color:var(--text);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Inclusions</div>
         <div style="display:flex;flex-direction:column;gap:7px;font:400 13px var(--font-b);color:var(--t80)">
           <span>✓ 5N accommodation (4★ Pattaya + 5★ BKK)</span>
           <span>✓ Daily breakfast + 2 dinners</span>
