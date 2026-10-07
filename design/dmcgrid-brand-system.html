@@ -16,7 +16,7 @@
   --g-stone:#9CA3AF;--g-earth:#3A3F36;
   --success:#10B981;--warning:#F59E0B;--error:#EF4444;--info:#3B82F6;
   --teal:#0EA5A3;--sunset:#F97316;
-  --bg:var(--g-midnight);--surface:#151B23;--alt:#0E1319;--text:var(--g-ivory);
+  --bg:var(--g-midnight);--surface:#151B23;--alt:#0E1319;--field:#121A24;--text:var(--g-ivory);
   --t80:#C7D0D8;--t65:#9DAAB5;--t55:#8396A3;
   --t40:#7A8A99;--t30:rgba(255,255,255,.48);--t18:rgba(255,255,255,.18);
   --t12:rgba(255,255,255,.12);--t08:rgba(255,255,255,.08);--t06:rgba(255,255,255,.06);--t04:rgba(255,255,255,.04);
@@ -32,11 +32,11 @@
   --shadow-pop:0 12px 40px rgba(0,0,0,.5);
 }
 html[data-theme="light"]{
-  --bg:#F7F3E9;--surface:#FFFFFF;--alt:#F1EBDD;--text:#141A22;
+  --bg:#F2F3F5;--surface:#FFFFFF;--alt:#EAECF0;--field:#FFFFFF;--text:#141A22;
   --t80:rgba(20,26,34,.8);--t65:rgba(20,26,34,.68);--t55:rgba(20,26,34,.65);
   --t40:rgba(20,26,34,.65);--t30:rgba(20,26,34,.65);--t18:rgba(20,26,34,.18);
   --t12:rgba(20,26,34,.12);--t08:rgba(20,26,34,.08);--t06:rgba(20,26,34,.06);--t04:rgba(20,26,34,.04);
-  --line:#D9D2C0;--line-soft:#E4DECF;
+  --line:#D5D8DE;--line-soft:#E2E5EA;
   /* WCAG: light accent swaps to bronze — sand gold fails 4.5:1 on ivory */
   --accent:#7E5F1E;
   --success:#047857;--error:#DC2626;--g-sand-gold-btn:#D4B483;
@@ -123,6 +123,14 @@ main{margin-left:216px}
 .mnav-toggle svg{width:20px;height:20px}
 .mnav-drawer{position:fixed;top:0;bottom:0;left:0;width:min(320px,86vw);z-index:1000;background:var(--surface);border-right:1px solid var(--line);transform:translateX(-105%);visibility:hidden;transition:transform .28s cubic-bezier(.23,1,.32,1),visibility .28s;display:flex;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px}
 .mnav-drawer.open{transform:translateX(0);visibility:visible;transition:transform .28s cubic-bezier(.23,1,.32,1),visibility 0s}
+/* logo dynamic swap: every logo tile holds both colorways — dark mark shows in dark theme, light mark in light */
+.logo-swap img{display:none}
+html[data-theme="dark"] .logo-swap img.dk{display:block}
+html[data-theme="light"] .logo-swap img.lt{display:block}
+@media (max-width:768px){#icon-grid{grid-template-columns:repeat(4,1fr)!important}}
+@media (max-width:480px){#icon-grid{grid-template-columns:repeat(3,1fr)!important}#dest-grid{grid-template-columns:repeat(2,1fr)!important}}
+/* theme-optional surfaces: ivory stays available for special sections only */
+[data-theme="light"] .ivory-optional{background:#F7F3E9}
 .mnav-backdrop{position:fixed;inset:0;z-index:990;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .28s ease}
 .mnav-backdrop.show{opacity:1;pointer-events:auto}
 .mnav-drawer .brand{display:flex;align-items:center;gap:9px;padding:6px 8px 16px;border-bottom:1px solid var(--t08);margin-bottom:12px}
@@ -234,7 +242,7 @@ h1,h2{overflow-wrap:break-word}
 .field{margin:0 0 14px}
 .field label{display:block;font:700 11px var(--font-b);letter-spacing:.04em;color:var(--t55);margin-bottom:6px;text-transform:uppercase}
 .field .hint{font-size:11px;color:var(--t40);margin-top:5px}
-.input,.field input,.field select,.field textarea{width:100%;background:var(--alt);border:1px solid var(--t12);border-radius:var(--r-input);padding:11px 13px;color:var(--text);min-height:42px;transition:border-color .16s var(--ease-out),box-shadow .16s var(--ease-out)}
+.input,.field input,.field select,.field textarea{width:100%;background:var(--field);border:1px solid var(--t12);border-radius:var(--r-input);padding:11px 13px;color:var(--text);min-height:42px;transition:border-color .16s var(--ease-out),box-shadow .16s var(--ease-out)}
 .field textarea{min-height:88px;resize:vertical}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(212,180,131,.14)}
 .field input::placeholder,.field textarea::placeholder{color:var(--t30)}
@@ -254,6 +262,9 @@ table.dt th{font:700 10px var(--font-m);letter-spacing:.1em;text-transform:upper
 table.dt td{padding:13px 14px;border-bottom:1px solid var(--t06);font-weight:400}
 table.dt tr:hover td{background:var(--t04)}
 table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-variant-numeric:tabular-nums;font-size:12px}
+.dt td:first-child{font-weight:500}
+.dt td,.dt th{vertical-align:middle}
+.dt tr:last-child td{border-bottom:none}
 /* card product */
 .pcard{border:1px solid var(--t08);border-radius:var(--r-card);background:var(--surface);padding:20px;transition:border-color .2s var(--ease-out),box-shadow .2s var(--ease-out)}
 .pcard:hover{border-color:var(--t18);box-shadow:var(--shadow-hover)}
@@ -365,7 +376,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <a href="#changelog"><span class="n">19</span>Changelog</a>
   </nav>
   <button class="theme" onclick="const h=document.documentElement;h.dataset.theme=h.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('dmc-theme',h.dataset.theme)}catch(e){};this.textContent=h.dataset.theme==='dark'?'LIGHT MODE':'DARK MODE'">LIGHT MODE</button>
-  <div class="side-foot">v1.9 · Oct 2026</div>
+  <div class="side-foot">v2.0 · Oct 2026</div>
 </aside>
 
 <main>
@@ -375,7 +386,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
   <div class="hero-grid"></div>
   <div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
   <div class="hero-content">
-    <div class="hero-logo"><span style="font:700 44px var(--font-d);letter-spacing:-.03em">DMC<span style="color:var(--accent)">Grid</span></span></div>
+    <div class="hero-logo"><svg class="hero-logo-svg" width="264" height="105" viewBox="0 0 442 105" role="img" aria-label="DMCGrid" style="height:76px;width:auto;color:var(--text)"><use href="#dmc-full"/></svg></div>
     <div class="hero-kicker"><span>TRAVEL COMMERCE INFRASTRUCTURE</span></div>
     <h1 class="hero-title" style="font-family:var(--font-d);font-size:clamp(40px,3rem+4vw,84px);font-weight:700;color:var(--text);letter-spacing:-.04em;line-height:1;margin:0 0 20px">From request<br>to reality.</h1>
     <p class="copy" style="text-align:center;margin:0 auto 30px;max-width:520px;color:var(--t65)">The operating network for modern B2B travel sourcing. Connecting agents, DMCs and destinations through one structured system.</p>
@@ -394,14 +405,41 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <p class="sec-desc">What DMCGrid stands for, the promise it makes to both sides of the marketplace, and how the product speaks.</p>
     </div>
     <div class="grid3">
-      <div class="pcard"><div class="pc-eyebrow">PURPOSE</div><h3>Structured travel commerce</h3><p class="copy">Replace the WhatsApp-and-Excel RFQ chaos between Indian travel agents and destination management companies with one structured system: brief in, competitive quotes out, deal closed.</p></div>
-      <div class="pcard"><div class="pc-eyebrow">PROMISE · AGENTS</div><h3>Competitive leverage</h3><p class="copy">Every RFQ reaches verified DMCs. Quotes arrive anonymous and comparable, so the agent wins the margin, not the loudest supplier.</p></div>
-      <div class="pcard"><div class="pc-eyebrow">PROMISE · DMCs</div><h3>Qualified demand</h3><p class="copy">No lead reselling, no spam. Every brief is a real, structured itinerary from a verified agent. DMCs compete on product and price, not on who replies fastest.</p></div>
+      <div class="pcard"><div class="pc-eyebrow">PURPOSE</div><h3>Structured travel commerce</h3><p class="copy">Replace the WhatsApp-and-Excel RFQ chaos between Indian travel agents and destination management companies with one structured system: brief in, competitive quotes out, deal closed.</p><div style="display:flex;gap:10px;margin:14px 0 4px;align-items:center">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0"><path d="M3 7h18M3 12h18M3 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="color:var(--accent)"/></svg>
+  <div style="flex:1;height:1px;background:var(--t12)"></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+  <div style="align-self:flex-start;max-width:85%;background:var(--t06);border:1px solid var(--t12);border-radius:10px 10px 10px 3px;padding:7px 11px;font:10.5px var(--font-m);color:var(--t55)">"bhai pls best price delhi bangkok 4n asap"</div>
+  <div style="align-self:flex-end;max-width:85%;background:rgba(212,180,131,.14);border:1px solid rgba(212,180,131,.4);border-radius:10px 10px 3px 10px;padding:7px 11px;font:10.5px var(--font-m);color:var(--accent)">Brief #4192 → 3 structured quotes</div>
+</div></div>
+      <div class="pcard"><div class="pc-eyebrow">PROMISE · AGENTS</div><h3>Competitive leverage</h3><p class="copy">Every RFQ reaches verified DMCs. Quotes arrive anonymous and comparable, so the agent wins the margin, not the loudest supplier.</p><div style="display:flex;gap:10px;margin:14px 0 4px;align-items:center">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.8" style="color:var(--accent)"/><path d="M5 19c1.2-3.2 3.9-4.8 7-4.8s5.8 1.6 7 4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="color:var(--accent)"/></svg>
+  <div style="flex:1;height:1px;background:var(--t12)"></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+  <div style="align-self:flex-start;max-width:85%;background:var(--t06);border:1px solid var(--t12);border-radius:10px 10px 10px 3px;padding:7px 11px;font:10.5px var(--font-m);color:var(--t55)">"sir rates plz final ya not?? 🙏🙏"</div>
+  <div style="align-self:flex-end;max-width:85%;background:rgba(212,180,131,.14);border:1px solid rgba(212,180,131,.4);border-radius:10px 10px 3px 10px;padding:7px 11px;font:10.5px var(--font-m);color:var(--accent)">Quote A · net ₹1,42,800 · 4h 12m</div>
+</div></div>
+      <div class="pcard"><div class="pc-eyebrow">PROMISE · DMCs</div><h3>Qualified demand</h3><p class="copy">No lead reselling, no spam. Every brief is a real, structured itinerary from a verified agent. DMCs compete on product and price, not on who replies fastest.</p><div style="display:flex;gap:10px;margin:14px 0 4px;align-items:center">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex-shrink:0"><path d="M20 7L9 18l-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"/></svg>
+  <div style="flex:1;height:1px;background:var(--t12)"></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+  <div style="align-self:flex-start;max-width:85%;background:var(--t06);border:1px solid var(--t12);border-radius:10px 10px 10px 3px;padding:7px 11px;font:10.5px var(--font-m);color:var(--t55)">"agent here — 14 pax, 4★/5★, visa support needed"</div>
+  <div style="align-self:flex-end;max-width:85%;background:rgba(212,180,131,.14);border:1px solid rgba(212,180,131,.4);border-radius:10px 10px 3px 10px;padding:7px 11px;font:10.5px var(--font-m);color:var(--accent)">Matched brief · verified agent · respond</div>
+</div></div>
     </div>
     <div class="mini-label">Voice principles</div>
     <div class="grid2">
-      <div class="demo"><div class="demo-title">We sound like</div><p class="copy">Precise, trade-fluent, calm. We say "RFQ", "net rate", "connect" because our users do. Numbers over adjectives. Short sentences that respect a busy operator.</p></div>
-      <div class="demo"><div class="demo-title">We never sound like</div><p class="copy">Hype ("game-changing!"), consumer-travel cutesy, or salesy urgency. No exclamation marks in product UI. Money figures never decorate — they inform.</p></div>
+      <div class="demo"><div class="demo-title">We sound like</div><p class="copy">Precise, trade-fluent, calm. We say "RFQ", "net rate", "connect" because our users do. Numbers over adjectives. Short sentences that respect a busy operator.</p><div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
+  <div style="align-self:flex-end;max-width:88%;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.45);border-radius:10px 10px 3px 10px;padding:7px 11px;font:10.5px var(--font-m);color:var(--success)">Net rate ₹18,400/night · 3 quotes in 4h</div>
+  <div style="align-self:flex-end;max-width:88%;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.45);border-radius:10px 10px 3px 10px;padding:7px 11px;font:10.5px var(--font-m);color:var(--success)">Brief matched. 12 DMCs notified.</div>
+</div></div>
+      <div class="demo"><div class="demo-title">We never sound like</div><p class="copy">Hype ("game-changing!"), consumer-travel cutesy, or salesy urgency. No exclamation marks in product UI. Money figures never decorate — they inform.</p><div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
+  <div style="align-self:flex-end;max-width:88%;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.45);border-radius:10px 10px 3px 10px;padding:7px 11px;font:10.5px var(--font-m);color:var(--error)">🔥 GAME-CHANGING deals inside!!!</div>
+  <div style="align-self:flex-end;max-width:88%;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.45);border-radius:10px 10px 3px 10px;padding:7px 11px;font:10.5px var(--font-m);color:var(--error)">Hurry!! limited slots only 🙏</div>
+</div></div>
     </div>
   </div>
 </section>
@@ -414,64 +452,44 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <h2>Logo</h2>
       <p class="sec-desc">The mark: a curved path forming a D and a journey — "a path to a destination." Official mark (SVG from Dhrumil, Oct 6): curved path forming a D + journey, gold dot #D4B483 (bronze #8A6524 on light). Wordmark paths from the official SVG; Satoshi renders the live wordmark. Construction, clear space and misuse rules below are binding.</p>
     </div>
-    <div class="mini-label">Core lockups</div>
+    <div class="mini-label">Core lockups — dynamic, swap with the theme</div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:12px 0 26px">
-      <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--surface)">
-        <img src="assets/logo/dmcgrid-full-dark.svg" alt="DMCGrid Primary Horizontal" style="max-height:60px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Primary Horizontal — dark</small>
+      <div class="demo logo-swap" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--surface)">
+        <img class="dk" src="assets/logo/dmcgrid-full-dark.svg" alt="DMCGrid primary horizontal lockup" style="max-height:60px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-full-light.svg" alt="DMCGrid primary horizontal lockup" style="max-height:60px;width:auto">
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Primary horizontal</small>
       </div>
-      <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--alt);border:1px solid var(--t08)">
-        <img src="assets/logo/dmcgrid-full-light.svg" alt="DMCGrid Primary Horizontal light" style="max-height:60px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Primary Horizontal — light</small>
-      </div>
-      <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--surface)">
-        <img src="assets/logo/dmcgrid-symbol-dark.svg" alt="DMCGrid Symbol" style="max-height:64px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Symbol Only — dark</small>
-      </div>
-      <div class="demo" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--alt);border:1px solid var(--t08)">
-        <img src="assets/logo/dmcgrid-symbol-light.svg" alt="DMCGrid Symbol light" style="max-height:64px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Symbol Only — light</small>
+      <div class="demo logo-swap" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--surface)">
+        <img class="dk" src="assets/logo/dmcgrid-symbol-dark.svg" alt="DMCGrid symbol lockup" style="max-height:64px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-symbol-light.svg" alt="DMCGrid symbol lockup" style="max-height:64px;width:auto">
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Symbol only</small>
       </div>
     </div>
-    <div class="mini-label">Official variations — transparent set (from Notion)</div>
+    <div class="mini-label">Official variations — transparent set (from Notion), swap with the theme</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0 8px">
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
-        <img src="assets/logo/dmcgrid-primary-transparent-white-full.svg" alt="Full white transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Full — transparent</small>
+      <div class="demo logo-swap" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
+        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-full.svg" alt="Full lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-full.svg" alt="Full lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Full</small>
       </div>
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
-        <img src="assets/logo/dmcgrid-primary-transparent-white-stacked.svg" alt="Stacked white transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Stacked — transparent</small>
+      <div class="demo logo-swap" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
+        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-stacked.svg" alt="Stacked lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-stacked.svg" alt="Stacked lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Stacked</small>
       </div>
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
-        <img src="assets/logo/dmcgrid-primary-transparent-white-wide.svg" alt="Wordmark white transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Wordmark — transparent</small>
+      <div class="demo logo-swap" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
+        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-wide.svg" alt="Wordmark, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-wide.svg" alt="Wordmark, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Wordmark</small>
       </div>
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
-        <img src="assets/logo/dmcgrid-primary-transparent-white-symbol.svg" alt="Symbol white transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Symbol — transparent</small>
-      </div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 26px">
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
-        <img src="assets/logo/dmcgrid-primary-transparent-black-full.svg" alt="Full black transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Full — black mark</small>
-      </div>
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
-        <img src="assets/logo/dmcgrid-primary-transparent-black-stacked.svg" alt="Stacked black transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Stacked — black mark</small>
-      </div>
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
-        <img src="assets/logo/dmcgrid-primary-transparent-black-wide.svg" alt="Wordmark black transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Wordmark — black mark</small>
-      </div>
-      <div class="demo" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--alt);border:1px solid var(--t08)">
-        <img src="assets/logo/dmcgrid-primary-transparent-black-symbol.svg" alt="Symbol black transparent" style="max-width:82%;max-height:56px;width:auto">
-        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Symbol — black mark</small>
+      <div class="demo logo-swap" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
+        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-symbol.svg" alt="Symbol, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-symbol.svg" alt="Symbol, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Symbol</small>
       </div>
     </div>
-    <p class="copy" style="margin-bottom:26px"><b>Full kit (16 files) ships with the system in assets/logo/</b> — original SVGs from Dhrumil's Notion logo page, dark/light recolors, and the complete transparent set. Use white-mark versions on dark surfaces, black-mark on light, color variants everywhere else. The gold dot stays #D4B483 (bronze #8A6524 on light theme).</p>
-    <div class="mini-label">Grid & construction</div>
+    <p class="copy" style="margin-bottom:8px">Each tile holds both colorways: the white mark renders on dark, the black mark on light. The mark swaps with the theme automatically, everywhere the logo appears.</p>
+    mini-label">Grid & construction</div>
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin:12px 0 26px">
       <div class="demo" style="position:relative;min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--surface);background-image:linear-gradient(var(--t06) 1px,transparent 1px),linear-gradient(90deg,var(--t06) 1px,transparent 1px);background-size:24px 24px">
         <img src="assets/logo/dmcgrid-symbol-dark.svg" alt="Construction grid" style="max-height:120px;width:auto">
@@ -608,18 +626,20 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <h2>Iconography</h2>
       <p class="sec-desc">One icon language across the product: outline style, 2px stroke, rounded corners, consistent geometry. Gold accent marks the active state.</p>
     </div>
+    <div class="mini-label">Core set — 16 icons (Phase 0), 24×24 · 2px stroke · round caps</div>
+    <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin:12px 0 8px" id="icon-grid"><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="document icon" style="color:var(--accent);stroke:currentColor"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 16h5"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">document</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="sparkles icon" style="color:var(--t40);stroke:currentColor"><path d="M12 4l1.6 4.4L18 10l-4.4 1.6L12 16l-1.6-4.4L6 10l4.4-1.6z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">sparkles</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="compare icon" style="color:var(--t40);stroke:currentColor"><rect x="3" y="6" width="7" height="12" rx="1.5"/><rect x="14" y="6" width="7" height="12" rx="1.5"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">compare</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="users icon" style="color:var(--t40);stroke:currentColor"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c1.1-3 3.2-4.5 5.5-4.5s4.4 1.5 5.5 4.5"/><circle cx="17" cy="9" r="2.6"/><path d="M15.8 14.8c2 .3 3.6 1.7 4.5 4.2"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">users</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="pin icon" style="color:var(--t40);stroke:currentColor"><path d="M12 21s-6.5-5.3-6.5-10a6.5 6.5 0 1113 0c0 4.7-6.5 10-6.5 10z"/><circle cx="12" cy="11" r="2.4"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">pin</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="doc-check icon" style="color:var(--t40);stroke:currentColor"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 14l2 2 3.5-3.5"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">doc-check</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="calendar icon" style="color:var(--t40);stroke:currentColor"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">calendar</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="chart icon" style="color:var(--t40);stroke:currentColor"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">chart</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="network icon" style="color:var(--t40);stroke:currentColor"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M10.5 7L6.5 16M13.5 7l4 9M7.5 18h9"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">network</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="message icon" style="color:var(--t40);stroke:currentColor"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">message</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="settings icon" style="color:var(--t40);stroke:currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">settings</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="wallet icon" style="color:var(--t40);stroke:currentColor"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><circle cx="16.5" cy="14.5" r="1.2"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">wallet</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="plane icon" style="color:var(--t40);stroke:currentColor"><path d="M10.5 13.5L4 11l1.5-2.5 6 .5 4.5-6L19 4l-2 6.5 3.5 1L22 14l-5.5-.5-3 5.5-2-1z"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">plane</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="hotel icon" style="color:var(--t40);stroke:currentColor"><path d="M4 21V4h16v17"/><path d="M4 9h16M4 14h16M9 21v-5h6v5"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">hotel</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="car icon" style="color:var(--t40);stroke:currentColor"><path d="M5 16l1.5-5h11L19 16"/><rect x="4" y="16" width="16" height="4" rx="1.5"/><circle cx="8" cy="18" r="0.8"/><circle cx="16" cy="18" r="0.8"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">car</small></div><div style="display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;background:var(--t04);border:1px solid var(--t08);border-radius:10px" class="icon-cell"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="meal icon" style="color:var(--t40);stroke:currentColor"><path d="M7 3v8M4 3v5a3 3 0 006 0V3"/><path d="M17 3c-2 0-3 2-3 5s1 5 3 5v8"/></svg><small style="font:8.5px var(--font-m);color:var(--t40);letter-spacing:.06em;text-transform:uppercase">meal</small></div></div>
+    <p class="copy" style="margin-bottom:14px">RFQ flow row (gold = primary action state): document, sparkles, compare, users, pin, doc-check. Product row: calendar, chart, network, message, settings, wallet, plane, hotel, car, meal. One language: outline, 2px stroke, round caps and joins — never mix filled and outline in one view. Active state takes the gold stroke.</p>
     <div class="grid2">
       <div class="demo">
         <div class="demo-title">Specification</div>
         <p class="copy">Grid: 24×24 · Stroke: 2px · Caps: round · Joins: round · Fill: none. Active state: gold stroke. Muted state: Stone. Never mix filled and outline icons in one view.</p>
       </div>
       <div class="demo">
-        <div class="demo-title">Core set (Phase 0)</div>
-        <p class="copy">RFQ flow: document (RFQ) · sparkles (AI) · compare (quotes) · users (connect) · pin (destination) · doc-check (proposal). Product: calendar · chart · network · message · settings · wallet · plane · hotel · car · meal.</p>
+        <div class="demo-title">Imagery & illustration — real photography, never fake stock renders</div>
+        <p class="copy">Destination cards and itineraries use REAL destination photography (Unsplash source URLs, seeded per destination — India-first: Rajasthan palaces, Kerala backwaters, Himalayan routes). Illustration style: 2px-line architectural vignettes matching the icon language, used sparingly for empty states and onboarding. Never: generic 3D renders, AI-slop gradients, clipart, or mismatched stock people. Every image carries real alt text.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <!-- ============ 07 GLOBAL TOKENS ============ -->
 <section class="section alt" id="global-tokens">
@@ -630,12 +650,12 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <p class="sec-desc">Radii, spacing, elevation, motion. The full token layer ships as design/tokens.css — these are the binding rules.</p>
     </div>
     <div class="grid3">
-      <div class="demo"><div class="demo-title">Radius system</div><p class="copy">Cards 14px · Buttons 9px · Inputs 9px · Pills 999px. One corner-radius family — never mix radii on the same component class.</p></div>
-      <div class="demo"><div class="demo-title">Spacing</div><p class="copy">4pt grid: 4 · 8 · 12 · 16 · 24 · 32. Section padding 72/64. Card padding 20. Never hardcode odd values.</p></div>
-      <div class="demo"><div class="demo-title">Elevation</div><p class="copy">3 shadows only: card (rest) · hover (lift + gold ring) · popover. Dark theme needs borders over shadows — use hairlines first.</p></div>
-      <div class="demo"><div class="demo-title">Motion</div><p class="copy">ease-out cubic-bezier(.23,1,.32,1) · friction (.16,1,.3,1) · inout (.77,0,.175,1). UI transitions ≤ 300ms. Buttons scale .97 on :active (160ms).</p></div>
-      <div class="demo"><div class="demo-title">Breakpoints</div><p class="copy">sm 640 · md 768 · lg 1024 · xl 1280 · 2xl 1536. Touch targets ≥ 44×44. Grid over flex-math. min-height 100dvh, never 100vh.</p></div>
-      <div class="demo"><div class="demo-title">Theming</div><p class="copy">Dark-first. Light theme = Ivory bg + bronze accent swap (WCAG). data-theme attribute on <html>; every component must render in both.</p></div>
+      <div class="demo"><div class="demo-title">Radius system</div><div style="display:flex;align-items:flex-end;gap:10px;margin:10px 0 12px"><div style="width:52px;height:36px;background:var(--t08);border:1.5px solid var(--accent);border-radius:14px"></div><div style="width:52px;height:36px;background:var(--t08);border:1.5px solid var(--t40);border-radius:9px"></div><div style="width:52px;height:36px;background:var(--t08);border:1.5px solid var(--t40);border-radius:999px"></div></div><p class="copy">Cards 14px · Buttons 9px · Inputs 9px · Pills 999px. One corner-radius family — never mix radii on the same component class.</p></div>
+      <div class="demo"><div class="demo-title">Spacing</div><div style="display:flex;align-items:flex-end;gap:6px;margin:10px 0 12px"><div style="width:4px;height:22px;background:var(--accent)"></div><div style="width:8px;height:26px;background:var(--accent)"></div><div style="width:12px;height:30px;background:var(--accent)"></div><div style="width:16px;height:34px;background:var(--accent)"></div><div style="width:24px;height:38px;background:var(--accent);opacity:.7"></div><div style="width:32px;height:42px;background:var(--accent);opacity:.4"></div></div><p class="copy">4pt grid: 4 · 8 · 12 · 16 · 24 · 32. Section padding 72/64. Card padding 20. Never hardcode odd values.</p></div>
+      <div class="demo"><div class="demo-title">Elevation</div><div style="display:flex;gap:12px;margin:10px 0 12px"><div style="width:56px;height:40px;background:var(--surface);border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.18)"></div><div style="width:56px;height:40px;background:var(--surface);border-radius:10px;box-shadow:0 8px 22px rgba(0,0,0,.3),0 0 0 2px rgba(212,180,131,.25)"></div><div style="width:56px;height:40px;background:var(--surface);border-radius:10px;box-shadow:0 14px 38px rgba(0,0,0,.45)"></div></div><p class="copy">3 shadows only: card (rest) · hover (lift + gold ring) · popover. Dark theme needs borders over shadows — use hairlines first.</p></div>
+      <div class="demo"><div class="demo-title">Motion</div><div style="display:flex;gap:10px;margin:10px 0 12px;align-items:center"><div class="motion-demo" style="width:52px;height:36px;border-radius:9px;background:var(--t08);border:1.5px solid var(--accent);transition:transform .28s cubic-bezier(.23,1,.32,1)" onmouseover="this.style.transform='translateY(-6px) scale(1.06)'" onmouseout="this.style.transform=''"></div><div class="motion-demo" style="width:52px;height:36px;border-radius:9px;background:var(--t08);border:1.5px solid var(--accent);transition:transform .28s cubic-bezier(.23,1,.32,1)" onmouseover="this.style.transform='translateY(-6px) scale(1.06)'" onmouseout="this.style.transform=''"></div><small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.08em;text-transform:uppercase">hover to feel easing</small></div><p class="copy">ease-out cubic-bezier(.23,1,.32,1) · friction (.16,1,.3,1) · inout (.77,0,.175,1). UI transitions ≤ 300ms. Buttons scale .97 on :active (160ms).</p></div>
+      <div class="demo"><div class="demo-title">Breakpoints</div><div style="display:flex;gap:8px;margin:10px 0 12px;align-items:flex-end"><div style="flex:0 0 18px;height:18px;background:var(--t08);border:1.5px solid var(--accent);border-radius:4px"></div><div style="flex:0 0 24px;height:26px;background:var(--t08);border:1.5px solid var(--t40);border-radius:4px"></div><div style="flex:0 0 32px;height:34px;background:var(--t08);border:1.5px solid var(--t40);border-radius:4px"></div><div style="flex:1;height:42px;background:var(--t08);border:1.5px solid var(--t40);border-radius:4px"></div></div><p class="copy">sm 640 · md 768 · lg 1024 · xl 1280 · 2xl 1536. Touch targets ≥ 44×44. Grid over flex-math. min-height 100dvh, never 100vh.</p></div>
+      <div class="demo"><div class="demo-title">Theming</div><div style="display:flex;gap:10px;margin:10px 0 12px"><div style="flex:1;height:44px;border-radius:9px;background:#0C1421;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center"><span style="font:9px var(--font-m);color:#D4B483;letter-spacing:.1em">DARK</span></div><div style="flex:1;height:44px;border-radius:9px;background:#F2F3F5;border:1px solid #D5D8DE;display:flex;align-items:center;justify-content:center"><span style="font:9px var(--font-m);color:#141A22;letter-spacing:.1em">LIGHT</span></div></div><p class="copy">Dark-first. Light theme = cool gray scale + bronze accent swap (WCAG). Ivory reserved for special sections only. data-theme attribute on <html>; every component must render in both.</p></div>
     </div>
   </div>
 </section>
@@ -769,9 +789,10 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">OPTION 1 — Value</div>
         <table class="dt" style="margin-bottom:10px">
+          <thead><tr><th style="width:38%">Item</th><th class="num" style="width:22%">Nights</th><th class="num" style="width:40%">Net rate</th></tr></thead>
           <tr><td>Hotel A</td><td class="num">3N</td><td class="num">₹18,400</td></tr>
           <tr><td>Hotel B</td><td class="num">2N</td><td class="num">₹21,000</td></tr>
-          <tr><td>Vehicle</td><td>Sedan</td><td class="num">₹12,500</td></tr>
+          <tr><td>Vehicle</td><td class="num">Sedan</td><td class="num">₹12,500</td></tr>
         </table>
         <p class="copy" style="text-align:right;font-family:var(--font-m);font-size:13px"><b>Total ₹51,900</b></p>
       </div>
@@ -887,6 +908,27 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </table>
       <p class="copy" style="margin-top:10px">Day tabs scroll horizontally inside the card on mobile. Time slots = mono. This component feeds both the DMC quote builder and the white-label proposal.</p>
     </div>
+
+    <div class="mini-label">Destination imagery — real photography, seeded per destination</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0 26px" id="dest-grid">
+      <figure class="demo" style="padding:0;overflow:hidden;margin:0">
+        <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?w=640&q=75&auto=format&fit=crop" alt="Amber Fort, Jaipur — Rajasthan palace architecture" loading="lazy" style="width:100%;height:120px;object-fit:cover;display:block">
+        <figcaption style="padding:9px 12px"><b style="font:11px var(--font-s)">Jaipur, Rajasthan</b><br><small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.08em;text-transform:uppercase">PALACES · FORTS · 3N</small></figcaption>
+      </figure>
+      <figure class="demo" style="padding:0;overflow:hidden;margin:0">
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=640&q=75&auto=format&fit=crop" alt="Kerala backwaters — houseboat on palm-lined canal" loading="lazy" style="width:100%;height:120px;object-fit:cover;display:block">
+        <figcaption style="padding:9px 12px"><b style="font:11px var(--font-s)">Kerala Backwaters</b><br><small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.08em;text-transform:uppercase">HOUSEBOATS · 4N</small></figcaption>
+      </figure>
+      <figure class="demo" style="padding:0;overflow:hidden;margin:0">
+        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=640&q=75&auto=format&fit=crop" alt="Pattaya beach, Thailand — longtail boats at coast" loading="lazy" style="width:100%;height:120px;object-fit:cover;display:block">
+        <figcaption style="padding:9px 12px"><b style="font:11px var(--font-s)">Pattaya, Thailand</b><br><small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.08em;text-transform:uppercase">ISLANDS · SHOWS · 3N</small></figcaption>
+      </figure>
+      <figure class="demo" style="padding:0;overflow:hidden;margin:0">
+        <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=640&q=75&auto=format&fit=crop" alt="Bangkok skyline — Wat Arun and Chao Phraya river at dusk" loading="lazy" style="width:100%;height:120px;object-fit:cover;display:block">
+        <figcaption style="padding:9px 12px"><b style="font:11px var(--font-s)">Bangkok, Thailand</b><br><small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.08em;text-transform:uppercase">TEMPLES · SKYLINE · 2N</small></figcaption>
+      </figure>
+    </div>
+    <p class="copy" style="margin-bottom:26px">Real destination photography only — never 3D renders, AI-slop gradients, or clipart. Every card carries real alt text. Seeded per destination so the same trip always renders the same set.</p>
 
     <div class="mini-label">Payment methods + verification upload</div>
     <div class="grid2">
@@ -1357,6 +1399,11 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     </div>
     <div class="grid2">
       <div class="demo">
+        <div class="demo-title">v2.0 — October 2026</div>
+        <p class="copy">
+<b>Theme base revised:</b> light theme rebuilt on a neutral gray scale — bg #F2F3F5, alt #EAECF0, cool hairlines (#D5D8DE); Ivory and midnight quarantined to special sections only. Form fields get a dedicated token: white on light, near-black #121A24 on dark. <b>Logo system:</b> every logo usage is now a single dynamic tile — both colorways live in one lockup (white mark on dark, black on light), swapping automatically with the theme; the duplicate dark/light side-by-side tiles are gone. Cover wordmark replaced with the real full logo (inline SVG, currentColor). <b>Tables:</b> quote cards got real theads with column widths, first-column weight, vertical alignment, no trailing border. <b>Global Tokens & Purpose:</b> every token card now shows a visual example (radius, spacing bars, elevation shadows, interactive easing, breakpoints, theme tiles); Purpose & Voice cards carry message-bubble micro-diagrams. <b>Iconography & imagery:</b> 16-icon core set rendered live (24×24, 2px stroke, round caps) + real destination photography (Unsplash, seeded, alt text). AI-built audit run: no purple gradients, no glassmorphism beyond the topbar, no exclamation or emoji in product copy — checkmarks and the AI mark are deliberate status glyphs.</p>
+      </div>
+      <div class="demo">
         <div class="demo-title">v1.6 — October 2026</div>
         <p class="copy"><b>Component Library section added (08b):</b> every product surface from the V62 prototype rebuilt as real rendered components — interactive 6-step wizard stepper, compare matrix (3 anonymous quotes), 3-option quote cards, deal sheet with the binding cost formula, RFQ feed rows with match scores, credit wallet + plans, day-wise itinerary timeline, payment methods, verification upload. Toast system live. Wizard + tabs interactive. All components theme-aware, mobile-safe (steppers and tables scroll inside their cards, never the page). Responsive overhaul: 5 breakpoints (1024/768/640/480 + desktop), zero horizontal page scroll, button contrast fixed (gold fill both themes, dark text 8.1:1), theme persistence + FOUC guard.</p>
       </div>
@@ -1378,7 +1425,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </div>
       <div class="demo">
         <div class="demo-title">Next</div>
-        <p class="copy">Component library extraction to React (Phase 0) · Illustration set (Sunset gradients) · PWA manifest + icon set finalization.</p>
+        <p class="copy">Component library extraction to React (Phase 0) · Illustration set (2px-line architectural vignettes) · PWA manifest + icon set finalization · pilot-gate rollout.</p>
       </div>
     </div>
   </div>
