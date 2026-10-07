@@ -983,24 +983,24 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
 </div>
 <div class="grid2" style="margin-bottom:26px">
   <div class="demo">
-    <div class="demo-title">Choices — radio & checkbox</div>
-    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
-      <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><span style="width:18px;height:18px;border-radius:50%;border:2px solid var(--g-sand-gold);display:inline-flex;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:50%;background:var(--g-sand-gold)"></span></span><span style="font:400 13px var(--font-b)">Round-trip flights included</span></label>
-      <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><span style="width:18px;height:18px;border-radius:50%;border:2px solid var(--t18);display:inline-block"></span><span style="font:400 13px var(--font-b);color:var(--t65)">Visa assistance needed</span></label>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><span style="width:18px;height:18px;border-radius:5px;border:2px solid var(--teal);background:var(--teal);display:inline-flex;align-items:center;justify-content:center;color:#07211F;font-size:11px">✓</span><span style="font:400 13px var(--font-b)">Airport transfers</span></label>
-      <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><span style="width:18px;height:18px;border-radius:5px;border:2px solid var(--t18);display:inline-block"></span><span style="font:400 13px var(--font-b);color:var(--t65)">Travel insurance</span></label>
-    </div>
-  </div>
-  <div class="demo">
-    <div class="demo-title">Search + filter bar (workbench pattern)</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-      <div style="flex:1;min-width:160px;border:1px solid var(--t12);border-radius:9px;padding:9px 12px;font:400 13px var(--font-b);color:var(--t40)">⌕ Search RFQs…</div>
-      <div style="border:1px solid var(--t12);border-radius:9px;padding:9px 12px;font:500 12px var(--font-b);color:var(--t65)">Status: All ▾</div>
-      <div style="border:1px solid var(--t12);border-radius:9px;padding:9px 12px;font:500 12px var(--font-b);color:var(--t65)">Destination ▾</div>
-    </div>
-    <p class="copy">Toolbar = filters + actions (Pattern C). Filters never trap the user — always one click to clear all. Search placeholder in muted; active filters show as removable chips.</p>
+        <div class="demo-title">Choices — radio & checkbox</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px">
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="radio" name="demo-radio" checked style="accent-color:var(--g-sand-gold);width:18px;height:18px;cursor:pointer"><span style="font:400 13px var(--font-b)">Round-trip flights included</span></label>
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="radio" name="demo-radio" style="accent-color:var(--g-sand-gold);width:18px;height:18px;cursor:pointer"><span style="font:400 13px var(--font-b);color:var(--t65)">Visa assistance needed</span></label>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="checkbox" checked style="accent-color:var(--teal);width:18px;height:18px;cursor:pointer"><span style="font:400 13px var(--font-b)">Airport transfers</span></label>
+          <label style="display:flex;align-items:center;gap:10px;cursor:pointer"><input type="checkbox" style="accent-color:var(--teal);width:18px;height:18px;cursor:pointer"><span style="font:400 13px var(--font-b);color:var(--t65)">Travel insurance</span></label>
+        </div>
+        </div>
+      <div class="demo">
+        <div class="demo-title">Search + filter bar (workbench pattern)</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+          <div style="flex:1;min-width:160px;position:relative"><span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--t40);font-size:13px">⌕</span><input type="search" placeholder="Search RFQs…" aria-label="Search RFQs" style="width:100%;box-sizing:border-box;border:1px solid var(--t12);border-radius:9px;padding:9px 12px 9px 32px;font:400 13px var(--font-b);color:var(--t90);background:transparent;outline:none"></div>
+          <select aria-label="Filter by status" style="border:1px solid var(--t12);border-radius:9px;padding:9px 12px;font:500 12px var(--font-b);color:var(--t65);background:transparent;outline:none;cursor:pointer"><option>Status: All</option><option>Status: New</option><option>Status: Matched</option><option>Status: Connected</option><option>Status: Won</option><option>Status: Lost</option></select>
+          <select aria-label="Filter by destination" style="border:1px solid var(--t12);border-radius:9px;padding:9px 12px;font:500 12px var(--font-b);color:var(--t65);background:transparent;outline:none;cursor:pointer"><option>Destination</option><option>Thailand</option><option>Dubai</option><option>Bali</option><option>Vietnam</option><option>Sri Lanka</option></select>
+        </div>
+<p class="copy">Toolbar = filters + actions (Pattern C). Filters never trap the user — always one click to clear all. Search placeholder in muted; active filters show as removable chips.</p>
     <div style="display:flex;gap:8px;margin-top:10px">
       <span class="badge badge-info">Thailand ✕</span>
       <span class="badge badge-info">Mar 2026 ✕</span>
