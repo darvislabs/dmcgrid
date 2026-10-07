@@ -43,8 +43,8 @@
   --g-sunset:     #F97316;  /* illustrations, gradients */
 
   /* ── TYPOGRAPHY ── */
-  --font-primary:   'Lufga', 'Outfit', Inter, system-ui, 'Segoe UI', Arial, sans-serif;
-  --font-secondary: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  --font-primary:   'Satoshi', 'Cabinet Grotesk', Inter, system-ui, 'Segoe UI', Arial, sans-serif;
+  --font-secondary: 'Cabinet Grotesk', 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
   --font-mono:      'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
   /* type scale (guide §06: size / line-height) */
