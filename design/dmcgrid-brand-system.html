@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>DMCGrid — Brand & Design System</title>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="icon" type="image/svg+xml" href="assets/logo/icon-512.svg">
-<link rel="apple-touch-icon" href="assets/logo/icon-512.svg">
+<link rel="icon" type="image/svg+xml" href="assets/logo/icon-512.svg?v=2">
+<link rel="apple-touch-icon" href="assets/logo/icon-512.svg?v=2">
 <script>
 (function(){try{var t=localStorage.getItem('dmc-theme');if(!t){t='dark';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();
 </script>
@@ -16,7 +16,7 @@
   --g-stone:#9CA3AF;--g-earth:#3A3F36;
   --success:#10B981;--warning:#F59E0B;--error:#EF4444;--info:#3B82F6;
   --teal:#0EA5A3;--sunset:#F97316;
-  --bg:var(--g-midnight);--surface:#151B23;--alt:#0E1319;--field:#121A24;--text:var(--g-ivory);
+  --bg:var(--g-midnight);--surface:#151B23;--alt:#0E1319;--field:#121A24;--demo-bg:#1A222C;--text:var(--g-ivory);
   --t80:#C7D0D8;--t65:#9DAAB5;--t55:#8396A3;
   --t40:#7A8A99;--t30:rgba(255,255,255,.48);--t18:rgba(255,255,255,.18);
   --t12:rgba(255,255,255,.12);--t08:rgba(255,255,255,.08);--t06:rgba(255,255,255,.06);--t04:rgba(255,255,255,.04);
@@ -32,9 +32,9 @@
   --shadow-pop:0 12px 40px rgba(0,0,0,.5);
 }
 html/* dark theme: lift demo cards off the midnight bg for separation */
-[data-theme="dark"] .demo{background:#1A222C;box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+[data-theme="dark"] .demo{box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
 [data-theme="light"]{
-  --bg:#F2F3F5;--surface:#FFFFFF;--alt:#EAECF0;--field:#FFFFFF;--text:#141A22;
+  --bg:#F2F3F5;--surface:#FFFFFF;--alt:#EAECF0;--field:#FFFFFF;--demo-bg:#FFFFFF;--text:#141A22;
   --t80:rgba(20,26,34,.8);--t65:rgba(20,26,34,.68);--t55:rgba(20,26,34,.65);
   --t40:rgba(20,26,34,.65);--t30:rgba(20,26,34,.65);--t18:rgba(20,26,34,.18);
   --t12:rgba(20,26,34,.12);--t08:rgba(20,26,34,.08);--t06:rgba(20,26,34,.06);--t04:rgba(20,26,34,.04);
@@ -178,6 +178,7 @@ html[data-theme="light"] .logo-swap img.lt{display:block}
   /* NO horizontal scroll: every wide table scrolls inside its own card */
   
   .dt table,.dt thead,.dt tbody,.dt tr{display:table;width:100%}
+table.dt table{table-layout:fixed}
   .btn{min-height:44px;padding:12px 18px;width:auto}
   .kpi{padding:14px}
   /* demo tiles stay on 2-col for logo variants (compact) but stack everything else */
@@ -462,36 +463,36 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="mini-label">Core lockups — dynamic, swap with the theme</div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:12px 0 26px">
       <div class="demo logo-swap" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--surface)">
-        <img class="dk" src="assets/logo/dmcgrid-full-dark.svg" alt="DMCGrid primary horizontal lockup" style="max-height:60px;width:auto">
-        <img class="lt" src="assets/logo/dmcgrid-full-light.svg" alt="DMCGrid primary horizontal lockup" style="max-height:60px;width:auto">
+        <img class="dk" src="assets/logo/dmcgrid-full-dark.svg?v=2" alt="DMCGrid primary horizontal lockup" style="max-height:60px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-full-light.svg?v=2" alt="DMCGrid primary horizontal lockup" style="max-height:60px;width:auto">
         <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Primary horizontal</small>
       </div>
       <div class="demo logo-swap" style="padding:32px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:var(--surface)">
-        <img class="dk" src="assets/logo/dmcgrid-symbol-dark.svg" alt="DMCGrid symbol lockup" style="max-height:64px;width:auto">
-        <img class="lt" src="assets/logo/dmcgrid-symbol-light.svg" alt="DMCGrid symbol lockup" style="max-height:64px;width:auto">
+        <img class="dk" src="assets/logo/dmcgrid-symbol-dark.svg?v=2" alt="DMCGrid symbol lockup" style="max-height:64px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-symbol-light.svg?v=2" alt="DMCGrid symbol lockup" style="max-height:64px;width:auto">
         <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">Symbol only</small>
       </div>
     </div>
     <div class="mini-label">Official variations — transparent set (from Notion), swap with the theme</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0 8px">
       <div class="demo logo-swap" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
-        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-full.svg" alt="Full lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
-        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-full.svg" alt="Full lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-full.svg?v=2" alt="Full lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-full.svg?v=2" alt="Full lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
         <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Full</small>
       </div>
       <div class="demo logo-swap" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
-        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-stacked.svg" alt="Stacked lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
-        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-stacked.svg" alt="Stacked lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-stacked.svg?v=2" alt="Stacked lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-stacked.svg?v=2" alt="Stacked lockup, transparent" style="max-width:82%;max-height:56px;width:auto">
         <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Stacked</small>
       </div>
       <div class="demo logo-swap" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
-        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-wide.svg" alt="Wordmark, transparent" style="max-width:82%;max-height:56px;width:auto">
-        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-wide.svg" alt="Wordmark, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-wide.svg?v=2" alt="Wordmark, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-wide.svg?v=2" alt="Wordmark, transparent" style="max-width:82%;max-height:56px;width:auto">
         <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Wordmark</small>
       </div>
       <div class="demo logo-swap" style="padding:26px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--surface)">
-        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-symbol.svg" alt="Symbol, transparent" style="max-width:82%;max-height:56px;width:auto">
-        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-symbol.svg" alt="Symbol, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="dk" src="assets/logo/dmcgrid-primary-transparent-white-symbol.svg?v=2" alt="Symbol, transparent" style="max-width:82%;max-height:56px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-primary-transparent-black-symbol.svg?v=2" alt="Symbol, transparent" style="max-width:82%;max-height:56px;width:auto">
         <small style="font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase;text-align:center">Symbol</small>
       </div>
     </div>
@@ -499,8 +500,8 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="mini-label">Grid & construction</div>
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin:12px 0 26px">
       <div class="demo logo-swap" style="position:relative;min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--surface);background-image:linear-gradient(var(--t06) 1px,transparent 1px),linear-gradient(90deg,var(--t06) 1px,transparent 1px);background-size:24px 24px">
-        <img class="dk" src="assets/logo/dmcgrid-symbol-dark.svg" alt="Construction grid" style="max-height:120px;width:auto">
-        <img class="lt" src="assets/logo/dmcgrid-symbol-light.svg" alt="Construction grid" style="max-height:120px;width:auto">
+        <img class="dk" src="assets/logo/dmcgrid-symbol-dark.svg?v=2" alt="Construction grid" style="max-height:120px;width:auto">
+        <img class="lt" src="assets/logo/dmcgrid-symbol-light.svg?v=2" alt="Construction grid" style="max-height:120px;width:auto">
         <small style="position:absolute;bottom:12px;left:14px;font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">24px construction grid</small>
       </div>
       <div class="demo" style="padding:20px">
@@ -516,8 +517,8 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
           <div style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
           <div style="position:absolute;left:-14px;top:50%;transform:translateY(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
           <div style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
-          <img class="dk" src="assets/logo/dmcgrid-full-dark.svg" alt="Clearance demo" style="max-height:48px;width:auto">
-          <img class="lt" src="assets/logo/dmcgrid-full-light.svg" alt="Clearance demo" style="max-height:48px;width:auto">
+          <img class="dk" src="assets/logo/dmcgrid-full-dark.svg?v=2" alt="Clearance demo" style="max-height:48px;width:auto">
+          <img class="lt" src="assets/logo/dmcgrid-full-light.svg?v=2" alt="Clearance demo" style="max-height:48px;width:auto">
         </div>
       </div>
       <div class="demo" style="padding:20px">
@@ -607,7 +608,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     </div>
     <div class="mini-label">Type scale (binding)</div>
     <div class="table-wrap"><table class="dt" style="max-width:860px">
-      <tr><th>Token</th><th>Face</th><th>Size / LH</th><th>Weight</th><th>Tracking</th><th>Use</th></tr>
+          <thead><tr><th>Token</th><th>Face</th><th>Size / LH</th><th>Weight</th><th>Tracking</th><th>Use</th></tr></thead>
       <tr><td><span class="mono" style="font-size:11px">--ts-h1</span></td><td>Satoshi Bold</td><td class="num">56 / 64</td><td>700</td><td class="num">-5%</td><td>Hero, page H1</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-h2</span></td><td>Satoshi Bold</td><td class="num">40 / 48</td><td>700</td><td class="num">-3%</td><td>Section titles</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-h3</span></td><td>Satoshi Medium</td><td class="num">28 / 36</td><td>500</td><td class="num">-2%</td><td>Card titles</td></tr>
@@ -893,7 +894,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">Plans — agent side</div>
         <table class="dt">
-          <tr><th>Plan</th><th class="num">Price</th><th class="num">Credits</th></tr>
+          <thead><tr><th>Plan</th><th class="num">Price</th><th class="num">Credits</th></tr></thead>
           <tr><td>Starter</td><td class="num">₹999/mo</td><td class="num">5</td></tr>
           <tr><td>Growth</td><td class="num">₹2,499/mo</td><td class="num">20</td></tr>
           <tr><td>Scale</td><td class="num">₹5,999/mo</td><td class="num">60</td></tr>
@@ -912,7 +913,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <button class="btn btn-outline btn-sm" onclick="toast('Day 5 loaded')">Day 5</button>
       </div>
       <table class="dt" style="max-width:720px">
-        <tr><th style="min-width:88px">Time</th><th>Activity</th><th>Inclusion</th></tr>
+          <thead><tr><th style="min-width:88px">Time</th><th>Activity</th><th>Inclusion</th></tr></thead>
         <tr><td class="num">09:00</td><td>BKK airport → Pattaya transfer</td><td>Private sedan</td></tr>
         <tr><td class="num">14:00</td><td>Check-in + lunch</td><td>Buffet</td></tr>
         <tr><td class="num">17:30</td><td>Coral Island speedboat</td><td>Shared</td></tr>
@@ -1084,7 +1085,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">Quote comparison table (from V62)</div>
         <table class="dt">
-          <tr><th>DMC</th><th>Option</th><th class="num">Quote</th><th>Status</th></tr>
+          <thead><tr><th>DMC</th><th>Option</th><th class="num">Quote</th><th>Status</th></tr></thead>
           <tr><td>Thai Horizons</td><td>Comfort</td><td class="num">₹1,92,400</td><td><span class="badge badge-success">New</span></td></tr>
           <tr><td>Thai Horizons</td><td>Premium</td><td class="num">₹2,04,900</td><td><span class="badge badge-warning">Revised</span></td></tr>
           <tr><td>Bali Ground Co</td><td>Comfort</td><td class="num">₹1,98,200</td><td><span class="badge badge-info">Viewed</span></td></tr>
@@ -1094,7 +1095,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">Deal sheet (from V62)</div>
         <table class="dt">
-          <tr><th>Line</th><th class="num">Cost</th><th class="num">Charge</th><th class="num">Margin</th></tr>
+          <thead><tr><th>Line</th><th class="num">Cost</th><th class="num">Charge</th><th class="num">Margin</th></tr></thead>
           <tr><td>Package (7D/6N)</td><td class="num">₹1,65,000</td><td class="num">₹1,92,400</td><td class="num">₹27,400</td></tr>
           <tr><td>Visa fees · 2 adults</td><td class="num">₹9,000</td><td class="num">₹11,000</td><td class="num">₹2,000</td></tr>
           <tr><td colspan="3" style="text-align:right"><b>Profitability</b></td><td class="num"><b>₹29,400</b></td></tr>
@@ -1107,33 +1108,33 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <div class="demo-title">Time-wise itinerary (day tabs + timeline)</div>
         <div class="tabs" style="margin-bottom:14px"><button class="tab active">Day 1</button><button class="tab">Day 2</button><button class="tab">Day 3</button><button class="tab">Day 4</button><button class="tab">Day 5</button><button class="tab">Day 6</button><button class="tab">Day 7</button></div>
         <div class="tabpanel"><table class="dt">
-          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">9:00 AM</td><td>Airport pickup · SUV</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
           <tr><td class="num">11:30 AM</td><td>Hotel check-in · Patong</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
           <tr><td class="num">4:00 PM</td><td>Phi Phi sunset cruise</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
         </table></div>
         <div class="tabpanel" style="display:none"><table class="dt">
-          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">8:30 AM</td><td>Breakfast · hotel</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">10:00 AM</td><td>Phi Phi ferry · speedboat</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Lunch · beach club</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">4:00 PM</td><td>Maya Bay snorkel</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">7:30 PM</td><td>Dinner · Kata nights</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
         </table></div>
         <div class="tabpanel" style="display:none"><table class="dt">
-          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">9:00 AM</td><td>Old Phuket Town walk · Sino-Portuguese</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">12:30 PM</td><td>Lunch · Lock Tien food court</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">3:00 PM</td><td>Big Buddha viewpoint</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">6:00 PM</td><td>Sunset · Promthep Cape</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">8:00 PM</td><td>Sunday street market</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
         </table></div>
         <div class="tabpanel" style="display:none"><table class="dt">
-          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">8:00 AM</td><td>Breakfast · hotel</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">9:30 AM</td><td>Catamaran charter · private</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Lunch onboard · chef</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">3:30 PM</td><td>Coral Island · swim</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">7:00 PM</td><td>BBQ dinner · yacht deck</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
         </table></div>
         <div class="tabpanel" style="display:none"><table class="dt">
-          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">9:30 AM</td><td>Spa & wellness · resort</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">12:00 PM</td><td>Lunch · poolside</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">2:00 PM</td><td>Thai cooking class</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">7:00 PM</td><td>Dinner · Surin rooftop</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
         </table></div>
         <div class="tabpanel" style="display:none"><table class="dt">
-          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">8:30 AM</td><td>Check-out · express</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">10:00 AM</td><td>Similan day trip · dive</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Beach lunch · island</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">5:00 PM</td><td>Return ferry</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">8:30 PM</td><td>Farewell dinner · Bang Tao</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
         </table></div>
         <div class="tabpanel" style="display:none"><table class="dt">
-          <tr><th>Time</th><th>Activity</th><th></th></tr>
+          <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">9:00 AM</td><td>Breakfast · late checkout</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">11:00 AM</td><td>Last-minute shopping · Jungceylon</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Airport transfer · SUV</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">3:40 PM</td><td>Flight HKT → BOM</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
         </table></div>
         <p class="copy" style="margin-top:12px">Chronologically normalized (V62 sorts on entry). Drag or ↑↓ to reorder; add Flight/Cab/Transfer/Hotel/Meal lines. Photos per line in proposal view.</p>
@@ -1298,7 +1299,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">Roles</div>
         <table class="dt">
-          <tr><th>Role</th><th>Scope</th></tr>
+          <thead><tr><th>Role</th><th>Scope</th></tr></thead>
           <tr><td>Agent owner</td><td>Billing, credits, team, all RFQs</td></tr>
           <tr><td>Agent member</td><td>Own RFQs; team RFQs read-only</td></tr>
           <tr><td><b>Manager</b></td><td>Approves proposals before send (V62 gate)</td></tr>
