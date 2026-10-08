@@ -31,7 +31,9 @@
   --shadow-hover:0 4px 14px rgba(0,0,0,.4),0 0 0 1px rgba(212,180,131,.18);
   --shadow-pop:0 12px 40px rgba(0,0,0,.5);
 }
-html[data-theme="light"]{
+html/* dark theme: lift demo cards off the midnight bg for separation */
+[data-theme="dark"] .demo{background:#1A222C;box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+[data-theme="light"]{
   --bg:#F2F3F5;--surface:#FFFFFF;--alt:#EAECF0;--field:#FFFFFF;--text:#141A22;
   --t80:rgba(20,26,34,.8);--t65:rgba(20,26,34,.68);--t55:rgba(20,26,34,.65);
   --t40:rgba(20,26,34,.65);--t30:rgba(20,26,34,.65);--t18:rgba(20,26,34,.18);
@@ -108,7 +110,7 @@ main{margin-left:216px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.demo{border:1px solid var(--t08);border-radius:var(--r-card);padding:22px;background:var(--surface)}
+.demo{border:1px solid var(--t18);border-radius:var(--r-card);padding:22px;background:var(--surface)}
 .demo-title{font:10px var(--font-m);letter-spacing:.12em;color:var(--t30);text-transform:uppercase;margin-bottom:16px}
 /* steppers never expand their parent at any width */
 .stepper{min-width:0}
@@ -174,7 +176,7 @@ html[data-theme="light"] .logo-swap img.lt{display:block}
   .tabs{flex-wrap:wrap}
   .day-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
   /* NO horizontal scroll: every wide table scrolls inside its own card */
-  .dt{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  
   .dt table,.dt thead,.dt tbody,.dt tr{display:table;width:100%}
   .btn{min-height:44px;padding:12px 18px;width:auto}
   .kpi{padding:14px}
@@ -262,9 +264,14 @@ table.dt th{font:700 10px var(--font-m);letter-spacing:.1em;text-transform:upper
 table.dt td{padding:13px 14px;border-bottom:1px solid var(--t06);font-weight:400}
 table.dt tr:hover td{background:var(--t04)}
 table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-variant-numeric:tabular-nums;font-size:12px}
+.dt{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dt td.num-l{text-align:right}
+.demo .dt td,.demo .dt th{padding-left:0;padding-right:0}
+.demo .dt th:first-child,.demo .dt td:first-child{padding-left:0}
 .dt td:first-child{font-weight:500}
 .dt td,.dt th{vertical-align:middle}
 .dt tr:last-child td{border-bottom:none}
+
 /* card product */
 .pcard{border:1px solid var(--t08);border-radius:var(--r-card);background:var(--surface);padding:20px;transition:border-color .2s var(--ease-out),box-shadow .2s var(--ease-out)}
 .pcard:hover{border-color:var(--t18);box-shadow:var(--shadow-hover)}
@@ -491,7 +498,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <p class="copy" style="margin-bottom:8px">Each tile holds both colorways: the white mark renders on dark, the black mark on light. The mark swaps with the theme automatically, everywhere the logo appears.</p>
     <div class="mini-label">Grid & construction</div>
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin:12px 0 26px">
-      <div class="demo" style="position:relative;min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--surface);background-image:linear-gradient(var(--t06) 1px,transparent 1px),linear-gradient(90deg,var(--t06) 1px,transparent 1px);background-size:24px 24px" logo-swap">
+      <div class="demo logo-swap" style="position:relative;min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--surface);background-image:linear-gradient(var(--t06) 1px,transparent 1px),linear-gradient(90deg,var(--t06) 1px,transparent 1px);background-size:24px 24px">
         <img class="dk" src="assets/logo/dmcgrid-symbol-dark.svg" alt="Construction grid" style="max-height:120px;width:auto">
         <img class="lt" src="assets/logo/dmcgrid-symbol-light.svg" alt="Construction grid" style="max-height:120px;width:auto">
         <small style="position:absolute;bottom:12px;left:14px;font:9px var(--font-m);color:var(--t40);letter-spacing:.1em;text-transform:uppercase">24px construction grid</small>
@@ -503,7 +510,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     </div>
     <div class="mini-label">Clearance zones</div>
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin:12px 0 26px">
-      <div class="demo" style="min-height:200px;display:flex;align-items:center;justify-content:center;background:var(--surface)" logo-swap">
+      <div class="demo logo-swap" style="min-height:200px;display:flex;align-items:center;justify-content:center;background:var(--surface)">
         <div style="position:relative;padding:40px;border:1px dashed rgba(212,180,131,.4);border-radius:8px">
           <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
           <div style="position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font:italic 10px var(--font-m);color:var(--accent)">X</div>
@@ -775,9 +782,9 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="demo" style="margin-bottom:26px">
       <div class="table-wrap">
       <table class="dt" style="min-width:720px;table-layout:fixed">
-        <tr><th style="width:19%"></th><th style="width:27%">Quote A</th><th style="width:27%">Quote B</th><th style="width:27%">Quote C</th></tr>
+        <thead><tr><th style="width:19%"></th><th style="width:27%">Quote A</th><th style="width:27%">Quote B</th><th style="width:27%">Quote C</th></tr></thead>
         <tr><td>Hotels</td><td>4★ Pattaya + 5★ BKK</td><td>5★ both cities</td><td>4★ both cities</td></tr>
-        <tr><td>Net rate</td><td class="num">₹1,42,800</td><td class="num">₹1,58,200</td><td class="num">₹1,31,500</td></tr>
+        <tr><td>Net rate</td><td class="num num-l">₹1,42,800</td><td class="num num-l">₹1,58,200</td><td class="num num-l">₹1,31,500</td></tr>
         <tr><td>Inclusions</td><td>Breakfast + transfers</td><td>Breakfast + dinner + transfers</td><td>Breakfast + transfers</td></tr>
         <tr><td>Visa support</td><td>✓ included</td><td>✓ included</td><td>✗ add-on ₹2,400</td></tr>
         <tr><td>Response time</td><td>4h 12m</td><td>11h 03m</td><td>1h 47m</td></tr>
@@ -791,7 +798,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="grid3" style="margin-bottom:26px">
       <div class="demo">
         <div class="demo-title">OPTION 1 — Value</div>
-        <table class="dt" style="margin-bottom:10px">
+        <table class="dt" style="margin-bottom:10px;table-layout:fixed">
           <thead><tr><th style="width:38%">Item</th><th class="num" style="width:22%">Nights</th><th class="num" style="width:40%">Net rate</th></tr></thead>
           <tr><td>Hotel A</td><td class="num">3N</td><td class="num">₹18,400</td></tr>
           <tr><td>Hotel B</td><td class="num">2N</td><td class="num">₹21,000</td></tr>
@@ -801,7 +808,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </div>
       <div class="demo">
         <div class="demo-title">OPTION 2 — Comfort <span class="badge badge-gold" style="margin-left:8px">Recommended</span></div>
-        <table class="dt" style="margin-bottom:10px">
+        <table class="dt" style="margin-bottom:10px;table-layout:fixed">
           <thead><tr><th style="width:38%">Item</th><th class="num" style="width:22%">Nights</th><th class="num" style="width:40%">Net rate</th></tr></thead>
           <tr><td>Hotel C</td><td class="num">3N</td><td class="num">₹24,800</td></tr>
           <tr><td>Hotel D</td><td class="num">2N</td><td class="num">₹28,200</td></tr>
@@ -811,7 +818,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </div>
       <div class="demo">
         <div class="demo-title">OPTION 3 — Premium</div>
-        <table class="dt" style="margin-bottom:10px">
+        <table class="dt" style="margin-bottom:10px;table-layout:fixed">
           <thead><tr><th style="width:38%">Item</th><th class="num" style="width:22%">Nights</th><th class="num" style="width:40%">Net rate</th></tr></thead>
           <tr><td>Hotel E</td><td class="num">3N</td><td class="num">₹38,500</td></tr>
           <tr><td>Hotel F</td><td class="num">2N</td><td class="num">₹41,000</td></tr>
@@ -1232,19 +1239,19 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
 <!-- 13b: proposal preview (Pattern D — premium document) -->
 <div class="mini-label">Proposal preview — Pattern D, the premium document</div>
 <div class="demo" style="margin:12px 0 26px;padding:0;overflow:hidden">
-  <div style="background:linear-gradient(135deg,#0B0F14 0%,#151B23 100%);padding:28px 24px;border-bottom:1px solid rgba(212,180,131,.3)">
+  <div class="pd-band" style="background:var(--surface);padding:22px 24px;border-bottom:1px solid rgba(212,180,131,.3)">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
       <div>
-        <div style="font:700 22px var(--font-d);color:#F7F3E9;letter-spacing:-.02em;margin-bottom:4px">Thailand · 5N/6D Family Escape</div>
-        <div style="font:400 12px var(--font-b);color:rgba(247,243,233,.6)">Prepared for the Sharma family · Mar 12–17, 2026 · 2A+2C</div>
+        <div style="font:700 22px var(--font-d);color:var(--text);letter-spacing:-.02em;margin-bottom:4px">Thailand · 5N/6D Family Escape</div>
+        <div style="font:400 12px var(--font-b);color:var(--t65)">Prepared for the Sharma family · Mar 12–17, 2026 · 2A+2C</div>
       </div>
-      <svg width="64" height="70" viewBox="0 0 96 105" style="color:#D4B483;flex-shrink:0" aria-hidden="true"><use href="#dmc"/></svg>
+      <svg width="64" height="70" viewBox="0 0 96 105" style="color:var(--accent);flex-shrink:0" aria-hidden="true"><use href="#dmc"/></svg>
     </div>
-    <div style="display:flex;gap:20px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(247,243,233,.08)">
-      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Option</div><div style="font:700 13px var(--font-d);color:#D4B483">Comfort</div></div>
-      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Hotels</div><div style="font:700 13px var(--font-d);color:#F7F3E9">4★+5★</div></div>
-      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Per person</div><div style="font:700 13px var(--font-d);color:#F7F3E9;font-family:var(--font-m)">₹49,421</div></div>
-      <div><div style="font:500 9px var(--font-m);color:rgba(247,243,233,.5);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Total</div><div style="font:700 13px var(--font-d);color:#F7F3E9;font-family:var(--font-m)">₹1,97,683</div></div>
+    <div style="display:flex;gap:20px;margin-top:18px;padding-top:14px;border-top:1px solid var(--t08)">
+      <div><div style="font:500 9px var(--font-m);color:var(--t40);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Option</div><div style="font:700 13px var(--font-d);color:var(--accent)">Comfort</div></div>
+      <div><div style="font:500 9px var(--font-m);color:var(--t40);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Hotels</div><div style="font:700 13px var(--font-d);color:var(--text)">4★+5★</div></div>
+      <div><div style="font:500 9px var(--font-m);color:var(--t40);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Per person</div><div style="font:700 13px var(--font-d);color:var(--text);font-family:var(--font-m)">₹49,421</div></div>
+      <div><div style="font:500 9px var(--font-m);color:var(--t40);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px">Total</div><div style="font:700 13px var(--font-d);color:var(--text);font-family:var(--font-m)">₹1,97,683</div></div>
     </div>
   </div>
   <div style="padding:22px 24px;background:var(--surface)">
