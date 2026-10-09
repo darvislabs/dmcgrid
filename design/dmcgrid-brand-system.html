@@ -177,7 +177,8 @@ html[data-theme="light"] .logo-swap img.lt{display:block}
   .day-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
   /* NO horizontal scroll: every wide table scrolls inside its own card */
   
-  .dt table,.dt thead,.dt tbody,.dt tr{display:table;width:100%}
+  .dt table,.dt thead,.dt tbody{display:table;width:100%}
+.dt thead tr,.dt tbody tr{display:table-row}
 table.dt table{table-layout:fixed}
   .btn{min-height:44px;padding:12px 18px;width:auto}
   .kpi{padding:14px}
@@ -265,7 +266,8 @@ table.dt th{font:700 10px var(--font-m);letter-spacing:.1em;text-transform:upper
 table.dt td{padding:13px 14px;border-bottom:1px solid var(--t06);font-weight:400}
 table.dt tr:hover td{background:var(--t04)}
 table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-variant-numeric:tabular-nums;font-size:12px}
-.dt{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dtwrap{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.dt{display:table;width:100%;border-collapse:collapse}
 .dt td.num-l{text-align:right}
 .demo .dt td,.demo .dt th{padding-left:0;padding-right:0}
 .demo .dt th:first-child,.demo .dt td:first-child{padding-left:0}
@@ -607,7 +609,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </div>
     </div>
     <div class="mini-label">Type scale (binding)</div>
-    <div class="table-wrap"><table class="dt" style="max-width:860px">
+    <div class="table-wrap"><div class="dtwrap"><table class="dt" style="max-width:860px">
           <thead><tr><th>Token</th><th>Face</th><th>Size / LH</th><th>Weight</th><th>Tracking</th><th>Use</th></tr></thead>
       <tr><td><span class="mono" style="font-size:11px">--ts-h1</span></td><td>Satoshi Bold</td><td class="num">56 / 64</td><td>700</td><td class="num">-5%</td><td>Hero, page H1</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-h2</span></td><td>Satoshi Bold</td><td class="num">40 / 48</td><td>700</td><td class="num">-3%</td><td>Section titles</td></tr>
@@ -618,7 +620,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <tr><td><span class="mono" style="font-size:11px">--ts-cap</span></td><td>Cabinet Grotesk Regular</td><td class="num">14 / 20</td><td>400</td><td>0</td><td>Captions, hints</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--ts-over</span></td><td>Satoshi Bold</td><td class="num">12 / 16</td><td>700</td><td class="num">+.18em</td><td>Overlines, kickers</td></tr>
       <tr><td><span class="mono" style="font-size:11px">--font-m</span></td><td>JetBrains Mono</td><td class="num">12-14 / 20</td><td>500</td><td>0</td><td>ALL money figures, IDs, refs</td></tr>
-    </table></div>
+    </table></div></div>
     <div class="mini-label">Rules</div>
     <div class="grid3">
       <div class="demo"><p class="copy"><b>Money is mono.</b> Every rupee figure, credit count, and reference ID renders in JetBrains Mono tabular. No exceptions — it is the trust signal.</p></div>
@@ -782,7 +784,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="mini-label">Compare matrix — 3 anonymous quotes</div>
     <div class="demo" style="margin-bottom:26px">
       <div class="table-wrap">
-      <table class="dt" style="min-width:720px;table-layout:fixed">
+      <div class="dtwrap"><table class="dt" style="min-width:720px;table-layout:fixed">
         <thead><tr><th style="width:19%"></th><th style="width:27%">Quote A</th><th style="width:27%">Quote B</th><th style="width:27%">Quote C</th></tr></thead>
         <tr><td>Hotels</td><td>4★ Pattaya + 5★ BKK</td><td>5★ both cities</td><td>4★ both cities</td></tr>
         <tr><td>Net rate</td><td class="num num-l">₹1,42,800</td><td class="num num-l">₹1,58,200</td><td class="num num-l">₹1,31,500</td></tr>
@@ -790,7 +792,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <tr><td>Visa support</td><td>✓ included</td><td>✓ included</td><td>✗ add-on ₹2,400</td></tr>
         <tr><td>Response time</td><td>4h 12m</td><td>11h 03m</td><td>1h 47m</td></tr>
         <tr><td>DMC rating</td><td>4.6 ★ (128)</td><td>4.8 ★ (342)</td><td>4.2 ★ (57)</td></tr>
-      </table>
+      </table></div>
       </div>
       <p class="copy" style="margin-top:10px">Anonymity until connect — no DMC names, no branding, no contact channels. Rows sortable; cells with money in mono. On mobile this degrades to stacked option cards (per Responsive). Agent connects max 2 (credit burns ₹999/connect after free tier).</p>
     </div>
@@ -799,32 +801,32 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="grid3" style="margin-bottom:26px">
       <div class="demo">
         <div class="demo-title">OPTION 1 — Value</div>
-        <table class="dt" style="margin-bottom:10px;table-layout:fixed">
+        <div class="dtwrap"><table class="dt" style="margin-bottom:10px;display:table;width:100%;table-layout:fixed">
           <thead><tr><th style="width:38%">Item</th><th class="num" style="width:22%">Nights</th><th class="num" style="width:40%">Net rate</th></tr></thead>
           <tr><td>Hotel A</td><td class="num">3N</td><td class="num">₹18,400</td></tr>
           <tr><td>Hotel B</td><td class="num">2N</td><td class="num">₹21,000</td></tr>
           <tr><td>Vehicle</td><td class="num">Sedan</td><td class="num">₹12,500</td></tr>
-        </table>
+        </table></div>
         <p class="copy" style="text-align:right;font-family:var(--font-m);font-size:13px"><b>Total ₹51,900</b></p>
       </div>
       <div class="demo">
         <div class="demo-title">OPTION 2 — Comfort <span class="badge badge-gold" style="margin-left:8px">Recommended</span></div>
-        <table class="dt" style="margin-bottom:10px;table-layout:fixed">
+        <div class="dtwrap"><table class="dt" style="margin-bottom:10px;display:table;width:100%;table-layout:fixed">
           <thead><tr><th style="width:38%">Item</th><th class="num" style="width:22%">Nights</th><th class="num" style="width:40%">Net rate</th></tr></thead>
           <tr><td>Hotel C</td><td class="num">3N</td><td class="num">₹24,800</td></tr>
           <tr><td>Hotel D</td><td class="num">2N</td><td class="num">₹28,200</td></tr>
           <tr><td>Vehicle</td><td>SUV</td><td class="num">₹16,900</td></tr>
-        </table>
+        </table></div>
         <p class="copy" style="text-align:right;font-family:var(--font-m);font-size:13px"><b>Total ₹69,900</b></p>
       </div>
       <div class="demo">
         <div class="demo-title">OPTION 3 — Premium</div>
-        <table class="dt" style="margin-bottom:10px;table-layout:fixed">
+        <div class="dtwrap"><table class="dt" style="margin-bottom:10px;display:table;width:100%;table-layout:fixed">
           <thead><tr><th style="width:38%">Item</th><th class="num" style="width:22%">Nights</th><th class="num" style="width:40%">Net rate</th></tr></thead>
           <tr><td>Hotel E</td><td class="num">3N</td><td class="num">₹38,500</td></tr>
           <tr><td>Hotel F</td><td class="num">2N</td><td class="num">₹41,000</td></tr>
           <tr><td>Vehicle</td><td>Innova Crysta</td><td class="num">₹21,400</td></tr>
-        </table>
+        </table></div>
         <p class="copy" style="text-align:right;font-family:var(--font-m);font-size:13px"><b>Total ₹1,00,900</b></p>
       </div>
     </div>
@@ -833,7 +835,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="grid2" style="margin-bottom:26px">
       <div class="demo">
         <div class="demo-title">Cost build-up</div>
-        <table class="dt">
+        <div class="dtwrap"><table class="dt">
           <tr><td>Net rate (DMC quote)</td><td class="num">₹1,42,800</td></tr>
           <tr><td>Agent margin (12%)</td><td class="num">+ ₹17,136</td></tr>
           <tr><td>Ancillary (visa + insurance)</td><td class="num">+ ₹4,800</td></tr>
@@ -841,7 +843,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
           <tr><td>GST 18%</td><td class="num">+ ₹29,652</td></tr>
           <tr><td>TCS 2% (flat, from 01.04.2026)</td><td class="num">+ ₹3,295</td></tr>
           <tr><td><b>Customer price</b></td><td class="num"><b style="color:var(--accent)">₹1,97,683</b></td></tr>
-        </table>
+        </table></div>
       </div>
       <div class="demo">
         <div class="demo-title">Order of operations (binding)</div>
@@ -893,12 +895,12 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       </div>
       <div class="demo">
         <div class="demo-title">Plans — agent side</div>
-        <table class="dt">
+        <div class="dtwrap"><table class="dt">
           <thead><tr><th>Plan</th><th class="num">Price</th><th class="num">Credits</th></tr></thead>
           <tr><td>Starter</td><td class="num">₹999/mo</td><td class="num">5</td></tr>
           <tr><td>Growth</td><td class="num">₹2,499/mo</td><td class="num">20</td></tr>
           <tr><td>Scale</td><td class="num">₹5,999/mo</td><td class="num">60</td></tr>
-        </table>
+        </table></div>
         <p class="copy" style="margin-top:10px">DMC plans: ₹1,499 / ₹3,999 / ₹7,999 → 10/40/100 quote credits. Verified badge ₹7,500/yr (teal). GST 18% on all plans.</p>
       </div>
     </div>
@@ -912,13 +914,13 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
         <button class="btn btn-outline btn-sm" onclick="toast('Day 4 loaded')">Day 4</button>
         <button class="btn btn-outline btn-sm" onclick="toast('Day 5 loaded')">Day 5</button>
       </div>
-      <table class="dt" style="max-width:720px">
+      <div class="dtwrap"><table class="dt" style="max-width:720px">
           <thead><tr><th style="min-width:88px">Time</th><th>Activity</th><th>Inclusion</th></tr></thead>
         <tr><td class="num">09:00</td><td>BKK airport → Pattaya transfer</td><td>Private sedan</td></tr>
         <tr><td class="num">14:00</td><td>Check-in + lunch</td><td>Buffet</td></tr>
         <tr><td class="num">17:30</td><td>Coral Island speedboat</td><td>Shared</td></tr>
         <tr><td class="num">20:00</td><td>Alcazar show</td><td>Ticket incl.</td></tr>
-      </table>
+      </table></div>
       <p class="copy" style="margin-top:10px">Day tabs scroll horizontally inside the card on mobile. Time slots = mono. This component feeds both the DMC quote builder and the white-label proposal.</p>
     </div>
 
@@ -1084,22 +1086,22 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="grid2">
       <div class="demo">
         <div class="demo-title">Quote comparison table (from V62)</div>
-        <table class="dt">
+        <div class="dtwrap"><table class="dt">
           <thead><tr><th>DMC</th><th>Option</th><th class="num">Quote</th><th>Status</th></tr></thead>
           <tr><td>Thai Horizons</td><td>Comfort</td><td class="num">₹1,92,400</td><td><span class="badge badge-success">New</span></td></tr>
           <tr><td>Thai Horizons</td><td>Premium</td><td class="num">₹2,04,900</td><td><span class="badge badge-warning">Revised</span></td></tr>
           <tr><td>Bali Ground Co</td><td>Comfort</td><td class="num">₹1,98,200</td><td><span class="badge badge-info">Viewed</span></td></tr>
-        </table>
+        </table></div>
         <p class="copy" style="margin-top:12px">Anonymous until connected — DMC names show only after the connect decision. Money right-aligned mono. Row hover lift. Selection via checkbox column.</p>
       </div>
       <div class="demo">
         <div class="demo-title">Deal sheet (from V62)</div>
-        <table class="dt">
+        <div class="dtwrap"><table class="dt">
           <thead><tr><th>Line</th><th class="num">Cost</th><th class="num">Charge</th><th class="num">Margin</th></tr></thead>
           <tr><td>Package (7D/6N)</td><td class="num">₹1,65,000</td><td class="num">₹1,92,400</td><td class="num">₹27,400</td></tr>
           <tr><td>Visa fees · 2 adults</td><td class="num">₹9,000</td><td class="num">₹11,000</td><td class="num">₹2,000</td></tr>
           <tr><td colspan="3" style="text-align:right"><b>Profitability</b></td><td class="num"><b>₹29,400</b></td></tr>
-        </table>
+        </table></div>
         <p class="copy" style="margin-top:12px">Agent-arranged services (flight, cab, visa) sit beside the package line. TDS tracker + GST columns per the compliance report. Manager-approval gate before proposal generation.</p>
       </div>
     </div>
@@ -1107,36 +1109,36 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
       <div class="demo">
         <div class="demo-title">Time-wise itinerary (day tabs + timeline)</div>
         <div class="tabs" style="margin-bottom:14px"><button class="tab active">Day 1</button><button class="tab">Day 2</button><button class="tab">Day 3</button><button class="tab">Day 4</button><button class="tab">Day 5</button><button class="tab">Day 6</button><button class="tab">Day 7</button></div>
-        <div class="tabpanel"><table class="dt">
+        <div class="tabpanel"><div class="dtwrap"><table class="dt">
           <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">9:00 AM</td><td>Airport pickup · SUV</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
           <tr><td class="num">11:30 AM</td><td>Hotel check-in · Patong</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
           <tr><td class="num">4:00 PM</td><td>Phi Phi sunset cruise</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
-        </table></div>
-        <div class="tabpanel" style="display:none"><table class="dt">
+        </table></div></div>
+        <div class="tabpanel" style="display:none"><div class="dtwrap"><table class="dt">
           <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">8:30 AM</td><td>Breakfast · hotel</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">10:00 AM</td><td>Phi Phi ferry · speedboat</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Lunch · beach club</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">4:00 PM</td><td>Maya Bay snorkel</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">7:30 PM</td><td>Dinner · Kata nights</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
-        </table></div>
-        <div class="tabpanel" style="display:none"><table class="dt">
+        </table></div></div>
+        <div class="tabpanel" style="display:none"><div class="dtwrap"><table class="dt">
           <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">9:00 AM</td><td>Old Phuket Town walk · Sino-Portuguese</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">12:30 PM</td><td>Lunch · Lock Tien food court</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">3:00 PM</td><td>Big Buddha viewpoint</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">6:00 PM</td><td>Sunset · Promthep Cape</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">8:00 PM</td><td>Sunday street market</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
-        </table></div>
-        <div class="tabpanel" style="display:none"><table class="dt">
+        </table></div></div>
+        <div class="tabpanel" style="display:none"><div class="dtwrap"><table class="dt">
           <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">8:00 AM</td><td>Breakfast · hotel</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">9:30 AM</td><td>Catamaran charter · private</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Lunch onboard · chef</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">3:30 PM</td><td>Coral Island · swim</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">7:00 PM</td><td>BBQ dinner · yacht deck</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
-        </table></div>
-        <div class="tabpanel" style="display:none"><table class="dt">
+        </table></div></div>
+        <div class="tabpanel" style="display:none"><div class="dtwrap"><table class="dt">
           <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">9:30 AM</td><td>Spa & wellness · resort</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">12:00 PM</td><td>Lunch · poolside</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">2:00 PM</td><td>Thai cooking class</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">7:00 PM</td><td>Dinner · Surin rooftop</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
-        </table></div>
-        <div class="tabpanel" style="display:none"><table class="dt">
+        </table></div></div>
+        <div class="tabpanel" style="display:none"><div class="dtwrap"><table class="dt">
           <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">8:30 AM</td><td>Check-out · express</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">10:00 AM</td><td>Similan day trip · dive</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Beach lunch · island</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">5:00 PM</td><td>Return ferry</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">8:30 PM</td><td>Farewell dinner · Bang Tao</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
-        </table></div>
-        <div class="tabpanel" style="display:none"><table class="dt">
+        </table></div></div>
+        <div class="tabpanel" style="display:none"><div class="dtwrap"><table class="dt">
           <thead><tr><th>Time</th><th>Activity</th><th></th></tr></thead>
           <tr><td class="num" style="width:80px">9:00 AM</td><td>Breakfast · late checkout</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">11:00 AM</td><td>Last-minute shopping · Jungceylon</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">1:00 PM</td><td>Airport transfer · SUV</td><td style="text-align:right;color:var(--t30)">⋮</td></tr><tr><td class="num" style="width:80px">3:40 PM</td><td>Flight HKT → BOM</td><td style="text-align:right;color:var(--t30)">⋮</td></tr>
-        </table></div>
+        </table></div></div>
         <p class="copy" style="margin-top:12px">Chronologically normalized (V62 sorts on entry). Drag or ↑↓ to reorder; add Flight/Cab/Transfer/Hotel/Meal lines. Photos per line in proposal view.</p>
       </div>
       <div class="demo">
@@ -1298,7 +1300,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
     <div class="grid2">
       <div class="demo">
         <div class="demo-title">Roles</div>
-        <table class="dt">
+        <div class="dtwrap"><table class="dt">
           <thead><tr><th>Role</th><th>Scope</th></tr></thead>
           <tr><td>Agent owner</td><td>Billing, credits, team, all RFQs</td></tr>
           <tr><td>Agent member</td><td>Own RFQs; team RFQs read-only</td></tr>
@@ -1306,7 +1308,7 @@ table.dt td.num,table.dt th.num{text-align:right;font-family:var(--font-m);font-
           <tr><td>DMC owner</td><td>Quotes, verification, billing</td></tr>
           <tr><td>DMC member</td><td>Quote drafts, submit</td></tr>
           <tr><td>Platform ops</td><td>Concierge console, verification review</td></tr>
-        </table>
+        </table></div>
       </div>
       <div class="demo">
         <div class="demo-title">Approval chain (from V62, made real)</div>
