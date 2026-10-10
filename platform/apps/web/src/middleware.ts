@@ -56,11 +56,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  // Agent portal gate (/rfq, /wallet, /deals)
+  // Agent portal gate (/rfq, /wallet, /deals, /connections)
   const isAgentRoute =
     pathname.startsWith('/rfq') ||
     pathname.startsWith('/wallet') ||
-    pathname.startsWith('/deals');
+    pathname.startsWith('/deals') ||
+    pathname.startsWith('/connections');
 
   if (isAgentRoute && user.role === 'dmc') {
     return NextResponse.redirect(new URL('/feed', request.url));

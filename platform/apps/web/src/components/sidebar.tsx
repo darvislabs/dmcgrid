@@ -73,7 +73,7 @@ export function Sidebar({
           title: 'SUPPLY NETWORK',
           items: [
             { id: '01', label: 'Briefs Feed', href: '/feed', icon: <Inbox className="w-3.5 h-3.5" /> },
-            { id: '02', label: 'Quotes Submitted', href: '/feed#quotes', icon: <Send className="w-3.5 h-3.5" /> },
+            { id: '02', label: 'Quotes Submitted', href: '/quotes', icon: <Send className="w-3.5 h-3.5" /> },
             { id: '03', label: 'Connected Deals', href: '/feed#deals', icon: <Files className="w-3.5 h-3.5" /> },
           ],
         },
@@ -94,14 +94,14 @@ export function Sidebar({
         items: [
           { id: '01', label: 'Dashboard', href: '/', icon: <Compass className="w-3.5 h-3.5" /> },
           { id: '02', label: 'New RFQ Wizard', href: '/rfq/new', icon: <FilePlus className="w-3.5 h-3.5" /> },
-          { id: '03', label: 'Active RFQs', href: '/#rfqs', icon: <Files className="w-3.5 h-3.5" /> },
+          { id: '03', label: 'My RFQs', href: '/rfq', icon: <Files className="w-3.5 h-3.5" /> },
         ],
       },
       {
         title: 'COMMERCE',
         items: [
-          { id: '04', label: 'Quotes & Compare', href: '/#compare', icon: <Users className="w-3.5 h-3.5" /> },
-          { id: '05', label: 'Wallet & Credits', href: '/#wallet', icon: <Wallet className="w-3.5 h-3.5" /> },
+          { id: '04', label: 'DMC Connections', href: '/connections', icon: <Users className="w-3.5 h-3.5" /> },
+          { id: '05', label: 'Wallet & Credits', href: '/wallet', icon: <Wallet className="w-3.5 h-3.5" /> },
         ],
       },
       {

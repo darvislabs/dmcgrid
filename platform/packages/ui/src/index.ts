@@ -8,3 +8,4 @@ export * from './components/stat-card';
 export * from './components/theme-toggle';
 export * from './components/brand-logo';
 export * from './components/money';
+export * from './components/modal';
