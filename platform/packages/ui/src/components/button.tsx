@@ -16,19 +16,16 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       'disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 rounded-[9px] min-h-[44px]';
 
     const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
-      // Luxury B2B: Black & White / Deep Slate CTAs, never garish gold buttons
+      // Luxury B2B: Black & White / Deep Slate CTAs, never garish gold buttons.
+      // Theme via CSS vars only — data-[theme=light]: self-variants don't inherit from <html>.
       primary:
-        'bg-[#F3F5F7] text-[#0B0F14] hover:bg-white shadow-[0_1px_3px_rgba(0,0,0,0.2)] ' +
-        'data-[theme=light]:bg-[#0B0F14] data-[theme=light]:text-[#F7F3E9] data-[theme=light]:hover:bg-[#1F2937]',
+        'bg-[var(--text-primary)] text-[var(--bg-card)] hover:opacity-90 shadow-[0_1px_3px_rgba(0,0,0,0.2)]',
       secondary:
-        'bg-[#1F2937] text-[#F3F5F7] border border-[#2A3441] hover:bg-[#232D39] hover:border-[#3E4A54] ' +
-        'data-[theme=light]:bg-[#FFFFFF] data-[theme=light]:text-[#0B0F14] data-[theme=light]:border-[#D6E0E3] data-[theme=light]:hover:bg-[#F3F5F7]',
+        'bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border-line)] hover:border-[var(--text-muted)]',
       outline:
-        'bg-transparent text-[#F3F5F7] border border-[#2A3441] hover:bg-[#1F2937] hover:border-[#3E4A54] ' +
-        'data-[theme=light]:text-[#0B0F14] data-[theme=light]:border-[#D6E0E3] data-[theme=light]:hover:bg-[#F3F5F7]',
+        'bg-transparent text-[var(--text-primary)] border border-[var(--border-line)] hover:bg-[var(--bg-card-hover)]',
       ghost:
-        'bg-transparent text-[#9CA3AF] hover:text-[#F3F5F7] hover:bg-[#1F2937]/50 ' +
-        'data-[theme=light]:text-[#55636E] data-[theme=light]:hover:text-[#0B0F14] data-[theme=light]:hover:bg-[#E8ECF0]',
+        'bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]',
       accent:
         'bg-[#D4B483] text-[#0B0F14] font-semibold hover:bg-[#c4a16f] shadow-[0_1px_3px_rgba(212,180,131,0.3)]',
       destructive:

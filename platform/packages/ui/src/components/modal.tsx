@@ -71,29 +71,29 @@ export function Modal({
         className={cn(
           'relative w-full rounded-[14px] p-6 shadow-2xl z-10 transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]',
           'bg-[#1F2937] border border-[#2A3441] text-[#F3F5F7]',
-          'data-[theme=light]:bg-[#FFFFFF] data-[theme=light]:border-[#D6E0E3] data-[theme=light]:text-[#0B0F14]',
+          'bg-[var(--bg-card)] border border-[var(--border-line)] text-[var(--text-primary)]',
           maxWidths[maxWidth],
           className
         )}
       >
         {/* Header */}
         {(title || description) && (
-          <div className="flex items-start justify-between gap-4 pb-4 border-b border-[#2A3441]/60 data-[theme=light]:border-[#D6E0E3]">
+          <div className="flex items-start justify-between gap-4 pb-4 border-b border-[var(--border-subtle)]">
             <div className="space-y-1">
               {title && (
-                <h3 className="text-base font-semibold tracking-tight text-[#F3F5F7] data-[theme=light]:text-[#0B0F14]">
+                <h3 className="text-base font-semibold tracking-tight text-[var(--text-primary)]">
                   {title}
                 </h3>
               )}
               {description && (
-                <p className="text-xs text-[#9CA3AF] data-[theme=light]:text-[#71808B]">
+                <p className="text-xs text-[var(--text-muted)]">
                   {description}
                 </p>
               )}
             </div>
             <button
               onClick={onClose}
-              className="text-[#9CA3AF] hover:text-[#F3F5F7] data-[theme=light]:hover:text-[#0B0F14] transition-colors p-1 rounded-md min-h-[36px] min-w-[36px] flex items-center justify-center"
+              className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-1 rounded-md min-h-[36px] min-w-[36px] flex items-center justify-center"
               aria-label="Close modal"
             >
               <X className="w-4 h-4" />
@@ -102,13 +102,13 @@ export function Modal({
         )}
 
         {/* Content */}
-        <div className="py-4 text-xs leading-relaxed text-[#F3F5F7] data-[theme=light]:text-[#0B0F14]">
+        <div className="py-4 text-xs leading-relaxed text-[var(--text-primary)]">
           {children}
         </div>
 
         {/* Footer */}
         {footer && (
-          <div className="pt-4 border-t border-[#2A3441]/60 data-[theme=light]:border-[#D6E0E3] flex items-center justify-end gap-3">
+          <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-end gap-3">
             {footer}
           </div>
         )}

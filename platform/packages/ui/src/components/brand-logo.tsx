@@ -32,7 +32,7 @@ export function BrandLogo({ className, size = 32, showWordmark = true }: BrandLo
         />
       </svg>
       {showWordmark && (
-        <span className="font-semibold text-lg tracking-tight font-primary text-[#F3F5F7] data-[theme=light]:text-[#0B0F14]">
+        <span className="font-semibold text-lg tracking-tight font-primary text-[var(--text-primary)]">
           DMC<span className="text-[#D4B483]">Grid</span>
         </span>
       )}

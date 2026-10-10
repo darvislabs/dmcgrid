@@ -158,15 +158,15 @@
 }
 
 [data-theme="light"] {
-  --bg-page: #F7F3E9;
+  --bg-page: #F2F3F5;
   --bg-surface: #FFFFFF;
   --bg-card: #FFFFFF;
-  --bg-card-hover: #F0ECE1;
-  --bg-sidebar: #EDE7DA;
-  --bg-elevated: #EDE7DA;
+  --bg-card-hover: #F5F6F8;
+  --bg-sidebar: #FFFFFF;
+  --bg-elevated: #E9EAEC;
 
   --border-line: #D6E0E3;
-  --border-subtle: #E2DDD2;
+  --border-subtle: #E5E7EB;
 
   --text-primary: #0B0F14;
   --text-secondary: #55636E;

@@ -93,12 +93,12 @@
 
 /* ── Light Theme Variables ── */
 [data-theme="light"] {
-  --bg: #F7F3E9;
+  --bg: #F2F3F5;
   --surface: #FFFFFF;
-  --surface-raised: #F3F5F7;
+  --surface-raised: #F5F6F8;
   --surface-card: #FFFFFF;
   --line: #D6E0E3;
-  --line-soft: #E8ECF0;
+  --line-soft: #E5E7EB;
   --text-main: #0B0F14;
   --text-muted: #55636E;
   --text-sub: #71808B;

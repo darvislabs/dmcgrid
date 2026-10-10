@@ -12,15 +12,15 @@ export function Badge({ className, variant = 'default', dot = false, children, .
 
   const variants: Record<NonNullable<BadgeProps['variant']>, string> = {
     default:
-      'bg-[#1F2937] text-[#9CA3AF] border border-[#2A3441]',
+      'bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-line)]',
     gold:
-      'bg-[#D4B483]/15 text-[#D4B483] border border-[#D4B483]/30 font-semibold',
+      'bg-[var(--accent-gold-soft)] text-[var(--accent-gold)] border border-[var(--accent-gold-ring)] font-semibold',
     teal:
       'bg-[#0EA5A3]/15 text-[#0EA5A3] border border-[#0EA5A3]/30',
     verified:
       'bg-[#0EA5A3]/15 text-[#0EA5A3] border border-[#0EA5A3]/30 font-semibold',
     neutral:
-      'bg-[#1F2937] text-[#9CA3AF] border border-[#2A3441]',
+      'bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-line)]',
     success:
       'bg-[#10B981]/15 text-[#10B981] border border-[#10B981]/30',
     warning:
@@ -28,7 +28,7 @@ export function Badge({ className, variant = 'default', dot = false, children, .
     error:
       'bg-[#EF4444]/15 text-[#EF4444] border border-[#EF4444]/30',
     outline:
-      'bg-transparent text-[#9CA3AF] border border-[#2A3441]',
+      'bg-transparent text-[var(--text-secondary)] border border-[var(--border-line)]',
   };
 
   return (

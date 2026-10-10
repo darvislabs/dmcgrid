@@ -8,14 +8,11 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Card({ className, variant = 'default', children, ...props }: CardProps) {
   const variants: Record<NonNullable<CardProps['variant']>, string> = {
     default:
-      'bg-[#1F2937] border border-[#2A3441] text-[#F3F5F7] ' +
-      'data-[theme=light]:bg-[#FFFFFF] data-[theme=light]:border-[#D6E0E3] data-[theme=light]:text-[#0B0F14]',
+      'bg-[var(--bg-card)] border border-[var(--border-line)] text-[var(--text-primary)]',
     raised:
-      'bg-[#232D39] border border-[#2A3441] shadow-[0_4px_12px_rgba(0,0,0,0.18)] text-[#F3F5F7] ' +
-      'data-[theme=light]:bg-[#F3F5F7] data-[theme=light]:border-[#D6E0E3] data-[theme=light]:text-[#0B0F14]',
+      'bg-[var(--bg-card-hover)] border border-[var(--border-line)] shadow-[0_4px_12px_rgba(0,0,0,0.18)] text-[var(--text-primary)]',
     highlight:
-      'bg-[#1F2937] border border-[#D4B483]/40 shadow-[0_0_16px_rgba(212,180,131,0.06)] text-[#F3F5F7] ' +
-      'data-[theme=light]:bg-[#FFFFFF] data-[theme=light]:border-[#D4B483]/60 data-[theme=light]:text-[#0B0F14]',
+      'bg-[var(--bg-card)] border border-[var(--accent-gold-ring)] shadow-[0_0_16px_rgba(212,180,131,0.06)] text-[var(--text-primary)]',
   };
 
   return (
@@ -30,7 +27,7 @@ export function Card({ className, variant = 'default', children, ...props }: Car
 
 export function CardHeader({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn('flex items-center justify-between gap-4 mb-4 pb-3 border-b border-[#2A3441]/60', className)} {...props}>
+    <div className={cn('flex items-center justify-between gap-4 mb-4 pb-3 border-b border-[var(--border-subtle)]', className)} {...props}>
       {children}
     </div>
   );

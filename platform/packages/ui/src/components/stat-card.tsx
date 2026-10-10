@@ -72,21 +72,21 @@ export function StatCard({
   return (
     <Card className={cn('flex flex-col justify-between gap-3', className)}>
       <div className="flex items-center justify-between">
-        <span className="text-xs uppercase font-medium tracking-wider text-[#9CA3AF]">
+        <span className="text-xs uppercase font-medium tracking-wider text-[var(--text-secondary)]">
           {displayTitle}
         </span>
         {icon && <span className="text-[#D4B483]">{icon}</span>}
       </div>
 
       <div className="flex items-baseline gap-2">
-        <span className="font-mono text-2xl lg:text-3xl font-semibold tracking-tight tabular-nums text-[#F3F5F7] data-[theme=light]:text-[#0B0F14]">
+        <span className="font-mono text-2xl lg:text-3xl font-semibold tracking-tight tabular-nums text-[var(--text-primary)]">
           {displayValue}
         </span>
         {renderDelta()}
       </div>
 
       {displaySubtitle && (
-        <p className="text-xs text-[#71808B] tracking-normal">
+        <p className="text-xs text-[var(--text-muted)] tracking-normal">
           {displaySubtitle}
         </p>
       )}
