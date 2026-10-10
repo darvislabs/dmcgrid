@@ -1,0 +1,23 @@
+{
+  "name": "@dmcgrid/db",
+  "version": "0.1.0",
+  "description": "DMCGrid Supabase database migrations, types, and formula functions",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/types/database.ts",
+    "./formula": "./src/formula.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "type-check": "tsc --noEmit",
+    "lint": "echo \"db: no linting required\""
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.3"
+  }
+}

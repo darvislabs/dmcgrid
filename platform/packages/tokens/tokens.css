@@ -1,0 +1,71 @@
+/* DMCGrid Design Tokens — Single Source of Truth */
+:root {
+  /* ── PRIMARY PALETTE ── */
+  --g-midnight:   #0B0F14;  /* brand background, emphasis */
+  --g-slate:      #1F2937;  /* surfaces, sidebars */
+  --g-sand-gold:  #D4B483;  /* brand accent, buttons, highlights */
+  --g-ivory:      #F7F3E9;  /* background, clean surfaces */
+  --g-stone:      #9CA3AF;  /* secondary text, borders, dividers */
+  --g-earth:      #3A3F36;  /* supporting icons, muted UI */
+
+  /* ── NEUTRAL RAMP v1.3 ── */
+  --g-gray-50:  #F3F5F7;
+  --g-gray-100: #E8ECF0;
+  --g-gray-200: #D2D9DF;
+  --g-gray-300: #B4BDC5;
+  --g-gray-400: #9CA3AF;  /* = Stone */
+  --g-gray-500: #71808B;
+  --g-gray-600: #55636E;
+  --g-gray-700: #3E4A54;
+  --g-gray-800: #2A3441;  /* = line */
+  --g-gray-850: #232D39;  /* = line-soft */
+  --g-gray-900: #1F2937;  /* = Slate */
+  --g-gray-950: #0B0F14;  /* = Midnight */
+
+  /* ── SEMANTIC ── */
+  --g-success:    #10B981;
+  --g-warning:    #F59E0B;
+  --g-error:      #EF4444;
+  --g-info:       #3B82F6;
+  --g-teal:       #0EA5A3;
+  --g-sunset:     #F97316;
+
+  /* ── TYPOGRAPHY ── */
+  --font-primary:   'Satoshi', 'Cabinet Grotesk', Inter, system-ui, 'Segoe UI', Arial, sans-serif;
+  --font-secondary: 'Cabinet Grotesk', 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  --font-mono:      'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* type scale */
+  --ts-h1: 56px;
+  --ts-h2: 40px;
+  --ts-h3: 28px;
+  --ts-h4: 20px;
+  --ts-bodyL: 18px;
+  --ts-body: 16px;
+  --ts-cap: 14px;
+  --ts-over: 12px;
+
+  /* ── SURFACE / LINES ── */
+  --line:       #2A3441;
+  --line-soft:  #232D39;
+  --line-light: #D6E0E3;
+
+  /* ── RADII ── */
+  --r-card:  14px;
+  --r-btn:   9px;
+  --r-input: 9px;
+  --r-pill:  999px;
+
+  /* ── SPACING (4pt grid) ── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+
+  /* ── MOTION ── */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-btn: 160ms;
+}

@@ -1,0 +1,194 @@
+/* ═══════════════════════════════════════════════════════════
+   DMCGrid Tailwind v4 @theme & Design System Tokens v1.3
+   Ported from: /home/ubuntu/dmcgrid/design/tokens.css
+   Colors: Midnight / Slate / Ivory / Sand Gold (#D4B483)
+   Dark default + Light theme via [data-theme]
+   ═══════════════════════════════════════════════════════════ */
+
+@theme {
+  /* Brand Primary Palette */
+  --color-midnight: #0B0F14;
+  --color-slate: #1F2937;
+  --color-sand-gold: #D4B483;
+  --color-ivory: #F7F3E9;
+  --color-stone: #9CA3AF;
+  --color-earth: #3A3F36;
+
+  /* Neutral Ramp v1.3 */
+  --color-gray-50: #F3F5F7;
+  --color-gray-100: #E8ECF0;
+  --color-gray-200: #D2D9DF;
+  --color-gray-300: #B4BDC5;
+  --color-gray-400: #9CA3AF;
+  --color-gray-500: #71808B;
+  --color-gray-600: #55636E;
+  --color-gray-700: #3E4A54;
+  --color-gray-800: #2A3441;
+  --color-gray-850: #232D39;
+  --color-gray-900: #1F2937;
+  --color-gray-950: #0B0F14;
+
+  /* Semantics */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+  --color-teal: #0EA5A3;
+  --color-sunset: #F97316;
+
+  /* Semantic Theme-aware surface & text mappings */
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-surface-raised: var(--surface-raised);
+  --color-foreground: var(--text);
+  --color-foreground-muted: var(--text-muted);
+  --color-foreground-subtle: var(--text-subtle);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Typography */
+  --font-primary: 'Satoshi', 'Cabinet Grotesk', Inter, system-ui, sans-serif;
+  --font-secondary: 'Cabinet Grotesk', 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-sans: 'Satoshi', 'Cabinet Grotesk', Inter, system-ui, sans-serif;
+
+  /* Radii */
+  --radius-card: 14px;
+  --radius-btn: 9px;
+  --radius-input: 9px;
+  --radius-pill: 999px;
+
+  /* Spacing 4pt grid */
+  --spacing-sp-1: 4px;
+  --spacing-sp-2: 8px;
+  --spacing-sp-3: 12px;
+  --spacing-sp-4: 16px;
+  --spacing-sp-5: 24px;
+  --spacing-sp-6: 32px;
+}
+
+/* ── DEFAULT / DARK THEME ── */
+:root,
+[data-theme="dark"] {
+  --bg: #0B0F14;
+  --surface: #1F2937;
+  --surface-subtle: #151D27;
+  --surface-raised: #232D39;
+  --text: #F7F3E9;
+  --text-muted: #9CA3AF;
+  --text-subtle: #71808B;
+  --border: #2A3441;
+  --border-subtle: #232D39;
+  --accent: #D4B483;
+  --accent-hover: #E0C59B;
+  --accent-foreground: #0B0F14;
+
+  --r-card: 14px;
+  --r-btn: 9px;
+  --r-input: 9px;
+  --r-pill: 999px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg: #F7F3E9;
+  --surface: #FFFFFF;
+  --surface-subtle: #F3F5F7;
+  --surface-raised: #E8ECF0;
+  --text: #0B0F14;
+  --text-muted: #55636E;
+  --text-subtle: #71808B;
+  --border: #D6E0E3;
+  --border-subtle: #E8ECF0;
+  --accent: #D4B483;
+  --accent-hover: #C4A16F;
+  --accent-foreground: #0B0F14;
+}
+
+/* ── SELF-HOSTED LOCAL FONTS ── */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-800.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/jetbrains-mono-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@dmcgrid/tokens",
+  "version": "0.1.0",
+  "description": "DMCGrid design tokens ported for Tailwind v4 and TypeScript",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tokens.css": "./tokens.css",
+    "./theme.css": "./theme.css"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "type-check": "tsc --noEmit",
+    "lint": "echo \"tokens: no linting required\""
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}

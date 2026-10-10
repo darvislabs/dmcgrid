@@ -1,0 +1,110 @@
+/* ═══════════════════════════════════════════════════════════
+   DMCGrid Platform Design Tokens v1.3 — Tailwind v4 @theme
+   ═══════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Core Brand Palette ── */
+  --color-midnight: #0B0F14;
+  --color-slate: #1F2937;
+  --color-sand-gold: #D4B483;
+  --color-ivory: #F7F3E9;
+  --color-stone: #9CA3AF;
+  --color-earth: #3A3F36;
+
+  /* ── Cool Slate Neutral Ramp ── */
+  --color-gray-50: #F3F5F7;
+  --color-gray-100: #E8ECF0;
+  --color-gray-200: #D2D9DF;
+  --color-gray-300: #B4BDC5;
+  --color-gray-400: #9CA3AF;
+  --color-gray-500: #71808B;
+  --color-gray-600: #55636E;
+  --color-gray-700: #3E4A54;
+  --color-gray-800: #2A3441;
+  --color-gray-850: #232D39;
+  --color-gray-900: #1F2937;
+  --color-gray-950: #0B0F14;
+
+  /* ── Semantic Colors ── */
+  --color-brand-success: #10B981;
+  --color-brand-warning: #F59E0B;
+  --color-brand-error: #EF4444;
+  --color-brand-info: #3B82F6;
+  --color-brand-teal: #0EA5A3;
+  --color-brand-sunset: #F97316;
+
+  /* ── Theme-aware Semantic Mapping ── */
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-card: var(--surface-card);
+  --color-foreground: var(--text-main);
+  --color-foreground-muted: var(--text-muted);
+  --color-foreground-sub: var(--text-sub);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* ── Typography Stacks ── */
+  --font-primary: 'Satoshi', 'Cabinet Grotesk', Inter, system-ui, -apple-system, sans-serif;
+  --font-secondary: 'Cabinet Grotesk', 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* ── Corner Radii ── */
+  --radius-card: 14px;
+  --radius-btn: 9px;
+  --radius-input: 9px;
+  --radius-pill: 999px;
+
+  /* ── Spacing (4pt grid) ── */
+  --spacing-sp-1: 4px;
+  --spacing-sp-2: 8px;
+  --spacing-sp-3: 12px;
+  --spacing-sp-4: 16px;
+  --spacing-sp-5: 24px;
+  --spacing-sp-6: 32px;
+
+  /* ── Easing & Transitions ── */
+  --ease-out-cubic: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-cubic: cubic-bezier(0.77, 0, 0.175, 1);
+  --transition-press: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ── Default Dark Theme Variables ── */
+:root,
+[data-theme="dark"] {
+  --bg: #0B0F14;
+  --surface: #1F2937;
+  --surface-raised: #232D39;
+  --surface-card: #1F2937;
+  --line: #2A3441;
+  --line-soft: #232D39;
+  --text-main: #F3F5F7;
+  --text-muted: #9CA3AF;
+  --text-sub: #71808B;
+  --accent: #D4B483;
+  --accent-hover: #c4a16f;
+  --accent-foreground: #0B0F14;
+
+  color-scheme: dark;
+}
+
+/* ── Light Theme Variables ── */
+[data-theme="light"] {
+  --bg: #F7F3E9;
+  --surface: #FFFFFF;
+  --surface-raised: #F3F5F7;
+  --surface-card: #FFFFFF;
+  --line: #D6E0E3;
+  --line-soft: #E8ECF0;
+  --text-main: #0B0F14;
+  --text-muted: #55636E;
+  --text-sub: #71808B;
+  --accent: #D4B483;
+  --accent-hover: #b89868;
+  --accent-foreground: #0B0F14;
+
+  color-scheme: light;
+}
