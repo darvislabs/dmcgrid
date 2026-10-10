@@ -19,6 +19,7 @@ export type QuoteStatus = 'submitted' | 'shortlisted' | 'connected' | 'declined'
 export type TimeWindowType = 'morning' | 'afternoon' | 'evening' | 'night';
 export type MarkupCalcType = 'percentage' | 'fixed';
 export type ApprovalStatus = 'draft' | 'pending' | 'approved' | 'rejected';
+export type DealStatus = 'draft' | 'sent' | 'won' | 'lost' | 'pending';
 export type ProposalStatus = 'draft' | 'shared' | 'accepted';
 export type LedgerEntryType = 'debit' | 'credit';
 export type CreditAccountType = 'agent_wallet' | 'dmc_escrow' | 'platform_revenue' | 'system_reserve';
@@ -499,6 +500,7 @@ export interface Database {
           manager_approval_status: ApprovalStatus;
           manager_approved_by: string | null;
           manager_approved_at: string | null;
+          status: DealStatus;
           created_at: string;
           updated_at: string;
         };
@@ -527,6 +529,7 @@ export interface Database {
           manager_approval_status?: ApprovalStatus;
           manager_approved_by?: string | null;
           manager_approved_at?: string | null;
+          status?: DealStatus;
           created_at?: string;
           updated_at?: string;
         };
@@ -555,6 +558,7 @@ export interface Database {
           manager_approval_status?: ApprovalStatus;
           manager_approved_by?: string | null;
           manager_approved_at?: string | null;
+          status?: DealStatus;
           created_at?: string;
           updated_at?: string;
         };
@@ -957,6 +961,19 @@ export interface Database {
       };
       get_admin_sparkline_14d: {
         Args: Record<string, never>;
+        Returns: Json;
+      };
+      agent_update_deal_status: {
+        Args: {
+          p_deal_id: string;
+          p_status: string;
+        };
+        Returns: Json;
+      };
+      mark_notifications_read: {
+        Args: {
+          p_ids?: Json;
+        };
         Returns: Json;
       };
     };

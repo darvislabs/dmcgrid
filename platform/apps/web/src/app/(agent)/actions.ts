@@ -192,3 +192,51 @@ export async function buyCreditPackAction(params: {
     return { success: false, error: err.message || 'Failed to purchase credit pack' };
   }
 }
+
+export async function updateDealStatusAction(params: {
+  dealId: string;
+  status: 'draft' | 'sent' | 'won' | 'lost' | 'pending';
+}) {
+  try {
+    const adminClient = createAdminClient();
+
+    const { data, error } = await (adminClient as any).rpc('agent_update_deal_status', {
+      p_deal_id: params.dealId,
+      p_status: params.status,
+    });
+
+    if (error) {
+      return { success: false, error: error.message };
+    }
+
+    revalidatePath('/deals');
+    revalidatePath(`/deals/${params.dealId}`);
+    revalidatePath('/proposals');
+    revalidatePath('/feed');
+    revalidatePath('/');
+    return { success: true, data };
+  } catch (err: any) {
+    return { success: false, error: err.message || 'Failed to update deal status' };
+  }
+}
+
+export async function markNotificationsReadAction(params: {
+  ids?: string[];
+}) {
+  try {
+    const adminClient = createAdminClient();
+
+    const { data, error } = await (adminClient as any).rpc('mark_notifications_read', {
+      p_ids: params.ids || [],
+    });
+
+    if (error) {
+      return { success: false, error: error.message };
+    }
+
+    revalidatePath('/deals');
+    return { success: true, data };
+  } catch (err: any) {
+    return { success: false, error: err.message || 'Failed to mark notifications read' };
+  }
+}

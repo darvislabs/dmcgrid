@@ -181,7 +181,7 @@ export interface Deal {
   tds_payable: number;
   gross_profit: number;
   cash_profit: number;
-  status: 'draft' | 'approved' | 'proposal_generated' | 'completed' | 'cancelled';
+  status: 'draft' | 'sent' | 'won' | 'lost' | 'pending';
   approved_by: string | null;
   approved_at: string | null;
   created_at: string;

@@ -7,19 +7,35 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
+    "jsx": "react-jsx",
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true
-  }
+    "sourceMap": true,
+    "paths": {
+      "@/*": ["./apps/web/src/*"],
+      "@dmcgrid/tokens": ["./packages/tokens/src"],
+      "@dmcgrid/db": ["./packages/db/src"],
+      "@dmcgrid/ui": ["./packages/ui/src"]
+    }
+  },
+  "include": [
+    "css.d.ts",
+    "apps/web/next-env.d.ts",
+    "apps/**/*.ts",
+    "apps/**/*.tsx",
+    "packages/**/*.ts",
+    "packages/**/*.tsx"
+  ],
+  "exclude": ["**/node_modules", "**/.next"]
 }

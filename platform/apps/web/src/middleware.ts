@@ -10,7 +10,8 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith('/fonts') ||
     pathname.startsWith('/favicon.ico') ||
     pathname.startsWith('/auth/callback') ||
-    pathname.startsWith('/share/')
+    pathname.startsWith('/share/') ||
+    pathname.startsWith('/api/')
   ) {
     return NextResponse.next();
   }
@@ -56,11 +57,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  // Agent portal gate (/rfq, /wallet, /deals, /connections)
+  // Agent portal gate (/rfq, /wallet, /proposals, /connections)
+  // Note: /deals is accessible to both agents and DMCs with role-adapted views
   const isAgentRoute =
     pathname.startsWith('/rfq') ||
     pathname.startsWith('/wallet') ||
-    pathname.startsWith('/deals') ||
+    pathname.startsWith('/proposals') ||
     pathname.startsWith('/connections');
 
   if (isAgentRoute && user.role === 'dmc') {

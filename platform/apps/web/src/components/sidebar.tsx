@@ -20,6 +20,8 @@ import {
   Coins,
   LogOut,
   Users,
+  Briefcase,
+  FileText,
 } from 'lucide-react';
 
 interface NavItem {
@@ -74,7 +76,7 @@ export function Sidebar({
           items: [
             { id: '01', label: 'Briefs Feed', href: '/feed', icon: <Inbox className="w-3.5 h-3.5" /> },
             { id: '02', label: 'Quotes Submitted', href: '/quotes', icon: <Send className="w-3.5 h-3.5" /> },
-            { id: '03', label: 'Connected Deals', href: '/feed#deals', icon: <Files className="w-3.5 h-3.5" /> },
+            { id: '03', label: 'Connected Deals', href: '/deals', icon: <Briefcase className="w-3.5 h-3.5" /> },
           ],
         },
         {
@@ -100,15 +102,17 @@ export function Sidebar({
       {
         title: 'COMMERCE',
         items: [
-          { id: '04', label: 'DMC Connections', href: '/connections', icon: <Users className="w-3.5 h-3.5" /> },
-          { id: '05', label: 'Wallet & Credits', href: '/wallet', icon: <Wallet className="w-3.5 h-3.5" /> },
+          { id: '04', label: 'Deals & Pipeline', href: '/deals', icon: <Briefcase className="w-3.5 h-3.5" /> },
+          { id: '05', label: 'Proposals', href: '/proposals', icon: <FileText className="w-3.5 h-3.5" /> },
+          { id: '06', label: 'DMC Connections', href: '/connections', icon: <Users className="w-3.5 h-3.5" /> },
+          { id: '07', label: 'Wallet & Credits', href: '/wallet', icon: <Wallet className="w-3.5 h-3.5" /> },
         ],
       },
       {
         title: 'ACCOUNT',
         items: [
-          { id: '06', label: 'Agency Profile', href: '/#settings', icon: <Settings className="w-3.5 h-3.5" /> },
-          { id: '07', label: 'KYC Status', href: '/#kyc', icon: <ShieldCheck className="w-3.5 h-3.5" /> },
+          { id: '08', label: 'Agency Profile', href: '/#settings', icon: <Settings className="w-3.5 h-3.5" /> },
+          { id: '09', label: 'KYC Status', href: '/#kyc', icon: <ShieldCheck className="w-3.5 h-3.5" /> },
         ],
       },
     ];

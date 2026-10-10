@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Sidebar } from './sidebar';
 import { BrandSymbols, DmcMark } from './brand-symbols';
+import { NotificationDropdown } from './notifications-dropdown';
 import { Menu, X } from 'lucide-react';
 import type { UserRole } from '@dmcgrid/db';
 
@@ -32,13 +33,16 @@ export function AppShell({ children, role = 'agent', credits = 20 }: AppShellPro
             DMC<span className="text-[#D4B483] font-normal">Grid</span>
           </span>
         </div>
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2 rounded-[6px] border border-[var(--border-line)] text-[var(--text-primary)] min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
-          aria-label="Toggle navigation"
-        >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <NotificationDropdown />
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 rounded-[6px] border border-[var(--border-line)] text-[var(--text-primary)] min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+            aria-label="Toggle navigation"
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
@@ -56,6 +60,17 @@ export function AppShell({ children, role = 'agent', credits = 20 }: AppShellPro
 
       {/* Main Content Area */}
       <main className="md:ml-[216px] min-h-[100dvh] p-6 lg:p-8 max-w-[1400px]">
+        {/* Desktop Header Utility Strip */}
+        <div className="hidden md:flex items-center justify-between pb-3 mb-6 border-b border-[var(--border-subtle)]">
+          <div className="flex items-center gap-2 font-mono text-[10px] tracking-widest text-[var(--text-muted)] uppercase">
+            <span>DMCGRID</span>
+            <span>/</span>
+            <span className="text-[var(--accent-gold)] font-medium">{role.toUpperCase()} PORTAL</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <NotificationDropdown />
+          </div>
+        </div>
         {children}
       </main>
     </div>
