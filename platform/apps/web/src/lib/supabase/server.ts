@@ -1,6 +1,6 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
-import type { Database } from '@dmcgrid/db';
+import { createDmcServiceClient, type Database } from '@dmcgrid/db';
 
 type CookieSetOptions = Parameters<Awaited<ReturnType<typeof cookies>>['set']>[2];
 
@@ -33,3 +33,13 @@ export async function createClient() {
     },
   });
 }
+
+/**
+ * Service-role admin client for server actions and trusted operations where legitimately needed (PRD R2)
+ */
+export function createAdminClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'http://127.0.0.1:54321';
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+  return createDmcServiceClient(supabaseUrl, serviceRoleKey);
+}
+

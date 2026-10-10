@@ -11,3 +11,13 @@ export function createDmcClient(supabaseUrl: string, supabaseAnonKey: string): D
     },
   });
 }
+
+export function createDmcServiceClient(supabaseUrl: string, serviceRoleKey: string): DmcSupabaseClient {
+  return createClient<Database>(supabaseUrl, serviceRoleKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+  });
+}
+

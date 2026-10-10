@@ -46,36 +46,35 @@ export async function updateSession(request: NextRequest): Promise<AuthSessionRe
     },
   });
 
-  // Check demo/dev role cookie for easy local preview
-  const devRoleCookie = request.cookies.get('dmc_role')?.value as UserRole | undefined;
-
   let sessionUser: { id: string; email: string; role: UserRole } | null = null;
 
   try {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (user) {
-      const metaRole = (user.user_metadata?.role as UserRole) || 'agent';
+      let authoritativeRole = (user.user_metadata?.role as UserRole) || 'agent';
+      try {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', user.id)
+          .single();
+        const profileData = profile as { role?: UserRole } | null;
+        if (profileData?.role) {
+          authoritativeRole = profileData.role;
+        }
+      } catch {
+        // Fallback to metadata
+      }
+
       sessionUser = {
         id: user.id,
         email: user.email || '',
-        role: metaRole,
-      };
-    } else if (devRoleCookie && ['agent', 'dmc', 'admin'].includes(devRoleCookie)) {
-      sessionUser = {
-        id: 'dev-user-id',
-        email: `dev-${devRoleCookie}@dmcgrid.com`,
-        role: devRoleCookie,
+        role: authoritativeRole,
       };
     }
   } catch {
-    if (devRoleCookie && ['agent', 'dmc', 'admin'].includes(devRoleCookie)) {
-      sessionUser = {
-        id: 'dev-user-id',
-        email: `dev-${devRoleCookie}@dmcgrid.com`,
-        role: devRoleCookie,
-      };
-    }
+    // Session lookup failed — treat as unauthenticated. No role-cookie backdoors in production paths.
   }
 
   return { response, user: sessionUser };

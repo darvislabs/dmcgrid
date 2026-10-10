@@ -1,4 +1,4 @@
-$ next dev
+$ next dev -p 3100
  ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
  We detected multiple lockfiles and selected the directory of /home/ubuntu/package-lock.json as the root directory.
  To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
@@ -6,19 +6,46 @@ $ next dev
  Detected additional lockfiles: 
    * /home/ubuntu/dmcgrid/platform/pnpm-lock.yaml
 
- ⚠ Port 3000 is in use by an unknown process, using available port 3003 instead.
    ▲ Next.js 15.5.27
-   - Local:        http://localhost:3003
-   - Network:      http://10.7.6.35:3003
+   - Local:        http://localhost:3100
+   - Network:      http://10.7.6.35:3100
    - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 2.1s
- ✓ Compiled /middleware in 495ms (171 modules)
+ ✓ Ready in 1816ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 595ms (171 modules)
  ○ Compiling /login ...
- ✓ Compiled /login in 2.2s (802 modules)
- GET /login 200 in 2785ms
- GET /login?redirect=%2Fagent 200 in 160ms
- ○ Compiling /share/[token] ...
- ✓ Compiled /share/[token] in 1256ms (837 modules)
- GET /share/testtoken 200 in 2934ms
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (113kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (268kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ ✓ Compiled /login in 2.7s (802 modules)
+ GET /login 200 in 3422ms
+ GET /login 200 in 136ms
+   Reload env: .env.local
+ ✓ Compiled in 1948ms (987 modules)
+ GET /login 200 in 396ms
+ GET /login 200 in 129ms
+ GET /login 200 in 97ms
+ GET /login?redirect=%2Fadmin%2Fverification 200 in 97ms
+ GET /login?redirect=%2Fadmin%2Fusers 200 in 157ms
+ GET /login?redirect=%2Fadmin%2Frfqs 200 in 146ms
+ GET /login?redirect=%2Fadmin%2Fledger 200 in 140ms
+ GET /login?redirect=%2Fadmin%2Fplans 200 in 154ms
+ GET /login?redirect=%2Fadmin%2Fanalytics 200 in 149ms
+ GET /login?redirect=%2Fadmin%2Fverification 200 in 148ms
+ GET /login?redirect=%2Fadmin%2Fverification 200 in 122ms
+ GET /login 200 in 101ms
+ GET /login?redirect=%2F 200 in 74ms
+ GET /login?redirect=%2Fadmin%2Fverification 200 in 79ms
+ GET /login?redirect=%2Fadmin%2Fusers 200 in 149ms
+ GET /login?redirect=%2Fadmin%2Frfqs 200 in 148ms
+ GET /login?redirect=%2Fadmin%2Fledger 200 in 108ms
+ GET /login?redirect=%2Fadmin%2Fplans 200 in 139ms
+ GET /login?redirect=%2Fadmin%2Fanalytics 200 in 106ms
+ GET /login?redirect=%2Fadmin%2Fverification 200 in 141ms
+ GET /login?redirect=%2Fadmin%2Fverification 200 in 155ms
+ POST /login 200 in 86ms
+ GET /login 200 in 98ms
+ ✓ Compiled in 1119ms (816 modules)
+[ELIFECYCLE] Command failed.
+[?25h

@@ -1,0 +1,5 @@
+set -e
+sudo docker cp /home/ubuntu/dmcgrid/platform/packages/db/supabase/migrations/00009_admin_seed_data.sql supabase_db_db:/tmp/00009.sql
+sudo docker exec supabase_db_db psql -U postgres -d postgres -c "truncate public.kyc_records, public.credit_ledger, public.credit_transactions, public.credit_accounts, public.audit_log, public.connections, public.quote_line_items, public.quote_options, public.quotes, public.rfq_destinations, public.rfq_stays, public.rfqs cascade;" > /dev/null 2>&1 || true
+sudo docker exec supabase_db_db psql -U postgres -d postgres -v ON_ERROR_STOP=1 -f /tmp/00009.sql 2>&1 | grep -E 'ERROR' | head -3
+sudo docker exec supabase_db_db psql -U postgres -d postgres -t -c "select 'profiles='||(select count(*) from profiles)||' kyc='||(select count(*) from kyc_records)||' rfqs='||(select count(*) from rfqs)||' quotes='||(select count(*) from quotes)||' qopt='||(select count(*) from quote_options)||' li='||(select count(*) from quote_line_items)||' audit='||(select count(*) from audit_log)||' ledger='||(select count(*) from credit_ledger)||' accts='||(select count(*) from credit_accounts)||' conns='||(select count(*) from connections);"

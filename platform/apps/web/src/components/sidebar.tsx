@@ -18,7 +18,6 @@ import {
   Inbox,
   Send,
   Coins,
-  History,
   LogOut,
   Users,
 } from 'lucide-react';
@@ -52,16 +51,17 @@ export function Sidebar({
         {
           title: 'GOVERNANCE',
           items: [
-            { id: '01', label: 'Platform Ops', href: '/admin', icon: <Compass className="w-3.5 h-3.5" /> },
-            { id: '02', label: 'KYC Verification', href: '/admin#kyc', icon: <ShieldCheck className="w-3.5 h-3.5" /> },
-            { id: '03', label: 'Audit Log (R2)', href: '/admin#audit', icon: <History className="w-3.5 h-3.5" /> },
+            { id: '01', label: 'Analytics & Ops', href: '/admin/analytics', icon: <Compass className="w-3.5 h-3.5" /> },
+            { id: '02', label: 'KYC Verification', href: '/admin/verification', icon: <ShieldCheck className="w-3.5 h-3.5" /> },
+            { id: '03', label: 'User Directory', href: '/admin/users', icon: <Users className="w-3.5 h-3.5" /> },
           ],
         },
         {
-          title: 'LEDGER & RESERVES',
+          title: 'OPERATIONS',
           items: [
-            { id: '04', label: 'Double-Entry Ledger', href: '/admin#ledger', icon: <Coins className="w-3.5 h-3.5" /> },
-            { id: '05', label: 'Credit Mint & Pools', href: '/admin#pools', icon: <Wallet className="w-3.5 h-3.5" /> },
+            { id: '04', label: 'RFQ Oversight', href: '/admin/rfqs', icon: <Files className="w-3.5 h-3.5" /> },
+            { id: '05', label: 'Credit Ledger', href: '/admin/ledger', icon: <Coins className="w-3.5 h-3.5" /> },
+            { id: '06', label: 'Plans & Pricing', href: '/admin/plans', icon: <Wallet className="w-3.5 h-3.5" /> },
           ],
         },
       ];
@@ -170,7 +170,7 @@ export function Sidebar({
             </div>
             <nav className="space-y-0.5 px-2">
               {section.items.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
                 return (
                   <Link
                     key={item.href}

@@ -31,6 +31,7 @@ export default function LoginPage() {
         email,
         options: {
           shouldCreateUser: true,
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
           data: {
             role,
           },
@@ -78,8 +79,8 @@ export default function LoginPage() {
       // Set role cookie for seamless session persistence
       document.cookie = `dmc_role=${role}; path=/; max-age=86400`;
 
-      if (error && otpCode !== '123456') {
-        // Allow 123456 in dev/preview mode
+      const demoBypass = otpCode === '123456' && process.env.NODE_ENV !== 'production' && process.env.NEXT_PUBLIC_DEMO_MODE === 'true';
+      if (error && !demoBypass) {
         setMessage({
           text: error.message || 'Invalid verification code. Use 123456 for demo mode.',
           type: 'error',

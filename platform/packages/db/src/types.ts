@@ -872,6 +872,7 @@ export interface Database {
         };
       };
     };
+    Views: Record<string, never>;
     Functions: {
       calculate_v62_deal_cost: {
         Args: {
@@ -900,6 +901,104 @@ export interface Database {
         };
         Returns: string;
       };
+      admin_review_kyc: {
+        Args: {
+          p_kyc_record_id: string;
+          p_status: KycStatus;
+          p_reason: string;
+          p_reviewer_id?: string;
+        };
+        Returns: Json;
+      };
+      admin_toggle_user_active: {
+        Args: {
+          p_user_id: string;
+          p_is_active: boolean;
+          p_reason: string;
+          p_admin_id?: string;
+        };
+        Returns: Json;
+      };
+      admin_force_close_rfq: {
+        Args: {
+          p_rfq_id: string;
+          p_reason: string;
+          p_admin_id?: string;
+        };
+        Returns: Json;
+      };
+      admin_adjust_credits: {
+        Args: {
+          p_profile_id: string;
+          p_entry_type: LedgerEntryType;
+          p_amount: number;
+          p_reason: string;
+          p_admin_id?: string;
+        };
+        Returns: Json;
+      };
+      admin_save_plan: {
+        Args: {
+          p_plan_id?: string | null;
+          p_plan_code?: string | null;
+          p_name?: string | null;
+          p_monthly_leads?: number | null;
+          p_price_inr?: number | null;
+          p_description?: string | null;
+          p_features?: Json;
+          p_is_active?: boolean;
+          p_admin_id?: string;
+        };
+        Returns: Json;
+      };
+      get_admin_analytics_summary: {
+        Args: Record<string, never>;
+        Returns: Json;
+      };
+      get_admin_sparkline_14d: {
+        Args: Record<string, never>;
+        Returns: Json;
+      };
     };
   };
 }
+
+export interface AdminAnalyticsSummary {
+  agents_count: number;
+  dmcs_count: number;
+  pending_kyc_count: number;
+  published_rfqs_count: number;
+  quotes_submitted_count: number;
+  connections_made_count: number;
+  quote_avg_response_seconds: number;
+  revenue_estimated_inr: number;
+}
+
+export interface SparklinePoint {
+  date: string;
+  label: string;
+  rfqs: number;
+  quotes: number;
+}
+
+export type Profile = Database['public']['Tables']['profiles']['Row'];
+export type KycRecord = Database['public']['Tables']['kyc_records']['Row'];
+export type Rfq = Database['public']['Tables']['rfqs']['Row'];
+export type RfqDestination = Database['public']['Tables']['rfq_destinations']['Row'];
+export type RfqStay = Database['public']['Tables']['rfq_stays']['Row'];
+export type RfqExperience = Database['public']['Tables']['rfq_experiences']['Row'];
+export type RfqMatch = Database['public']['Tables']['rfq_matches']['Row'];
+export type Quote = Database['public']['Tables']['quotes']['Row'];
+export type QuoteOption = Database['public']['Tables']['quote_options']['Row'];
+export type QuoteLineItem = Database['public']['Tables']['quote_line_items']['Row'];
+export type Connection = Database['public']['Tables']['connections']['Row'];
+export type Deal = Database['public']['Tables']['deals']['Row'];
+export type Proposal = Database['public']['Tables']['proposals']['Row'];
+export type ShareToken = Database['public']['Tables']['share_tokens']['Row'];
+export type Plan = Database['public']['Tables']['plans']['Row'];
+export type CreditPack = Database['public']['Tables']['credit_packs']['Row'];
+export type CreditAccount = Database['public']['Tables']['credit_accounts']['Row'];
+export type CreditLedgerEntry = Database['public']['Tables']['credit_ledger']['Row'];
+export type Notification = Database['public']['Tables']['notifications']['Row'];
+export type AuditLogEntry = Database['public']['Tables']['audit_log']['Row'];
+
