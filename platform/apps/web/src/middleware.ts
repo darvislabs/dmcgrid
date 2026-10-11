@@ -30,7 +30,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // 4. Authenticated user hitting /login
-  if (pathname === '/login') {
+  if (pathname === '/login' && !request.nextUrl.searchParams.has('stale')) {
     if (user.role === 'admin') {
       return NextResponse.redirect(new URL('/admin', request.url));
     }
