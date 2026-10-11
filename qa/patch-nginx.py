@@ -22,6 +22,22 @@ new = """server {
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto https;
     }
+
+    # Mailpit (test inbox) — secret path
+    location /inbox-7f3k9/ {
+        proxy_pass http://127.0.0.1:54324/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+    }
+
+    # gotrue verify links (external_url root form)
+    location = /verify {
+        proxy_pass http://127.0.0.1:54321/auth/v1/verify;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Proto https;
+    }
     location /auth/ {
         proxy_pass http://127.0.0.1:54321/auth/;
         proxy_set_header Host $host;
