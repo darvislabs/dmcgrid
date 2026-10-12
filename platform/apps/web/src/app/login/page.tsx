@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { devSignIn } from './actions';
 import { BrandSymbols, DmcMark } from '@/components/brand-symbols';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button, Input, Card, Badge } from '@dmcgrid/ui';
@@ -102,11 +103,29 @@ export default function LoginPage() {
     }
   };
 
-  const handleQuickLogin = (selectedRole: UserRole) => {
-    document.cookie = `dmc_role=${selectedRole}; path=/; max-age=86400`;
-    if (selectedRole === 'admin') router.push('/admin');
-    else if (selectedRole === 'dmc') router.push('/feed');
-    else router.push('/');
+  const handleQuickLogin = async (selectedRole: UserRole) => {
+    setLoading(true);
+    setMessage(null);
+    try {
+      const res = await devSignIn(selectedRole);
+      if (!res.ok) {
+        setMessage({ text: res.error, type: 'error' });
+        setLoading(false);
+        return;
+      }
+      await supabase.auth.setSession({
+        access_token: res.session.access_token,
+        refresh_token: res.session.refresh_token,
+      });
+      document.cookie = `dmc_role=${selectedRole}; path=/; max-age=86400`;
+      if (selectedRole === 'admin') router.push('/admin');
+      else if (selectedRole === 'dmc') router.push('/feed');
+      else router.push('/');
+      router.refresh();
+    } catch (err) {
+      setMessage({ text: 'Instant sign-in failed. Use the email code flow instead.', type: 'error' });
+      setLoading(false);
+    }
   };
 
   return (
@@ -244,7 +263,7 @@ export default function LoginPage() {
                   required
                 />
                 <p className="text-[11px] text-[var(--text-muted)] mt-1.5 text-center">
-                  Check your inbox for the code. (Demo fallback: 123456)
+                  Check your inbox for the code.
                 </p>
               </div>
 
@@ -268,10 +287,10 @@ export default function LoginPage() {
             </form>
           )}
 
-          {/* Quick Demo Preview Portal Switchers */}
+          {/* Instant Portal Sign-In */}
           <div className="mt-8 pt-6 border-t border-[var(--border-subtle)] text-center">
             <span className="font-mono text-[10px] tracking-widest uppercase text-[var(--text-muted)] block mb-3">
-              One-Click Dev Preview
+              Instant Sign-In
             </span>
             <div className="grid grid-cols-3 gap-2">
               <Button
@@ -296,7 +315,7 @@ export default function LoginPage() {
                 onClick={() => handleQuickLogin('admin')}
                 className="text-[11px] font-mono"
               >
-                Admin Ops
+                Admin Portal
               </Button>
             </div>
           </div>
