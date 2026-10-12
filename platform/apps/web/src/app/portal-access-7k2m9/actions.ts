@@ -148,3 +148,70 @@ export async function verifyPhoneOtp(
     },
   };
 }
+
+
+/** Step 0: is this phone registered? (used to branch to onboarding) */
+export async function checkPhoneRegistered(rawPhone: string): Promise<
+  { registered: true } | { registered: false } | { error: string }
+> {
+  const phoneE164 = normalizeIndianPhone(rawPhone || '');
+  if (!phoneE164) return { error: 'Enter a valid Indian mobile number.' };
+  const service = getClient('service');
+  if (!service) return { error: 'Server auth is not configured.' };
+  const { data: users, error } = await service.auth.admin.listUsers();
+  if (error) return { error: 'Could not verify number.' };
+  return { registered: users.users.some((u) => u.phone === phoneE164) };
+}
+
+export type OnboardingResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+/** Submit a partner application (agent or DMC). Creates a pending account. */
+export async function submitOnboarding(input: {
+  role: 'agent' | 'dmc';
+  phone: string;
+  companyName: string;
+  contactName: string;
+  email?: string;
+  bio?: string;
+  destinations?: string[];
+  businessReg: string;
+  taxIdPan: string;
+  gstNumber?: string;
+  documentUrls?: string[];
+}): Promise<OnboardingResult> {
+  const phoneE164 = normalizeIndianPhone(input.phone || '');
+  if (!phoneE164) return { ok: false, error: 'Enter a valid Indian mobile number (10 digits).' };
+  if (!input.companyName?.trim() || !input.contactName?.trim()) {
+    return { ok: false, error: 'Company and contact name are required.' };
+  }
+  if (!input.businessReg?.trim() || !input.taxIdPan?.trim()) {
+    return { ok: false, error: 'Business registration number and PAN are required.' };
+  }
+  if (input.taxIdPan && !/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(input.taxIdPan.trim().toUpperCase())) {
+    return { ok: false, error: 'PAN must look like ABCDE1234F.' };
+  }
+
+  const service = getClient('service');
+  if (!service) return { ok: false, error: 'Server auth is not configured.' };
+
+  const { error } = await service.rpc('onboarding_submit_application', {
+    p_role: input.role,
+    p_phone: phoneE164,
+    p_company_name: input.companyName.trim(),
+    p_contact_name: input.contactName.trim(),
+    p_business_reg: input.businessReg.trim(),
+    p_tax_id_pan: input.taxIdPan.trim().toUpperCase(),
+    p_email: input.email?.trim() || null,
+    p_bio: input.bio?.trim() || null,
+    p_destinations: input.destinations?.length ? input.destinations : null,
+    p_gst_number: input.gstNumber?.trim() || null,
+    p_document_urls: input.documentUrls?.length ? input.documentUrls : null,
+  });
+  if (error) {
+    const msg = error.message || 'Could not submit application.';
+    return { ok: false, error: msg.includes('already registered') ? 'This number is already registered — sign in instead.' : msg };
+  }
+  return { ok: true };
+}
