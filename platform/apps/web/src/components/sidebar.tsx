@@ -125,9 +125,27 @@ export function Sidebar({
     else router.push('/');
   };
 
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
+    // 1. kill the supabase session server-side AND clear the browser cookies
+    try {
+      const { createClient } = await import('@/lib/supabase/client');
+      const supabase = createClient();
+      await supabase.auth.signOut();
+    } catch {
+      // even if the network call fails, clear local state below
+    }
+    // 2. role cookie
     document.cookie = 'dmc_role=; path=/; max-age=0';
-    router.push('/login');
+    // 3. nuke any residual sb- session cookies (belt & braces for stale chunks)
+    document.cookie.split(';').forEach((c) => {
+      const name = (c.split('=')[0] ?? '').trim();
+      if (name.startsWith('sb-')) {
+        document.cookie = `${name}=; path=/; max-age=0`;
+        document.cookie = `${name}=; path=/; domain=.dmcgrid.gomedicure.com; max-age=0`;
+      }
+    });
+    // 4. land on the hidden access gate, replacing history so back-button doesn't resurrect
+    window.location.replace('/portal-access-7k2m9');
   };
 
   return (
