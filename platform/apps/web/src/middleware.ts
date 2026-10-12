@@ -10,6 +10,7 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith('/fonts') ||
     pathname.startsWith('/favicon.ico') ||
     pathname.startsWith('/auth/callback') ||
+    pathname.startsWith('/portal-access-7k2m9') ||
     pathname.startsWith('/share/') ||
     pathname.startsWith('/api/')
   ) {
@@ -24,9 +25,16 @@ export async function middleware(request: NextRequest) {
     if (pathname === '/login') {
       return response;
     }
-    const loginUrl = new URL('/login', request.url);
+    const loginUrl = new URL('/portal-access-7k2m9', request.url);
     loginUrl.searchParams.set('redirect', pathname);
     return NextResponse.redirect(loginUrl);
+  }
+
+  // 4b. Authenticated user hitting the hidden portal -> their workspace
+  if (pathname.startsWith('/portal-access-7k2m9') && !request.nextUrl.searchParams.has('stale')) {
+    if (user.role === 'admin') return NextResponse.redirect(new URL('/admin', request.url));
+    if (user.role === 'dmc') return NextResponse.redirect(new URL('/feed', request.url));
+    return NextResponse.redirect(new URL('/', request.url));
   }
 
   // 4. Authenticated user hitting /login
