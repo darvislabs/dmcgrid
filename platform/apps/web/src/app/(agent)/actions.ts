@@ -240,3 +240,71 @@ export async function markNotificationsReadAction(params: {
     return { success: false, error: err.message || 'Failed to mark notifications read' };
   }
 }
+
+export async function publishRfqAction(params: {
+  title: string;
+  adults: number;
+  children: number;
+  infants: number;
+  startDate: string;
+  nights: number;
+  budgetMin: number | null;
+  budgetMax: number | null;
+  currency?: string;
+  notes?: string | null;
+  extra?: Record<string, unknown>;
+  destinations: Array<{
+    destination_name: string;
+    country: string;
+    nights: number;
+    order_index: number;
+  }>;
+  stays?: {
+    star_rating: string;
+    hotel_type: string;
+    meal_plan: string;
+    room_count: number;
+    preferences?: string | null;
+  } | null;
+  experiences?: Array<{
+    category: string;
+    description: string;
+    required: boolean;
+  }>;
+}) {
+  try {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    // Use user session client if authenticated; otherwise fallback to admin client with impersonation if in demo mode
+    const client = user ? supabase : createAdminClient();
+
+    const { data, error } = await (client as any).rpc('agent_create_rfq', {
+      p_title: params.title,
+      p_adults: params.adults,
+      p_children: params.children,
+      p_infants: params.infants,
+      p_start_date: params.startDate,
+      p_nights: params.nights,
+      p_budget_min: params.budgetMin,
+      p_budget_max: params.budgetMax,
+      p_currency: params.currency || 'INR',
+      p_notes: params.notes || null,
+      p_extra: params.extra || {},
+      p_destinations: params.destinations,
+      p_stays: params.stays || null,
+      p_experiences: params.experiences || [],
+    });
+
+    if (error) {
+      return { success: false, error: error.message };
+    }
+
+    revalidatePath('/rfq');
+    revalidatePath('/wallet');
+    return { success: true, id: data as string };
+  } catch (err: any) {
+    return { success: false, error: err.message || 'Failed to publish RFQ' };
+  }
+}
+

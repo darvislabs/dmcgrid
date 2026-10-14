@@ -970,6 +970,25 @@ export interface Database {
         };
         Returns: Json;
       };
+      agent_create_rfq: {
+        Args: {
+          p_title: string;
+          p_adults?: number;
+          p_children?: number;
+          p_infants?: number;
+          p_start_date?: string;
+          p_nights?: number;
+          p_budget_min?: number | null;
+          p_budget_max?: number | null;
+          p_currency?: string;
+          p_notes?: string | null;
+          p_extra?: Json;
+          p_destinations?: Json;
+          p_stays?: Json;
+          p_experiences?: Json;
+        };
+        Returns: string;
+      };
       mark_notifications_read: {
         Args: {
           p_ids?: Json;
