@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { Card, Button, Badge, StatCard, Money } from '@dmcgrid/ui';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import {
   Send,
   CheckCircle2,
@@ -17,11 +18,14 @@ export default async function DmcQuotesPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const currentDmcId = user?.id || 'd1111111-1111-1111-1111-111111111111';
-  const adminClient = createAdminClient();
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
+  const currentDmcId = user.id;
 
   // Query my submitted quotes with disambiguated RFQ agent embed
-  const { data: quotesData } = await (adminClient as any)
+  const { data: quotesData } = await (supabase as any)
     .from('quotes')
     .select(`
       id,

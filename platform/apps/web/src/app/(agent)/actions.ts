@@ -13,10 +13,13 @@ export async function unlockConnectionAction(params: {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
-    const agentId = params.agentId || user?.id || 'a1111111-1111-1111-1111-111111111111';
-    const adminClient = createAdminClient();
+    if (!user) {
+      return { success: false, error: 'Unauthorized' };
+    }
 
-    const { data, error } = await (adminClient as any).rpc('agent_unlock_connection', {
+    const agentId = user.id;
+
+    const { data, error } = await (supabase as any).rpc('agent_unlock_connection', {
       p_agent_id: agentId,
       p_dmc_id: params.dmcId,
       p_quote_id: params.quoteId || null,
@@ -49,10 +52,13 @@ export async function acceptQuoteAction(params: {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
-    const agentId = params.agentId || user?.id || 'a1111111-1111-1111-1111-111111111111';
-    const adminClient = createAdminClient();
+    if (!user) {
+      return { success: false, error: 'Unauthorized' };
+    }
 
-    const { data, error } = await (adminClient as any).rpc('agent_accept_quote', {
+    const agentId = user.id;
+
+    const { data, error } = await (supabase as any).rpc('agent_accept_quote', {
       p_rfq_id: params.rfqId,
       p_quote_id: params.quoteId,
       p_option_id: params.optionId,
@@ -78,8 +84,14 @@ export async function rejectQuoteAction(params: {
   quoteId: string;
 }) {
   try {
-    const adminClient = createAdminClient();
-    const { error } = await (adminClient as any)
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return { success: false, error: 'Unauthorized' };
+    }
+
+    const { error } = await (supabase as any)
       .from('quotes')
       .update({ status: 'declined', updated_at: new Date().toISOString() })
       .eq('id', params.quoteId);
@@ -105,7 +117,11 @@ export async function buyCreditPackAction(params: {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
-    const agentId = user?.id || 'a1111111-1111-1111-1111-111111111111';
+    if (!user) {
+      return { success: false, error: 'Unauthorized' };
+    }
+
+    const agentId = user.id;
     const adminClient = createAdminClient() as any;
 
     // 1. Get or create agent_wallet
@@ -198,9 +214,14 @@ export async function updateDealStatusAction(params: {
   status: 'draft' | 'sent' | 'won' | 'lost' | 'pending';
 }) {
   try {
-    const adminClient = createAdminClient();
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
 
-    const { data, error } = await (adminClient as any).rpc('agent_update_deal_status', {
+    if (!user) {
+      return { success: false, error: 'Unauthorized' };
+    }
+
+    const { data, error } = await (supabase as any).rpc('agent_update_deal_status', {
       p_deal_id: params.dealId,
       p_status: params.status,
     });
@@ -224,9 +245,14 @@ export async function markNotificationsReadAction(params: {
   ids?: string[];
 }) {
   try {
-    const adminClient = createAdminClient();
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
 
-    const { data, error } = await (adminClient as any).rpc('mark_notifications_read', {
+    if (!user) {
+      return { success: false, error: 'Unauthorized' };
+    }
+
+    const { data, error } = await (supabase as any).rpc('mark_notifications_read', {
       p_ids: params.ids || [],
     });
 
@@ -276,8 +302,11 @@ export async function publishRfqAction(params: {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
-    // Use user session client if authenticated; otherwise fallback to admin client with impersonation if in demo mode
-    const client = user ? supabase : createAdminClient();
+    if (!user) {
+      return { success: false, error: 'Unauthorized' };
+    }
+
+    const client = supabase;
 
     const { data, error } = await (client as any).rpc('agent_create_rfq', {
       p_title: params.title,

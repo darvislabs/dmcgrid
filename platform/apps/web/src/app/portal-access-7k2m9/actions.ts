@@ -67,6 +67,25 @@ export async function requestPhoneOtp(rawPhone: string): Promise<PhoneOtpResult>
     return { ok: false, error: 'This number is not registered. Ask the operations team to onboard you.' };
   }
 
+  // KYC gate (DEF-01): unapproved onboarding applicants cannot sign in.
+  const { data: profile } = await service
+    .from('profiles')
+    .select('role, kyc_status, is_active')
+    .eq('id', match.id)
+    .maybeSingle();
+  if (!profile || profile.is_active === false) {
+    return { ok: false, error: 'This account is not active. Contact the operations team.' };
+  }
+  if (profile.role !== 'admin' && profile.kyc_status !== 'verified') {
+    return {
+      ok: false,
+      error:
+        profile.kyc_status === 'rejected'
+          ? 'Your application was not approved. Contact the operations team.'
+          : 'Your application is still under review. You will be able to sign in once approved.',
+    };
+  }
+
   const code = String(Math.floor(100000 + Math.random() * 900000));
   otpStore.set(phoneE164, { code, expires: Date.now() + 5 * 60 * 1000, attempts: 0 });
 

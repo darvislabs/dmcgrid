@@ -1,8 +1,8 @@
 import React from 'react';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { AppShell } from '@/components/app-shell';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { DealDetailClient } from './deal-detail-client';
 import type { UserRole } from '@dmcgrid/db';
 
@@ -22,8 +22,12 @@ export default async function DealDetailPage({
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
   let role: UserRole = roleCookie || 'agent';
-  if (user && !roleCookie) {
+  if (!roleCookie) {
     const { data: profile } = await (supabase as any)
       .from('profiles')
       .select('role')
@@ -34,18 +38,12 @@ export default async function DealDetailPage({
     }
   }
 
-  const targetUserId =
-    user?.id ||
-    (role === 'dmc'
-      ? 'd1111111-1111-1111-1111-111111111111'
-      : 'a1111111-1111-1111-1111-111111111111');
-
-  const adminClient = createAdminClient();
+  const targetUserId = user.id;
 
   // Fetch agent credits if agent
-  let credits = 20;
+  let credits = 0;
   if (role === 'agent') {
-    const { data: account } = await (adminClient as any)
+    const { data: account } = await (supabase as any)
       .from('credit_accounts')
       .select('balance')
       .eq('profile_id', targetUserId)
@@ -58,7 +56,7 @@ export default async function DealDetailPage({
   }
 
   // Fetch deal with all disambiguated relations
-  const { data: dealData, error } = await (adminClient as any)
+  const { data: dealData, error } = await (supabase as any)
     .from('deals')
     .select(`
       id,
@@ -150,8 +148,18 @@ export default async function DealDetailPage({
     notFound();
   }
 
+  // Ownership check: agent_id or dmc side depending on role (or admin)
+  const isOwner =
+    dealData.agent_id === user.id ||
+    dealData.dmc_id === user.id ||
+    role === 'admin';
+
+  if (!isOwner) {
+    notFound();
+  }
+
   // Fetch share token if available
-  const { data: tokenData } = await (adminClient as any)
+  const { data: tokenData } = await (supabase as any)
     .from('share_tokens')
     .select('token, views_count, last_viewed_at, expires_at')
     .or(`deal_id.eq.${dealId},proposal_id.eq.${dealData.proposals?.[0]?.id || '00000000-0000-0000-0000-000000000000'}`)

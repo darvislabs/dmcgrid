@@ -28,12 +28,10 @@ export default async function TravelerSharePage({
 
   const adminClient = createAdminClient();
 
-  // 1. Fetch token record
-  const { data: tokenRecordData, error: tokenError } = await (adminClient as any)
-    .from('share_tokens')
-    .select('*')
-    .eq('token', token.trim())
-    .maybeSingle();
+  // 1. Fetch token record via public.share_lookup RPC
+  const { data: tokenRecordData, error: tokenError } = await (adminClient as any).rpc('share_lookup', {
+    p_token: token.trim(),
+  });
 
   const tokenRecord = tokenRecordData as ShareTokenRecord | null;
 

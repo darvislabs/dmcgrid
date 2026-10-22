@@ -1,5 +1,6 @@
 import React from 'react';
-import { createAdminClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
 import { LedgerClient, type CreditAccountWithProfile, type CreditLedgerWithDetails } from './ledger-client';
 import { Badge } from '@dmcgrid/ui';
 import type { Profile } from '@dmcgrid/db';
@@ -7,7 +8,12 @@ import type { Profile } from '@dmcgrid/db';
 export const dynamic = 'force-dynamic';
 
 export default async function AdminLedgerPage() {
-  const supabase = createAdminClient();
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
 
   // 1. Fetch Accounts with profile
   const { data: accounts, error: accError } = await supabase

@@ -1,0 +1,172 @@
+{
+  "journey": "Cross-Cutting",
+  "passed": [
+    "Agent route / loaded cleanly (HTTP 200)",
+    "Agent route /#kyc loaded cleanly (HTTP 200)",
+    "Agent route /#settings loaded cleanly (HTTP 200)",
+    "Agent route /connections loaded cleanly (HTTP 200)",
+    "Agent route /deals loaded cleanly (HTTP 200)",
+    "Agent route /garbage loaded cleanly (HTTP 404)",
+    "Agent route /proposals loaded cleanly (HTTP 200)",
+    "Agent route /rfq loaded cleanly (HTTP 200)",
+    "Agent route /rfq/new loaded cleanly (HTTP 200)",
+    "Agent route /wallet loaded cleanly (HTTP 200)",
+    "DMC route /briefs/14f9b851-6e16-408d-b5b5-edbf8e7b65b6 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/260fcb1d-cad0-4576-a3fd-3f1d1f6e9d24 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/365d1d78-04da-4e1b-9c2c-f31fb86dfbe2 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/3d4177ca-2583-474a-9478-72960a54b3fe loaded cleanly (HTTP 200)",
+    "DMC route /briefs/4d346511-62e6-4760-a5c6-141ffcf42476 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/6275924f-67b2-4a9b-8a48-3023cedbe618 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/866c10bd-69a3-4c9d-8430-0cea4ed0fc2a loaded cleanly (HTTP 200)",
+    "DMC route /briefs/8935bc0a-4cf1-4ab5-8d19-d826f08714ca loaded cleanly (HTTP 200)",
+    "DMC route /briefs/a3621c55-6356-469f-8729-4f85868bf2d8 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/c0d40cc7-b4f7-4c46-afeb-f6b8fb9e23fa loaded cleanly (HTTP 200)",
+    "DMC route /briefs/c47a0c03-b154-4959-b7bd-1cc60fdbe061 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/c7210afe-eeca-4ab9-b77a-f4f4b3dfd412 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/c78b18e0-882c-4589-9b19-40ab33987250 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/d0562284-e1d8-4a08-a600-b0af66e1ce57 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/f1000000-0000-0000-0000-000000000001 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/f1000000-0000-0000-0000-000000000002 loaded cleanly (HTTP 200)",
+    "DMC route /briefs/f1000000-0000-0000-0000-000000000003 loaded cleanly (HTTP 200)",
+    "DMC route /deals loaded cleanly (HTTP 200)",
+    "DMC route /feed loaded cleanly (HTTP 200)",
+    "DMC route /feed#coverage loaded cleanly (HTTP None)",
+    "DMC route /feed#kyc loaded cleanly (HTTP None)",
+    "DMC route /quotes loaded cleanly (HTTP 200)",
+    "Admin route /admin/analytics loaded cleanly (HTTP 200)",
+    "Admin route /admin/ledger loaded cleanly (HTTP 200)",
+    "Admin route /admin/plans loaded cleanly (HTTP 200)",
+    "Admin route /admin/rfqs loaded cleanly (HTTP 200)",
+    "Admin route /admin/users loaded cleanly (HTTP 200)",
+    "Admin route /admin/verification loaded cleanly (HTTP 200)",
+    "Traveler share page loaded successfully (HTTP 200)"
+  ],
+  "defects": [
+    {
+      "title": "Broken sidebar link for Agent: /kyc",
+      "severity": "P1",
+      "repro": "Click link /kyc",
+      "expected": "200 OK",
+      "actual": "404 Not Found",
+      "screenshot": "j6-broken-link-agent-_kyc.png"
+    },
+    {
+      "title": "Broken sidebar link for Agent: /profile",
+      "severity": "P1",
+      "repro": "Click link /profile",
+      "expected": "200 OK",
+      "actual": "404 Not Found",
+      "screenshot": "j6-broken-link-agent-_profile.png"
+    },
+    {
+      "title": "Broken sidebar link for DMC: /dmc/analytics",
+      "severity": "P1",
+      "repro": "Click link /dmc/analytics",
+      "expected": "200 OK",
+      "actual": "404 Not Found",
+      "screenshot": "j6-broken-link-dmc-_dmc_analytics.png"
+    },
+    {
+      "title": "Broken sidebar link for DMC: /dmc/connections",
+      "severity": "P1",
+      "repro": "Click link /dmc/connections",
+      "expected": "200 OK",
+      "actual": "404 Not Found",
+      "screenshot": "j6-broken-link-dmc-_dmc_connections.png"
+    },
+    {
+      "title": "Broken sidebar link for DMC: /dmc/deals",
+      "severity": "P1",
+      "repro": "Click link /dmc/deals",
+      "expected": "200 OK",
+      "actual": "404 Not Found",
+      "screenshot": "j6-broken-link-dmc-_dmc_deals.png"
+    },
+    {
+      "title": "Broken sidebar link for DMC: /dmc/inventory",
+      "severity": "P1",
+      "repro": "Click link /dmc/inventory",
+      "expected": "200 OK",
+      "actual": "404 Not Found",
+      "screenshot": "j6-broken-link-dmc-_dmc_inventory.png"
+    },
+    {
+      "title": "Broken sidebar link for DMC: /dmc/profile",
+      "severity": "P1",
+      "repro": "Click link /dmc/profile",
+      "expected": "200 OK",
+      "actual": "404 Not Found",
+      "screenshot": "j6-broken-link-dmc-_dmc_profile.png"
+    },
+    {
+      "title": "Broken sidebar link for Admin: /admin/overview",
+      "severity": "P1",
+      "repro": "Click link /admin/overview",
+      "expected": "200 OK",
+      "actual": "404 Not Found",
+      "screenshot": "j6-broken-link-admin-_admin_overview.png"
+    }
+  ],
+  "slow_pages": [
+    {
+      "role": "AGENT",
+      "url": "https://dmcgrid.gomedicure.com/#kyc",
+      "duration": 3.11
+    },
+    {
+      "role": "AGENT",
+      "url": "https://dmcgrid.gomedicure.com/#settings",
+      "duration": 3.35
+    },
+    {
+      "role": "AGENT",
+      "url": "https://dmcgrid.gomedicure.com/connections",
+      "duration": 3.14
+    },
+    {
+      "role": "AGENT",
+      "url": "https://dmcgrid.gomedicure.com/deals",
+      "duration": 4.11
+    },
+    {
+      "role": "AGENT",
+      "url": "https://dmcgrid.gomedicure.com/proposals",
+      "duration": 3.69
+    },
+    {
+      "role": "AGENT",
+      "url": "https://dmcgrid.gomedicure.com/rfq",
+      "duration": 3.79
+    }
+  ],
+  "console_errors": {
+    "https://dmcgrid.gomedicure.com/garbage": [
+      "[ERROR] Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "https://dmcgrid.gomedicure.com/kyc": [
+      "[ERROR] Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "https://dmcgrid.gomedicure.com/profile": [
+      "[ERROR] Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "https://dmcgrid.gomedicure.com/dmc/analytics": [
+      "[ERROR] Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "https://dmcgrid.gomedicure.com/dmc/connections": [
+      "[ERROR] Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "https://dmcgrid.gomedicure.com/dmc/deals": [
+      "[ERROR] Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "https://dmcgrid.gomedicure.com/dmc/inventory": [
+      "[ERROR] Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "https://dmcgrid.gomedicure.com/dmc/profile": [
+      "[ERROR] Failed to load resource: the server responded with a status of 404 ()"
+    ],
+    "https://dmcgrid.gomedicure.com/admin/overview": [
+      "[ERROR] Failed to load resource: the server responded with a status of 404 ()"
+    ]
+  },
+  "page_errors": {}
+}

@@ -1,12 +1,18 @@
 import React from 'react';
-import { createAdminClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
 import { RfqsClient, type RfqWithDetails } from './rfqs-client';
 import { Badge } from '@dmcgrid/ui';
 
 export const dynamic = 'force-dynamic';
 
 export default async function AdminRfqsPage() {
-  const supabase = createAdminClient();
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
 
   const { data: rfqs, error } = await supabase
     .from('rfqs')

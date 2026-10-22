@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Card, Button, Badge, Money } from '@dmcgrid/ui';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { RfqQuoteMatrix } from './rfq-quote-matrix';
 import {
   ArrowLeft,
@@ -67,11 +67,14 @@ export default async function RfqDetailPage({
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const currentUserId = user?.id || 'a1111111-1111-1111-1111-111111111111';
-  const adminClient = createAdminClient();
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
+  const currentUserId = user.id;
 
   // 1. Fetch RFQ details + destinations + stays + experiences
-  const { data: rfqRaw, error: rfqError } = await (adminClient as any)
+  const { data: rfqRaw, error: rfqError } = await (supabase as any)
     .from('rfqs')
     .select(`
       id,
@@ -116,14 +119,14 @@ export default async function RfqDetailPage({
     .eq('id', rfqId)
     .single();
 
-  if (rfqError || !rfqRaw) {
+  if (rfqError || !rfqRaw || rfqRaw.agent_id !== user.id) {
     notFound();
   }
 
   const rfq: RfqDetail = rfqRaw as RfqDetail;
 
   // 2. Fetch quotes with disambiguated FK embed: profiles!quotes_dmc_id_fkey
-  const { data: quotesData } = await (adminClient as any)
+  const { data: quotesData } = await (supabase as any)
     .from('quotes')
     .select(`
       id,
@@ -167,7 +170,7 @@ export default async function RfqDetailPage({
     .order('created_at', { ascending: false });
 
   // 3. Fetch active agent connections
-  const { data: connectionsData } = await (adminClient as any)
+  const { data: connectionsData } = await (supabase as any)
     .from('connections')
     .select('id, dmc_id, quote_id')
     .eq('agent_id', currentUserId);
@@ -175,7 +178,7 @@ export default async function RfqDetailPage({
   const connectedDmcIds = new Set((connectionsData || []).map((c: any) => c.dmc_id));
 
   // 4. Fetch existing deal & proposal & share token
-  const { data: existingDeal } = await (adminClient as any)
+  const { data: existingDeal } = await (supabase as any)
     .from('deals')
     .select('*')
     .eq('rfq_id', rfqId)
@@ -183,7 +186,7 @@ export default async function RfqDetailPage({
 
   let shareToken = null;
   if (existingDeal) {
-    const { data: tokenRecord } = await (adminClient as any)
+    const { data: tokenRecord } = await (supabase as any)
       .from('share_tokens')
       .select('token')
       .eq('deal_id', existingDeal.id)
@@ -192,8 +195,8 @@ export default async function RfqDetailPage({
   }
 
   // 5. Fetch agent wallet credits
-  let agentCredits = 20;
-  const { data: creditAcc } = await (adminClient as any)
+  let agentCredits = 0;
+  const { data: creditAcc } = await (supabase as any)
     .from('credit_accounts')
     .select('balance')
     .eq('profile_id', currentUserId)

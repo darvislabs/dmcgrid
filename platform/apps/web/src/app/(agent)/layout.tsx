@@ -1,4 +1,5 @@
 import React from 'react';
+import { redirect } from 'next/navigation';
 import { AppShell } from '@/components/app-shell';
 import { createClient } from '@/lib/supabase/server';
 
@@ -7,18 +8,20 @@ export default async function AgentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let credits = 45;
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
+  let credits = 0;
 
   try {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-
-    const targetUserId = user?.id || 'a1111111-1111-1111-1111-111111111111';
-
     const { data: account } = await (supabase as any)
       .from('credit_accounts')
       .select('balance')
-      .eq('profile_id', targetUserId)
+      .eq('profile_id', user.id)
       .eq('account_type', 'agent_wallet')
       .maybeSingle();
 

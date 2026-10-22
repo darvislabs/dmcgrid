@@ -1,7 +1,8 @@
 import React from 'react';
+import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { AppShell } from '@/components/app-shell';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { ProposalsView, type ProposalRecord } from './proposals-view';
 import type { UserRole } from '@dmcgrid/db';
 
@@ -14,18 +15,16 @@ export default async function ProposalsPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const role: UserRole = roleCookie || 'agent';
-  const targetUserId =
-    user?.id ||
-    (role === 'dmc'
-      ? 'd1111111-1111-1111-1111-111111111111'
-      : 'a1111111-1111-1111-1111-111111111111');
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
 
-  const adminClient = createAdminClient();
+  const role: UserRole = roleCookie || 'agent';
+  const targetUserId = user.id;
 
   // Fetch agent credits
-  let credits = 20;
-  const { data: account } = await (adminClient as any)
+  let credits = 0;
+  const { data: account } = await (supabase as any)
     .from('credit_accounts')
     .select('balance')
     .eq('profile_id', targetUserId)
@@ -37,7 +36,7 @@ export default async function ProposalsPage() {
   }
 
   // Fetch proposals joined with deals, RFQs, and DMCs
-  const { data: proposalsData } = await (adminClient as any)
+  const { data: proposalsData } = await (supabase as any)
     .from('proposals')
     .select(`
       id,
@@ -75,7 +74,7 @@ export default async function ProposalsPage() {
     .order('created_at', { ascending: false });
 
   // Fetch all share tokens
-  const { data: tokensData } = await (adminClient as any)
+  const { data: tokensData } = await (supabase as any)
     .from('share_tokens')
     .select('proposal_id, deal_id, token, views_count, last_viewed_at');
 

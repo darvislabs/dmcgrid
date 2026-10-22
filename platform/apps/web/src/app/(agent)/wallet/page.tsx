@@ -1,6 +1,7 @@
 import React from 'react';
+import { redirect } from 'next/navigation';
 import { StatCard, Badge } from '@dmcgrid/ui';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { WalletView } from './wallet-view';
 import { Wallet, Coins, ArrowUpRight, ShieldCheck } from 'lucide-react';
 
@@ -10,12 +11,15 @@ export default async function WalletPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const currentUserId = user?.id || 'a1111111-1111-1111-1111-111111111111';
-  const adminClient = createAdminClient();
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
+  const currentUserId = user.id;
 
   // 1. Fetch wallet balance
-  let balance = 45;
-  const { data: account } = await (adminClient as any)
+  let balance = 0;
+  const { data: account } = await (supabase as any)
     .from('credit_accounts')
     .select('id, balance, name')
     .eq('profile_id', currentUserId)
@@ -27,7 +31,7 @@ export default async function WalletPage() {
   }
 
   // 2. Fetch ledger history
-  const { data: ledgerData } = await (adminClient as any)
+  const { data: ledgerData } = await (supabase as any)
     .from('credit_ledger')
     .select('*')
     .eq('profile_id', currentUserId)
@@ -44,7 +48,7 @@ export default async function WalletPage() {
   }));
 
   // 3. Fetch credit packs
-  const { data: packsData } = await (adminClient as any)
+  const { data: packsData } = await (supabase as any)
     .from('credit_packs')
     .select('*')
     .eq('is_active', true)
@@ -59,7 +63,7 @@ export default async function WalletPage() {
   }));
 
   // 4. Fetch subscription plans
-  const { data: plansData } = await (adminClient as any)
+  const { data: plansData } = await (supabase as any)
     .from('plans')
     .select('*')
     .eq('is_active', true)

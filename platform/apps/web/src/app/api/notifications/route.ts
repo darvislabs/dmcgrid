@@ -1,28 +1,22 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
-import type { UserRole } from '@dmcgrid/db';
+import { createClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
-    const roleCookie = request.cookies.get('dmc_role')?.value as UserRole | undefined;
-    const targetUserId =
-      user?.id ||
-      (roleCookie === 'dmc'
-        ? 'd1111111-1111-1111-1111-111111111111'
-        : 'a1111111-1111-1111-1111-111111111111');
-
-    const adminClient = createAdminClient();
+    if (!user) {
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
 
     // 1. Fetch recent notifications for target user
-    const { data: notifications, error } = await (adminClient as any)
+    const { data: notifications, error } = await (supabase as any)
       .from('notifications')
       .select('id, recipient_id, title, body, type, link, is_read, read_at, created_at')
-      .eq('recipient_id', targetUserId)
+      .eq('recipient_id', user.id)
       .order('created_at', { ascending: false })
       .limit(20);
 
@@ -53,18 +47,13 @@ export async function POST(request: NextRequest) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
-    const roleCookie = request.cookies.get('dmc_role')?.value as UserRole | undefined;
-    const targetUserId =
-      user?.id ||
-      (roleCookie === 'dmc'
-        ? 'd1111111-1111-1111-1111-111111111111'
-        : 'a1111111-1111-1111-1111-111111111111');
-
-    const adminClient = createAdminClient();
+    if (!user) {
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
 
     // If specific IDs provided, mark them read; otherwise mark all unread for this recipient
     if (ids.length > 0) {
-      const { data, error } = await (adminClient as any).rpc('mark_notifications_read', {
+      const { data, error } = await (supabase as any).rpc('mark_notifications_read', {
         p_ids: ids,
       });
 
@@ -74,28 +63,16 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({ success: true, result: data });
     } else {
-      // Find all unread IDs for this user
-      const { data: unreadRows } = await (adminClient as any)
-        .from('notifications')
-        .select('id')
-        .eq('recipient_id', targetUserId)
-        .eq('is_read', false);
+      // Mark all unread for current user via RPC
+      const { data, error } = await (supabase as any).rpc('mark_notifications_read', {
+        p_ids: [],
+      });
 
-      const unreadIds = (unreadRows || []).map((r: any) => r.id);
-
-      if (unreadIds.length > 0) {
-        const { data, error } = await (adminClient as any).rpc('mark_notifications_read', {
-          p_ids: unreadIds,
-        });
-
-        if (error) {
-          return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-        }
-
-        return NextResponse.json({ success: true, result: data });
+      if (error) {
+        return NextResponse.json({ success: false, error: error.message }, { status: 500 });
       }
 
-      return NextResponse.json({ success: true, result: { marked_read: 0 } });
+      return NextResponse.json({ success: true, result: data });
     }
   } catch (err: any) {
     return NextResponse.json(

@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { Card, Button, Badge, StatCard, Money } from '@dmcgrid/ui';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import {
   Inbox,
   Clock,
@@ -52,11 +53,14 @@ export default async function DmcFeedPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const currentDmcId = user?.id || 'd1111111-1111-1111-1111-111111111111';
-  const adminClient = createAdminClient();
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
+  const currentDmcId = user.id;
 
   // 1. Fetch available RFQs matching DMC supply network
-  const { data: rfqsData } = await (adminClient as any)
+  const { data: rfqsData } = await (supabase as any)
     .from('rfqs')
     .select(`
       id,
@@ -106,12 +110,12 @@ export default async function DmcFeedPage() {
   const rfqs: FeedRfqItem[] = (rfqsData || []) as FeedRfqItem[];
 
   // 2. Fetch DMC's quotes & won connections
-  const { data: myQuotes } = await (adminClient as any)
+  const { data: myQuotes } = await (supabase as any)
     .from('quotes')
     .select('id, rfq_id, quote_number, status')
     .eq('dmc_id', currentDmcId);
 
-  const { data: myConnections } = await (adminClient as any)
+  const { data: myConnections } = await (supabase as any)
     .from('connections')
     .select('id')
     .eq('dmc_id', currentDmcId);

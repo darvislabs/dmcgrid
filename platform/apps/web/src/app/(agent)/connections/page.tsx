@@ -1,6 +1,7 @@
 import React from 'react';
+import { redirect } from 'next/navigation';
 import { StatCard, Badge } from '@dmcgrid/ui';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { ConnectionsView } from './connections-view';
 import { Users, ShieldCheck, Globe, Building2 } from 'lucide-react';
 
@@ -10,11 +11,14 @@ export default async function ConnectionsPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const currentUserId = user?.id || 'a1111111-1111-1111-1111-111111111111';
-  const adminClient = createAdminClient();
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
+  const currentUserId = user.id;
 
   // 1. Fetch unlocked connections with disambiguated profile FK embed: profiles!connections_dmc_id_fkey
-  const { data: connectionsData } = await (adminClient as any)
+  const { data: connectionsData } = await (supabase as any)
     .from('connections')
     .select(`
       id,
@@ -57,7 +61,7 @@ export default async function ConnectionsPage() {
   const unlockedDmcIds = new Set(connections.map((c: any) => c.dmc?.id).filter(Boolean));
 
   // 2. Fetch all verified DMCs in network
-  const { data: allDmcs } = await (adminClient as any)
+  const { data: allDmcs } = await (supabase as any)
     .from('profiles')
     .select('id, company_name, operating_destinations, bio, kyc_status')
     .eq('role', 'dmc')
@@ -66,8 +70,8 @@ export default async function ConnectionsPage() {
   const availableDmcs = ((allDmcs || []) as any[]).filter((d: any) => !unlockedDmcIds.has(d.id));
 
   // 3. Fetch agent credits
-  let credits = 20;
-  const { data: account } = await (adminClient as any)
+  let credits = 0;
+  const { data: account } = await (supabase as any)
     .from('credit_accounts')
     .select('balance')
     .eq('profile_id', currentUserId)

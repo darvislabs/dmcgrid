@@ -25,6 +25,8 @@ new = """server {
 
     # Mailpit (test inbox) — secret path
     location /inbox-7f3k9/ {
+        auth_basic "DMCGrid Ops";
+        auth_basic_user_file /etc/nginx/.htpasswd-inbox;
         proxy_pass http://127.0.0.1:54324/;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;

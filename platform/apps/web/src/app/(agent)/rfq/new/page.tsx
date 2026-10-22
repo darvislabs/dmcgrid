@@ -214,7 +214,12 @@ export default function FinFlyRfqWizardPage() {
           data: { user },
         } = await supabase.auth.getUser();
 
-        const profileId = user?.id || 'a1111111-1111-1111-1111-111111111111';
+        if (!user) {
+          router.push('/portal-access-7k2m9');
+          return;
+        }
+
+        const profileId = user.id;
 
         const { data: acct } = await (supabase as any)
           .from('credit_accounts')

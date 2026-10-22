@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Card, Badge, Money } from '@dmcgrid/ui';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { DmcQuoteBuilder } from './quote-builder';
 import {
   ArrowLeft,
@@ -66,11 +66,26 @@ export default async function DmcBriefDetailPage({
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const currentDmcId = user?.id || 'd1111111-1111-1111-1111-111111111111';
-  const adminClient = createAdminClient();
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
+  const currentDmcId = user.id;
+
+  // OWNERSHIP CHECK: DMC can only see briefs rfq_matched to them — else notFound()
+  const { data: matchRecord } = await (supabase as any)
+    .from('rfq_matches')
+    .select('id')
+    .eq('rfq_id', rfqId)
+    .eq('dmc_id', currentDmcId)
+    .maybeSingle();
+
+  if (!matchRecord) {
+    notFound();
+  }
 
   // 1. Fetch RFQ details + children
-  const { data: rfqRaw, error: rfqError } = await (adminClient as any)
+  const { data: rfqRaw, error: rfqError } = await (supabase as any)
     .from('rfqs')
     .select(`
       id,
@@ -120,7 +135,7 @@ export default async function DmcBriefDetailPage({
   const rfq: DmcBriefDetail = rfqRaw as DmcBriefDetail;
 
   // 2. Check if this DMC has already submitted a quote
-  const { data: existingQuote } = await (adminClient as any)
+  const { data: existingQuote } = await (supabase as any)
     .from('quotes')
     .select(`
       id,

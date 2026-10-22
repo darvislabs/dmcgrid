@@ -1,5 +1,6 @@
 import React from 'react';
-import { createAdminClient } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import { createClient } from '@/lib/supabase/server';
 import { AnalyticsDashboardClient } from './analytics-client';
 import { Badge } from '@dmcgrid/ui';
 import type { AdminAnalyticsSummary, SparklinePoint, AuditLogEntry } from '@dmcgrid/db';
@@ -7,16 +8,21 @@ import type { AdminAnalyticsSummary, SparklinePoint, AuditLogEntry } from '@dmcg
 export const dynamic = 'force-dynamic';
 
 export default async function AdminAnalyticsPage() {
-  const supabase = createAdminClient();
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
 
   // 1. Fetch summary metrics
-  const { data: summaryData, error: summaryError } = await supabase.rpc('get_admin_analytics_summary');
+  const { data: summaryData, error: summaryError } = await (supabase as any).rpc('get_admin_analytics_summary');
 
   // 2. Fetch 14-day sparkline
-  const { data: sparklineData, error: sparklineError } = await supabase.rpc('get_admin_sparkline_14d');
+  const { data: sparklineData, error: sparklineError } = await (supabase as any).rpc('get_admin_sparkline_14d');
 
   // 3. Fetch recent audit logs
-  const { data: auditLogs, error: auditError } = await supabase
+  const { data: auditLogs, error: auditError } = await (supabase as any)
     .from('audit_log')
     .select('*')
     .order('created_at', { ascending: false })

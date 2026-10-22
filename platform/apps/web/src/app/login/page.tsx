@@ -288,37 +288,39 @@ export default function LoginPage() {
           )}
 
           {/* Instant Portal Sign-In */}
-          <div className="mt-8 pt-6 border-t border-[var(--border-subtle)] text-center">
-            <span className="font-mono text-[10px] tracking-widest uppercase text-[var(--text-muted)] block mb-3">
-              Instant Sign-In
-            </span>
-            <div className="grid grid-cols-3 gap-2">
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => handleQuickLogin('agent')}
-                className="text-[11px] font-mono"
-              >
-                Agent Portal
-              </Button>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => handleQuickLogin('dmc')}
-                className="text-[11px] font-mono"
-              >
-                DMC Portal
-              </Button>
-              <Button
-                variant="secondary"
-                size="sm"
-                onClick={() => handleQuickLogin('admin')}
-                className="text-[11px] font-mono"
-              >
-                Admin Portal
-              </Button>
+          {process.env.NEXT_PUBLIC_DEV_LOGIN === 'true' && (
+            <div className="mt-8 pt-6 border-t border-[var(--border-subtle)] text-center">
+              <span className="font-mono text-[10px] tracking-widest uppercase text-[var(--text-muted)] block mb-3">
+                Instant Sign-In
+              </span>
+              <div className="grid grid-cols-3 gap-2">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => handleQuickLogin('agent')}
+                  className="text-[11px] font-mono"
+                >
+                  Agent Portal
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => handleQuickLogin('dmc')}
+                  className="text-[11px] font-mono"
+                >
+                  DMC Portal
+                </Button>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => handleQuickLogin('admin')}
+                  className="text-[11px] font-mono"
+                >
+                  Admin Portal
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </Card>
       </div>
 

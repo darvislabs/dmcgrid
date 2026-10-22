@@ -1,7 +1,8 @@
 import React from 'react';
+import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { AppShell } from '@/components/app-shell';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { AgentDealsView, DmcDealsView, type DealRecord } from './deals-view';
 import type { UserRole } from '@dmcgrid/db';
 
@@ -14,9 +15,13 @@ export default async function DealsPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
   // Determine role and user ID
   let role: UserRole = roleCookie || 'agent';
-  if (user && !roleCookie) {
+  if (!roleCookie) {
     const { data: profile } = await (supabase as any)
       .from('profiles')
       .select('role')
@@ -27,18 +32,12 @@ export default async function DealsPage() {
     }
   }
 
-  const targetUserId =
-    user?.id ||
-    (role === 'dmc'
-      ? 'd1111111-1111-1111-1111-111111111111'
-      : 'a1111111-1111-1111-1111-111111111111');
-
-  const adminClient = createAdminClient();
+  const targetUserId = user.id;
 
   // Fetch agent credits if agent
-  let credits = 20;
+  let credits = 0;
   if (role === 'agent') {
-    const { data: account } = await (adminClient as any)
+    const { data: account } = await (supabase as any)
       .from('credit_accounts')
       .select('balance')
       .eq('profile_id', targetUserId)
@@ -51,7 +50,7 @@ export default async function DealsPage() {
   }
 
   // Fetch deals with PostgREST disambiguated FK embeds
-  let query = (adminClient as any)
+  let query = (supabase as any)
     .from('deals')
     .select(`
       id,

@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { Card, Button, Badge, StatCard, Money } from '@dmcgrid/ui';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { FilePlus, Clock, Users, ArrowUpRight, CheckCircle2 } from 'lucide-react';
 import type { RfqStatus } from '@dmcgrid/db';
 
@@ -39,11 +40,14 @@ export default async function RfqListPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const currentUserId = user?.id || 'a1111111-1111-1111-1111-111111111111';
-  const adminClient = createAdminClient();
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
+
+  const currentUserId = user.id;
 
   // Query my RFQs with child destinations & quotes
-  const { data: rfqsData } = await (adminClient as any)
+  const { data: rfqsData } = await (supabase as any)
     .from('rfqs')
     .select(`
       id,

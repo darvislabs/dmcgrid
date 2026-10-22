@@ -1,0 +1,49 @@
+{
+  "journey": "Admin Journey",
+  "passed": [
+    "Admin logged in and landed on Admin Portal",
+    "Verification queue displays 10 reviewable applications",
+    "KYC audit & review modal opened",
+    "Admin credit ledger page (/admin/ledger) loaded successfully",
+    "Platform Revenue account card visible in ledger",
+    "Ledger journal entries table rendered with 42 rows",
+    "Admin plans page (/admin/plans) loaded successfully",
+    "Admin RFQ Oversight page (/admin/rfqs) loaded successfully",
+    "Force-close RFQ confirmation modal opened"
+  ],
+  "defects": [
+    {
+      "title": "Admin verification queue page failed to load",
+      "severity": "P0",
+      "repro": "Go to /admin/verification",
+      "expected": "Queue loaded",
+      "actual": "Page failed",
+      "screenshot": "j3-verif-queue-failed.png"
+    },
+    {
+      "title": "Approval success message not displayed",
+      "severity": "P1",
+      "repro": "Click Approve & Verify KYC",
+      "expected": "KYC marked as VERIFIED message",
+      "actual": "DMCGrid\nADMIN PORTAL\nPLATFORM ADMIN\nGOVERNANCE\n01\nAnalytics & Ops\n02\nKYC Verification\n03\nUser Directory\nOPERATIONS\n04\nRFQ Oversight\n05\nCredit Ledger\n06\nPlans & Pricing\nPORTAL SWITCHER\nAGT\nDMC\nADM\nLIGH",
+      "screenshot": null
+    },
+    {
+      "title": "Plan edit did not persist after reload",
+      "severity": "P1",
+      "repro": "Edit plan price to 1099 and reload",
+      "expected": "Price 1099 displayed",
+      "actual": "Price reverted/missing",
+      "screenshot": "j3-plan-edit-not-persisted.png"
+    },
+    {
+      "title": "Force-close confirmation notice missing",
+      "severity": "P1",
+      "repro": "Click Confirm Force Close",
+      "expected": "Success banner shown",
+      "actual": "DMCGrid\nADMIN PORTAL\nPLATFORM ADMIN\nGOVERNANCE\n01\nAnalytics & Ops\n02\nKYC Verification\n03\nUser Directory\nOPERATIONS\n04\nRFQ Oversight\n05\nCredit Ledger\n06\nPlans & Pricing\nPORTAL SWITCHER\nAGT\nDMC\nADM\nLIGH",
+      "screenshot": null
+    }
+  ],
+  "notes": []
+}

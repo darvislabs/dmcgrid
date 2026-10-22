@@ -1,8 +1,29 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import type { KycStatus, LedgerEntryType } from '@dmcgrid/db';
+
+async function verifyAdminSession() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) {
+    return { supabase: null, error: 'Unauthorized' };
+  }
+
+  const { data: profile } = await (supabase as any)
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .maybeSingle();
+
+  if (profile?.role !== 'admin' && user.user_metadata?.role !== 'admin') {
+    return { supabase: null, error: 'Unauthorized: Admin role required' };
+  }
+
+  return { supabase, user };
+}
 
 export async function reviewKycAction(params: {
   kycRecordId: string;
@@ -13,7 +34,11 @@ export async function reviewKycAction(params: {
     return { success: false, error: 'A mandatory review reason is required.' };
   }
 
-  const supabase = createAdminClient();
+  const { supabase, error: authError } = await verifyAdminSession();
+  if (authError || !supabase) {
+    return { success: false, error: authError || 'Unauthorized' };
+  }
+
   const { data, error } = await (supabase as any).rpc('admin_review_kyc', {
     p_kyc_record_id: params.kycRecordId,
     p_status: params.status,
@@ -39,7 +64,11 @@ export async function toggleUserActiveAction(params: {
     return { success: false, error: 'A mandatory reason is required to activate or deactivate a user.' };
   }
 
-  const supabase = createAdminClient();
+  const { supabase, error: authError } = await verifyAdminSession();
+  if (authError || !supabase) {
+    return { success: false, error: authError || 'Unauthorized' };
+  }
+
   const { data, error } = await (supabase as any).rpc('admin_toggle_user_active', {
     p_user_id: params.userId,
     p_is_active: params.isActive,
@@ -63,7 +92,11 @@ export async function forceCloseRfqAction(params: {
     return { success: false, error: 'A mandatory reason is required to force close an RFQ.' };
   }
 
-  const supabase = createAdminClient();
+  const { supabase, error: authError } = await verifyAdminSession();
+  if (authError || !supabase) {
+    return { success: false, error: authError || 'Unauthorized' };
+  }
+
   const { data, error } = await (supabase as any).rpc('admin_force_close_rfq', {
     p_rfq_id: params.rfqId,
     p_reason: params.reason.trim(),
@@ -92,7 +125,11 @@ export async function adjustCreditsAction(params: {
     return { success: false, error: 'A mandatory reason is required for credit adjustments.' };
   }
 
-  const supabase = createAdminClient();
+  const { supabase, error: authError } = await verifyAdminSession();
+  if (authError || !supabase) {
+    return { success: false, error: authError || 'Unauthorized' };
+  }
+
   const { data, error } = await (supabase as any).rpc('admin_adjust_credits', {
     p_profile_id: params.profileId,
     p_entry_type: params.entryType,
@@ -120,7 +157,11 @@ export async function savePlanAction(params: {
   features?: string[] | null;
   isActive?: boolean;
 }) {
-  const supabase = createAdminClient();
+  const { supabase, error: authError } = await verifyAdminSession();
+  if (authError || !supabase) {
+    return { success: false, error: authError || 'Unauthorized' };
+  }
+
   const { data, error } = await (supabase as any).rpc('admin_save_plan', {
     p_plan_id: params.planId || null,
     p_plan_code: params.planCode || null,

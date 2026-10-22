@@ -1,8 +1,8 @@
 import React from 'react';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 import { AppShell } from '@/components/app-shell';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { ProposalDocumentClient } from './proposal-document-client';
 import type { UserRole } from '@dmcgrid/db';
 
@@ -22,18 +22,16 @@ export default async function ProposalDetailPage({
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const role: UserRole = roleCookie || 'agent';
-  const targetUserId =
-    user?.id ||
-    (role === 'dmc'
-      ? 'd1111111-1111-1111-1111-111111111111'
-      : 'a1111111-1111-1111-1111-111111111111');
+  if (!user) {
+    redirect('/portal-access-7k2m9');
+  }
 
-  const adminClient = createAdminClient();
+  const role: UserRole = roleCookie || 'agent';
+  const targetUserId = user.id;
 
   // Fetch agent credits
-  let credits = 20;
-  const { data: account } = await (adminClient as any)
+  let credits = 0;
+  const { data: account } = await (supabase as any)
     .from('credit_accounts')
     .select('balance')
     .eq('profile_id', targetUserId)
@@ -45,7 +43,7 @@ export default async function ProposalDetailPage({
   }
 
   // Fetch proposal with deal and disambiguated FKs
-  const { data: proposalData, error } = await (adminClient as any)
+  const { data: proposalData, error } = await (supabase as any)
     .from('proposals')
     .select(`
       id,
@@ -103,8 +101,18 @@ export default async function ProposalDetailPage({
     notFound();
   }
 
+  // Ownership check: agent_id or dmc side depending on role (or admin)
+  const isOwner =
+    proposalData.deal?.agent_id === user.id ||
+    proposalData.deal?.dmc_id === user.id ||
+    role === 'admin';
+
+  if (!isOwner) {
+    notFound();
+  }
+
   // Fetch share token
-  const { data: tokenData } = await (adminClient as any)
+  const { data: tokenData } = await (supabase as any)
     .from('share_tokens')
     .select('token, views_count, last_viewed_at, expires_at')
     .or(`proposal_id.eq.${proposalId},deal_id.eq.${proposalData.deal_id}`)

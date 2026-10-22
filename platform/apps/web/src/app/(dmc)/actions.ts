@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { createClient, createAdminClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 
 export async function submitQuoteAction(params: {
   rfqId: string;
@@ -27,14 +27,17 @@ export async function submitQuoteAction(params: {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
-    const dmcId = params.dmcId || user?.id || 'd1111111-1111-1111-1111-111111111111';
-    const adminClient = createAdminClient();
+    if (!user) {
+      return { success: false, error: 'Unauthorized' };
+    }
+
+    const dmcId = user.id;
 
     if (!params.options || params.options.length === 0) {
       return { success: false, error: 'At least one quote option is required.' };
     }
 
-    const { data, error } = await (adminClient as any).rpc('dmc_submit_quote', {
+    const { data, error } = await (supabase as any).rpc('dmc_submit_quote', {
       p_rfq_id: params.rfqId,
       p_options: params.options,
       p_dmc_id: dmcId,

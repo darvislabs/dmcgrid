@@ -1,0 +1,22 @@
+{
+  "journey": "Edge Cases",
+  "passed": [
+    "Sign-out cleared auth session cookies completely",
+    "Protected route redirects to login gate after sign out on reload",
+    "Tab 2 automatically redirected to login gate after Tab 1 signed out",
+    "Wallet balance page immediately reflects updated credit balance and transactions",
+    "Notification bell element visible in agent portal header",
+    "Notification dropdown displays recent quote / deal notifications (Screenshot: j5-notification-dropdown.png)"
+  ],
+  "defects": [
+    {
+      "title": "IDOR / Broken Access Control: Agent 2 can access Agent 1's private RFQ brief and quotes",
+      "severity": "P0",
+      "repro": "1. Login as Agent 2 (+91 9123426613)\n2. Navigate directly to /rfq/0bd6852f-3967-4de6-bc49-a5f69af7993a (owned by Agent 1)",
+      "expected": "404 Not Found or Redirect to /rfq (forbidden access)",
+      "actual": "Full RFQ details, quotes, and pricing leaked to unauthorized agent (Screenshot: j5-idor-rfq-leak.png)",
+      "screenshot": "j5-idor-rfq-leak.png"
+    }
+  ],
+  "notes": []
+}
