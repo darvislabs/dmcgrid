@@ -1,0 +1,56 @@
+{
+  "journey": "DMC Journey & Deal Flow",
+  "passed": [
+    "DMC Feed loaded successfully",
+    "Feed shows matched RFQ with brief link: /briefs/0bd6852f-3967-4de6-bc49-a5f69af7993a",
+    "Brief detail page loaded with Multi-Tier Quote Builder",
+    "Clicked Add Tier to create 3rd quote option",
+    "Set Option net costs to 10000 + 50000 = 60000 INR",
+    "Found traveler share token: prop_swiss_winter_2026",
+    "Traveler share page renders properly without authentication (URL: /share/prop_swiss_winter_2026)",
+    "Traveler choice recording works successfully (Selection Confirmed)"
+  ],
+  "defects": [
+    {
+      "title": "Quote submit feedback missing or failed",
+      "severity": "P1",
+      "repro": "Click Submit Quote",
+      "expected": "Confirmation message shown",
+      "actual": "Body snippet: DMCGrid\nDMC PORTAL\n\u2713 VERIFIED DMC\nSUPPLY NETWORK\n01\nBriefs Feed\n02\nQuotes Submitted\n03\nConnected Deals\nORGANIZATION\n04\nKYC Compliance\n05\nDestinations\nPORTAL SWITCHER\nAGT\nDMC\nADM\nLIGHT MODE\nSign Out\nDM",
+      "screenshot": "j2-quote-submit-feedback.png"
+    },
+    {
+      "title": "Agent compare matrix does not show submitted quote",
+      "severity": "P0",
+      "repro": "Go to /rfq/0bd6852f-3967-4de6-bc49-a5f69af7993a",
+      "expected": "Quote visible in matrix",
+      "actual": "Matrix shows 0 quotes or awaiting",
+      "screenshot": "j2-quote-matrix-empty.png"
+    },
+    {
+      "title": "V62 price \u20b974,088 not found in compare matrix for net 60,000",
+      "severity": "P1",
+      "repro": "Check quote options in compare matrix",
+      "expected": "\u20b974,088 calculated via V62",
+      "actual": "\u20b974,088 not displayed",
+      "screenshot": null
+    },
+    {
+      "title": "Accept Option button not found in compare matrix",
+      "severity": "P0",
+      "repro": "Check options in /rfq/0bd6852f-3967-4de6-bc49-a5f69af7993a",
+      "expected": "Accept button present",
+      "actual": "Button missing",
+      "screenshot": "j2-accept-btn-missing.png"
+    },
+    {
+      "title": "Deals page missing deal or \u20b974,088 price",
+      "severity": "P1",
+      "repro": "Go to /deals",
+      "expected": "Deal with \u20b974,088",
+      "actual": "Deal or amount not found",
+      "screenshot": "j2-deals-missing-v62.png"
+    }
+  ],
+  "notes": []
+}

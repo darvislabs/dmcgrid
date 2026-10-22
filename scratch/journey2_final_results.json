@@ -1,0 +1,29 @@
+{
+  "journey": "Agent Accept V62 & Traveler Share",
+  "passed": [
+    "Compare matrix displays V62 total customer price \u20b974,088 for net 60,000 option",
+    "Accept Quote Option modal displayed with V62 deal binding description",
+    "Deal created with V62 math and proposal generated",
+    "Proposal share token generated: prop_116bfdddf185",
+    "Traveler share page rendered successfully with unauthenticated access",
+    "Traveler choice recording verified (Selection Confirmed displayed)"
+  ],
+  "defects": [
+    {
+      "title": "Deals page does not reflect deal with \u20b974,088",
+      "severity": "P1",
+      "repro": "Go to /deals",
+      "expected": "Deal with \u20b974,088",
+      "actual": "Not found",
+      "screenshot": "j2-deals-page-missing-74088.png"
+    },
+    {
+      "title": "Proposals page missing proposal with \u20b974,088",
+      "severity": "P1",
+      "repro": "Go to /proposals",
+      "expected": "Proposal with \u20b974,088",
+      "actual": "Not found",
+      "screenshot": null
+    }
+  ]
+}

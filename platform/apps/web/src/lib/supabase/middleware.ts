@@ -77,27 +77,5 @@ export async function updateSession(request: NextRequest): Promise<AuthSessionRe
     // Session lookup failed — treat as unauthenticated in strict mode.
   }
 
-  // Support demo / development testing when NEXT_PUBLIC_DEMO_MODE is true
-  if (!sessionUser && process.env.NEXT_PUBLIC_DEMO_MODE === 'true') {
-    const roleCookie = request.cookies.get('dmc_role')?.value as UserRole | undefined;
-    if (roleCookie) {
-      sessionUser = {
-        id:
-          roleCookie === 'dmc'
-            ? 'd1111111-1111-1111-1111-111111111111'
-            : roleCookie === 'admin'
-            ? '0c634d73-1a35-409f-a6b3-f1f3e21ec822'
-            : 'a1111111-1111-1111-1111-111111111111',
-        email:
-          roleCookie === 'dmc'
-            ? 'bali@heritagetours.com'
-            : roleCookie === 'admin'
-            ? 'admin@dmcgrid.test'
-            : 'zenith@luxurytravel.in',
-        role: roleCookie,
-      };
-    }
-  }
-
   return { response, user: sessionUser };
 }

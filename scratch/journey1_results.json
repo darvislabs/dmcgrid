@@ -1,0 +1,83 @@
+{
+  "passed": [
+    "Wallet balance visible on /wallet: 12 CR",
+    "Agent wallet page (/wallet) renders properly",
+    "Wizard Step 0 (AI Brief Extraction) loaded",
+    "AI Extraction extracted brief and showed FIELDS PRE-FILLED badge",
+    "Wizard Step 1 (Trip Type) rendered",
+    "Wizard Step 2 (Travelers) rendered with 2 Adults",
+    "Wizard Step 3 (Route) rendered: Bangkok (3N) + Phuket (4N)",
+    "Wizard Step 4 (Dates & Pace) rendered: 7 nights \u00b7 8 days calculated",
+    "Wizard Step 5 (Stays) rendered",
+    "Step 5: Selected 5\u2605 Luxury, Villa, CP +Breakfast",
+    "Wizard Step 6 (Experiences) rendered",
+    "Step 6: Island Hopping & Transfers options present",
+    "Wizard Step 7 (Budget & Review) rendered",
+    "Review card includes pill section: TRIP",
+    "Review card includes pill section: TRAVELERS",
+    "Review card includes pill section: ROUTE",
+    "Review card includes pill section: DATES",
+    "Review card includes pill section: STAYS",
+    "Review card includes pill section: EXPERIENCES",
+    "Review card includes pill section: BUDGET",
+    "Publishing fee line displayed: 'Publishing costs 2 credits'",
+    "Redirected to RFQ detail page: https://dmcgrid.gomedicure.com/rfq/0bd6852f-3967-4de6-bc49-a5f69af7993a (ID: 0bd6852f-3967-4de6-bc49-a5f69af7993a)",
+    "Wallet debited exactly 2 credits: 12 CR -> 10 CR",
+    "DMC feed reflects the new RFQ (RFQ-2026-0015)",
+    "Empty route blocked with validation message: 'Please enter all destination city names'",
+    "Budget=0 blocked with error message: 'Please enter a valid budget range where maximum exceeds minimum'"
+  ],
+  "defects": [
+    {
+      "title": "RFQ number missing on detail page",
+      "severity": "P1",
+      "repro": "Publish RFQ",
+      "expected": "RFQ-2026-XXXX shown",
+      "actual": "RFQ number not found",
+      "screenshot": null
+    },
+    {
+      "title": "Detail page route missing Bangkok/Phuket",
+      "severity": "P1",
+      "repro": "Check RFQ detail page",
+      "expected": "Bangkok & Phuket listed",
+      "actual": "Route incomplete",
+      "screenshot": null
+    },
+    {
+      "title": "Detail page missing 2 Adults pax",
+      "severity": "P1",
+      "repro": "Check RFQ detail page",
+      "expected": "2 Adults displayed",
+      "actual": "Pax mismatch",
+      "screenshot": null
+    },
+    {
+      "title": "Detail page stay category missing",
+      "severity": "P2",
+      "repro": "Check RFQ detail page",
+      "expected": "5-star luxury stay",
+      "actual": "Not displayed",
+      "screenshot": null
+    },
+    {
+      "title": "Detail page budget missing 2,80,000",
+      "severity": "P1",
+      "repro": "Check RFQ detail page",
+      "expected": "Target budget visible",
+      "actual": "Budget not found",
+      "screenshot": null
+    },
+    {
+      "title": "Wizard allows past departure date (2024-01-01) without validation error",
+      "severity": "P1",
+      "repro": "Fill 2024-01-01 in departure date input and click Continue",
+      "expected": "Error: Departure date cannot be in the past",
+      "actual": "Step 4 accepted 2024-01-01 and advanced to Step 5 (Accommodation)",
+      "screenshot": null
+    }
+  ],
+  "notes": [],
+  "console_errors": [],
+  "page_errors": []
+}
