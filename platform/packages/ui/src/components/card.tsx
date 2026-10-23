@@ -27,7 +27,7 @@ export function Card({ className, variant = 'default', children, ...props }: Car
 
 export function CardHeader({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn('flex items-center justify-between gap-4 mb-4 pb-3 border-b border-[var(--border-subtle)]', className)} {...props}>
+    <div className={cn('flex flex-wrap items-center justify-between gap-x-4 gap-y-3 mb-4 pb-3 border-b border-[var(--border-subtle)]', className)} {...props}>
       {children}
     </div>
   );

@@ -995,6 +995,15 @@ export interface Database {
         };
         Returns: Json;
       };
+      wallet_topup_credit: {
+        Args: {
+          p_profile_id: string;
+          p_credits: number;
+          p_amount_inr: number;
+          p_payment_ref: string;
+        };
+        Returns: Json;
+      };
     };
   };
 }

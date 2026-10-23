@@ -1,0 +1,4074 @@
+{
+  "login_redirections": {
+    "agent": "https://dmcgrid.gomedicure.com/rfq/new",
+    "dmc": "https://dmcgrid.gomedicure.com/feed",
+    "admin": "https://dmcgrid.gomedicure.com/admin/analytics"
+  },
+  "p0_p1_status": {
+    "DEFECT_01": {
+      "title": "Role spoofing via dmc_role cookie & switcher",
+      "fixed": false,
+      "details": "Sidebar switcher present: False. Deals HTML contains DMC view: True"
+    },
+    "DEFECT_02": {
+      "title": "Admin trapped in Agent/DMC layout without admin navigation",
+      "fixed": false,
+      "rfq_sidebar": "DMCGrid\nAGENT PORTAL\nBALANCE\n0 CR\nSOURCING\n01\nDashboard\n02\nNew RFQ Wizard\n03\nMy RFQs\nCOMMERCE\n04\nDeals & Pipeline\n05\nPro",
+      "feed_sidebar": "DMCGrid\nDMC PORTAL\n\u2713 VERIFIED DMC\nSUPPLY NETWORK\n01\nBriefs Feed\n02\nQuotes Submitted\n03\nConnected Deals\nORGANIZATION\n04\nK",
+      "notes": "Admin visiting /rfq shows: Agent Nav (TRAPPED!); on /feed shows: DMC Nav (TRAPPED!)"
+    },
+    "DEFECT_03": {
+      "title": "Proposals page ghost nav state",
+      "fixed": true,
+      "sidebar_text": "DMCGrid\nAGENT PORTAL\nBALANCE\n12 CR\nSOURCING\n01\nDashboard\n02\nNew RFQ Wizard\n03\nMy RFQs\nCOMMERCE\n04\nDe"
+    },
+    "DEFECT_04": {
+      "title": "Zombie mock dashboard routes",
+      "results": {
+        "/agent/dashboard": {
+          "landed_url": "https://dmcgrid.gomedicure.com/rfq/new",
+          "clean_redirect": true
+        },
+        "/agent": {
+          "landed_url": "https://dmcgrid.gomedicure.com/rfq/new",
+          "clean_redirect": true
+        },
+        "/dmc/dashboard": {
+          "landed_url": "https://dmcgrid.gomedicure.com/rfq/new",
+          "clean_redirect": false
+        },
+        "/dmc": {
+          "landed_url": "https://dmcgrid.gomedicure.com/rfq/new",
+          "clean_redirect": false
+        }
+      },
+      "fixed": false
+    },
+    "DEFECT_05": {
+      "title": "Gold text WCAG AA contrast in light mode",
+      "samples": [
+        {
+          "tag": "SPAN",
+          "cls": "text-[#D4B483] font-normal",
+          "color": "rgb(138, 109, 59)",
+          "text": "Grid"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "inline-flex items-center gap-1.5 text-xs",
+          "color": "rgb(138, 109, 59)",
+          "text": "BALANCE\n12 CR"
+        },
+        {
+          "tag": "A",
+          "cls": "flex items-center gap-2.5 px-3 py-2 roun",
+          "color": "rgb(11, 15, 20)",
+          "text": "01\nDashboard"
+        },
+        {
+          "tag": "A",
+          "cls": "flex items-center gap-2.5 px-3 py-2 roun",
+          "color": "rgb(11, 15, 20)",
+          "text": "03\nMy RFQs"
+        },
+        {
+          "tag": "BUTTON",
+          "cls": "w-full min-h-[44px] flex items-center ju",
+          "color": "rgb(11, 15, 20)",
+          "text": "LIGHT MODE"
+        }
+      ],
+      "fixed": true
+    },
+    "DEFECT_06": {
+      "title": "Agent home sourcing banner gradient in light mode",
+      "banner_info": null,
+      "fixed": null
+    },
+    "DEFECT_07": {
+      "title": "404 page light mode theme support",
+      "info": {
+        "bodyBg": "rgb(242, 243, 245)",
+        "bodyColor": "rgb(11, 15, 20)",
+        "mainBg": "rgba(0, 0, 0, 0)",
+        "headingText": "404"
+      },
+      "fixed": true
+    },
+    "DEFECT_10": {
+      "title": "Admin KYC verification table mobile overflow",
+      "info": {
+        "docW": 390,
+        "scrollW": 501,
+        "isOverflow": true,
+        "overflowing": [
+          {
+            "tag": "BUTTON",
+            "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-w",
+            "text": "REJECTED\n1",
+            "right": 501
+          },
+          {
+            "tag": "SPAN",
+            "cls": "",
+            "text": "REJECTED",
+            "right": 466
+          },
+          {
+            "tag": "SPAN",
+            "cls": "text-[10px] px-1.5 py-0.2 rounded-full bg-[var(--b",
+            "text": "1",
+            "right": 489
+          },
+          {
+            "tag": "TABLE",
+            "cls": "w-full text-left border-collapse text-xs",
+            "text": "ENTITY & ROLE\tTAX & BUSIN",
+            "right": 922
+          },
+          {
+            "tag": "THEAD",
+            "cls": "",
+            "text": "ENTITY & ROLE\tTAX & BUSIN",
+            "right": 922
+          },
+          {
+            "tag": "TR",
+            "cls": "border-b border-[var(--border-line)] bg-[var(--bg-",
+            "text": "ENTITY & ROLE\tTAX & BUSIN",
+            "right": 922
+          }
+        ]
+      },
+      "fixed": false
+    },
+    "DEFECT_11": {
+      "title": "RFQ Detail header badges mobile overflow",
+      "info": {
+        "docW": 390,
+        "scrollW": 390,
+        "isOverflow": false
+      },
+      "fixed": true
+    },
+    "DEFECT_12": {
+      "title": "Traveler share hero badges mobile overflow",
+      "info": {
+        "docW": 390,
+        "scrollW": 390,
+        "isOverflow": false
+      },
+      "fixed": true
+    },
+    "DEFECT_13": {
+      "title": "Admin plans pricing grid desktop/mobile overflow",
+      "desktop_overflow": true,
+      "mobile_overflow": true,
+      "fixed": false
+    },
+    "DEFECT_14": {
+      "title": "Mobile drawer gap & closing on navigation",
+      "drawer_width_check": {
+        "asideW": 0,
+        "parentW": 0
+      },
+      "closes_on_nav": true,
+      "fixed": true
+    },
+    "DEFECT_18": {
+      "title": "Primary button monochrome styling (Design Law)",
+      "button_style": {
+        "bg": "rgb(11, 15, 20)",
+        "color": "rgb(11, 15, 20)",
+        "cls": "inline-flex items-center justify-center font-medium select-none whitespace-nowrap outline-none cursor-pointer transition-[transform,background-color,border-color,color,box-shadow] duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-[#D4B483] focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100 rounded-[9px] min-h-[44px] bg-[var(--text-primary)] text-[var(--bg-card)] hover:opacity-90 shadow-[0_1px_3px_rgba(0,0,0,0.2)] px-4 py-2 text-sm h-[44px] w-full gap-2 mt-2"
+      },
+      "fixed": true
+    },
+    "DEFECT_21": {
+      "title": "Top Up Credits button on Agent Home",
+      "link_info": {
+        "exists": true,
+        "text": "07\nWallet & Credits",
+        "href": "/wallet"
+      },
+      "fixed": true
+    },
+    "DEFECT_22": {
+      "title": "Internal milestone label PRD WAVE 1 & 2 MONITORING",
+      "has_milestone_badge": false,
+      "fixed": true
+    },
+    "DEFECT_24": {
+      "title": "Hardcoded Static 94% Confidence in Admin RFQ Modal",
+      "has_static_94": false,
+      "fixed": true
+    },
+    "DEFECT_26": {
+      "title": "Currency formatting on Admin Analytics & Overview",
+      "has_raw_gmv": false,
+      "has_inr_formatted": true,
+      "fixed": true
+    },
+    "DEFECT_23": {
+      "title": "Obsolete Wave 1 / 6-step copy on Agent Home",
+      "has_wave1": false,
+      "has_6step": false,
+      "has_8step": false,
+      "fixed": false
+    },
+    "DEFECT_25": {
+      "title": "Fictitious static financial figures on Agent Home",
+      "has_static_v62": false,
+      "fixed": true
+    },
+    "DEFECT_27": {
+      "title": "RFQ Wizard Step 7 budget helper badge",
+      "has_lakhs_helper": false,
+      "step7_text_snippet": "DMCGRID\n/\nAGENT PORTAL\n9+\nDMCGrid\nSTEP 7 OF 8\nWhat experiences should be included?\n\nSelect activities to match with licensed local destination special",
+      "fixed": false
+    }
+  },
+  "regressions": [],
+  "new_issues": [],
+  "page_audits": [
+    {
+      "role": "agent",
+      "name": "agent-home",
+      "path": "/",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 11,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 16,
+            "6px": 11,
+            "9px": 3,
+            "12px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-home-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 11,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 16,
+            "6px": 11,
+            "9px": 3,
+            "12px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-home-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 1,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "Back to RFQs",
+              "w": 36,
+              "h": 36,
+              "cls": "w-9 h-9 rounded-full border border-[var(--border-l"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 16,
+            "6px": 11,
+            "9px": 3,
+            "12px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-home-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 1,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "Back to RFQs",
+              "w": 36,
+              "h": 36,
+              "cls": "w-9 h-9 rounded-full border border-[var(--border-l"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 16,
+            "6px": 11,
+            "9px": 3,
+            "12px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-home-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-home-mobile-drawer.png"
+    },
+    {
+      "role": "agent",
+      "name": "agent-rfq",
+      "path": "/rfq",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 12,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 11,
+            "9px": 4,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 12,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 11,
+            "9px": 4,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 2,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "Post your first RFQ brief",
+              "w": 153,
+              "h": 20,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Post your first RFQ brief",
+              "w": 153,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 11,
+            "9px": 4,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 2,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "Post your first RFQ brief",
+              "w": 153,
+              "h": 20,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Post your first RFQ brief",
+              "w": 153,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 11,
+            "9px": 4,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-mobile-drawer.png"
+    },
+    {
+      "role": "agent",
+      "name": "agent-rfq-new",
+      "path": "/rfq/new",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 11,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 16,
+            "6px": 11,
+            "9px": 3,
+            "12px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-new-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 11,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 16,
+            "6px": 11,
+            "9px": 3,
+            "12px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-new-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 1,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "Back to RFQs",
+              "w": 36,
+              "h": 36,
+              "cls": "w-9 h-9 rounded-full border border-[var(--border-l"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 16,
+            "6px": 11,
+            "9px": 3,
+            "12px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-new-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 1,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "Back to RFQs",
+              "w": 36,
+              "h": 36,
+              "cls": "w-9 h-9 rounded-full border border-[var(--border-l"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 16,
+            "6px": 11,
+            "9px": 3,
+            "12px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-new-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-new-mobile-drawer.png"
+    },
+    {
+      "role": "agent",
+      "name": "agent-rfq-detail",
+      "path": "/rfq/f1000000-0000-0000-0000-000000000001",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-detail-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-detail-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-detail-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-rfq-detail-mobile-dark.png"
+        }
+      }
+    },
+    {
+      "role": "agent",
+      "name": "agent-wallet",
+      "path": "/wallet",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 10,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 32,
+            "6px": 11,
+            "9px": 5,
+            "12px": 10
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-wallet-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 10,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 32,
+            "6px": 11,
+            "9px": 5,
+            "12px": 10
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-wallet-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 32,
+            "6px": 11,
+            "9px": 5,
+            "12px": 10
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-wallet-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 32,
+            "6px": 11,
+            "9px": 5,
+            "12px": 10
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-wallet-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-wallet-mobile-drawer.png"
+    },
+    {
+      "role": "agent",
+      "name": "agent-connections",
+      "path": "/connections",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 12,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 6,
+            "6px": 11,
+            "9px": 4,
+            "12px": 6,
+            "4px": 7
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-connections-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 12,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 6,
+            "6px": 11,
+            "9px": 4,
+            "12px": 6,
+            "4px": 7
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-connections-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 2,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "Unlock Channel",
+              "w": 131,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Unlock Channel",
+              "w": 131,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 6,
+            "6px": 11,
+            "9px": 4,
+            "12px": 6,
+            "4px": 7
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-connections-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 2,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "Unlock Channel",
+              "w": 131,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Unlock Channel",
+              "w": 131,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 6,
+            "6px": 11,
+            "9px": 4,
+            "12px": 6,
+            "4px": 7
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-connections-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-connections-mobile-drawer.png"
+    },
+    {
+      "role": "agent",
+      "name": "agent-deals",
+      "path": "/deals",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 19,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 11,
+            "9px": 9,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-deals-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 19,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 11,
+            "9px": 9,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-deals-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 9,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "View Customer Proposals",
+              "w": 186,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "View Customer Proposals",
+              "w": 186,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            },
+            {
+              "tag": "A",
+              "text": "+ Sourcing RFQ",
+              "w": 135,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "+ Sourcing RFQ",
+              "w": 135,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "ALL\n(0)",
+              "w": 77,
+              "h": 36,
+              "cls": "px-3.5 py-1.5 rounded-[9px] text-xs font-medium tr"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 11,
+            "9px": 9,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-deals-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 9,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "View Customer Proposals",
+              "w": 186,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "View Customer Proposals",
+              "w": 186,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            },
+            {
+              "tag": "A",
+              "text": "+ Sourcing RFQ",
+              "w": 135,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "+ Sourcing RFQ",
+              "w": 135,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "ALL\n(0)",
+              "w": 77,
+              "h": 36,
+              "cls": "px-3.5 py-1.5 rounded-[9px] text-xs font-medium tr"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 11,
+            "9px": 9,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-deals-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-deals-mobile-drawer.png"
+    },
+    {
+      "role": "agent",
+      "name": "agent-deal-detail",
+      "path": "/deals/d0000000-0000-0000-0000-000000000001",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-deal-detail-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-deal-detail-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-deal-detail-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-deal-detail-mobile-dark.png"
+        }
+      }
+    },
+    {
+      "role": "agent",
+      "name": "agent-proposals",
+      "path": "/proposals",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 18,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 11,
+            "9px": 8,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-proposals-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 18,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nDashboard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nNew RFQ Wizard",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nMy RFQs",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nDeals & Pipeline",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nProposals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 11,
+            "9px": 8,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-proposals-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 8,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "View Deals Pipeline",
+              "w": 154,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "View Deals Pipeline",
+              "w": 154,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            },
+            {
+              "tag": "A",
+              "text": "+ New RFQ",
+              "w": 85,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "+ New RFQ",
+              "w": 85,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "ALL\n(0)",
+              "w": 77,
+              "h": 36,
+              "cls": "px-3.5 py-1.5 rounded-[9px] text-xs font-medium tr"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 11,
+            "9px": 8,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-proposals-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 8,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "View Deals Pipeline",
+              "w": 154,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "View Deals Pipeline",
+              "w": 154,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            },
+            {
+              "tag": "A",
+              "text": "+ New RFQ",
+              "w": 85,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "+ New RFQ",
+              "w": 85,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "ALL\n(0)",
+              "w": 77,
+              "h": 36,
+              "cls": "px-3.5 py-1.5 rounded-[9px] text-xs font-medium tr"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 11,
+            "9px": 8,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-proposals-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-proposals-mobile-drawer.png"
+    },
+    {
+      "role": "agent",
+      "name": "agent-proposal-detail",
+      "path": "/proposals/ea000000-0000-0000-0000-000000000001",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-proposal-detail-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-proposal-detail-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-proposal-detail-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/agent-agent-proposal-detail-mobile-dark.png"
+        }
+      }
+    },
+    {
+      "role": "dmc",
+      "name": "dmc-feed",
+      "path": "/feed",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 6,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nBriefs Feed",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nQuotes Submitted",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nConnected Deals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nKYC Compliance",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nDestinations",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 7,
+            "9px": 2,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-feed-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 6,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nBriefs Feed",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nQuotes Submitted",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nConnected Deals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nKYC Compliance",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nDestinations",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 7,
+            "9px": 2,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-feed-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 7,
+            "9px": 2,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-feed-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 7,
+            "9px": 2,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-feed-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-feed-mobile-drawer.png"
+    },
+    {
+      "role": "dmc",
+      "name": "dmc-brief-detail",
+      "path": "/briefs/f1000000-0000-0000-0000-000000000001",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-brief-detail-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-brief-detail-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-brief-detail-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "9px": 1
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-brief-detail-mobile-dark.png"
+        }
+      }
+    },
+    {
+      "role": "dmc",
+      "name": "dmc-quotes",
+      "path": "/quotes",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 8,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nBriefs Feed",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nQuotes Submitted",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nConnected Deals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nKYC Compliance",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nDestinations",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 7,
+            "9px": 4,
+            "12px": 4
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-quotes-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 8,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nBriefs Feed",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nQuotes Submitted",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nConnected Deals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nKYC Compliance",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nDestinations",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 7,
+            "9px": 4,
+            "12px": 4
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-quotes-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 2,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "View matching briefs feed",
+              "w": 166,
+              "h": 20,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "View matching briefs feed",
+              "w": 166,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 7,
+            "9px": 4,
+            "12px": 4
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-quotes-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 2,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "View matching briefs feed",
+              "w": 166,
+              "h": 20,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "View matching briefs feed",
+              "w": 166,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 5,
+            "6px": 7,
+            "9px": 4,
+            "12px": 4
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-quotes-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-quotes-mobile-drawer.png"
+    },
+    {
+      "role": "dmc",
+      "name": "dmc-deals",
+      "path": "/deals",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 14,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nBriefs Feed",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nQuotes Submitted",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nConnected Deals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nKYC Compliance",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nDestinations",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 7,
+            "9px": 8,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-deals-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 14,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nBriefs Feed",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nQuotes Submitted",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nConnected Deals",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nKYC Compliance",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nDestinations",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 7,
+            "9px": 8,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-deals-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 8,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "View All Quotes",
+              "w": 112,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "View All Quotes",
+              "w": 112,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            },
+            {
+              "tag": "A",
+              "text": "Browse Briefs Feed \u2192",
+              "w": 149,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Browse Briefs Feed \u2192",
+              "w": 149,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "ALL\n(0)",
+              "w": 77,
+              "h": 36,
+              "cls": "px-3.5 py-1.5 rounded-[9px] text-xs font-medium tr"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 7,
+            "9px": 8,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-deals-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 8,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "View All Quotes",
+              "w": 112,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "View All Quotes",
+              "w": 112,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center font-mediu"
+            },
+            {
+              "tag": "A",
+              "text": "Browse Briefs Feed \u2192",
+              "w": 149,
+              "h": 36,
+              "cls": ""
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Browse Briefs Feed \u2192",
+              "w": 149,
+              "h": 36,
+              "cls": "inline-flex items-center justify-center select-non"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "ALL\n(0)",
+              "w": 77,
+              "h": 36,
+              "cls": "px-3.5 py-1.5 rounded-[9px] text-xs font-medium tr"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 4,
+            "6px": 7,
+            "9px": 8,
+            "12px": 5
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-deals-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/dmc-dmc-deals-mobile-drawer.png"
+    },
+    {
+      "role": "admin",
+      "name": "admin-overview",
+      "path": "/admin",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 7,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 20,
+            "6px": 8,
+            "9px": 2,
+            "12px": 13,
+            "6px 6px 0px 0px": 28
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-overview-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 7,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 20,
+            "6px": 8,
+            "9px": 2,
+            "12px": 13,
+            "6px 6px 0px 0px": 28
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-overview-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 20,
+            "6px": 8,
+            "9px": 2,
+            "12px": 13,
+            "6px 6px 0px 0px": 28
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-overview-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 20,
+            "6px": 8,
+            "9px": 2,
+            "12px": 13,
+            "6px 6px 0px 0px": 28
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-overview-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-overview-mobile-drawer.png"
+    },
+    {
+      "role": "admin",
+      "name": "admin-analytics",
+      "path": "/admin/analytics",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 7,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 20,
+            "6px": 8,
+            "9px": 2,
+            "12px": 13,
+            "6px 6px 0px 0px": 28
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-analytics-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 7,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 20,
+            "6px": 8,
+            "9px": 2,
+            "12px": 13,
+            "6px 6px 0px 0px": 28
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-analytics-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 20,
+            "6px": 8,
+            "9px": 2,
+            "12px": 13,
+            "6px 6px 0px 0px": 28
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-analytics-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 20,
+            "6px": 8,
+            "9px": 2,
+            "12px": 13,
+            "6px 6px 0px 0px": 28
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-analytics-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-analytics-mobile-drawer.png"
+    },
+    {
+      "role": "admin",
+      "name": "admin-verification",
+      "path": "/admin/verification",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 11,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 17,
+            "6px": 13,
+            "9px": 26,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-verification-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 11,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 17,
+            "6px": 13,
+            "9px": 26,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-verification-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": true,
+          "docW": 390,
+          "scrollW": 501,
+          "overflowCount": 166,
+          "overflowSample": [
+            {
+              "tag": "BUTTON",
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-wider round",
+              "text": "REJECTED\n1",
+              "right": 501,
+              "docW": 390
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "REJECTED",
+              "right": 466,
+              "docW": 390
+            },
+            {
+              "tag": "SPAN",
+              "cls": "text-[10px] px-1.5 py-0.2 rounded-full bg-[var(--bg-card)] t",
+              "text": "1",
+              "right": 489,
+              "docW": 390
+            },
+            {
+              "tag": "TABLE",
+              "cls": "w-full text-left border-collapse text-xs",
+              "text": "ENTITY & ROLE\tTAX & BUSINESS I",
+              "right": 922,
+              "docW": 390
+            },
+            {
+              "tag": "THEAD",
+              "cls": "",
+              "text": "ENTITY & ROLE\tTAX & BUSINESS I",
+              "right": 922,
+              "docW": 390
+            }
+          ],
+          "crampedCount": 4,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "ALL\n11",
+              "w": 76,
+              "h": 36,
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-w"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "PENDING\n4",
+              "w": 108,
+              "h": 36,
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-w"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "VERIFIED\n6",
+              "w": 104,
+              "h": 36,
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-w"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "REJECTED\n1",
+              "w": 116,
+              "h": 36,
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-w"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 17,
+            "6px": 13,
+            "9px": 26,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-verification-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": true,
+          "docW": 390,
+          "scrollW": 501,
+          "overflowCount": 166,
+          "overflowSample": [
+            {
+              "tag": "BUTTON",
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-wider round",
+              "text": "REJECTED\n1",
+              "right": 501,
+              "docW": 390
+            },
+            {
+              "tag": "SPAN",
+              "cls": "",
+              "text": "REJECTED",
+              "right": 466,
+              "docW": 390
+            },
+            {
+              "tag": "SPAN",
+              "cls": "text-[10px] px-1.5 py-0.2 rounded-full bg-[var(--bg-card)] t",
+              "text": "1",
+              "right": 489,
+              "docW": 390
+            },
+            {
+              "tag": "TABLE",
+              "cls": "w-full text-left border-collapse text-xs",
+              "text": "ENTITY & ROLE\tTAX & BUSINESS I",
+              "right": 922,
+              "docW": 390
+            },
+            {
+              "tag": "THEAD",
+              "cls": "",
+              "text": "ENTITY & ROLE\tTAX & BUSINESS I",
+              "right": 922,
+              "docW": 390
+            }
+          ],
+          "crampedCount": 4,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "ALL\n11",
+              "w": 76,
+              "h": 36,
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-w"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "PENDING\n4",
+              "w": 108,
+              "h": 36,
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-w"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "VERIFIED\n6",
+              "w": 104,
+              "h": 36,
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-w"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "REJECTED\n1",
+              "w": 116,
+              "h": 36,
+              "cls": "px-3 py-1.5 text-xs font-mono uppercase tracking-w"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 17,
+            "6px": 13,
+            "9px": 26,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-verification-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-verification-mobile-drawer.png"
+    },
+    {
+      "role": "admin",
+      "name": "admin-rfqs",
+      "path": "/admin/rfqs",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 7,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 2,
+            "6px": 8,
+            "9px": 5,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-rfqs-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 7,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 2,
+            "6px": 8,
+            "9px": 5,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-rfqs-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 2,
+            "6px": 8,
+            "9px": 5,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-rfqs-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 2,
+            "6px": 8,
+            "9px": 5,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-rfqs-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-rfqs-mobile-drawer.png"
+    },
+    {
+      "role": "admin",
+      "name": "admin-plans",
+      "path": "/admin/plans",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": true,
+          "docW": 1440,
+          "scrollW": 1454,
+          "overflowCount": 4,
+          "overflowSample": [
+            {
+              "tag": "DIV",
+              "cls": "pt-4 border-t border-[var(--border-subtle)]",
+              "text": "\u20b99,999\n/ MONTH\n100 Credits Inc",
+              "right": 1454,
+              "docW": 1440
+            },
+            {
+              "tag": "DIV",
+              "cls": "flex items-baseline gap-1",
+              "text": "\u20b99,999\n/ MONTH",
+              "right": 1454,
+              "docW": 1440
+            },
+            {
+              "tag": "SPAN",
+              "cls": "text-[10px] text-[var(--text-muted)] font-mono",
+              "text": "/ MONTH",
+              "right": 1454,
+              "docW": 1440
+            },
+            {
+              "tag": "DIV",
+              "cls": "font-mono text-xs text-[#D4B483] font-semibold mt-1",
+              "text": "100 Credits Included / mo",
+              "right": 1454,
+              "docW": 1440
+            }
+          ],
+          "crampedCount": 13,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 6,
+            "6px": 14,
+            "9px": 3,
+            "12px": 7
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-plans-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": true,
+          "docW": 1440,
+          "scrollW": 1454,
+          "overflowCount": 4,
+          "overflowSample": [
+            {
+              "tag": "DIV",
+              "cls": "pt-4 border-t border-[var(--border-subtle)]",
+              "text": "\u20b99,999\n/ MONTH\n100 Credits Inc",
+              "right": 1454,
+              "docW": 1440
+            },
+            {
+              "tag": "DIV",
+              "cls": "flex items-baseline gap-1",
+              "text": "\u20b99,999\n/ MONTH",
+              "right": 1454,
+              "docW": 1440
+            },
+            {
+              "tag": "SPAN",
+              "cls": "text-[10px] text-[var(--text-muted)] font-mono",
+              "text": "/ MONTH",
+              "right": 1454,
+              "docW": 1440
+            },
+            {
+              "tag": "DIV",
+              "cls": "font-mono text-xs text-[#D4B483] font-semibold mt-1",
+              "text": "100 Credits Included / mo",
+              "right": 1454,
+              "docW": 1440
+            }
+          ],
+          "crampedCount": 13,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 6,
+            "6px": 14,
+            "9px": 3,
+            "12px": 7
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-plans-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": true,
+          "docW": 390,
+          "scrollW": 443,
+          "overflowCount": 16,
+          "overflowSample": [
+            {
+              "tag": "DIV",
+              "cls": "pt-4 border-t border-[var(--border-subtle)]",
+              "text": "\u20b91,099\n/ MONTH\n5 Credits Inclu",
+              "right": 432,
+              "docW": 390
+            },
+            {
+              "tag": "DIV",
+              "cls": "flex items-baseline gap-1",
+              "text": "\u20b91,099\n/ MONTH",
+              "right": 432,
+              "docW": 390
+            },
+            {
+              "tag": "SPAN",
+              "cls": "text-[10px] text-[var(--text-muted)] font-mono",
+              "text": "/ MONTH",
+              "right": 432,
+              "docW": 390
+            },
+            {
+              "tag": "DIV",
+              "cls": "font-mono text-xs text-[#D4B483] font-semibold mt-1",
+              "text": "5 Credits Included / mo",
+              "right": 432,
+              "docW": 390
+            },
+            {
+              "tag": "DIV",
+              "cls": "pt-4 border-t border-[var(--border-subtle)]",
+              "text": "\u20b92,499\n/ MONTH\n20 Credits Incl",
+              "right": 437,
+              "docW": 390
+            }
+          ],
+          "crampedCount": 2,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "Deactivate",
+              "w": 91,
+              "h": 40,
+              "cls": "px-3 py-2 text-xs font-mono rounded-[6px] border m"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Edit Tier",
+              "w": 95,
+              "h": 40,
+              "cls": "inline-flex items-center gap-1.5 px-3 py-2 text-xs"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 6,
+            "6px": 14,
+            "9px": 3,
+            "12px": 7
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-plans-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": true,
+          "docW": 390,
+          "scrollW": 443,
+          "overflowCount": 16,
+          "overflowSample": [
+            {
+              "tag": "DIV",
+              "cls": "pt-4 border-t border-[var(--border-subtle)]",
+              "text": "\u20b91,099\n/ MONTH\n5 Credits Inclu",
+              "right": 432,
+              "docW": 390
+            },
+            {
+              "tag": "DIV",
+              "cls": "flex items-baseline gap-1",
+              "text": "\u20b91,099\n/ MONTH",
+              "right": 432,
+              "docW": 390
+            },
+            {
+              "tag": "SPAN",
+              "cls": "text-[10px] text-[var(--text-muted)] font-mono",
+              "text": "/ MONTH",
+              "right": 432,
+              "docW": 390
+            },
+            {
+              "tag": "DIV",
+              "cls": "font-mono text-xs text-[#D4B483] font-semibold mt-1",
+              "text": "5 Credits Included / mo",
+              "right": 432,
+              "docW": 390
+            },
+            {
+              "tag": "DIV",
+              "cls": "pt-4 border-t border-[var(--border-subtle)]",
+              "text": "\u20b92,499\n/ MONTH\n20 Credits Incl",
+              "right": 437,
+              "docW": 390
+            }
+          ],
+          "crampedCount": 2,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "Deactivate",
+              "w": 91,
+              "h": 40,
+              "cls": "px-3 py-2 text-xs font-mono rounded-[6px] border m"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Edit Tier",
+              "w": 95,
+              "h": 40,
+              "cls": "inline-flex items-center gap-1.5 px-3 py-2 text-xs"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 6,
+            "6px": 14,
+            "9px": 3,
+            "12px": 7
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-plans-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-plans-mobile-drawer.png"
+    },
+    {
+      "role": "admin",
+      "name": "admin-ledger",
+      "path": "/admin/ledger",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 9,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 45,
+            "6px": 10,
+            "9px": 7,
+            "12px": 7,
+            "4px": 38
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-ledger-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 9,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 45,
+            "6px": 10,
+            "9px": 7,
+            "12px": 7,
+            "4px": 38
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-ledger-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 45,
+            "6px": 10,
+            "9px": 7,
+            "12px": 7,
+            "4px": 38
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-ledger-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 45,
+            "6px": 10,
+            "9px": 7,
+            "12px": 7,
+            "4px": 38
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-ledger-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-ledger-mobile-drawer.png"
+    },
+    {
+      "role": "admin",
+      "name": "admin-users",
+      "path": "/admin/users",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 31,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 38,
+            "6px": 33,
+            "9px": 18,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-users-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 31,
+          "crampedSample": [
+            {
+              "tag": "A",
+              "text": "01\nAnalytics & Ops",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "02\nKYC Verification",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "03\nUser Directory",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "04\nRFQ Oversight",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            },
+            {
+              "tag": "A",
+              "text": "05\nCredit Ledger",
+              "w": 199,
+              "h": 36,
+              "cls": "flex items-center gap-2.5 px-3 py-2 rounded-[6px] "
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 38,
+            "6px": 33,
+            "9px": 18,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-users-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 10,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "Profile",
+              "w": 62,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Deactivate",
+              "w": 87,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Profile",
+              "w": 62,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Deactivate",
+              "w": 87,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Profile",
+              "w": 62,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 38,
+            "6px": 33,
+            "9px": 18,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-users-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 10,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "Profile",
+              "w": 62,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Deactivate",
+              "w": 87,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Profile",
+              "w": 62,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Deactivate",
+              "w": 87,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            },
+            {
+              "tag": "BUTTON",
+              "text": "Profile",
+              "w": 62,
+              "h": 38,
+              "cls": "px-2.5 py-1.5 text-xs font-mono rounded-[6px] bord"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "3.35544e+07px": 38,
+            "6px": 33,
+            "9px": 18,
+            "12px": 6
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-users-mobile-dark.png"
+        }
+      },
+      "drawer_shot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/admin-admin-users-mobile-drawer.png"
+    },
+    {
+      "role": "traveler",
+      "name": "traveler-share",
+      "path": "/share/demo-thailand-proposal",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 1,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "Save PDF",
+              "w": 99,
+              "h": 36,
+              "cls": "items-center justify-center font-medium select-non"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "6px": 1,
+            "9px": 3,
+            "3.35544e+07px": 4,
+            "12px": 14,
+            "4px": 8
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/traveler-traveler-share-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 1,
+          "crampedSample": [
+            {
+              "tag": "BUTTON",
+              "text": "Save PDF",
+              "w": 99,
+              "h": 36,
+              "cls": "items-center justify-center font-medium select-non"
+            }
+          ],
+          "contrastRisksSample": [],
+          "radii": {
+            "6px": 1,
+            "9px": 3,
+            "3.35544e+07px": 4,
+            "12px": 14,
+            "4px": 8
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/traveler-traveler-share-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "6px": 1,
+            "9px": 3,
+            "3.35544e+07px": 4,
+            "12px": 14,
+            "4px": 8
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/traveler-traveler-share-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "6px": 1,
+            "9px": 3,
+            "3.35544e+07px": 4,
+            "12px": 14,
+            "4px": 8
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/traveler-traveler-share-mobile-dark.png"
+        }
+      }
+    },
+    {
+      "role": "auth",
+      "name": "portal-gate",
+      "path": "/portal-access-7k2m9",
+      "views": {
+        "desktop_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "6px": 1,
+            "12px": 1,
+            "3.35544e+07px": 1,
+            "9px": 2
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/auth-portal-gate-desktop-light.png"
+        },
+        "desktop_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 1440,
+          "scrollW": 1440,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "6px": 1,
+            "12px": 1,
+            "3.35544e+07px": 1,
+            "9px": 2
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/auth-portal-gate-desktop-dark.png"
+        },
+        "mobile_light": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "6px": 1,
+            "12px": 1,
+            "3.35544e+07px": 1,
+            "9px": 2
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/auth-portal-gate-mobile-light.png"
+        },
+        "mobile_dark": {
+          "title": "DMCGrid \u2014 Travel Commerce Infrastructure",
+          "isOverflow": false,
+          "docW": 390,
+          "scrollW": 390,
+          "overflowCount": 0,
+          "overflowSample": [],
+          "crampedCount": 0,
+          "crampedSample": [],
+          "contrastRisksSample": [],
+          "radii": {
+            "6px": 1,
+            "12px": 1,
+            "3.35544e+07px": 1,
+            "9px": 2
+          },
+          "deadTexts": [],
+          "screenshot": "/home/ubuntu/dmcgrid/docs/qa-wave6/screenshots/auth-portal-gate-mobile-dark.png"
+        }
+      }
+    }
+  ],
+  "nav_tests": []
+}

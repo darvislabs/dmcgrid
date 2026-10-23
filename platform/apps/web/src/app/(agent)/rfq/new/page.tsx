@@ -493,6 +493,11 @@ export default function FinFlyRfqWizardPage() {
         triggerShake('Please select a valid departure date');
         return false;
       }
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      if (new Date(startDate + 'T00:00:00') < today) {
+        triggerShake('Departure date cannot be in the past');
+        return false;
+      }
     } else if (s === 7) {
       const min = Number(budgetMin);
       const max = Number(budgetMax);

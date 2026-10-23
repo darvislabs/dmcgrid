@@ -26,5 +26,5 @@ export default async function HomePage() {
   }
   if (role === 'admin') redirect('/admin');
   if (role === 'dmc') redirect('/feed');
-  redirect('/rfq/new');
+  redirect('/dashboard');  // agent default: dashboard (wizard one click away)
 }

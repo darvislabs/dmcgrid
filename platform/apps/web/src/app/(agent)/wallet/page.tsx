@@ -88,6 +88,24 @@ export default async function WalletPage() {
     .filter((l) => l.entry_type === 'credit')
     .reduce((acc, l) => acc + l.amount, 0);
 
+  // 5. Gateway status & Profile info for prefill
+  const keyId = process.env.RAZORPAY_KEY_ID || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '';
+  const keySecret = process.env.RAZORPAY_KEY_SECRET || '';
+  const isRazorpayConfigured = Boolean(
+    keyId &&
+    keySecret &&
+    !keyId.includes('placeholder') &&
+    !keySecret.includes('placeholder') &&
+    keyId.trim() !== '' &&
+    keySecret.trim() !== ''
+  );
+
+  const { data: userProfile } = await (supabase as any)
+    .from('profiles')
+    .select('contact_name, company_name, email, phone')
+    .eq('id', currentUserId)
+    .maybeSingle();
+
   return (
     <div className="space-y-8 animate-in fade-in duration-200">
       {/* Header */}
@@ -140,6 +158,9 @@ export default async function WalletPage() {
         ledger={ledger}
         packs={packs}
         plans={plans}
+        isRazorpayConfigured={isRazorpayConfigured}
+        userProfile={userProfile || undefined}
+        userId={currentUserId}
       />
     </div>
   );

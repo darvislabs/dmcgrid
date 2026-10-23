@@ -93,7 +93,7 @@ export function Sidebar({
       {
         title: 'SOURCING',
         items: [
-          { id: '01', label: 'Dashboard', href: '/', icon: <Compass className="w-3.5 h-3.5" /> },
+          { id: '01', label: 'Dashboard', href: '/dashboard', icon: <Compass className="w-3.5 h-3.5" /> },
           { id: '02', label: 'New RFQ Wizard', href: '/rfq/new', icon: <FilePlus className="w-3.5 h-3.5" /> },
           { id: '03', label: 'My RFQs', href: '/rfq', icon: <Files className="w-3.5 h-3.5" /> },
         ],
