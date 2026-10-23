@@ -43,7 +43,7 @@ export function StatCard({ label, value, isCurrency, delta, subtext, icon, class
       </div>
       <div className="mt-3 flex items-baseline justify-between">
         <div className="text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
-          {typeof value === 'number' ? (
+          {typeof value === 'number' || (!isNaN(Number(value)) && isCurrency) ? (
             <TabularNum value={value} isCurrency={isCurrency} />
           ) : (
             <span>{value}</span>

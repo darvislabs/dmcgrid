@@ -12,7 +12,7 @@ export default function VerificationLoading() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-24 bg-[var(--bg-card)] rounded-[14px] border border-[var(--border-line)]" />
+          <div key={i} className="h-24 bg-[var(--bg-card)] rounded-[12px] border border-[var(--border-line)]" />
         ))}
       </div>
 
@@ -21,7 +21,7 @@ export default function VerificationLoading() {
           <div className="h-10 bg-[var(--bg-page)] rounded-[9px]" />
           <div className="space-y-3">
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="h-14 bg-[var(--bg-page)] rounded-[8px]" />
+              <div key={i} className="h-14 bg-[var(--bg-page)] rounded-[9px]" />
             ))}
           </div>
         </CardContent>

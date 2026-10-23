@@ -177,7 +177,7 @@ export function TravelerProposalView({
       {/* Hero Section */}
       <section className="relative py-12 px-6 max-w-5xl mx-auto border-b border-[var(--border-line)] space-y-6">
         <div className="max-w-3xl space-y-3">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Badge variant="gold">PREPARED FOR {customerName.toUpperCase()}</Badge>
             <Badge variant="verified">
               <ShieldCheck className="w-3 h-3" />
@@ -209,7 +209,7 @@ export function TravelerProposalView({
         {/* Feedback Alert */}
         {feedback && (
           <div
-            className={`p-4 rounded-[14px] border flex items-center justify-between text-xs ${
+            className={`p-4 rounded-[12px] border flex items-center justify-between text-xs ${
               feedback.type === 'success'
                 ? 'border-[#10B981]/30 bg-[#10B981]/10 text-[var(--text-primary)]'
                 : 'border-[#EF4444]/30 bg-[#EF4444]/10 text-[#EF4444]'
@@ -300,9 +300,9 @@ export function TravelerProposalView({
 
         {/* Selected Package Spotlight & Confirmation CTA */}
         {activePricing && (
-          <div className="p-6 rounded-[14px] border border-[#D4B483]/30 bg-gradient-to-r from-[var(--bg-surface)] to-[var(--bg-card)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="p-6 rounded-[12px] border border-[#D4B483]/30 bg-gradient-to-r from-[var(--bg-surface)] to-[var(--bg-card)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="space-y-1">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
                   TOTAL COMPREHENSIVE PACKAGE ({activeOption.option_name})
                 </span>
@@ -380,7 +380,7 @@ export function TravelerProposalView({
                         key={item.id || idx}
                         className="flex items-start justify-between gap-4 text-xs"
                       >
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                           <span className="font-mono text-[10px] uppercase text-[#D4B483] w-16 shrink-0">
                             {item.time_window}
                           </span>

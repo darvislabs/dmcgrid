@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { DmcMark } from './brand-symbols';
 import { ThemeToggle } from './theme-toggle';
 import { Badge } from '@dmcgrid/ui';
@@ -44,7 +44,6 @@ export function Sidebar({
   credits?: number;
 }) {
   const pathname = usePathname();
-  const router = useRouter();
 
   // Navigation configuration per role
   const sections: NavSection[] = React.useMemo(() => {
@@ -117,13 +116,6 @@ export function Sidebar({
       },
     ];
   }, [role]);
-
-  const switchRole = (newRole: UserRole) => {
-    document.cookie = `dmc_role=${newRole}; path=/; max-age=86400`;
-    if (newRole === 'admin') router.push('/admin');
-    else if (newRole === 'dmc') router.push('/feed');
-    else router.push('/');
-  };
 
   const handleSignOut = async () => {
     // 1. kill the supabase session server-side AND clear the browser cookies
@@ -214,39 +206,6 @@ export function Sidebar({
             </nav>
           </div>
         ))}
-
-        {/* Dev / Demo Role Switcher */}
-        <div className="mx-3 mt-2 p-2.5 rounded-[9px] border border-[var(--border-subtle)] bg-[var(--bg-card)]">
-          <div className="font-mono text-[9px] tracking-wider uppercase text-[var(--text-muted)] mb-1.5">
-            Portal Switcher
-          </div>
-          <div className="grid grid-cols-3 gap-1">
-            <button
-              onClick={() => switchRole('agent')}
-              className={`py-1 text-[10px] font-mono rounded ${
-                role === 'agent' ? 'bg-[#D4B483] text-[#0B0F14] font-bold' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)]'
-              }`}
-            >
-              AGT
-            </button>
-            <button
-              onClick={() => switchRole('dmc')}
-              className={`py-1 text-[10px] font-mono rounded ${
-                role === 'dmc' ? 'bg-[#D4B483] text-[#0B0F14] font-bold' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)]'
-              }`}
-            >
-              DMC
-            </button>
-            <button
-              onClick={() => switchRole('admin')}
-              className={`py-1 text-[10px] font-mono rounded ${
-                role === 'admin' ? 'bg-[#D4B483] text-[#0B0F14] font-bold' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)]'
-              }`}
-            >
-              ADM
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* Footer Controls */}

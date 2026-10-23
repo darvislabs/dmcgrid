@@ -18,7 +18,7 @@ export default function TravelerShareLoading() {
           <div className="h-4 w-80 bg-[var(--border-subtle)] rounded" />
         </div>
 
-        <div className="h-28 bg-[var(--border-subtle)]/40 rounded-[14px]" />
+        <div className="h-28 bg-[var(--border-subtle)]/40 rounded-[12px]" />
 
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (

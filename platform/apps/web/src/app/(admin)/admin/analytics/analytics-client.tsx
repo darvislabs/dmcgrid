@@ -170,7 +170,7 @@ export function AnalyticsDashboardClient({ summary, sparkline, auditLogs }: Anal
                       {/* RFQ Bar */}
                       <div
                         style={{ height: `${point.rfqs > 0 ? rfqHeight : 4}px` }}
-                        className={`w-1/2 rounded-t-[3px] transition-all duration-200 ${
+                        className={`w-1/2 rounded-t-[6px] transition-all duration-200 ${
                           point.rfqs > 0
                             ? 'bg-[#D4B483] group-hover:bg-[#e4ca9d]'
                             : 'bg-[var(--border-subtle)]'
@@ -179,7 +179,7 @@ export function AnalyticsDashboardClient({ summary, sparkline, auditLogs }: Anal
                       {/* Quote Bar */}
                       <div
                         style={{ height: `${point.quotes > 0 ? quoteHeight : 4}px` }}
-                        className={`w-1/2 rounded-t-[3px] transition-all duration-200 ${
+                        className={`w-1/2 rounded-t-[6px] transition-all duration-200 ${
                           point.quotes > 0
                             ? 'bg-[#10B981] group-hover:bg-[#34d399]'
                             : 'bg-[var(--border-subtle)]'
@@ -206,7 +206,7 @@ export function AnalyticsDashboardClient({ summary, sparkline, auditLogs }: Anal
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Link
           href="/admin/verification"
-          className="p-5 rounded-[14px] bg-[var(--bg-card)] border border-[var(--border-line)] hover:border-[#D4B483] transition-all group flex flex-col justify-between"
+          className="p-5 rounded-[12px] bg-[var(--bg-card)] border border-[var(--border-line)] hover:border-[#D4B483] transition-all group flex flex-col justify-between"
         >
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
@@ -230,7 +230,7 @@ export function AnalyticsDashboardClient({ summary, sparkline, auditLogs }: Anal
 
         <Link
           href="/admin/ledger"
-          className="p-5 rounded-[14px] bg-[var(--bg-card)] border border-[var(--border-line)] hover:border-[#D4B483] transition-all group flex flex-col justify-between"
+          className="p-5 rounded-[12px] bg-[var(--bg-card)] border border-[var(--border-line)] hover:border-[#D4B483] transition-all group flex flex-col justify-between"
         >
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
@@ -254,7 +254,7 @@ export function AnalyticsDashboardClient({ summary, sparkline, auditLogs }: Anal
 
         <Link
           href="/admin/rfqs"
-          className="p-5 rounded-[14px] bg-[var(--bg-card)] border border-[var(--border-line)] hover:border-[#D4B483] transition-all group flex flex-col justify-between"
+          className="p-5 rounded-[12px] bg-[var(--bg-card)] border border-[var(--border-line)] hover:border-[#D4B483] transition-all group flex flex-col justify-between"
         >
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">

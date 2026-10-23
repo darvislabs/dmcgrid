@@ -16,12 +16,13 @@ export function TabularNum({
   className,
   ...props
 }: TabularNumProps) {
+  const num = typeof value === 'number' ? value : Number(value);
   let formatted = '';
-  if (typeof value === 'number') {
+  if (!isNaN(num) && typeof value !== 'boolean' && value !== '') {
     if (isCurrency) {
-      formatted = `${prefix}${Math.round(value).toLocaleString('en-IN')}${suffix}`;
+      formatted = `${prefix}${Math.round(num).toLocaleString('en-IN')}${suffix}`;
     } else {
-      formatted = `${prefix}${value.toLocaleString('en-IN')}${suffix}`;
+      formatted = `${prefix}${num.toLocaleString('en-IN')}${suffix}`;
     }
   } else {
     formatted = `${prefix}${value}${suffix}`;

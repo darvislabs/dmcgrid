@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import { cn } from './utils';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' | 'accent';
   size?: 'default' | 'sm' | 'md' | 'lg' | 'icon';
   isLoading?: boolean;
 }
@@ -17,7 +17,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary:
-        'bg-[#D4B483] text-[#0B0F14] hover:bg-[#E0C59D] active:bg-[#C8A46F] font-semibold shadow-sm',
+        'bg-[var(--text-primary)] text-[var(--bg-page)] hover:opacity-90 active:scale-[0.97] font-semibold shadow-sm',
       secondary:
         'bg-[var(--bg-surface)] text-[var(--text-primary)] border border-[var(--border-line)] hover:bg-[var(--bg-card-hover)] active:bg-[var(--bg-elevated)]',
       outline:
@@ -26,6 +26,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         'bg-transparent text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]',
       danger:
         'bg-[#EF4444] text-white hover:bg-[#DC2626] font-semibold',
+      accent:
+        'bg-[#D4B483] text-[#0B0F14] hover:bg-[#E0C59D] active:bg-[#C8A46F] font-semibold shadow-sm',
     }[variant];
 
     const sizeStyles = {

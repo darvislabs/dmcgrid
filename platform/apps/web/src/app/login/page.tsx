@@ -71,14 +71,11 @@ export default function LoginPage() {
     setMessage(null);
 
     try {
-      const { error } = await supabase.auth.verifyOtp({
+      const { data, error } = await supabase.auth.verifyOtp({
         email,
         token: otpCode,
         type: 'email',
       });
-
-      // Set role cookie for seamless session persistence
-      document.cookie = `dmc_role=${role}; path=/; max-age=86400`;
 
       const demoBypass = otpCode === '123456' && process.env.NODE_ENV !== 'production' && process.env.NEXT_PUBLIC_DEMO_MODE === 'true';
       if (error && !demoBypass) {
@@ -90,14 +87,30 @@ export default function LoginPage() {
         return;
       }
 
-      if (role === 'admin') router.push('/admin');
-      else if (role === 'dmc') router.push('/feed');
+      // Fetch profile role via user-scoped client and redirect based on that
+      let destinationRole: UserRole = role;
+      const user = data?.user ?? (await supabase.auth.getUser()).data.user;
+      if (user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', user.id)
+          .single();
+        const profileData = profile as { role?: UserRole } | null;
+        if (profileData?.role) {
+          destinationRole = profileData.role;
+        }
+      }
+
+      if (destinationRole === 'admin') router.push('/admin');
+      else if (destinationRole === 'dmc') router.push('/feed');
       else router.push('/');
+      router.refresh();
     } catch {
-      document.cookie = `dmc_role=${role}; path=/; max-age=86400`;
-      if (role === 'admin') router.push('/admin');
-      else if (role === 'dmc') router.push('/feed');
-      else router.push('/');
+      setMessage({
+        text: 'Authentication error. Please try again.',
+        type: 'error',
+      });
     } finally {
       setLoading(false);
     }
@@ -117,7 +130,6 @@ export default function LoginPage() {
         access_token: res.session.access_token,
         refresh_token: res.session.refresh_token,
       });
-      document.cookie = `dmc_role=${selectedRole}; path=/; max-age=86400`;
       if (selectedRole === 'admin') router.push('/admin');
       else if (selectedRole === 'dmc') router.push('/feed');
       else router.push('/');

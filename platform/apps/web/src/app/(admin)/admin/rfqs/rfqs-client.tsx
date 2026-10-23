@@ -343,7 +343,7 @@ export function RfqsClient({ rfqs: initialRfqs }: RfqsClientProps) {
       {selectedRfq && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
           <div
-            className="w-full max-w-2xl bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[14px] shadow-2xl p-6 space-y-6 max-h-[90vh] overflow-y-auto"
+            className="w-full max-w-2xl bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[12px] shadow-2xl p-6 space-y-6 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
@@ -421,7 +421,7 @@ export function RfqsClient({ rfqs: initialRfqs }: RfqsClientProps) {
                   {selectedRfq.rfq_destinations.map((dest, i) => (
                     <div
                       key={dest.id || i}
-                      className="p-3 rounded-[8px] bg-[var(--bg-page)] border border-[var(--border-line)] flex items-center justify-between"
+                      className="p-3 rounded-[9px] bg-[var(--bg-page)] border border-[var(--border-line)] flex items-center justify-between"
                     >
                       <div className="flex items-center gap-2">
                         <MapPin className="w-3.5 h-3.5 text-[#D4B483]" />
@@ -448,7 +448,7 @@ export function RfqsClient({ rfqs: initialRfqs }: RfqsClientProps) {
                   {selectedRfq.rfq_stays.map((stay, i) => (
                     <div
                       key={stay.id || i}
-                      className="p-3 rounded-[8px] bg-[var(--bg-page)] border border-[var(--border-line)] space-y-1"
+                      className="p-3 rounded-[9px] bg-[var(--bg-page)] border border-[var(--border-line)] space-y-1"
                     >
                       <div className="flex items-center justify-between">
                         <span className="font-mono uppercase text-[#D4B483] font-bold text-[10px]">
@@ -479,7 +479,11 @@ export function RfqsClient({ rfqs: initialRfqs }: RfqsClientProps) {
                   <Sparkles className="w-3.5 h-3.5 text-[#D4B483]" />
                   <span className="text-[var(--text-secondary)]">AI Copilot Extraction Payload</span>
                 </div>
-                <span className="font-mono text-[10px] text-[#10B981]">Confidence: 94% Verified</span>
+                {typeof (selectedRfq.ai_extracted_data as any)?.confidence === 'number' && (
+                  <span className="font-mono text-[10px] text-[#10B981]">
+                    Confidence: {Math.round((selectedRfq.ai_extracted_data as any).confidence > 1 ? (selectedRfq.ai_extracted_data as any).confidence : (selectedRfq.ai_extracted_data as any).confidence * 100)}% Verified
+                  </span>
+                )}
               </div>
             )}
 
@@ -513,7 +517,7 @@ export function RfqsClient({ rfqs: initialRfqs }: RfqsClientProps) {
       {closeTargetRfq && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
           <div
-            className="w-full max-w-md bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[14px] shadow-2xl p-6 space-y-5"
+            className="w-full max-w-md bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[12px] shadow-2xl p-6 space-y-5"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between pb-3 border-b border-[var(--border-line)]">

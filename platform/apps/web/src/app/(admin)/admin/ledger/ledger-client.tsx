@@ -181,7 +181,7 @@ export function LedgerClient({ accounts: initialAccounts, entries: initialEntrie
               setActionError(null);
               setActionSuccess(null);
             }}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#D4B483] text-[#0B0F14] rounded-[9px] text-xs font-semibold hover:bg-[#c3a16f] transition-all min-h-[44px] cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[var(--text-primary)] text-[var(--bg-page)] rounded-[9px] text-xs font-semibold hover:opacity-90 active:scale-[0.97] transition-all min-h-[44px] cursor-pointer"
           >
             <Coins className="w-4 h-4" />
             <span>New Credit Adjustment</span>
@@ -449,7 +449,7 @@ export function LedgerClient({ accounts: initialAccounts, entries: initialEntrie
       {isAdjustOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
           <div
-            className="w-full max-w-md bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[14px] shadow-2xl p-6 space-y-5"
+            className="w-full max-w-md bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[12px] shadow-2xl p-6 space-y-5"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between pb-3 border-b border-[var(--border-line)]">

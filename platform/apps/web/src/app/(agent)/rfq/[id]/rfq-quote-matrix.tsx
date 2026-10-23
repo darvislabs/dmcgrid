@@ -163,7 +163,7 @@ export function RfqQuoteMatrix({
     <div className="space-y-6">
       {/* Existing Deal Alert if already accepted */}
       {existingDeal && (
-        <div className="p-4 rounded-[14px] border border-[#10B981]/30 bg-[#10B981]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="p-4 rounded-[12px] border border-[#10B981]/30 bg-[#10B981]/5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <CheckCircle2 className="w-5 h-5 text-[#10B981] shrink-0" />
             <div>
@@ -190,7 +190,7 @@ export function RfqQuoteMatrix({
       {/* Notifications */}
       {feedback && (
         <div
-          className={`p-4 rounded-[14px] border flex items-start justify-between gap-3 text-xs ${
+          className={`p-4 rounded-[12px] border flex items-start justify-between gap-3 text-xs ${
             feedback.type === 'success'
               ? 'border-[#10B981]/30 bg-[#10B981]/10 text-[var(--text-primary)]'
               : 'border-[#EF4444]/30 bg-[#EF4444]/10 text-[#EF4444]'
@@ -267,7 +267,7 @@ export function RfqQuoteMatrix({
                 {/* Quote Header */}
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pb-4 border-b border-[var(--border-subtle)]">
                   <div className="space-y-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <span className="font-mono text-xs font-bold text-[#D4B483]">
                         {quote.quote_number}
                       </span>

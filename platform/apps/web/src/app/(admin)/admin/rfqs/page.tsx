@@ -46,7 +46,6 @@ export default async function AdminRfqsPage() {
             <span className="font-mono text-[10px] tracking-widest text-[#D4B483] uppercase">
               DEMAND SOURCING OVERSIGHT
             </span>
-            <Badge variant="gold">PRD WAVE 1 & 2 MONITORING</Badge>
           </div>
           <h1 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
             RFQ Briefs Oversight

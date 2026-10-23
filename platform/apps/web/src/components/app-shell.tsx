@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { Sidebar } from './sidebar';
 import { BrandSymbols, DmcMark } from './brand-symbols';
 import { NotificationDropdown } from './notifications-dropdown';
@@ -14,7 +15,13 @@ export interface AppShellProps {
 }
 
 export function AppShell({ children, role = 'agent', credits = 20 }: AppShellProps) {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // DEFECT 14: Close drawer automatically on navigation/route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   return (
     <div className="min-h-[100dvh] bg-[var(--bg-page)] text-[var(--text-primary)]">
@@ -45,14 +52,14 @@ export function AppShell({ children, role = 'agent', credits = 20 }: AppShellPro
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer: DEFECT 14 - w-[216px] aligns with sidebar eliminating 44px gap */}
       {mobileOpen && (
         <div className="md:hidden fixed inset-0 z-50 flex">
           <div
             className="fixed inset-0 bg-black/70 backdrop-blur-sm"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="relative w-[260px] bg-[var(--bg-sidebar)] h-full z-10 shadow-2xl">
+          <div className="relative w-[216px] bg-[var(--bg-sidebar)] h-full z-10 shadow-2xl">
             <Sidebar role={role} credits={credits} />
           </div>
         </div>

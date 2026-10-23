@@ -8,7 +8,7 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 export function Badge({ className, variant = 'default', dot = false, children, ...props }: BadgeProps) {
   const base =
-    'inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-[999px] tracking-wide whitespace-nowrap select-none transition-colors';
+    'inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-full tracking-wide whitespace-nowrap select-none transition-colors';
 
   const variants: Record<NonNullable<BadgeProps['variant']>, string> = {
     default:

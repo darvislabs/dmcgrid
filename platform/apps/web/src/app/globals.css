@@ -150,6 +150,7 @@
   --text-muted: #71808B;
 
   --accent-gold: #D4B483;
+  --accent-gold-text: #D4B483;
   --accent-gold-hover: #E0C59D;
   --accent-gold-soft: rgba(212, 180, 131, 0.10);
   --accent-gold-ring: rgba(212, 180, 131, 0.25);
@@ -172,12 +173,18 @@
   --text-secondary: #55636E;
   --text-muted: #71808B;
 
-  --accent-gold: #B88E52;
-  --accent-gold-hover: #A07840;
-  --accent-gold-soft: rgba(184, 142, 82, 0.12);
-  --accent-gold-ring: rgba(184, 142, 82, 0.25);
+  --accent-gold: #8A6D3B;
+  --accent-gold-text: #8A6D3B;
+  --accent-gold-hover: #755B2E;
+  --accent-gold-soft: rgba(138, 109, 59, 0.12);
+  --accent-gold-ring: rgba(138, 109, 59, 0.25);
 
   color-scheme: light;
+}
+
+/* DEFECT 05: Darken gold text usages to #8a6d3b for text only in light mode for WCAG AA compliance (4.5:1+) */
+[data-theme="light"] .text-\[\#D4B483\] {
+  color: #8A6D3B;
 }
 
 body {

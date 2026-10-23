@@ -93,7 +93,7 @@ export function ConnectionsView({
       {/* Feedback Toast */}
       {feedback && (
         <div
-          className={`p-4 rounded-[14px] border flex items-center justify-between text-xs ${
+          className={`p-4 rounded-[12px] border flex items-center justify-between text-xs ${
             feedback.type === 'success'
               ? 'border-[#10B981]/30 bg-[#10B981]/10 text-[var(--text-primary)]'
               : 'border-[#EF4444]/30 bg-[#EF4444]/10 text-[#EF4444]'

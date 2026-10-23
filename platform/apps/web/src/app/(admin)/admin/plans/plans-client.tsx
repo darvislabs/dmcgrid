@@ -190,7 +190,7 @@ export function PlansClient({ plans: initialPlans }: PlansClientProps) {
         </div>
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#D4B483] text-[#0B0F14] rounded-[9px] text-xs font-semibold hover:bg-[#c3a16f] transition-all min-h-[44px] cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-[var(--text-primary)] text-[var(--bg-page)] rounded-[9px] text-xs font-semibold hover:opacity-90 active:scale-[0.97] transition-all min-h-[44px] cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Create New Plan</span>
@@ -198,7 +198,7 @@ export function PlansClient({ plans: initialPlans }: PlansClientProps) {
       </div>
 
       {/* Plans Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 min-w-0">
         {plans.map((plan) => {
           let feats: string[] = [];
           if (Array.isArray(plan.features)) {
@@ -214,7 +214,7 @@ export function PlansClient({ plans: initialPlans }: PlansClientProps) {
           return (
             <Card
               key={plan.id}
-              className={`bg-[var(--bg-card)] border transition-all flex flex-col justify-between ${
+              className={`bg-[var(--bg-card)] border transition-all flex flex-col justify-between min-w-0 rounded-[12px] ${
                 plan.is_active
                   ? 'border-[var(--border-line)] hover:border-[#D4B483]/60'
                   : 'border-[var(--border-subtle)] opacity-60'
@@ -297,7 +297,7 @@ export function PlansClient({ plans: initialPlans }: PlansClientProps) {
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
           <div
-            className="w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[14px] shadow-2xl p-6 space-y-5 max-h-[90vh] overflow-y-auto"
+            className="w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[12px] shadow-2xl p-6 space-y-5 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between pb-3 border-b border-[var(--border-line)]">

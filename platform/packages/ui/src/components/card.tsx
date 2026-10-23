@@ -17,7 +17,7 @@ export function Card({ className, variant = 'default', children, ...props }: Car
 
   return (
     <div
-      className={cn('rounded-[14px] p-5 transition-colors', variants[variant], className)}
+      className={cn('rounded-[12px] p-5 transition-colors', variants[variant], className)}
       {...props}
     >
       {children}

@@ -33,9 +33,12 @@ export function StatCard({
   const displayTitle = title || label || '';
   const displaySubtitle = subtitle || subtext || '';
 
+  const numVal = typeof value === 'number' ? value : Number(value);
   const displayValue =
-    typeof value === 'number' && isCurrency
-      ? formatINR(value)
+    !isNaN(numVal) && isCurrency
+      ? formatINR(numVal)
+      : typeof value === 'number'
+      ? value.toLocaleString('en-IN')
       : value;
 
   const renderDelta = () => {

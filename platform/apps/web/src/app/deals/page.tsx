@@ -1,6 +1,5 @@
 import React from 'react';
 import { redirect } from 'next/navigation';
-import { cookies } from 'next/headers';
 import { AppShell } from '@/components/app-shell';
 import { createClient } from '@/lib/supabase/server';
 import { AgentDealsView, DmcDealsView, type DealRecord } from './deals-view';
@@ -9,9 +8,6 @@ import type { UserRole } from '@dmcgrid/db';
 export const dynamic = 'force-dynamic';
 
 export default async function DealsPage() {
-  const cookieStore = await cookies();
-  const roleCookie = cookieStore.get('dmc_role')?.value as UserRole | undefined;
-
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -19,19 +15,13 @@ export default async function DealsPage() {
     redirect('/portal-access-7k2m9');
   }
 
-  // Determine role and user ID
-  let role: UserRole = roleCookie || 'agent';
-  if (!roleCookie) {
-    const { data: profile } = await (supabase as any)
-      .from('profiles')
-      .select('role')
-      .eq('id', user.id)
-      .maybeSingle();
-    if (profile?.role) {
-      role = profile.role;
-    }
-  }
+  const { data: profile } = await (supabase as any)
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
 
+  const role: UserRole = (profile?.role as UserRole) ?? 'agent';
   const targetUserId = user.id;
 
   // Fetch agent credits if agent

@@ -69,7 +69,7 @@ export function Modal({
       {/* Modal Dialog */}
       <div
         className={cn(
-          'relative w-full rounded-[14px] p-6 shadow-2xl z-10 transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]',
+          'relative w-full rounded-[12px] p-6 shadow-2xl z-10 transition-all duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]',
           'bg-[#1F2937] border border-[#2A3441] text-[#F3F5F7]',
           'bg-[var(--bg-card)] border border-[var(--border-line)] text-[var(--text-primary)]',
           maxWidths[maxWidth],
@@ -93,7 +93,7 @@ export function Modal({
             </div>
             <button
               onClick={onClose}
-              className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-1 rounded-md min-h-[36px] min-w-[36px] flex items-center justify-center"
+              className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-1 rounded-[6px] min-h-[36px] min-w-[36px] flex items-center justify-center"
               aria-label="Close modal"
             >
               <X className="w-4 h-4" />

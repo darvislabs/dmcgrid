@@ -166,12 +166,12 @@ export function VerificationClient({ records: initialRecords }: VerificationClie
                   onClick={() => setFilterStatus(tab)}
                   className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-[6px] transition-all min-h-[36px] flex items-center gap-1.5 cursor-pointer ${
                     isActive
-                      ? 'bg-[#D4B483] text-[#0B0F14] font-semibold'
+                      ? 'bg-[var(--text-primary)] text-[var(--bg-page)] font-semibold'
                       : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card-hover)]'
                   }`}
                 >
                   <span>{tab}</span>
-                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-black/20 text-[#0B0F14]' : 'bg-[var(--bg-card)] text-[var(--text-muted)]'}`}>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-[var(--bg-page)]/20 text-[var(--bg-page)]' : 'bg-[var(--bg-card)] text-[var(--text-muted)]'}`}>
                     {count}
                   </span>
                 </button>
@@ -227,7 +227,7 @@ export function VerificationClient({ records: initialRecords }: VerificationClie
                       {/* Entity & Role */}
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-[8px] bg-[var(--bg-page)] border border-[var(--border-line)] flex items-center justify-center shrink-0">
+                          <div className="w-8 h-8 rounded-[9px] bg-[var(--bg-page)] border border-[var(--border-line)] flex items-center justify-center shrink-0">
                             <Building2 className="w-4 h-4 text-[#D4B483]" />
                           </div>
                           <div>
@@ -348,7 +348,7 @@ export function VerificationClient({ records: initialRecords }: VerificationClie
       {selectedRecord && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
           <div
-            className="w-full max-w-2xl bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[14px] shadow-2xl p-6 space-y-6 max-h-[90vh] overflow-y-auto"
+            className="w-full max-w-2xl bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[12px] shadow-2xl p-6 space-y-6 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}

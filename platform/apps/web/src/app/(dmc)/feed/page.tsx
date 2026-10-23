@@ -180,7 +180,7 @@ export default async function DmcFeedPage() {
       </div>
 
       {/* Anonymity Notice Banner (Compliance R1) */}
-      <div className="p-4 rounded-[14px] border border-[#0EA5A3]/30 bg-[#0EA5A3]/5 flex items-start gap-3 text-xs">
+      <div className="p-4 rounded-[12px] border border-[#0EA5A3]/30 bg-[#0EA5A3]/5 flex items-start gap-3 text-xs">
         <AlertCircle className="w-4 h-4 text-[#0EA5A3] shrink-0 mt-0.5" />
         <div className="space-y-0.5">
           <span className="font-bold text-[var(--text-primary)]">

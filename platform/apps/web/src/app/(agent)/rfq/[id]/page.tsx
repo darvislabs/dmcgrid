@@ -222,7 +222,7 @@ export default async function RfqDetailPage({
   return (
     <div className="space-y-8 animate-in fade-in duration-200">
       {/* Breadcrumb & Navigation */}
-      <div className="flex items-center justify-between pb-4 border-b border-[var(--border-line)]">
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-[var(--border-line)]">
         <Link
           href="/rfq"
           className="inline-flex items-center gap-2 text-xs font-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors min-h-[36px]"
@@ -230,7 +230,7 @@ export default async function RfqDetailPage({
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to All RFQs</span>
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Badge variant="gold" className="text-xs">
             {rfq.rfq_number}
           </Badge>
@@ -243,7 +243,7 @@ export default async function RfqDetailPage({
       {/* Hero Header */}
       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
         <div className="space-y-2 max-w-3xl">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#D4B483]">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#D4B483]">
             <span className="uppercase tracking-widest font-bold">STRUCTURED TRAVEL BRIEF</span>
             <span className="h-1 w-1 rounded-full bg-[var(--text-muted)]" />
             <span>Created {new Date(rfq.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>

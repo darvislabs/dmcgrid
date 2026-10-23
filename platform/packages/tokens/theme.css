@@ -110,10 +110,10 @@
   --text-secondary: #55636E;
   --text-muted: #71808B;
 
-  --accent-gold: #B88E52;
-  --accent-gold-hover: #A07840;
-  --accent-gold-soft: rgba(184, 142, 82, 0.12);
-  --accent-gold-ring: rgba(184, 142, 82, 0.25);
+  --accent-gold: #8A6D3B;
+  --accent-gold-hover: #755B2E;
+  --accent-gold-soft: rgba(138, 109, 59, 0.12);
+  --accent-gold-ring: rgba(138, 109, 59, 0.25);
 
   color-scheme: light;
 }

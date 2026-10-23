@@ -629,6 +629,22 @@ export default function FinFlyRfqWizardPage() {
     return `₹${val.toLocaleString('en-IN')}`;
   };
 
+  // DEFECT 27: Indian Lakhs / Crores helper for budget inputs
+  const getIndianBudgetHelper = (numStr: string) => {
+    const val = Number(numStr);
+    if (!numStr || isNaN(val) || val <= 0) return null;
+    const formattedInr = `₹${val.toLocaleString('en-IN')}`;
+    if (val >= 10000000) {
+      const cr = (val / 10000000).toFixed(2).replace(/\.?0+$/, '');
+      return `${formattedInr} · ${cr} Crore${Number(cr) > 1 ? 's' : ''}`;
+    }
+    if (val >= 100000) {
+      const lakhs = (val / 100000).toFixed(2).replace(/\.?0+$/, '');
+      return `${formattedInr} · ${lakhs} Lakh${Number(lakhs) > 1 ? 's' : ''}`;
+    }
+    return formattedInr;
+  };
+
   const getTripTypeLabel = (id: string) =>
     TRIP_TYPES.find((t) => t.id === id)?.label || 'Custom Journey';
 
@@ -691,7 +707,7 @@ export default function FinFlyRfqWizardPage() {
         <div className={`transition-all duration-200 ${isShaking ? 'animate-shake' : ''}`}>
           {/* STEP 0: AI BRIEF */}
           {step === 0 && (
-            <Card className="p-5 sm:p-6 rounded-xl border border-[var(--border-line)] bg-[var(--bg-card)] space-y-4">
+            <Card className="p-5 sm:p-6 rounded-[12px] border border-[var(--border-line)] bg-[var(--bg-card)] space-y-4">
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full bg-[#D4B483]/15 flex items-center justify-center text-[#D4B483] shrink-0">
@@ -720,7 +736,7 @@ export default function FinFlyRfqWizardPage() {
                   onChange={(e) => setAiText(e.target.value)}
                   placeholder="Paste WhatsApp text, email, or client notes…"
                   rows={4}
-                  className="w-full text-xs font-mono p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] placeholder-[var(--text-muted)] resize-none focus:outline-none focus:border-[#D4B483] transition-colors"
+                  className="w-full text-xs font-mono p-3 rounded-[9px] bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] placeholder-[var(--text-muted)] resize-none focus:outline-none focus:border-[#D4B483] transition-colors"
                 />
               </div>
 
@@ -764,7 +780,7 @@ export default function FinFlyRfqWizardPage() {
                     <div
                       key={t.id}
                       onClick={() => handleSelectTripType(t.id)}
-                      className={`p-4 rounded-xl border text-left cursor-pointer transition-all duration-200 active:scale-[0.97] min-h-[44px] flex flex-col justify-center ${
+                      className={`p-4 rounded-[12px] border text-left cursor-pointer transition-all duration-200 active:scale-[0.97] min-h-[44px] flex flex-col justify-center ${
                         isSelected
                           ? 'border-[#D4B483] bg-[#D4B483]/10 shadow-sm ring-1 ring-[#D4B483]'
                           : 'border-[var(--border-line)] bg-[var(--bg-card)] hover:border-[#D4B483]/50'
@@ -793,7 +809,7 @@ export default function FinFlyRfqWizardPage() {
                 </p>
               </div>
 
-              <Card className="p-5 rounded-xl border border-[var(--border-line)] bg-[var(--bg-card)] divide-y divide-[var(--border-line)]">
+              <Card className="p-5 rounded-[12px] border border-[var(--border-line)] bg-[var(--bg-card)] divide-y divide-[var(--border-line)]">
                 {/* Adults */}
                 <div className="flex items-center justify-between py-3 first:pt-0">
                   <div>
@@ -908,7 +924,7 @@ export default function FinFlyRfqWizardPage() {
                 {destinations.map((row, idx) => (
                   <Card
                     key={idx}
-                    className="p-4 rounded-xl border border-[var(--border-line)] bg-[var(--bg-card)] space-y-3"
+                    className="p-4 rounded-[12px] border border-[var(--border-line)] bg-[var(--bg-card)] space-y-3"
                   >
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[10px] text-[#D4B483] uppercase tracking-wider font-semibold">
@@ -936,7 +952,7 @@ export default function FinFlyRfqWizardPage() {
                           value={row.destination_name}
                           onChange={(e) => handleUpdateCityName(idx, e.target.value)}
                           placeholder="e.g. Bangkok, Phuket, Bali"
-                          className="w-full text-xs p-2.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
+                          className="w-full text-xs p-2.5 rounded-[9px] bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
                         />
                       </div>
 
@@ -949,7 +965,7 @@ export default function FinFlyRfqWizardPage() {
                           value={row.country}
                           onChange={(e) => handleUpdateCityCountry(idx, e.target.value)}
                           placeholder="e.g. Thailand, Indonesia"
-                          className="w-full text-xs p-2.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
+                          className="w-full text-xs p-2.5 rounded-[9px] bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
                         />
                       </div>
                     </div>
@@ -984,7 +1000,7 @@ export default function FinFlyRfqWizardPage() {
               <button
                 type="button"
                 onClick={handleAddCity}
-                className="w-full py-3 rounded-xl border border-dashed border-[var(--border-line)] hover:border-[#D4B483] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[44px]"
+                className="w-full py-3 rounded-[12px] border border-dashed border-[var(--border-line)] hover:border-[#D4B483] text-xs font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[44px]"
               >
                 <Plus className="w-4 h-4 text-[#D4B483]" />
                 <span>+ Add City</span>
@@ -1004,7 +1020,7 @@ export default function FinFlyRfqWizardPage() {
                 </p>
               </div>
 
-              <Card className="p-5 rounded-xl border border-[var(--border-line)] bg-[var(--bg-card)] space-y-4">
+              <Card className="p-5 rounded-[12px] border border-[var(--border-line)] bg-[var(--bg-card)] space-y-4">
                 <div>
                   <label className="block text-xs font-mono uppercase text-[var(--text-secondary)] mb-1.5">
                     Departure Date
@@ -1014,11 +1030,11 @@ export default function FinFlyRfqWizardPage() {
                     value={startDate}
                     min={new Date().toISOString().split('T')[0]}
                     onChange={(e) => setStartDate(e.target.value)}
-                    className="w-full text-xs p-2.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
+                    className="w-full text-xs p-2.5 rounded-[9px] bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
                   />
                 </div>
 
-                <div className="p-3 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-line)] flex items-center justify-between">
+                <div className="p-3 rounded-[9px] bg-[var(--bg-surface)] border border-[var(--border-line)] flex items-center justify-between">
                   <span className="text-xs text-[var(--text-secondary)]">Calculated Duration</span>
                   <span className="font-mono text-xs font-bold text-[#D4B483]">
                     {totalNights} nights · {totalDays} days
@@ -1037,7 +1053,7 @@ export default function FinFlyRfqWizardPage() {
                       <div
                         key={p.id}
                         onClick={() => setPacing(p.id)}
-                        className={`p-3 rounded-xl border text-center cursor-pointer transition-all duration-200 active:scale-[0.97] min-h-[44px] flex flex-col justify-center ${
+                        className={`p-3 rounded-[12px] border text-center cursor-pointer transition-all duration-200 active:scale-[0.97] min-h-[44px] flex flex-col justify-center ${
                           isSelected
                             ? 'border-[#D4B483] bg-[#D4B483]/10 ring-1 ring-[#D4B483]'
                             : 'border-[var(--border-line)] bg-[var(--bg-card)] hover:border-[#D4B483]/50'
@@ -1080,7 +1096,7 @@ export default function FinFlyRfqWizardPage() {
                           key={cat.id}
                           type="button"
                           onClick={() => setHotelCategory(cat.id)}
-                          className={`p-2.5 rounded-lg border text-left cursor-pointer transition-all active:scale-[0.97] min-h-[44px] flex items-center gap-2 ${
+                          className={`p-2.5 rounded-[9px] border text-left cursor-pointer transition-all active:scale-[0.97] min-h-[44px] flex items-center gap-2 ${
                             isSelected
                               ? 'border-[#D4B483] bg-[#D4B483]/10 text-[var(--text-primary)]'
                               : 'border-[var(--border-line)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -1107,7 +1123,7 @@ export default function FinFlyRfqWizardPage() {
                           key={type.id}
                           type="button"
                           onClick={() => setHotelType(type.id)}
-                          className={`py-2 px-3 rounded-lg border text-center text-xs font-medium cursor-pointer transition-all active:scale-[0.97] min-h-[44px] flex items-center justify-center ${
+                          className={`py-2 px-3 rounded-[9px] border text-center text-xs font-medium cursor-pointer transition-all active:scale-[0.97] min-h-[44px] flex items-center justify-center ${
                             isSelected
                               ? 'border-[#D4B483] bg-[#D4B483]/10 text-[var(--text-primary)]'
                               : 'border-[var(--border-line)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -1133,7 +1149,7 @@ export default function FinFlyRfqWizardPage() {
                           key={plan.id}
                           type="button"
                           onClick={() => setMealPlan(plan.id)}
-                          className={`py-2 px-3 rounded-lg border text-center text-xs font-medium cursor-pointer transition-all active:scale-[0.97] min-h-[44px] flex items-center justify-center ${
+                          className={`py-2 px-3 rounded-[9px] border text-center text-xs font-medium cursor-pointer transition-all active:scale-[0.97] min-h-[44px] flex items-center justify-center ${
                             isSelected
                               ? 'border-[#D4B483] bg-[#D4B483]/10 text-[var(--text-primary)]'
                               : 'border-[var(--border-line)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
@@ -1147,7 +1163,7 @@ export default function FinFlyRfqWizardPage() {
                 </div>
 
                 {/* Room Count & Preferences */}
-                <Card className="p-4 rounded-xl border border-[var(--border-line)] bg-[var(--bg-card)] space-y-3">
+                <Card className="p-4 rounded-[12px] border border-[var(--border-line)] bg-[var(--bg-card)] space-y-3">
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-xs font-medium text-[var(--text-primary)]">Room Count</div>
@@ -1182,7 +1198,7 @@ export default function FinFlyRfqWizardPage() {
                       value={stayPreferences}
                       onChange={(e) => setStayPreferences(e.target.value)}
                       placeholder="e.g. Sea view villa preferred, King bed, quiet zone"
-                      className="w-full text-xs p-2 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
+                      className="w-full text-xs p-2 rounded-[9px] bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
                     />
                   </div>
                 </Card>
@@ -1301,8 +1317,13 @@ export default function FinFlyRfqWizardPage() {
                         setBudgetMin(e.target.value);
                         setSelectedBudgetPreset('custom');
                       }}
-                      className="w-full text-xs font-mono p-2.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
+                      className="w-full text-xs font-mono p-2.5 rounded-[9px] bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
                     />
+                    {getIndianBudgetHelper(budgetMin) && (
+                      <div className="mt-1.5 font-mono text-[11px] text-[#D4B483] font-medium">
+                        {getIndianBudgetHelper(budgetMin)}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <label className="block text-[10px] font-mono uppercase text-[var(--text-secondary)] mb-1">
@@ -1315,14 +1336,19 @@ export default function FinFlyRfqWizardPage() {
                         setBudgetMax(e.target.value);
                         setSelectedBudgetPreset('custom');
                       }}
-                      className="w-full text-xs font-mono p-2.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
+                      className="w-full text-xs font-mono p-2.5 rounded-[9px] bg-[var(--bg-surface)] border border-[var(--border-line)] text-[var(--text-primary)] focus:outline-none focus:border-[#D4B483]"
                     />
+                    {getIndianBudgetHelper(budgetMax) && (
+                      <div className="mt-1.5 font-mono text-[11px] text-[#D4B483] font-medium">
+                        {getIndianBudgetHelper(budgetMax)}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
 
               {/* REVIEW CARD (FinFly Step-7 Style) */}
-              <div className="p-5 rounded-xl border border-[var(--border-line)] bg-[var(--bg-card)] space-y-4 shadow-sm">
+              <div className="p-5 rounded-[12px] border border-[var(--border-line)] bg-[var(--bg-card)] space-y-4 shadow-sm">
                 <div className="flex items-center justify-between pb-2 border-b border-[var(--border-line)]">
                   <span className="font-mono text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider">
                     RFQ Brief Review
@@ -1449,7 +1475,7 @@ export default function FinFlyRfqWizardPage() {
 
           {/* UPSELL STATE: ON INSUFFICIENT CREDITS */}
           {step === 7 && upsellActive && (
-            <Card className="p-6 rounded-xl border border-[#D4B483] bg-[#D4B483]/5 space-y-5 animate-in fade-in duration-300">
+            <Card className="p-6 rounded-[12px] border border-[#D4B483] bg-[#D4B483]/5 space-y-5 animate-in fade-in duration-300">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-[#D4B483]/20 flex items-center justify-center text-[#D4B483] shrink-0">
                   <AlertCircle className="w-5 h-5" />
@@ -1469,7 +1495,7 @@ export default function FinFlyRfqWizardPage() {
                 {plans.map((p) => (
                   <div
                     key={p.id}
-                    className="p-4 rounded-xl border border-[var(--border-line)] bg-[var(--bg-card)] space-y-2 hover:border-[#D4B483] transition-colors"
+                    className="p-4 rounded-[12px] border border-[var(--border-line)] bg-[var(--bg-card)] space-y-2 hover:border-[#D4B483] transition-colors"
                   >
                     <span className="font-mono text-[10px] text-[#D4B483] uppercase tracking-wider font-semibold block">
                       {p.name}

@@ -191,7 +191,7 @@ export function NotificationDropdown() {
 
       {/* Dropdown Panel */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-[340px] sm:w-[380px] max-w-[90vw] rounded-[14px] border border-[var(--border-line)] bg-[var(--bg-card)] shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-160">
+        <div className="absolute right-0 mt-2 w-[340px] sm:w-[380px] max-w-[90vw] rounded-[12px] border border-[var(--border-line)] bg-[var(--bg-card)] shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-160">
           {/* Header */}
           <div className="flex items-center justify-between p-3.5 border-b border-[var(--border-subtle)] bg-[var(--bg-surface)]">
             <div className="flex items-center gap-2">

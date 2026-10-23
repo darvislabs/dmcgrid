@@ -217,7 +217,7 @@ export function UsersClient({ users: initialUsers }: UsersClientProps) {
                       {/* Company Name */}
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-[8px] bg-[var(--bg-page)] border border-[var(--border-line)] flex items-center justify-center shrink-0">
+                          <div className="w-8 h-8 rounded-[9px] bg-[var(--bg-page)] border border-[var(--border-line)] flex items-center justify-center shrink-0">
                             <Building2 className="w-4 h-4 text-[#D4B483]" />
                           </div>
                           <div>
@@ -340,7 +340,7 @@ export function UsersClient({ users: initialUsers }: UsersClientProps) {
       {selectedUser && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
           <div
-            className="w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[14px] shadow-2xl p-6 space-y-5 max-h-[90vh] overflow-y-auto"
+            className="w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[12px] shadow-2xl p-6 space-y-5 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between pb-3 border-b border-[var(--border-line)]">
@@ -404,7 +404,7 @@ export function UsersClient({ users: initialUsers }: UsersClientProps) {
                     {selectedUser.operating_destinations.map((d, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 rounded-[4px] bg-[var(--bg-card)] border border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-primary)]"
+                        className="px-2 py-0.5 rounded-[6px] bg-[var(--bg-card)] border border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-primary)]"
                       >
                         {d}
                       </span>
@@ -457,7 +457,7 @@ export function UsersClient({ users: initialUsers }: UsersClientProps) {
       {actionUser && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
           <div
-            className="w-full max-w-md bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[14px] shadow-2xl p-6 space-y-5"
+            className="w-full max-w-md bg-[var(--bg-card)] border border-[var(--border-line)] rounded-[12px] shadow-2xl p-6 space-y-5"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between pb-3 border-b border-[var(--border-line)]">

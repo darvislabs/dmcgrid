@@ -301,7 +301,7 @@ export function DmcQuoteBuilder({
             Input net supplier costs. DMCGrid server engine automatically computes statutory V62 agent margins & customer selling price.
           </p>
           {existingQuote && (
-            <div className="mt-2 text-xs font-mono text-[#D4B483] bg-[#D4B483]/10 px-3 py-1.5 rounded-lg">
+            <div className="mt-2 text-xs font-mono text-[#D4B483] bg-[#D4B483]/10 px-3 py-1.5 rounded-[9px]">
               You already submitted quote #{existingQuote.quote_number} for this brief. Submitting again will record an updated quote.
             </div>
           )}
@@ -323,7 +323,7 @@ export function DmcQuoteBuilder({
       {/* Success Notification */}
       {feedback && (
         <div
-          className={`p-4 rounded-[14px] border flex items-start justify-between gap-3 text-xs ${
+          className={`p-4 rounded-[12px] border flex items-start justify-between gap-3 text-xs ${
             feedback.type === 'success'
               ? 'border-[#10B981]/30 bg-[#10B981]/10 text-[var(--text-primary)]'
               : 'border-[#EF4444]/30 bg-[#EF4444]/10 text-[#EF4444]'
@@ -440,7 +440,7 @@ export function DmcQuoteBuilder({
                 </Button>
               </div>
 
-              <div className="rounded-[11px] border border-[var(--border-line)] overflow-hidden">
+              <div className="rounded-[9px] border border-[var(--border-line)] overflow-hidden">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
                     <tr className="border-b border-[var(--border-line)] bg-[var(--bg-surface)] text-[var(--text-secondary)] font-mono uppercase text-[10px]">
@@ -545,7 +545,7 @@ export function DmcQuoteBuilder({
               </div>
 
               {/* Total Net Summary Card */}
-              <div className="p-4 rounded-[11px] bg-[var(--bg-surface)] border border-[var(--border-line)] flex items-center justify-between font-mono">
+              <div className="p-4 rounded-[9px] bg-[var(--bg-surface)] border border-[var(--border-line)] flex items-center justify-between font-mono">
                 <div>
                   <span className="text-[10px] uppercase text-[var(--text-muted)] block">
                     Total Supplier Net Cost ({currentOpt.option_name})
