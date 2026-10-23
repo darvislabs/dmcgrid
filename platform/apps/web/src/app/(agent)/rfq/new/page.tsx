@@ -760,7 +760,7 @@ export default function FinFlyRfqWizardPage() {
                   onClick={() => setStep(1)}
                   className="text-xs font-medium text-[var(--text-secondary)] hover:text-[#D4B483] text-center cursor-pointer transition-colors min-h-[44px] flex items-center justify-center"
                 >
-                  Start from scratch →
+                  {preFilled ? 'Review pre-filled details →' : 'Start from scratch →'}
                 </button>
               </div>
             </Card>
